@@ -401,247 +401,418 @@
             </div>
             <div class="AD_1080_1">
                 <a target="_blank" rel="nofollow" href="javascript:;">
-                    <img src="<?php echo IMG_PATH;?>adin1080.jpg" width="1080" alt="wordpress主题推荐">
+                    <img src="<?php echo IMG_PATH;?>adin1080.jpg" width="1200" alt="wordpress主题推荐">
                 </a>
             </div>
         </div>
         <div class="constr Main3">
-            <div class="m_Grid2 FL">
-                <div class="m_T3">
-                    <h3>
-                        <a href="javascript:;" target="_blank">
-                            wordpress教程
-                        </a>
-                    </h3>
-                    <span>
-                        <a href="javascript:;" target="_blank">
-                            更多&gt;&gt;
-                        </a>
-                    </span>
-                </div>
-                <ul class="m_Box2">
-                    <li>
-                        <a href="javascript:;" title="wordpress标题截断新策略">
-                            <img src="./wp-content/uploads/2014/01/wpjiaocheng.jpg?imageView/1/w/159/h/96"
-                            alt="wordpress标题截断新策略" class="wp-post-image" width="159" height="96" />
-                        </a>
-                        <p>
-                            <a href="javascript:;" title="wordpress标题截断新策略" target="_blank">
-                                wordpress标题截断新策略
-                            </a>
-                        </p>
-                    </li>
-                    <li>
-                        <a href="javascript:;" title="wordpress后台加载字体慢">
-                            <img src="./wp-content/uploads/2014/01/wpjiaocheng.jpg?imageView/1/w/159/h/96"
-                            alt="wordpress后台加载字体慢" class="wp-post-image" width="159" height="96" />
-                        </a>
-                        <p>
-                            <a href="javascript:;" title="wordpress后台加载字体慢" target="_blank">
-                                wordpress后台加载字体慢
-                            </a>
-                        </p>
-                    </li>
-                    <li>
-                        <a href="javascript:;" title="在WordPress后台的文章列表只显示该作者自己的文章">
-                            <img src="./wp-content/uploads/2014/01/wpjiaocheng.jpg?imageView/1/w/159/h/96"
-                            alt="在WordPress后台的文章列表只显示该作者自己的文章" class="wp-post-image" width="159" height="96"
-                            />
-                        </a>
-                        <p>
-                            <a href="javascript:;" title="在WordPress后台的文章列表只显示该作者自己的文章" target="_blank">
-                                在WordPress后台的文章列表只显示该作者自己的文章
-                            </a>
-                        </p>
-                    </li>
-                </ul>
-                <ul class="m_Box3">
-                    <li>
-                        ·
-                        <a href="javascript:;" title="WordPress后台删除不需要的侧边栏菜单" target="_blank">
-                            WordPress后台删除不需要的侧边栏菜单
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="给wordpress页面进行压缩，加速访问和给扒皮者制造麻烦" target="_blank">
-                            给wordpress页面进行压缩，加速访问和给扒皮者制造麻烦
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress搜索结果的优化手段" target="_blank">
-                            wordpress搜索结果的优化手段
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="WordPress菜单函数wp_nav_menu()详细介绍" target="_blank">
-                            WordPress菜单函数wp_nav_menu()详细介绍
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="使用php脚本自定义创建联系表单并验证" target="_blank">
-                            使用php脚本自定义创建联系表单并验证
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="精简wordpress头部多余信息，去掉部分不必要的js加载！" target="_blank">
-                            精简wordpress头部多余信息，去掉部分不必要的js加载！
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress代码高亮的实现，拒绝插件！" target="_blank">
-                            wordpress代码高亮的实现，拒绝插件！
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="非插件搞定wordpress生成静态缓存文件" target="_blank">
-                            非插件搞定wordpress生成静态缓存文件
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress禁止恶意HTTP_USER_AGENT，防采集防部分攻击" target="_blank">
-                            wordpress禁止恶意HTTP_USER_AGENT，防采集防部分攻击
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress代码实现网站地图sitemap的html和xml的方法" target="_blank">
-                            wordpress代码实现网站地图sitemap的html和xml的方法
-                        </a>
-                    </li>
-                    <div class="clear">
+
+		     <div class="imitem-l">
+    <div class="imhead">
+        <!--[diy=xinyun_bbs_004_11]-->
+        <div class="area" id="xinyun_bbs_004_11">
+            <div class="frame move-span cl frame-1" id="frameZcj39g">
+                <div class="column frame-1-c" id="frameZcj39g_left">
+                    <div class="move-span temp" id="frameZcj39g_left_temp">
                     </div>
-                </ul>
-            </div>
-            <div class="m_Grid2 FR">
-                <div class="m_T3">
-                    <h3>
-                        <a href="javascript:;" target="_blank">
-                            wordpress插件
-                        </a>
-                    </h3>
-                    <span>
-                        <a href="javascript:;" target="_blank">
-                            更多&gt;&gt;
-                        </a>
-                    </span>
-                </div>
-                <ul class="m_Box2">
-                    <li>
-                        <a href="javascript:;" title="wordpress 图片延迟加载插件 images lazyload">
-                            <img src="./wp-content/uploads/2014/01/sdasdcj.jpg?imageView/1/w/159/h/96"
-                            alt="wordpress 图片延迟加载插件 images lazyload" class="wp-post-image" width="159"
-                            height="96" />
-                        </a>
-                        <p>
-                            <a href="javascript:;" title="wordpress 图片延迟加载插件 images lazyload" target="_blank">
-                                wordpress 图片延迟加载插件 images lazyload
-                            </a>
-                        </p>
-                    </li>
-                    <li>
-                        <a href="javascript:;" title="wordpress纯静态插件：cos html cache">
-                            <img src="./wp-content/uploads/2014/05/20140523093439.jpg?imageView/1/w/159/h/96"
-                            alt="wordpress纯静态插件：cos html cache" class="wp-post-image" width="159" height="96"
-                            />
-                        </a>
-                        <p>
-                            <a href="javascript:;" title="wordpress纯静态插件：cos html cache" target="_blank">
-                                wordpress纯静态插件：cos html cache
-                            </a>
-                        </p>
-                    </li>
-                    <li>
-                        <a href="javascript:;" title="wordpress百度结构化数据提交插件">
-                            <img src="./wp-content/uploads/2014/03/30191395839173.png?imageView/1/w/159/h/96"
-                            alt="wordpress百度结构化数据提交插件" class="wp-post-image" width="159" height="96"
-                            />
-                        </a>
-                        <p>
-                            <a href="javascript:;" title="wordpress百度结构化数据提交插件" target="_blank">
-                                wordpress百度结构化数据提交插件
-                            </a>
-                        </p>
-                    </li>
-                </ul>
-                <ul class="m_Box3">
-                    <li>
-                        ·
-                        <a href="javascript:;" title="微信机器人插件，用wordpress做微信营销可事半功倍！" target="_blank">
-                            微信机器人插件，用wordpress做微信营销可事半功倍！
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress弹窗插件 PopupPress真的很漂亮哦" target="_blank">
-                            wordpress弹窗插件 PopupPress真的很漂亮哦
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress插件：wordpress弹窗下载插件Prettyphoto download"
-                        target="_blank">
-                            wordpress插件：wordpress弹窗下载插件Prettyphoto download
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress在线问答插件 DW Question &amp; Answer"
-                        target="_blank">
-                            wordpress在线问答插件 DW Question &#038; Answer
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress插件：给每篇文章添加一个喜欢的按钮来增加互动" target="_blank">
-                            wordpress插件：给每篇文章添加一个喜欢的按钮来增加互动
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="给wordpress添加一个收藏优酷视频页面，来自牧风的Youku Videos插件"
-                        target="_blank">
-                            给wordpress添加一个收藏优酷视频页面，来自牧风的Youku Videos
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress不同页面显示不同侧栏小工具" target="_blank">
-                            wordpress不同页面显示不同侧栏小工具
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="wordpress用户中心插件，好强大的说，用户注册、登录、找回密码、编辑资料都有"
-                        target="_blank">
-                            wordpress用户中心插件，好强大的说，用户注册、登录、找回密码
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="用代码代替wordpress插件实现wordpress图片暗箱功能！" target="_blank">
-                            用代码代替wordpress插件实现wordpress图片暗箱功能！
-                        </a>
-                    </li>
-                    <li>
-                        ·
-                        <a href="javascript:;" title="分享到微博才能显示指定内容的插件：Share to view all" target="_blank">
-                            分享到微博才能显示指定内容的插件：Share to view all
-                        </a>
-                    </li>
-                    <div class="clear">
+                    <div class="block move-span" id="portal_block_197">
+                        <div class="dxb_bc" id="portal_block_197_content">
+                            <div class="portal_block_summary">
+                                建站教程
+                                <a href="" target="_blank" class="immore">
+                                    更多
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </ul>
-            </div>
-            <div class="clear">
+                </div>
             </div>
         </div>
+        <!--[/diy]-->
+    </div>
+    <ul style="margin-left:10px">
+        <!--[diy=xinyun_bbs_004_12]-->
+        <div class="area" id="xinyun_bbs_004_12">
+            <div class="frame move-span cl frame-1" id="frameN6jBqk">
+                <div class="column frame-1-c" id="frameN6jBqk_left">
+                    <div class="move-span temp" id="frameN6jBqk_left_temp">
+                    </div>
+                    <div class="block move-span" id="portal_block_200">
+                        <div class="dxb_bc" id="portal_block_200_content">
+                            <div class="module cl xld"> 
+							      <ul class="m_Box2">
+									<li>
+										<a title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href=""
+										rel="nofollow">
+											<img width="156" height="96" class="wp-post-image" alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取"
+											src="<?php echo IMG_PATH;?>nopic_small.gif">
+										</a>
+										<p>
+											<a target="_blank" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href="">
+												从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
+											</a>
+										</p>
+									</li>
+									<li>
+										<a title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href=""
+										rel="nofollow">
+											<img width="156" height="96" class="wp-post-image" alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取"
+											src="<?php echo IMG_PATH;?>nopic_small.gif">
+										</a>
+										<p>
+											<a target="_blank" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href="">
+												从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
+											</a>
+										</p>
+									</li>
+									<li>
+										<a title="给wordpress评论处添加实用工具" href=""
+										rel="nofollow">
+											<img width="156" height="96" class="wp-post-image" alt="给wordpress评论处添加实用工具"
+											src="<?php echo IMG_PATH;?>nopic_small.gif">
+										</a>
+										<p>
+											<a target="_blank" title="给wordpress评论处添加实用工具" href="">
+												给wordpress评论处添加实用工具
+											</a>
+										</p>
+									</li>
+									<li>
+										<a title="wordpress评论字数限制" href=""
+										rel="nofollow">
+											<img width="156" height="96" class="wp-post-image" alt="wordpress评论字数限制"
+											src="<?php echo IMG_PATH;?>nopic_small.gif">
+										</a>
+										<p>
+											<a target="_blank" title="wordpress评论字数限制" href="">
+												wordpress评论字数限制
+											</a>
+										</p>
+									</li>
+									 
+								</ul>
+								 <ul class="m_Box3">
+									<li>
+										<a target="_blank" title="wordpress文章分页" href="">
+											wordpress文章分页
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress主题 仪表盘 添加站外文章列表" href="">
+											wordpress主题 仪表盘 添加站外文章列表
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress 获取文章内所有图片" href="">
+											wordpress 获取文章内所有图片
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress分页的极简实现" href="">
+											wordpress分页的极简实现
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress相关文章的优化机智和自定义设置" href="">
+											wordpress相关文章的优化机智和自定义设置
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="万网主机 使用 wordpress 无法发送邮件的问题" href="">
+											万网主机 使用 wordpress 无法发送邮件的问题
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wordpress"
+										href="">
+											wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wo
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress教程：面包屑导航（更细版本）" href="">
+											wordpress教程：面包屑导航（更细版本）
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方法"
+										href="">
+											WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方
+										</a>
+									</li>
+									<li>
+										<a target="_blank" title="wordpress 当前页面的子页面 获取" href="">
+											wordpress 当前页面的子页面 获取
+										</a>
+									</li>
+									<div class="clear">
+									</div>
+								</ul>
 
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--[/diy]-->
+    </ul>
+</div>
+<div class="imitem-r">
+    <div class="imhead">
+        <!--[diy=xinyun_bbs_004_13]-->
+        <div class="area" id="xinyun_bbs_004_13">
+            <div class="frame move-span cl frame-1" id="frameR8ONtx">
+                <div class="column frame-1-c" id="frameR8ONtx_left">
+                    <div class="move-span temp" id="frameR8ONtx_left_temp">
+                    </div>
+                    <div class="block move-span" id="portal_block_198">
+                        <div class="dxb_bc" id="portal_block_198_content">
+                            <div class="portal_block_summary">
+                                建站教程
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--[/diy]-->
+    </div>
+	<ul style="margin-left:10px">
+        <!--[diy=xinyun_bbs_004_12]-->
+        <div id="xinyun_bbs_004_12" class="area">
+            <div id="frameN6jBqk" class="frame move-span cl frame-1">
+                <div id="frameN6jBqk_left" class="column frame-1-c">
+                    <div id="frameN6jBqk_left_temp" class="move-span temp">
+                    </div>
+                    <div id="portal_block_200" class="block move-span">
+                        <div id="portal_block_200_content" class="dxb_bc">
+                            <div class="module cl xld"> 
+							      <ul class="m_Box2">
+									<li>
+										<a rel="nofollow" href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取">
+											<img width="156" height="96" src="http://www.htmlmoban.net/statics/images/nopic_small.gif" alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" class="wp-post-image">
+										</a>
+										<p>
+											<a href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" target="_blank">
+												从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
+											</a>
+										</p>
+									</li>
+									<li>
+										<a rel="nofollow" href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取">
+											<img width="156" height="96" src="http://www.htmlmoban.net/statics/images/nopic_small.gif" alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" class="wp-post-image">
+										</a>
+										<p>
+											<a href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" target="_blank">
+												从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
+											</a>
+										</p>
+									</li>
+									<li>
+										<a rel="nofollow" href="" title="给wordpress评论处添加实用工具">
+											<img width="156" height="96" src="http://www.htmlmoban.net/statics/images/nopic_small.gif" alt="给wordpress评论处添加实用工具" class="wp-post-image">
+										</a>
+										<p>
+											<a href="" title="给wordpress评论处添加实用工具" target="_blank">
+												给wordpress评论处添加实用工具
+											</a>
+										</p>
+									</li>
+									<li>
+										<a rel="nofollow" href="" title="wordpress评论字数限制">
+											<img width="156" height="96" src="http://www.htmlmoban.net/statics/images/nopic_small.gif" alt="wordpress评论字数限制" class="wp-post-image">
+										</a>
+										<p>
+											<a href="" title="wordpress评论字数限制" target="_blank">
+												wordpress评论字数限制
+											</a>
+										</p>
+									</li>
+									 
+								</ul>
+								 <ul class="m_Box3">
+									<li>
+										<a href="" title="wordpress文章分页" target="_blank">
+											wordpress文章分页
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress主题 仪表盘 添加站外文章列表" target="_blank">
+											wordpress主题 仪表盘 添加站外文章列表
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress 获取文章内所有图片" target="_blank">
+											wordpress 获取文章内所有图片
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress分页的极简实现" target="_blank">
+											wordpress分页的极简实现
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress相关文章的优化机智和自定义设置" target="_blank">
+											wordpress相关文章的优化机智和自定义设置
+										</a>
+									</li>
+									<li>
+										<a href="" title="万网主机 使用 wordpress 无法发送邮件的问题" target="_blank">
+											万网主机 使用 wordpress 无法发送邮件的问题
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wordpress" target="_blank">
+											wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wo
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress教程：面包屑导航（更细版本）" target="_blank">
+											wordpress教程：面包屑导航（更细版本）
+										</a>
+									</li>
+									<li>
+										<a href="" title="WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方法" target="_blank">
+											WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方
+										</a>
+									</li>
+									<li>
+										<a href="" title="wordpress 当前页面的子页面 获取" target="_blank">
+											wordpress 当前页面的子页面 获取
+										</a>
+									</li>
+									<div class="clear">
+									</div>
+								</ul>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--[/diy]-->
+    </ul>
+     
+</div>
+
+		     
+             
+        </div>
+
+<div class="constr Main3">
+    <div class="cl_frame_bm frame move-span clearfix frame-1" id="frameD5Ion1">
+    <div style="background-image:none;background-repeat:repeat;background-color:rgb(255, 255, 255);"
+    class="frame-title title">
+        <span style="font-size:14px;" class="titletext">
+            友情链接（申请要求：PR&gt;=3，ALEXA&lt;500000，并内容充实，无作弊现象。联系：QQ:3226458326
+        </span>
+    </div>
+    <div class="column frame-1-c" id="frameD5Ion1_left">
+        <div class="move-span temp" id="frameD5Ion1_left_temp">
+        </div>
+        <div class="block move-span" id="portal_block_203">
+            <div class="dxb_bc" id="portal_block_203_content">
+                <div class="portal_block_summary">
+                    <div class="bn lk">
+                        <ul class="x clearfix">
+                            <li>
+                                <a href="http://www.bj-cl.com" target="_blank">
+                                    设计公司
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.flash-china.com" target="_blank">
+                                    flash特效
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.see-say.com" target="_blank">
+                                    站长网
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.css3-html5.com" target="_blank">
+                                    html5
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.163ym.com" target="_blank">
+                                    163源码超市
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.17558.net" target="_blank">
+                                    好东西分享
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.biaoyu114.com" target="_blank">
+                                    标语设计
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.vpsko.com/" target="_blank">
+                                    WP主题
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.51zxw.org" target="_blank">
+                                    51zxw网址之家
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.52hibuy.com" target="_blank">
+                                    PPT设计
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.niurenzm.com" target="_blank">
+                                    牛人织梦
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.lingzhifeiyang.com" target="_blank">
+                                    北京设计公司
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.faceui.com" target="_blank">
+                                    UI设计公司
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.lanlanwork.com" target="_blank">
+                                    UI界面设计
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.ztzl888.com" target="_blank">
+                                    南京展览
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://www.bjqingyang.com" target="_blank">
+                                    北京工作服
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="main-info"><dl><dt>找了那么久，是否找到合适的主题了？</dt><dd>不妨把你的想法跟我们说说看呢？<a target="_blank" class="showbox" href="" rel="nofollow">联系我们</a></dd></dl></div>
+
+ 
 <?php include template("content","footer"); ?>

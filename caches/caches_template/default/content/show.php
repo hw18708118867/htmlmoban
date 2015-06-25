@@ -121,15 +121,16 @@ $("a.fancybox").fancybox();
                             精品模板推荐
                         </font>
                     </div>
+                    <?php $recommend_moban = get_recommend_moban()?>
                     <div class="tejia">
                         <div class="box1">
-                            <a href="javascript:;" title="wordpress企业主题：大公司的那份简约mxthemes分享">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2014/07/01.jpg&w=120&h=115&zc=1"
-                                alt="wordpress企业主题：大公司的那份简约mxthemes分享" class="thumbnail" />
+                            <a href="<?php echo $recommend_moban['url'];?>" title="<?php echo $recommend_moban['title'];?>">
+                                <img src="<?php echo $recommend_moban['thumb'];?>"
+                                alt="<?php echo $recommend_moban['description'];?>" class="thumbnail" />
                             </a>
                             <h3>
-                                <a href="javascript:;" title="wordpress企业主题：大公司的那份简约mxthemes分享" target="_blank">
-                                    wordpress企业主题：大公司的那
+                                <a href="<?php echo $recommend_moban['url'];?>" title="<?php echo $recommend_moban['title'];?>" target="_blank">
+                                    <?php echo $recommend_moban['title'];?>
                                 </a>
                             </h3>
                             <p class="p1">
@@ -137,7 +138,7 @@ $("a.fancybox").fancybox();
                                     特惠价:
                                 </span>
                                 <label>
-                                    200
+                                    <?php echo $recommend_moban['readpoint'];?>
                                 </label>
                                 元
                             </p>
@@ -149,7 +150,7 @@ $("a.fancybox").fancybox();
                         </div>
                     </div>
                     <div class="p3">
-                        本站开发的精美wordpress主题正在开卖中，心动就赶快行动起来吧！
+                        本站开发的精美主题正在开卖中，心动就赶快行动起来吧！
                     </div>
                 </div>
                 <!--
@@ -160,171 +161,39 @@ $("a.fancybox").fancybox();
                 </div>
 				-->
                 <div class="m_Grid4">
+                    <?php $hits_moban = hits_moban('weekviews')?>
                     <div class="m_T9">
                         随机主题展示
                     </div>
                     <ul class="m_Box9">
+                        <?php $n=1;if(is_array($hits_moban)) foreach($hits_moban AS $m) { ?>
                         <li>
                             <div class="txt">
                                 <p class="p5">
                                     主题简介:
                                     <br>
-                                    <a href="javascript:;" target="_blank">
-                                        　　国内难得一见的一款经典wordpress...
+                                    <a href="<?php echo $m['url'];?>" target="_blank">
+                                        　　<?php echo do_sub_str($m['description']);?>
                                     </a>
                                 </p>
                                 <p class="p6">
                                     分类：
-                                    <a href="javascript:;" title="查看CMS主题中的全部文章" rel="category tag">
-                                        CMS主题
+                                    <a href="<?php echo $m['url'];?>" title="<?php echo do_str($m['tag']);?>" rel="category tag">
+                                        <?php echo do_str($m['tag']);?>
                                     </a>
                                 </p>
                             </div>
-                            <a href="javascript:;" title="wordpress cms主题:中文门户zuluoCMS主题">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2013/08/84f3f1616969231ee810ee09732d65e9.jpg&w=130&h=97&zc=1"
-                                alt="wordpress cms主题:中文门户zuluoCMS主题" class="thumbnail" />
+                            <a href="<?php echo $m['url'];?>" title="<?php echo $m['title'];?>">
+                                <img src="<?php echo $m['thumb'];?>"
+                                alt="<?php echo $m['title'];?>" class="thumbnail" />
                             </a>
                             <p class="p4">
-                                <a href="javascript:;" title="wordpress cms主题:中文门户zuluoCMS主题" target="_blank">
-                                    wordpress cms主题:中文门户zuluoCMS主题
+                                <a href="<?php echo $m['url'];?>" title="<?php echo $m['title'];?>" target="_blank">
+                                    <?php echo $m['title'];?>
                                 </a>
                             </p>
                         </li>
-                        <li>
-                            <div class="txt">
-                                <p class="p5">
-                                    主题简介:
-                                    <br>
-                                    <a href="javascript:;" target="_blank">
-                                        这是一款十分适合国人使用的wordpress中...
-                                    </a>
-                                </p>
-                                <p class="p6">
-                                    分类：
-                                    <a href="javascript:;" title="查看博客主题中的全部文章" rel="category tag">
-                                        博客主题
-                                    </a>
-                                </p>
-                            </div>
-                            <a href="javascript:;" title="wordpress中文主题：中文hicms主题">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2013/07/hicms.jpg&w=130&h=97&zc=1"
-                                alt="wordpress中文主题：中文hicms主题" class="thumbnail" />
-                            </a>
-                            <p class="p4">
-                                <a href="javascript:;" title="wordpress中文主题：中文hicms主题" target="_blank">
-                                    wordpress中文主题：中文hicms主题
-                                </a>
-                            </p>
-                        </li>
-                        <li>
-                            <div class="txt">
-                                <p class="p5">
-                                    主题简介:
-                                    <br>
-                                    <a href="javascript:;" target="_blank">
-                                        wordpress主题站今日发布一款绿色健康的...
-                                    </a>
-                                </p>
-                                <p class="p6">
-                                    分类：
-                                    <a href="javascript:;" title="查看博客主题中的全部文章" rel="category tag">
-                                        博客主题
-                                    </a>
-                                </p>
-                            </div>
-                            <a href="javascript:;" title="wordpress主题站:youquba主题">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2013/08/979916e288d2c677b192d9aed71c5b6d.jpg&w=130&h=97&zc=1"
-                                alt="wordpress主题站:youquba主题" class="thumbnail" />
-                            </a>
-                            <p class="p4">
-                                <a href="javascript:;" title="wordpress主题站:youquba主题" target="_blank">
-                                    wordpress主题站:youquba主题
-                                </a>
-                            </p>
-                        </li>
-                        <li>
-                            <div class="txt">
-                                <p class="p5">
-                                    主题简介:
-                                    <br>
-                                    <a href="javascript:;" target="_blank">
-                                        主题介绍感谢来自鳖网投稿的搞笑类主...
-                                    </a>
-                                </p>
-                                <p class="p6">
-                                    分类：
-                                    <a href="javascript:;" title="查看博客主题中的全部文章" rel="category tag">
-                                        博客主题
-                                    </a>
-                                    ,
-                                    <a href="javascript:;" title="查看图片主题中的全部文章" rel="category tag">
-                                        图片主题
-                                    </a>
-                                </p>
-                            </div>
-                            <a href="javascript:;" title="wordpress主题：来自土鳖网投稿的搞笑类主题分享">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2013/11/20131105133739.jpg&w=130&h=97&zc=1"
-                                alt="wordpress主题：来自土鳖网投稿的搞笑类主题分享" class="thumbnail" />
-                            </a>
-                            <p class="p4">
-                                <a href="javascript:;" title="wordpress主题：来自土鳖网投稿的搞笑类主题分享" target="_blank">
-                                    wordpress主题：来自土鳖网投稿的搞笑类主题分享
-                                </a>
-                            </p>
-                        </li>
-                        <li>
-                            <div class="txt">
-                                <p class="p5">
-                                    主题简介:
-                                    <br>
-                                    <a href="javascript:;" target="_blank">
-                                        最近发布了几款优秀的国外主题，今日来...
-                                    </a>
-                                </p>
-                                <p class="p6">
-                                    分类：
-                                    <a href="javascript:;" title="查看博客主题中的全部文章" rel="category tag">
-                                        博客主题
-                                    </a>
-                                </p>
-                            </div>
-                            <a href="javascript:;" title="wordpress中文主题下载:budeyan主题">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2013/08/7473f60fda75489d32b901bd25548e51.jpg&w=130&h=97&zc=1"
-                                alt="wordpress中文主题下载:budeyan主题" class="thumbnail" />
-                            </a>
-                            <p class="p4">
-                                <a href="javascript:;" title="wordpress中文主题下载:budeyan主题" target="_blank">
-                                    wordpress中文主题下载:budeyan主题
-                                </a>
-                            </p>
-                        </li>
-                        <li>
-                            <div class="txt">
-                                <p class="p5">
-                                    主题简介:
-                                    <br>
-                                    <a href="javascript:;" target="_blank">
-                                        wordpress主题介绍：从wordpress主题...
-                                    </a>
-                                </p>
-                                <p class="p6">
-                                    分类：
-                                    <a href="javascript:;" title="查看博客主题中的全部文章" rel="category tag">
-                                        博客主题
-                                    </a>
-                                </p>
-                            </div>
-                            <a href="javascript:;" title="来自mufeng的两款超简单的wordpress主题，一款在用，一款是先前版本！">
-                                <img src="http://www.2zzt.com/wp-content/themes/2z2014/timthumb.php?src=http://www.2zzt.com/wp-content/uploads/2013/10/20131007133314.jpg&w=130&h=97&zc=1"
-                                alt="来自mufeng的两款超简单的wordpress主题，一款在用，一款是先前版本！" class="thumbnail" />
-                            </a>
-                            <p class="p4">
-                                <a href="javascript:;" title="来自mufeng的两款超简单的wordpress主题，一款在用，一款是先前版本！"
-                                target="_blank">
-                                    来自mufeng的两款超简单的wordpress主题，一款在用，一款是先前版本！
-                                </a>
-                            </p>
-                        </li>
+                        <?php $n++;}unset($n); ?>
                         <div class="clear">
                         </div>
                     </ul>
@@ -332,13 +201,35 @@ $("a.fancybox").fancybox();
 
 
 
-                 <div class="m_Grid4">
-                    <div class="m_T9">
-                        html模板分类
-                    </div>
-
+                 <!--<div class="m_Grid4">-->
+                    <!--<div class="m_T9">-->
+                        <!--html模板分类-->
+                    <!--</div>-->
+                     <div class="side-group side-group-w FR">
+                         <div class="in-side-menu">
+                             <h2>按模板行业分类</h2>
+                             <p class="pbutton sort clearfix">
+                                 <?php $n=1;if(is_array(get_tag_list())) foreach(get_tag_list() AS $tag) { ?>
+                                 <a title="<?php echo $tag;?>" href="<?php echo search_tag($tag);?>"><?php echo $tag;?></a>
+                                 <?php $n++;}unset($n); ?>
+                             </p>
+                             <h2>按模板颜色</h2>
+                             <p   class="pbutton color clearfix">
+                                 <a class="c1" href="<?php echo search_tag('','红色');?>">红色</a>
+                                 <a class="c2" href="<?php echo search_tag('','橙色');?>">橙色</a>
+                                 <a class="c3" href="<?php echo search_tag('','黄色');?>">黄色</a>
+                                 <a class="c4" href="<?php echo search_tag('','绿色');?>">绿色</a>
+                                 <a class="c5" href="<?php echo search_tag('','蓝色');?>">蓝色</a>
+                                 <a class="c6" href="<?php echo search_tag('','灰色');?>">灰色</a>
+                                 <a class="c7" href="<?php echo search_tag('','黑色');?>">黑色</a>
+                                 <a class="c8" href="<?php echo search_tag('','紫色');?>">紫色</a>
+                                 <a class="c9" href="<?php echo search_tag('','棕色');?>">棕色</a>
+                                 <a class="c10" href="<?php echo search_tag('','彩色');?>">彩色</a>
+                             </p>
+                         </div>
+                     </div>
                     
-                </div>
+                <!--</div>-->
 
 
 

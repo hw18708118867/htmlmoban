@@ -130,3 +130,7 @@
 <?php exit;?>06-23 09:12:24 | 2 | mysql_errno() expects parameter 1 to be resource, boolean given | phpcms\libs\classes\mysql.class.php | 392
 <?php exit;?>06-23 09:12:24 | 2 | mysql_error() expects parameter 1 to be resource, boolean given | phpcms\libs\classes\mysql.class.php | 388
 <?php exit;?>06-25 11:48:55 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-25 12:10:12 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-25 12:13:12 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-25 12:20:35 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-25 13:40:46 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
