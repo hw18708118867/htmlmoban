@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+		<meta name="keywords" content="{$SEO['keyword']}">
+		<meta name="description" content="{$SEO['description']}">
+        
+        <link type="text/css" rel="stylesheet" href="{CSS_PATH}style.css">
+        <script type="text/javascript" src="{JS_PATH}jquery.min.js">
+        </script>
+
+		    <!--[if lte IE 7]>
+			<script>
+			 
+	 
+				var oStyle = document.createElement("style");
+				oStyle.type = "text/css";
+				oStyle.styleSheet.cssText = ".constr{width:1300px;}";	
+				document.getElementsByTagName("head")[0].appendChild(oStyle);
+			 
+			</script>
+			<![endif]-->
+    </head>
+    
+    <body class="zzt2014" screen_capture_injected="true">
+        <div class="Head">
+            <div class="jieri">
+            </div>
+            <div class="constr Top">
+                <span>
+                    <script type="text/javascript">
+                        var now = (new Date()).getHours();
+                        if (now > 0 && now <= 6) {
+                            document.write("午夜好，模板达人QQ:3226458326")
+                        } else if (now > 6 && now <= 11) {
+                            document.write("早上好，模板达人QQ:3226458326")
+                        } else if (now > 11 && now <= 14) {
+                            document.write("中午好，模板达人QQ:3226458326")
+                        } else if (now > 14 && now <= 18) {
+                            document.write("下午好，模板达人QQ:3226458326")
+                        } else {
+                            document.write("晚上好，模板达人QQ:3226458326")
+                        }
+                    </script>
+                    <a href="javascript:;" rel="nofollow" title="还没记住我们的域名？那就保存我们的快捷访问吧！">
+                        快捷访问
+                    </a>
+                </span>
+                模板达人（www.htmlmoban.net），专注于分享各行业网站模板！
+            </div>
+            <div class="constr H_Box">
+                <div class="Logo FL">
+                    <h1>
+                        <a href="javascript:;" title="模板达人">
+                            html模板
+                        </a>
+                    </h1>
+                </div>
+                <div class="Sotag FR">
+                    <div class="so">
+                        <form action="http://www.2zzt.com" name="formsearch">
+                            <input name="s" type="text" class="search-keyword FL" id="search-keyword"
+                            value="在这里搜索..." onfocus="if(this.value==&#39;在这里搜索...&#39;){this.value=&#39;&#39;;}"
+                            onblur="if(this.value==&#39;&#39;){this.value=&#39;在这里搜索...&#39;;}">
+                           
+                        </form>
+                    </div>
+                    <p>
+                        热门搜索：
+                        <a href="javascript:;" target="_blank">
+                            网站模板
+                        </a>
+                        <a href="javascript:;" target="_blank">
+                            后台模板
+                        </a>
+                    </p>
+                </div>
+                 
+				 
+            </div>
+            <div id="navbar" class="constr" >
+                <i style="display: inline;" class="hot-ico">
+                </i>
+                <i class="new-ico" style="display: inline;">
+                </i>
+                <div id="main-nav" class="menu-%e8%8f%9c%e5%8d%95-container">
+                     {pc:content action="category" catid="0" num="25" siteid="$siteid" order="listorder ASC"}
+						
+					<ul id="menu-%e8%8f%9c%e5%8d%95" class="main-nav">
+                        <li id="menu-item-5697" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-5697">
+                            <a href="{siteurl($siteid)}">
+                                首页
+                            </a>
+                        </li>
+				 		
+					
+					      
+					 	{loop $data $cat}
+                        <li id="menu-item-5704" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5704">
+                            <a href="{$cat[url]}">
+                               {$cat[catname]}
+                            </a>
+							   {pc:content  action="category" catid="$cat['catid']" order="id DESC" num="6" return="subcate"}
+							 
+                                {if $subcate}
+								 <ul class="sub-menu">
+									 {loop $subcate $r}
+									<li id="menu-item-5740" class="navjl menu-item menu-item-type-post_type menu-item-object-page menu-item-5740">
+										<a href="{$r[url]}">
+											{$r[catname]}
+										</a>
+									</li>
+									 {/loop}
+									</ul>
+								{/if}
+									
+							 
+							   {/pc}
+                        </li>
+
+
+					    {/loop}
+
+						<!--
+                        <li id="menu-item-5702" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-5702">
+                            <a href="javascript:;">
+                                主机活动
+                            </a>
+                            <ul class="sub-menu">
+                                <li id="menu-item-5740" class="navjl menu-item menu-item-type-post_type menu-item-object-page menu-item-5740">
+                                    <a href="javascript:;">
+                                        站长交流中心
+                                    </a>
+                                </li>
+                                <li id="menu-item-5720" class="navtg menu-item menu-item-type-post_type menu-item-object-page menu-item-5720">
+                                    <a href="javascript:;">
+                                        主题投稿
+                                    </a>
+                                </li>
+                                <li id="menu-item-5715" class="navad menu-item menu-item-type-post_type menu-item-object-page menu-item-5715">
+                                    <a href="javascript:;">
+                                        广告服务
+                                    </a>
+                                </li>
+                                <li id="menu-item-6425" class="navaliyun menu-item menu-item-type-custom menu-item-object-custom menu-item-6425">
+                                    <a target="_blank" href="javascript:;">
+                                        阿里云主机
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+						-->
+                    </ul>
+					 {/pc}
+				
+                </div>
+            </div>
+        </div>

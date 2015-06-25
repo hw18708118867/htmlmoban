@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>PHPCMS演示站</title>
+<meta name="keywords" content="PHPCMS演示站">
+<meta name="description" content="PHPCMS演示站">
+<link href="http://www.htmlmoban.net/statics/css/reset.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://www.htmlmoban.net/statics/js/jquery.min.js"></script>
+<style type="text/css">
+body {background: url(http://www.htmlmoban.net/statics/images/v9/about_bg.png) repeat-x;}
+#header{ height:94px;}
+#header .logo{ padding:0 100px 0 20px;float:left;}
+.log{line-height:24px; height:24px;float:right; font-size:12px}
+.log{color:#c7c5c5; margin-top:40px}
+.log a{color:#6f6f6f;text-decoration: none;}
+.log a:hover{text-decoration: underline;}
+#header .content{width:880px; margin:auto; height:60px;padding:10px 0 0 0}
+#content{width:920px; margin:auto; padding:14px 0 0 0}
+.left-nav{width:210px; height:399px; padding-top:10px}
+.left-nav h1,.left-nav .content li,.left-nav .content li.cur a,.left-nav .bottom{background: url(http://www.htmlmoban.net/statics/images/v9/about_left.png) no-repeat right top}
+.left-nav h1{display:block; height:40px; text-indent:-999px; overflow:hidden}
+.left-nav .content{background: url(http://www.htmlmoban.net/statics/images/v9/about_left_bg.png) repeat-y right top; padding-left:44px}
+.left-nav .content li{background-position: right -102px; display:block; height:30px; line-height:30px; font-size:14px}
+.left-nav .content li a{display:block; height:25px; line-height:25px; padding-left:14px; color:#6f6f6f}
+.left-nav .content li.cur a{background-position: left -72px;  font-weight:700; color:#0d4b9b}
+.left-nav .bottom{background-position: right -168px; height:216px}
+.col-auto{ padding:0 25px}
+.col-auto .title{font-size:25px;padding:5px 0 0;background: url(http://www.htmlmoban.net/statics/images/uline.gif) repeat-x left bottom; margin-bottom:15px}
+.col-auto .content p{ margin-bottom:15px; font-size:14px; line-height:25px; color:#6f6f6f}
+.footer{color:#666; line-height:24px;width:920px; margin:auto; text-align:center; padding:12px 0; margin-top:52px; border-top:1px solid #e5e5e5}
+.footer p.info a{color:#666;}
+</style>
+</head>
+<body>
+<div id="header">
+	<div class="content">
+	<div class="logo"><img src="http://www.htmlmoban.net/statics/images/v9/logo.jpg" height="60" /></div>
+    <span class="rt log"><a href="http://www.htmlmoban.net">首页</a> | <a href="http://www.htmlmoban.net/index.php?m=member&c=index&a=login">登录</a> | <a href="http://www.htmlmoban.net/index.php?m=member&c=index&a=register">注册</a></span>
+    </div>
+</div><div id="content">
+	<div class="col-left left-nav">
+    	<h1>关于我们</h1>
+    	<ul class="content">
+        	                <li><a href="http://www.htmlmoban.net/html/about/aboutus/">关于我们</a></li>
+			                <li><a href="http://www.htmlmoban.net/html/about/contactus/">联系方式</a></li>
+			                <li><a href="http://www.htmlmoban.net/index?m=content&c=index&a=lists&catid=4">版权声明</a></li>
+			                <li><a href="http://www.htmlmoban.net/html/about/hr/">招聘信息</a></li>
+			        </ul>
+        <div class="bottom"></div>
+    </div>
+  <div class="col-auto">
+    	<img src="http://www.htmlmoban.net/statics/images/v9/about_ad.png" width="659" height="171" />
+    	<h1 class="title"></h1>
+        <div class="content">
+        	            </div>
+    </div>
+ </div>
+ <div class="Footer">
+            <div class="f_Grid1">
+                <div class="f_Box1 FL">
+                    <div class="f_T">
+                        关于
+                    </div>
+                    <ul id="menu-ifanr-footer-1" class="dmenu">
+                        <li id="menu-item-5741" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5741">
+                            <a target="_blank" href="javascript:;">
+                                主题定制
+                            </a>
+                        </li>
+                        <li id="menu-item-5742" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5742">
+                            <a target="_blank" href="javascript:;">
+                                主题投稿
+                            </a>
+                        </li>
+                        <li id="menu-item-5743" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5743">
+                            <a target="_blank" href="javascript:;">
+                                广告服务
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="f_Box2 FL">
+                    <div class="f_T">
+                        帮助
+                    </div>
+                    <ul id="menu-ifanr-footer-2" class="dmenu">
+                        <li id="menu-item-5744" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5744">
+                            <a target="_blank" href="javascript:;">
+                                站长交流中心
+                            </a>
+                        </li>
+                        <li id="menu-item-5745" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5745">
+                            <a target="_blank" href="javascript:;">
+                                WP教程
+                            </a>
+                        </li>
+                        <li id="menu-item-5746" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5746">
+                            <a target="_blank" href="javascript:;">
+                                WP插件
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="f_Box3 FL">
+                    <div class="f_T" style="padding-left:15px;">
+                        标签
+                    </div>
+                    <div id="xztag">
+                        <a href='javascript:;' class='tag-link-37' title='72个话题' style='font-size: 10.512820512821pt;'>
+                            wordpress个人主题
+                        </a>
+                        <a href='javascript:;' class='tag-link-50' title='111个话题' style='font-size: 17.333333333333pt;'>
+                            wordpress cms模板
+                        </a>
+                        <a href='javascript:;' class='tag-link-56' title='61个话题' style='font-size: 8pt;'>
+                            wordpress淘宝客主题
+                        </a>
+                        <a href='javascript:;' class='tag-link-11' title='150个话题' style='font-size: 22pt;'>
+                            wordpress主题
+                        </a>
+                        <a href='javascript:;' class='tag-link-39' title='73个话题' style='font-size: 10.871794871795pt;'>
+                            wordpress中文模版
+                        </a>
+                        <a href='javascript:;' class='tag-link-29' title='115个话题' style='font-size: 17.692307692308pt;'>
+                            wordpress博客主题
+                        </a>
+                        <a href='javascript:;' class='tag-link-42' title='62个话题' style='font-size: 8.3589743589744pt;'>
+                            wordpress两栏主题
+                        </a>
+                        <a href='javascript:;' class='tag-link-40' title='106个话题' style='font-size: 16.615384615385pt;'>
+                            wordpress免费主题
+                        </a>
+                        <a href='javascript:;' class='tag-link-55' title='61个话题' style='font-size: 8pt;'>
+                            wordpress企业模板
+                        </a>
+                        <a href='javascript:;' class='tag-link-44' title='117个话题' style='font-size: 18.051282051282pt;'>
+                            wordpress国人主题
+                        </a>
+                    </div>
+                </div>
+                <div class="f_Box4 FL">
+                    <p>
+                        声明：本站所有主题/文章除标明原创外，均来自网络转载，版权归原作者所有，如果有侵犯到您的权益，请联系本站删除，谢谢合作！
+                    </p>
+                    <p>
+                        本站团队成员：疯狂的大叔 | 奶嘴 | 阿福 | SM菌 |
+                        <a href="javascript:;" target="_blank">
+                            AC大神
+                        </a>
+                    </p>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="f_Box5">
+                ©WWW.2zzt.Com 2011-2014 All Rights Reserved. | 基于
+                <a href="javascript:;" target="_blank" rel="nofollow" title="WordPress建站程序">
+                    WordPress
+                </a>
+                ,Theme by
+                <a href="javascript:;" target="_blank" title="wordpress主题">
+                    wordpress主题
+                </a>
+                | 苏ICP备13034780号 | 媒体加速来自：
+                <a href="javascript:;" target="_blank" rel="nofollow" title="七牛云加速">
+                    七牛
+                </a>
+                | 网站托管于：
+                <a href="javascript:;" target="_blank" rel="nofollow" title="阿里云主机">
+                    阿里云主机
+                </a>
+                |
+                
+            </div>
+        </div>
+        <div id="big_C" class="png oc_bg">
+            <a class="btn btn1 png oc_bg" onclick="showSmall_C();">
+            </a>
+            <a class="btn btn2 png oc_bg" title="注意：本Q只限商业主题和商业合作的咨询之用！" rel="nofollow"
+            href="javascript:;" target="_blank">
+            </a>
+            <a class="btn btn3 png oc_bg" rel="nofollow" href="javascript:;" target="_blank">
+            </a>
+            <a class="btn btn4 png oc_bg" rel="nofollow" href="javascript:;" target="_blank">
+            </a>
+            <a class="btn btn5 png oc_bg" rel="nofollow" href="javascript:;" target="_blank">
+            </a>
+            <a class="btn btn6 png oc_bg" onclick="$(window).scrollTop(0);">
+            </a>
+        </div>
+		<div class="constr Main2">
+		 <div class="tr">
+				<div id="small_C" class="png oc_bg">
+					<a class="btn btn1 png oc_bg abc" onclick="$(window).scrollTop(0);">
+					</a>
+					<a class="stb btn" onclick="showBig_C();">
+					</a>
+				</div>
+          </div>
+		</div>
+        <script type="text/javascript">
+            $('#big_C').hide();
+            $('#small_C').show();
+            $(window).scroll(function() {
+                if ($(this).scrollTop() != 0) {
+                    $("#big_C .btn6").show();
+                    $("#small_C .btn1").show();
+                } else {
+                    $("#big_C .btn6").hide();
+                    $("#small_C .btn1").hide();
+                }
+            });
+            function showBig_C() {
+                $('#small_C').hide(200);
+                $('#big_C').show(200);
+            }
+            function showSmall_C() {
+                $('#big_C').hide(200);
+                $('#small_C').show(200);
+            }
+        </script>
+        <script src="http://www.htmlmoban.net/statics/js//jQs.js" type="text/javascript">
+        </script>
+        
+    </body>
+
+</html>

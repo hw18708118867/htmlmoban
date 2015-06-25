@@ -1,0 +1,481 @@
+{template "content","header"}
+<!--main-->
+<div class="constr Main1">
+            <div class="News FL">
+                <ul class="new_li">
+                    <div id="scrollDiv">
+                        <div class="scrollText">
+                            <ul style="margin-top: 0px; ">
+                                <li>
+                                    <a href="javascript:;" title='20140515出现的wordpress主题的下载链接无法问题的解答！' target="_blank">
+                                        20140515出现的wordpress主题的下载链接无法问题的解
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" title='将DNS从DNSPOD转移到阿里云解析造成的访问失败的解释' target="_blank">
+                                        将DNS从DNSPOD转移到阿里云解析造成的访问失败的解释
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" title='2013年度最优主题评选活动正式开启' target="_blank">
+                                        2013年度最优主题评选活动正式开启
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" title='改版结束，广告位招租将继续进行ing' target="_blank">
+                                        改版结束，广告位招租将继续进行ing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" title='wordpress主题下载站-爱找主题第三次改版顺利！' target="_blank">
+                                        wordpress主题下载站-爱找主题第三次改版顺利！
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="up" style="cursor: pointer; ">
+                        </div>
+                        <div class="down" style="cursor: pointer; ">
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $("#scrollDiv").textSlider({
+                                line: 1,
+                                speed: 500,
+                                timer: 3000
+                            });
+                        });
+                    </script>
+                </ul>
+            </div>
+            <div class="Share FR">
+                <div class="bdsharebuttonbox">
+                    <a href="javascript:;" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">
+                        QQ空间
+                    </a>
+                    <a href="javascript:;" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">
+                        新浪微博
+                    </a>
+                    <a href="javascript:;" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">
+                        腾讯微博
+                    </a>
+                    <a href="javascript:;" class="bds_renren" data-cmd="renren" title="分享到人人网">
+                        人人网
+                    </a>
+                    <a href="javascript:;" class="bds_t163" data-cmd="t163" title="分享到网易微博">
+                        网易微博
+                    </a>
+                    <a href="javascript:;" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">
+                        一键分享
+                    </a>
+                    <a href="javascript:;" class="bds_more" data-cmd="more">
+                        更多分享
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="constr Main2 fix">
+
+           <div class="in-side-topmenu side-group">
+				     <h2>按模板行业分类</h2>
+                     <p class="pbutton sort clearfix">
+								<a title="企业网站模板" href="/tags.asp?n=%E4%BC%81%E4%B8%9A">企业模板</a> <a title="商务网站模板" href="/tags.asp?n=%E5%95%86%E5%8A%A1">商务模板</a> <a title="博客网站模板" href="/tags.asp?n=%E5%8D%9A%E5%AE%A2">博客模板</a> <a title="HTML5网站模板" href="/tags.asp?n=html5">HTML5模板</a> <a title="css3网站模板" href="/tags.asp?n=css3">CSS3模板</a> <a title="整站网站模板" href="/tags.asp?n=%E6%95%B4%E7%AB%99">整站模板</a> <a title="科技网站模板" href="/tags.asp?n=%E7%A7%91%E6%8A%80">科技模板</a> <a title="电脑网站模板" href="/tags.asp?n=%E7%94%B5%E8%84%91">电脑模板</a> <a title="域名主机网站模板" href="/tags.asp?n=%E4%B8%BB%E6%9C%BA&amp;n=%E5%9F%9F%E5%90%8D">域名主机</a> <a title="摄影网站模板" href="/tags.asp?n=%E6%91%84%E5%BD%B1">摄影模板</a> <a title="相册网站模板" href="/tags.asp?n=%E7%9B%B8%E5%86%8C">相册模板</a> <a title="婚嫁网站模板" href="/tags.asp?n=%E5%A9%9A%E7%BA%B1">婚嫁模板</a> <a title="商城网站模板" href="/tags.asp?n=%E5%95%86%E5%9F%8E">商城模板</a> <a title="餐饮网站模板" href="/tags.asp?n=%E9%A4%90%E9%A5%AE&amp;n=%E9%A4%90%E5%8E%85&amp;n=%E8%A5%BF%E9%A4%90&amp;n=%E7%BE%8E%E9%A3%9F&amp;n=%E9%A3%9F%E5%93%81">餐饮模板</a> <a title="酒店网站模板" href="/tags.asp?n=%E9%85%92%E5%BA%97">酒店模板</a> <a title="旅游网站模板" href="/tags.asp?n=%E6%97%85%E6%B8%B8">旅游模板</a> <a title="体育网站模板" href="/tags.asp?n=%E4%BD%93%E8%82%B2">体育模板</a> <a title="交友网站模板" href="/tags.asp?n=%E4%BA%A4%E5%8F%8B">交友模板</a> <a title="美容网站模板" href="/tags.asp?n=%E7%BE%8E%E5%AE%B9">美容模板</a> <a title="会所网站模板" href="/tags.asp?n=%E4%BC%9A%E6%89%80">会所模板</a> <a title="医疗网站模板" href="/tags.asp?n=%E5%8C%BB%E9%99%A2&amp;n=%E5%8C%BB%E5%AD%A6">医疗模板</a> <a title="美容网站模板" href="/tags.asp?n=%E7%BE%8E%E5%AE%B9">美容模板</a> <a title="宠物网站模板" href="/tags.asp?n=%E5%AE%A0%E7%89%A9&amp;n=%E7%8B%97&amp;n=%E7%8B%97">宠物模板</a> <a title="汽车网站模板" href="/tags.asp?n=%E6%B1%BD%E8%BD%A6&amp;n=%E8%BD%A6">汽车模板</a> <a title="建筑网站模板" href="/tags.asp?n=%E5%BB%BA%E7%AD%91">建筑模板</a> <a title="学校网站模板" href="/tags.asp?n=%E5%AD%A6%E6%A0%A1">学校模板</a> <a title="咖啡网站模板" href="/tags.asp?n=%E5%92%96%E5%95%A1">咖啡模板</a> <a title="个人简历网站模板" href="/tags.asp?n=%E7%AE%80%E5%8E%86&amp;n=web%E7%AE%80%E5%8E%86">简历模板</a>
+								</p>
+
+
+						 <h2>按模板颜色</h2>
+                     <p   class="pbutton color clearfix">
+								<a class="c1" href="/tags.asp?n=%E7%BA%A2%E8%89%B2&amp;n=%E7%B2%89%E7%BA%A2%E8%89%B2&amp;n=%E6%9A%97%E7%BA%A2%E8%89%B2">红色</a><a class="c2" href="/tags.asp?n=%E6%A9%99%E8%89%B2">橙色</a><a class="c3" href="/tags.asp?n=%E9%BB%84%E8%89%B2&amp;n=%E6%B7%A1%E9%BB%84%E8%89%B2">黄色</a><a class="c4" href="/tags.asp?n=%E7%BB%BF%E8%89%B2&amp;n=%E6%B7%A1%E7%BB%BF%E8%89%B2&amp;n=%E5%A2%A8%E7%BB%BF%E8%89%B2&amp;n=%E6%9A%97%E7%BB%BF%E8%89%B2">绿色</a><a class="c5" href="/tags.asp?n=%E8%93%9D%E8%89%B2&amp;n=%E6%B7%B1%E8%93%9D%E8%89%B2">蓝色</a><a class="c6" href="/tags.asp?n=%E7%81%B0%E8%89%B2">灰色</a><a class="c7" href="/tags.asp?n=%E9%BB%91%E8%89%B2">黑色</a><a class="c8" href="/tags.asp?n=%E7%B4%AB%E8%89%B2">紫色</a><a class="c9" href="/tags.asp?n=%E6%A3%95%E8%89%B2">棕色</a><a class="c10" href="/tags.asp?n=%E4%B8%83%E5%BD%A9&amp;n=%E5%BD%A9%E8%89%B2&amp;n=%E7%82%AB%E5%BD%A9">彩色</a>
+								
+						</p>
+                     
+                </div>
+		     
+        </div>
+
+
+
+        
+		<div class="constr Main2 fix">
+
+
+		      <div class="side-group FR">
+                
+                <div class="in-side-menu h535">
+				     <h2>按模板行业分类</h2>
+                     <p class="pbutton skey clearfix">
+						<a title="企业网站模板" href="/tags.asp?n=%E4%BC%81%E4%B8%9A">企业</a><a title="博客网站模板" href="/tags.asp?n=%E5%8D%9A%E5%AE%A2">博客</a><a title="简洁网站模板" href="/tags.asp?n=%E7%AE%80%E6%B4%81">简洁</a><a title="整站网站模板" href="/tags.asp?n=%E6%95%B4%E7%AB%99">整站</a><a title="大气网站模板" href="/tags.asp?n=%E5%A4%A7%E6%B0%94">大气</a><a title="商城网站模板" href="/tags.asp?n=%E5%95%86%E5%9F%8E">商城</a><a title="精品网站模板" href="/tags.asp?n=%E7%B2%BE%E5%93%81">精品</a><a title="css3网站模板" href="/tags.asp?n=css3">CSS3</a><a title="html5网站模板" href="/tags.asp?n=html5">HTML5</a><a title="响应式网站模板" href="/tags.asp?n=%E5%93%8D%E5%BA%94%E5%BC%8F">响应式</a><a title="简单网站模板" href="/tags.asp?n=%E7%AE%80%E5%8D%95">简单</a><a title="清爽网站模板" href="/tags.asp?n=%E6%B8%85%E7%88%BD">清爽</a><a title="干净网站模板" href="/tags.asp?n=%E5%B9%B2%E5%87%80">干净</a><a title="线条网站模板" href="/tags.asp?n=%E7%BA%BF%E6%9D%A1">线条</a><a title="个人网站模板" href="/tags.asp?n=%E4%B8%AA%E4%BA%BA">个人</a><a title="漂亮网站模板" href="/tags.asp?n=%E6%BC%82%E4%BA%AE">漂亮</a><a title="科技网站模板" href="/tags.asp?n=%E7%A7%91%E6%8A%80">科技</a><a title="建筑网站模板" href="/tags.asp?n=%E5%BB%BA%E7%AD%91">建筑</a><a title="大图网站模板" href="/tags.asp?n=%E5%A4%A7%E5%9B%BE">大图</a><a title="精美网站模板" href="/tags.asp?n=%E7%B2%BE%E7%BE%8E">精美</a><a title="质感网站模板" href="/tags.asp?n=%E8%B4%A8%E6%84%9F">质感</a><a title="web20网站模板" href="/tags.asp?n=web20">web20</a><a title="个性网站模板" href="/tags.asp?n=%E4%B8%AA%E6%80%A7">个性</a><a title="网店网站模板" href="/tags.asp?n=%E7%BD%91%E5%BA%97">网店</a><a title="家居网站模板" href="/tags.asp?n=%E5%AE%B6%E5%B1%85">家居</a><a title="jquery网站模板" href="/tags.asp?n=jquery">jquery</a><a title="动画网站模板" href="/tags.asp?n=%E5%8A%A8%E7%94%BB">动画</a><a title="幻灯网站模板" href="/tags.asp?n=%E5%B9%BB%E7%81%AF">幻灯</a><a title="菜单网站模板" href="/tags.asp?n=%E8%8F%9C%E5%8D%95">菜单</a><a title="整体色网站模板" href="/tags.asp?n=%E6%95%B4%E4%BD%93%E8%89%B2">整体色</a><a title="商业网站模板" href="/tags.asp?n=%E5%95%86%E4%B8%9A">商业</a><a title="外贸网站模板" href="/tags.asp?n=%E5%A4%96%E8%B4%B8">外贸</a><a title="展示网站模板" href="/tags.asp?n=%E5%B1%95%E7%A4%BA">展示</a><a title="透明网站模板" href="/tags.asp?n=%E9%80%8F%E6%98%8E">透明</a><a title="酒店网站模板" href="/tags.asp?n=%E9%85%92%E5%BA%97">酒店</a><a title="手机网站模板" href="/tags.asp?n=%E6%89%8B%E6%9C%BA">手机</a><a title="app网站模板" href="/tags.asp?n=app">APP</a>
+						<a title="app网站模板" href="/tags.asp?n=app">更多>></a>
+					
+					</p>
+                     
+                </div>
+            </div>
+            <div   class="cell inline_box fix tj m_Grid1 last">
+
+
+			       {pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}
+					 
+				{loop $data $r}
+				     <SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A class="aimg" href="{$r[url]}" target=_blank><IMG class=jsLazyImage src="{$r[thumb]}"   data-url="{$r[thumb]}"><em></em></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="{$r[url]}" target=_blank><STRONG class=g3>{$r[title]}</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+				{/loop}
+					 
+						<!--<div id="pages" class="text-c">{$pages}</div>-->
+				{/pc}
+                  
+
+
+				     
+
+					 
+ 
+                     <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN>
+
+
+
+            </div>
+          
+            
+            <div class="clear">
+            </div>
+        </div>
+
+
+
+        <div class="constr Main2">
+            <div class="m_T1">
+                <h3>
+                    最新wordpress主题
+                </h3>
+                <span>
+                    <a rel="nofollow" target="_blank" href="javascript:;">
+                        欢迎投稿
+                    </a>
+                    /
+                    <a rel="nofollow" target="_blank" href="javascript:;">
+                        主题定制
+                    </a>
+                    /
+                    <a rel="nofollow" target="_blank" href="javascript:;">
+                        收费主题
+                    </a>
+                </span>
+            </div>
+
+
+			
+<DIV class="inline_box fix tj m_Grid1">
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A class="aimg" href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://www.cssmoban.com/UploadFiles/2014/2/2014071614243528914.jpg"   data-url="http://www.cssmoban.com/UploadFiles/2014/2/2014071614243528914.jpg"><em></em></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+ 
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+
+
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+ 
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
+
+
+ 
+<SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> </DIV>
+   
+                    
+            <div class="page_navi">
+                <a href='javascript:;' class='current'>
+                    1
+                </a>
+                <a href='javascript:;'>
+                    2
+                </a>
+                <a href='javascript:;'>
+                    3
+                </a>
+                <a href='javascript:;'>
+                    4
+                </a>
+                <a href='javascript:;'>
+                    5
+                </a>
+                <a href='javascript:;'>
+                    6
+                </a>
+                <a href='javascript:;'>
+                    7
+                </a>
+                <a href='javascript:;'>
+                    8
+                </a>
+                <a href='javascript:;'>
+                    9
+                </a>
+                <a href='javascript:;'>
+                    10
+                </a>
+                <a href="javascript:;">
+                    下一页
+                </a>
+                <a href='javascript:;' class='extend' title='跳转到最后一页'>
+                    最后一页
+                </a>
+            </div>
+            <div class="AD_1080_1">
+                <a target="_blank" rel="nofollow" href="javascript:;">
+                    <img src="./images/adin1080.jpg" width="1080" alt="wordpress主题推荐">
+                </a>
+            </div>
+        </div>
+        <div class="constr Main3">
+            <div class="m_Grid2 FL">
+                <div class="m_T3">
+                    <h3>
+                        <a href="javascript:;" target="_blank">
+                            wordpress教程
+                        </a>
+                    </h3>
+                    <span>
+                        <a href="javascript:;" target="_blank">
+                            更多&gt;&gt;
+                        </a>
+                    </span>
+                </div>
+                <ul class="m_Box2">
+                    <li>
+                        <a href="javascript:;" title="wordpress标题截断新策略">
+                            <img src="./wp-content/uploads/2014/01/wpjiaocheng.jpg?imageView/1/w/159/h/96"
+                            alt="wordpress标题截断新策略" class="wp-post-image" width="159" height="96" />
+                        </a>
+                        <p>
+                            <a href="javascript:;" title="wordpress标题截断新策略" target="_blank">
+                                wordpress标题截断新策略
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" title="wordpress后台加载字体慢">
+                            <img src="./wp-content/uploads/2014/01/wpjiaocheng.jpg?imageView/1/w/159/h/96"
+                            alt="wordpress后台加载字体慢" class="wp-post-image" width="159" height="96" />
+                        </a>
+                        <p>
+                            <a href="javascript:;" title="wordpress后台加载字体慢" target="_blank">
+                                wordpress后台加载字体慢
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" title="在WordPress后台的文章列表只显示该作者自己的文章">
+                            <img src="./wp-content/uploads/2014/01/wpjiaocheng.jpg?imageView/1/w/159/h/96"
+                            alt="在WordPress后台的文章列表只显示该作者自己的文章" class="wp-post-image" width="159" height="96"
+                            />
+                        </a>
+                        <p>
+                            <a href="javascript:;" title="在WordPress后台的文章列表只显示该作者自己的文章" target="_blank">
+                                在WordPress后台的文章列表只显示该作者自己的文章
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+                <ul class="m_Box3">
+                    <li>
+                        ·
+                        <a href="javascript:;" title="WordPress后台删除不需要的侧边栏菜单" target="_blank">
+                            WordPress后台删除不需要的侧边栏菜单
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="给wordpress页面进行压缩，加速访问和给扒皮者制造麻烦" target="_blank">
+                            给wordpress页面进行压缩，加速访问和给扒皮者制造麻烦
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress搜索结果的优化手段" target="_blank">
+                            wordpress搜索结果的优化手段
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="WordPress菜单函数wp_nav_menu()详细介绍" target="_blank">
+                            WordPress菜单函数wp_nav_menu()详细介绍
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="使用php脚本自定义创建联系表单并验证" target="_blank">
+                            使用php脚本自定义创建联系表单并验证
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="精简wordpress头部多余信息，去掉部分不必要的js加载！" target="_blank">
+                            精简wordpress头部多余信息，去掉部分不必要的js加载！
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress代码高亮的实现，拒绝插件！" target="_blank">
+                            wordpress代码高亮的实现，拒绝插件！
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="非插件搞定wordpress生成静态缓存文件" target="_blank">
+                            非插件搞定wordpress生成静态缓存文件
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress禁止恶意HTTP_USER_AGENT，防采集防部分攻击" target="_blank">
+                            wordpress禁止恶意HTTP_USER_AGENT，防采集防部分攻击
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress代码实现网站地图sitemap的html和xml的方法" target="_blank">
+                            wordpress代码实现网站地图sitemap的html和xml的方法
+                        </a>
+                    </li>
+                    <div class="clear">
+                    </div>
+                </ul>
+            </div>
+            <div class="m_Grid2 FR">
+                <div class="m_T3">
+                    <h3>
+                        <a href="javascript:;" target="_blank">
+                            wordpress插件
+                        </a>
+                    </h3>
+                    <span>
+                        <a href="javascript:;" target="_blank">
+                            更多&gt;&gt;
+                        </a>
+                    </span>
+                </div>
+                <ul class="m_Box2">
+                    <li>
+                        <a href="javascript:;" title="wordpress 图片延迟加载插件 images lazyload">
+                            <img src="./wp-content/uploads/2014/01/sdasdcj.jpg?imageView/1/w/159/h/96"
+                            alt="wordpress 图片延迟加载插件 images lazyload" class="wp-post-image" width="159"
+                            height="96" />
+                        </a>
+                        <p>
+                            <a href="javascript:;" title="wordpress 图片延迟加载插件 images lazyload" target="_blank">
+                                wordpress 图片延迟加载插件 images lazyload
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" title="wordpress纯静态插件：cos html cache">
+                            <img src="./wp-content/uploads/2014/05/20140523093439.jpg?imageView/1/w/159/h/96"
+                            alt="wordpress纯静态插件：cos html cache" class="wp-post-image" width="159" height="96"
+                            />
+                        </a>
+                        <p>
+                            <a href="javascript:;" title="wordpress纯静态插件：cos html cache" target="_blank">
+                                wordpress纯静态插件：cos html cache
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" title="wordpress百度结构化数据提交插件">
+                            <img src="./wp-content/uploads/2014/03/30191395839173.png?imageView/1/w/159/h/96"
+                            alt="wordpress百度结构化数据提交插件" class="wp-post-image" width="159" height="96"
+                            />
+                        </a>
+                        <p>
+                            <a href="javascript:;" title="wordpress百度结构化数据提交插件" target="_blank">
+                                wordpress百度结构化数据提交插件
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+                <ul class="m_Box3">
+                    <li>
+                        ·
+                        <a href="javascript:;" title="微信机器人插件，用wordpress做微信营销可事半功倍！" target="_blank">
+                            微信机器人插件，用wordpress做微信营销可事半功倍！
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress弹窗插件 PopupPress真的很漂亮哦" target="_blank">
+                            wordpress弹窗插件 PopupPress真的很漂亮哦
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress插件：wordpress弹窗下载插件Prettyphoto download"
+                        target="_blank">
+                            wordpress插件：wordpress弹窗下载插件Prettyphoto download
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress在线问答插件 DW Question &amp; Answer"
+                        target="_blank">
+                            wordpress在线问答插件 DW Question &#038; Answer
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress插件：给每篇文章添加一个喜欢的按钮来增加互动" target="_blank">
+                            wordpress插件：给每篇文章添加一个喜欢的按钮来增加互动
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="给wordpress添加一个收藏优酷视频页面，来自牧风的Youku Videos插件"
+                        target="_blank">
+                            给wordpress添加一个收藏优酷视频页面，来自牧风的Youku Videos
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress不同页面显示不同侧栏小工具" target="_blank">
+                            wordpress不同页面显示不同侧栏小工具
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="wordpress用户中心插件，好强大的说，用户注册、登录、找回密码、编辑资料都有"
+                        target="_blank">
+                            wordpress用户中心插件，好强大的说，用户注册、登录、找回密码
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="用代码代替wordpress插件实现wordpress图片暗箱功能！" target="_blank">
+                            用代码代替wordpress插件实现wordpress图片暗箱功能！
+                        </a>
+                    </li>
+                    <li>
+                        ·
+                        <a href="javascript:;" title="分享到微博才能显示指定内容的插件：Share to view all" target="_blank">
+                            分享到微博才能显示指定内容的插件：Share to view all
+                        </a>
+                    </li>
+                    <div class="clear">
+                    </div>
+                </ul>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+
+{template "content","footer"}

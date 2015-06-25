@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Made for Designers | Vartro | Website and Mobile Web Conversion Service | Melbourne, Australia</title>
+<meta name="keywords" content="w3c standards, image optimisation, server optimisation, commented code, online support, seo, cross brower compatibility, non disclosure" />
+<meta name="description" content="We convert sites with ease – no matter how big or small – leave the coding to the professionals. Have more time designing without limitation, work smarter with peace of mind that the final coded product will be pixel perfect." />
+<meta name="language" content="en" />
+<meta name="author" content="Vartro, hello@vartro.com" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="./css/layout.css"/>
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="./css/ie6.css" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="./css/ie7.css" />
+<![endif]-->
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="./css/ie.css" />
+<![endif]-->
+<script type="text/javascript" src="./js/cufon-yui.js"></script>
+<script type="text/javascript" src="./js/font-textbook.js"></script>
+<script type="text/javascript" src="./js/jquery-core.js"></script>
+<script type="text/javascript" src="./js/jquery-cycle.js"></script>
+<script type="text/javascript" src="./js/jquery-pngfix.js"></script>
+<script type="text/javascript" src="./js/jquery-form.js"></script>
+<script type="text/javascript" src="./js/jquery-config.js"></script></head>
+<body id="pageOverview">
+<div id="sp-container">
+  <div id="header-frame">
+    <div id="header">
+      <div class="logo">
+        <h1><a href="javascript:;"><span>Vartro - Website and Mobile Conversion Service</span></a></h1>
+      </div>
+      <div class="navigation">
+        <ul id="nav">
+          <li id="navOverview"><a href="javascript:;">Overview</a></li>
+          <li id="navPricing"><a href="javascript:;">Pricing</a></li>
+          <li id="navRewards"><a href="javascript:;">Rewards</a></li>
+          <li id="navHelpDesk"><a href="javascript:;">Help Desk</a></li>
+          <li id="navBlog"><a href="javascript:;">Blog</a></li>
+        </ul>
+      </div>
+    </div>  </div>
+  <div id="sp-title-frame">
+    <div id="sp-title">
+      <div class="sp-title-text">
+        <h2 class="sp-title-style">Made for Designers</h2>
+      </div>
+      <div class="sp-title-btn">
+        <ul class="sp-title-btn-list">
+          <li><span class="ge-button-set ge-learn-2"><a href="javascript:;" title="Learn More"><span>Learn More</span></a></span></li>
+          <li><span class="ge-button-set ge-order-2"><a href="javascript:;" title="Order Now"><span>Order Now</span></a></span></li>
+        </ul>      </div>
+    </div>
+  </div>
+  <div id="sp-content-frame">
+    <div id="sp-content">
+      <div class="sp-content-lhs">
+        <ul class="sp-submenu">
+          <li><a href="javascript:;">Overview Summary</a></li>
+          <li><a href="javascript:;" class="activeitem">Made for Designers</a></li>
+          <li><a href="javascript:;">How it works</a></li>
+          <li><a href="javascript:;">Deliverables</a></li>
+          <li><a href="javascript:;">Websites</a></li>
+          <li><a href="javascript:;">iPhone Websites</a></li>
+          <li><a href="javascript:;">Mobile Websites</a></li>
+          <li><a href="javascript:;">Design Guidelines</a></li>
+          <li><a href="javascript:;">Australian Owned</a></li>
+        </ul>
+        <ul class="ge-sidebar">
+          <li><a href="javascript:;"><img src="./images/ge-sidebar-rewards.jpg" alt="Rewarding Customers" width="291" height="74" /></a></li>
+          <li class="ge-sidebar-twitter"><a href="javascript:;" target="_blank"><img src="./images/ge-sidebar-twitter.jpg" alt="Follow us on Twitter" width="291" height="49" /></a></li>
+<li class="ge-sidebar-signup">
+          	<script type="text/javascript" src="./js/jquery-signup.js"></script>
+            <noscript>Your browser does not support JavaScript!</noscript>
+            <h3>Newsletter Signup</h3>
+            <p>Signup and receive free useful tips, giveaways, updates and specials.</p>
+            <form name="ge-signup-form" action="/process-signup.php" method="post" class="ge-signup-form-frame">
+              <label for="ge-emailaddress"><strong>Email Address</strong></label>
+              <div class="ge-signup-input-bg">
+                <input name="ge-emailaddress" type="text" class="ge-signup-input" id="ge-emailaddress"/>
+              </div>
+              <button type="submit" title="Click button to subscribe to mailing list"><span>Subscribe</span></button>
+            </form>
+            <div class="ge-signup-success none">Thank you for subscribing!</div>
+            <div class="clear"></div>
+          </li>
+        </ul>      </div>
+      <div class="sp-content-rhs">
+      <div class="sp-content-rhs-generic">
+		<h3>Work smarter, not harder!</h3>
+        <p class="subintro">Discover what will happen when sending us your design files. We convert sites with ease – no matter how big or small – leave the coding to the professionals. Have more time designing without limitation, work smarter with peace of mind that the final coded product will be pixel perfect. We are designers ourselves and know the meaning of “eye for detail”.</p>
+        <img src="./images/sp-ov-ma-w3c.jpg" alt="Award Worthy W3C Standards" width="166" height="145" align="right" class="ov-sp-ma-img-01"/>
+        <h4>Award Worthy W3C Standards</h4>
+        <p>World Wide Web Consortium (W3C) have developed industry standard specification and guidelines for web development, to enhance the way web code interacts on the internet. At Vartro, we take this seriously, not only will our code validate for CSS (2.0/3.0), XHTML (1.0) and Accessibility (AA) – we have also based our validation on the Australian Web Awards standards.</p>
+        <div class="clear"></div>
+        <h4>We accept all major file formats</h4>
+        <p>As designers, we all specialise in our software of choice, from Adobe Photoshop to Adobe InDesign – we cater for various formats to make your life easier allowing you to produce the best design results without the worry of conversion. Formats include: PSD, IND, JPEG, PNG, PDF, AI, TIFF, EPS and much more.<img src="./images/sp-ov-ma-format.jpg" alt="We accept all major file formats" width="626" height="105" align="left" class="ov-sp-ma-img-02"/></p>
+        <div class="clear"></div>
+        <img src="./images/sp-ov-ma-optimisation.jpg" alt="Image/Server Optimisation" width="220" height="168" align="left" class="ov-sp-ma-img-03"/>
+        <h4>Image/Server Optimisation</h4>
+        <p>We convert all images to their highest possible quality, giving consideration to file size. We choose the best format and compression that fits the image profile – JPEG, GIF or PNG.  Our use of CSS Repetition and CSS Sprites will lower the number of HTTP requests, which will save you money on hosting bandwidth, as well as make your website load faster.</p>
+        <div class="clear"></div>
+        <ul class="subcolumn2">
+        <li>
+        <img src="./images/sp-ov-ma-commented.jpg" alt="Commented Code" width="300" height="121" class="ov-sp-ma-img-04"/>
+<h4>Commented Code</h4>
+        <p>All our code includes comments, no matter if you are advanced or new to CSS/XHTML, we make sure comments are placed in the spots that will make your life easier when adding content and updating.</p>
+        </li>
+        <li class="subcolumn2-last"><img src="./images/sp-ov-ma-support.jpg" alt="Online Support" width="300" height="121" class="ov-sp-ma-img-05"/>
+        <h4>Online Support</h4>
+        <p>Once you receive your files, we provide a 7 days support service. Ask us anything via the online help desk form – we are happy to assist in making your Vartro journey easy and enjoyable.</p>
+        </li>
+        </ul>
+        <div class="clear"></div>
+         <img src="./images/sp-ov-ma-seo.jpg" alt="SEO Orientated" width="222" height="149" align="right" class="ov-sp-ma-img-06"/>
+        <h4>SEO Orientated</h4>
+        <p>Our service comes with SEO orientated coding, making sure our code has all the necessary attributes in getting your site up the search engine rankings. By using web standard coding methods and validation, Google /Yahoo/Bing won’t terminate its indexing phase when going through your site.</p>
+        <div class="clear"></div>
+        <img src="./images/sp-ov-ma-time.jpg" alt="Turn Around Time" width="59" height="73" align="left" class="ov-sp-ma-img-07"/>
+        <h4>Turn Around Time</h4>
+        <p>Our turnaround ranges from 1 to 7 days, depending on the layout complexity and package you choose. We run through our code multiple times to make sure it optimal. Be assured that we always meet our deadlines.</p>
+<div class="clear"></div>
+        <h4>Cross Browser Compatibility</h4>
+        <p>While converting your design, we make sure it looks identical on all  major web browsers. This includes Mozilla Firefox, Opera, Safari,  Google Chrome, Internet Explorer as well as the infamous Internet  Explorer 6.<img src="./images/sp-ov-ma-browser.jpg" alt="Cross Browser Compatibility" width="626" height="117" align="left" class="ov-sp-ma-img-08"/></p>
+        <div class="clear"></div>
+        <h4>Non Disclosure Policy</h4>
+        <p>For peace of mind, we take pride in building a long-term business relationship. Therefore, we guarantee that any information shared with us will always remain confidential. <a href="javascript:;">Read More</a>.</p>
+</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="clear"></div>
+<div id="footer-frame">
+  <div id="footer">
+    <div class="ge-footer-content">
+      <div class="ge-footer-column">
+        <div class="ge-footer-blog">
+          <h4>Blog Updates</h4>
+          <script src="http://feeds.feedburner.com/vartro?format=sigpro&amp;feeduri?format=sigpro&amp;excerptFormat=plain&amp;excerptLength=10&amp;dateLocation=above" type="text/javascript" ></script>
+          <noscript>
+          Your browser does not support JavaScript!
+          </noscript>
+        </div>
+        <div class="ge-footer-twitter">
+          <h4>Twitter Updates</h4>
+          <ul id="ge-twitter-item">
+            <li></li>
+          </ul>
+          <div class="ge-twitter-follow">
+            <p><a href="javascript:;" target="_blank">You should follow us on Twitter</a></p>
+          </div>
+        </div>
+        <div class="ge-footer-vartro">
+          <h4>About Vartro</h4>
+          <ul class="ge-vartro-item">
+            <li>
+              <h5>Website and mobile web conversion service</h5>
+              <p>At Vartro, we believe quality work is what is lacking in the conversion market. Our goal is to produce exceptional code from your design - 'satisfactory' is not good enough for us.  <a href="javascript:;" title="Contact Us Today">Contact us today</a> and let us be the catalyst to your next project.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="copyright">
+      <ul class="ge-copyright-links">
+        <li>Copyright &copy; 2011 Vartro. All rights reserved. <a href="javascript:;" title="Vuu Media - Web Design Melbourne" target="_blank" class="ge-copyright-author">Web Design Melbourne</a>.</li>
+        <li><a href="javascript:;">Non Disclosure</a></li>
+        <li><a href="javascript:;">Legal Information</a></li>
+        <li><a href="javascript:;">Careers</a></li>
+        <li><a href="javascript:;">Get in Touch</a></li>
+      </ul>
+      <div class="ge-paymethod">
+        <p>We Accept:</p>
+        <span class="ge-button-set ge-cards"></span></div>
+    </div>
+  </div></div>
+<script type="text/javascript"> Cufon.now(); </script>
+<noscript>Your browser does not support JavaScript!</noscript>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/vartro.json?callback=twitterCallback2&amp;count=2"></script>
+<noscript>Your browser does not support JavaScript!</noscript>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='./js/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<noscript>Your browser does not support JavaScript!</noscript>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9094242-8");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<noscript>Your browser does not support JavaScript!</noscript></body>
+</html>
