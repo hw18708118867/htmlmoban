@@ -239,21 +239,21 @@
 				     <h2>按模板行业分类</h2>
                      <p class="pbutton sort clearfix">
                          <?php $n=1;if(is_array(get_tag_list())) foreach(get_tag_list() AS $tag) { ?>
-                            <a title="<?php echo $tag;?>" href="<?php echo search_tag($tag);?>"><?php echo $tag;?></a>
+                            <a title="<?php echo $tag;?>" href="<?php echo search_tag('',$tag);?>"><?php echo $tag;?></a>
                          <?php $n++;}unset($n); ?>
 					 </p>
 						 <h2>按模板颜色</h2>
                      <p   class="pbutton color clearfix">
-						 <a class="c1" href="<?php echo search_tag('','红色');?>">红色</a>
-                         <a class="c2" href="<?php echo search_tag('','橙色');?>">橙色</a>
-                         <a class="c3" href="<?php echo search_tag('','黄色');?>">黄色</a>
-                         <a class="c4" href="<?php echo search_tag('','绿色');?>">绿色</a>
-                         <a class="c5" href="<?php echo search_tag('','蓝色');?>">蓝色</a>
-                         <a class="c6" href="<?php echo search_tag('','灰色');?>">灰色</a>
-                         <a class="c7" href="<?php echo search_tag('','黑色');?>">黑色</a>
-                         <a class="c8" href="<?php echo search_tag('','紫色');?>">紫色</a>
-                         <a class="c9" href="<?php echo search_tag('','棕色');?>">棕色</a>
-                         <a class="c10" href="<?php echo search_tag('','彩色');?>">彩色</a>
+						 <a class="c1" href="<?php echo search_tag('','','红色');?>">红色</a>
+                         <a class="c2" href="<?php echo search_tag('','','橙色');?>">橙色</a>
+                         <a class="c3" href="<?php echo search_tag('','','黄色');?>">黄色</a>
+                         <a class="c4" href="<?php echo search_tag('','','绿色');?>">绿色</a>
+                         <a class="c5" href="<?php echo search_tag('','','蓝色');?>">蓝色</a>
+                         <a class="c6" href="<?php echo search_tag('','','灰色');?>">灰色</a>
+                         <a class="c7" href="<?php echo search_tag('','','黑色');?>">黑色</a>
+                         <a class="c8" href="<?php echo search_tag('','','紫色');?>">紫色</a>
+                         <a class="c9" href="<?php echo search_tag('','','棕色');?>">棕色</a>
+                         <a class="c10" href="<?php echo search_tag('','','彩色');?>">彩色</a>
 					</p>
                 </div>
             </div>

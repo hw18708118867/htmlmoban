@@ -1,0 +1,21 @@
+body{background:#222;}
+.paixu{
+  background:transparent;
+  color:#fff;
+}
+#header{background: rgba(60, 60, 60, 0.92);}
+#nav{display:none}
+#feedArea .box{background:#292929;}
+#feedArea .box .imgBox{border:0px;background:none;}
+#aside .menu_fc li a,
+#aside .menu_fl a,
+#aside .menu_tag li a,
+#tool .name a ,
+#aside .menu_sc .ipt,
+#aside .menu_tag .more a{background:none;}
+.menu_sc .ipt{border-color:rgb(80,80,80);}
+#toggleLight{background:rgba(255,255,255,0.1);color:#f44a56;}
+#toggleLight:hover{background:rgba(255,255,255,0.05);}
+.backToTop{background:rgba(255,255,255,.1); }
+.backToTop:hover{background:rgba(255,255,255,.05); }
+

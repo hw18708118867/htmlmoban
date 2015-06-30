@@ -6,6 +6,12 @@ return array (
     'name' => '模板模型',
     'sort' => '0',
   ),
+  13 => 
+  array (
+    'typeid' => '55',
+    'name' => '酷站模型',
+    'sort' => '0',
+  ),
   1 => 
   array (
     'typeid' => '1',

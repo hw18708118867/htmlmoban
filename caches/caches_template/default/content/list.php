@@ -1,103 +1,29 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><?php include template("content","header"); ?>
 <!--main-->
-<div class="constr Main1">
-            <div class="News FL">
-                <ul class="new_li">
-                    <div id="scrollDiv">
-                        <div class="scrollText">
-                            <ul style="margin-top: 0px; ">
-                                <li>
-                                    <a href="javascript:;" title='20140515出现的wordpress主题的下载链接无法问题的解答！' target="_blank">
-                                        20140515出现的wordpress主题的下载链接无法问题的解
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" title='将DNS从DNSPOD转移到阿里云解析造成的访问失败的解释' target="_blank">
-                                        将DNS从DNSPOD转移到阿里云解析造成的访问失败的解释
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" title='2013年度最优主题评选活动正式开启' target="_blank">
-                                        2013年度最优主题评选活动正式开启
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" title='改版结束，广告位招租将继续进行ing' target="_blank">
-                                        改版结束，广告位招租将继续进行ing
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" title='wordpress主题下载站-爱找主题第三次改版顺利！' target="_blank">
-                                        wordpress主题下载站-爱找主题第三次改版顺利！
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="up" style="cursor: pointer; ">
-                        </div>
-                        <div class="down" style="cursor: pointer; ">
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            $("#scrollDiv").textSlider({
-                                line: 1,
-                                speed: 500,
-                                timer: 3000
-                            });
-                        });
-                    </script>
-                </ul>
-            </div>
-            <div class="Share FR">
-                <div class="bdsharebuttonbox">
-                    <a href="javascript:;" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">
-                        QQ空间
-                    </a>
-                    <a href="javascript:;" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">
-                        新浪微博
-                    </a>
-                    <a href="javascript:;" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">
-                        腾讯微博
-                    </a>
-                    <a href="javascript:;" class="bds_renren" data-cmd="renren" title="分享到人人网">
-                        人人网
-                    </a>
-                    <a href="javascript:;" class="bds_t163" data-cmd="t163" title="分享到网易微博">
-                        网易微博
-                    </a>
-                    <a href="javascript:;" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">
-                        一键分享
-                    </a>
-                    <a href="javascript:;" class="bds_more" data-cmd="more">
-                        更多分享
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="constr Main2 fix">
+ 
+        <div class="constr Main2 fix mt10">
 
            <div class="in-side-topmenu side-group">
 				     <h2>按模板行业分类</h2>
                      <p class="pbutton sort clearfix">
                          <?php $n=1;if(is_array(get_tag_list())) foreach(get_tag_list() AS $tag) { ?>
-                         <a title="<?php echo $tag;?>" href="<?php echo search_tag($tag);?>"><?php echo $tag;?></a>
+                         <a title="<?php echo $tag;?>" href="<?php echo search_tag($catid,$tag);?>"><?php echo $tag;?></a>
                          <?php $n++;}unset($n); ?>
                      </p>
 
 
 						 <h2>按模板颜色</h2>
                      <p   class="pbutton color clearfix">
-                         <a class="c1" href="<?php echo search_tag('','红色');?>">红色</a>
-                         <a class="c2" href="<?php echo search_tag('','橙色');?>">橙色</a>
-                         <a class="c3" href="<?php echo search_tag('','黄色');?>">黄色</a>
-                         <a class="c4" href="<?php echo search_tag('','绿色');?>">绿色</a>
-                         <a class="c5" href="<?php echo search_tag('','蓝色');?>">蓝色</a>
-                         <a class="c6" href="<?php echo search_tag('','灰色');?>">灰色</a>
-                         <a class="c7" href="<?php echo search_tag('','黑色');?>">黑色</a>
-                         <a class="c8" href="<?php echo search_tag('','紫色');?>">紫色</a>
-                         <a class="c9" href="<?php echo search_tag('','棕色');?>">棕色</a>
-                         <a class="c10" href="<?php echo search_tag('','彩色');?>">彩色</a>
+                         <a class="c1" href="<?php echo search_tag($catid,'','红色');?>">红色</a>
+                         <a class="c2" href="<?php echo search_tag($catid,'','橙色');?>">橙色</a>
+                         <a class="c3" href="<?php echo search_tag($catid,'','黄色');?>">黄色</a>
+                         <a class="c4" href="<?php echo search_tag($catid,'','绿色');?>">绿色</a>
+                         <a class="c5" href="<?php echo search_tag($catid,'','蓝色');?>">蓝色</a>
+                         <a class="c6" href="<?php echo search_tag($catid,'','灰色');?>">灰色</a>
+                         <a class="c7" href="<?php echo search_tag($catid,'','黑色');?>">黑色</a>
+                         <a class="c8" href="<?php echo search_tag($catid,'','紫色');?>">紫色</a>
+                         <a class="c9" href="<?php echo search_tag($catid,'','棕色');?>">棕色</a>
+                         <a class="c10" href="<?php echo search_tag($catid,'','彩色');?>">彩色</a>
 					</p>
                      
                 </div>
@@ -114,7 +40,7 @@
             <div   class="cell inline_box fix tj m_Grid1 last">
 			    <!--<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=5ab4b05e97fd14c3ed386604ee1a9399&action=lists&catid=%24catid&num=25&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 25;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>-->
 			    <?php $i=1;?>
-				<?php $n=1;if(is_array(get_moban_list())) foreach(get_moban_list() AS $r) { ?>
+				<?php $n=1;if(is_array(get_moban_list($catid))) foreach(get_moban_list($catid) AS $r) { ?>
                 <?php if($i%4 != 0) { ?>
                 <div class="post-home">
                 <?php } else { ?>

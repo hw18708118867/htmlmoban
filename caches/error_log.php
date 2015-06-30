@@ -134,3 +134,14 @@
 <?php exit;?>06-25 12:13:12 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>06-25 12:20:35 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>06-25 13:40:46 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-29 12:21:53 | 2 | mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: YES) | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-29 12:21:53 | 2 | mysql_error() expects parameter 1 to be resource, boolean given | phpcms\libs\classes\mysql.class.php | 388
+<?php exit;?>06-29 12:21:53 | 2 | mysql_errno() expects parameter 1 to be resource, boolean given | phpcms\libs\classes\mysql.class.php | 392
+<?php exit;?>06-29 12:21:53 | 2 | mysql_errno() expects parameter 1 to be resource, boolean given | phpcms\libs\classes\mysql.class.php | 392
+<?php exit;?>06-29 12:21:53 | 2 | mysql_error() expects parameter 1 to be resource, boolean given | phpcms\libs\classes\mysql.class.php | 388
+<?php exit;?>06-30 15:15:33 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-30 15:32:57 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-30 15:38:51 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-30 16:13:11 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-30 17:12:12 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-30 17:12:26 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70

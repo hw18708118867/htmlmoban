@@ -1,0 +1,14 @@
+@media screen and (max-width: 1599px){
+	#header .header_con{width:1210px;}
+	#index{width:1210px;}
+	#article{width:960px;}
+	#footer{width:1060px;}
+}
+@media screen and (max-width: 1260px){
+	#header .header_con{width:900px;}
+	#index{width:906px;}
+	#article{width:650px;}
+	#footer{width:880px;}
+	#tab_1 .typecon li{width:218px;}
+	#tab_1 .typecon li img {max-width:218px;}
+}

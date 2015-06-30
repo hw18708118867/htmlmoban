@@ -1,0 +1,24 @@
+html,body,div,img{font-size:12px;margin:0;padding:0;}
+body{ background:#fff;}
+html,body{font-size:12px; }
+.cl{ clear:both;}
+.head{position:fixed;top:0; width:100%; left: 0; _position:absolute;    _width: expression(offsetParent.clientWidth);    _top: expression(offsetParent.scrollTop);}
+html { _background: url(about:black) no-repeat fixed}
+.tab{ height:45px;font-family:"Microsoft Yahei",Tahoma, Geneva, sans-serif;line-height:45px;width:100%;overflow:hidden;background:#21a1e2 ; font-size:14px;margin:0;padding:0;color:#fff;font-weight:bold;text-shadow:1px 1px #12588A;}
+.td_l{float:left;padding:0 0 0 35px;text-align:left;  }
+.td_r a,.td_l h1,.td_l a{ font-size:14px;color:#fff;display:inline;text-decoration:none;padding:0 5px; }
+.td_r{text-align:right;float:right;padding:0 30px 0 0;}
+.td_r a{color:#fff;padding:0 15px; background:#21a1e2; display:block; float:left;font-weight:bold;}
+.td_r a:hover{ background:#1878BC;}
+
+.bg{ background:#F9FCFF;height:35px; overflow:hidden; border-bottom:1px solid #ccc;}
+.list{padding:0 30px 0 35px; position:relative; top:-31px; height:31px; overflow:hidden;  }
+.list a{ color:#333; display:block; float:left;text-decoration:none; padding:0 15px; border-bottom:1px solid #ccc; position:relative; height:30px; line-height:30px; overflow:hidden; background:#F9FCFF; }
+.list a.on{ background:#fff; color:#000; border:1px solid #ccc; border-bottom:1px solid #fff; border-radius: 3px;}
+.list .tip{ float:left; margin-left:10px; font-family:宋体; background:#FFFFDD;   color: #DB7C22;
+border: solid 1px #E3E197;
+ border-radius: 2px;padding:5px 10px;}
+.list .tip span{color:red;cursor:pointer;padding-left:5px;}
+
+.xgt{ text-align:center; margin:90px auto 0 auto; padding-top:5px; font-size:30px; font-weight:bold;}
+img{ cursor:pointer;}

@@ -81,21 +81,21 @@
 				     <h2>按模板行业分类</h2>
                      <p class="pbutton sort clearfix">
                          <?php $n=1;if(is_array(get_tag_list())) foreach(get_tag_list() AS $tag) { ?>
-                         <a title="<?php echo $tag;?>" href="<?php echo search_tag($tag,$color);?>"><?php echo $tag;?></a>
+                         <a title="<?php echo $tag;?>" href="<?php echo search_tag($catid,$tag,$color);?>"><?php echo $tag;?></a>
                          <?php $n++;}unset($n); ?>
 					 </p>
 						 <h2>按模板颜色</h2>
                      <p   class="pbutton color clearfix">
-                         <a class="c1" href="<?php echo search_tag($key,'红色');?>">红色</a>
-                         <a class="c2" href="<?php echo search_tag($key,'橙色');?>">橙色</a>
-                         <a class="c3" href="<?php echo search_tag($key,'黄色');?>">黄色</a>
-                         <a class="c4" href="<?php echo search_tag($key,'绿色');?>">绿色</a>
-                         <a class="c5" href="<?php echo search_tag($key,'蓝色');?>">蓝色</a>
-                         <a class="c6" href="<?php echo search_tag($key,'灰色');?>">灰色</a>
-                         <a class="c7" href="<?php echo search_tag($key,'黑色');?>">黑色</a>
-                         <a class="c8" href="<?php echo search_tag($key,'紫色');?>">紫色</a>
-                         <a class="c9" href="<?php echo search_tag($key,'棕色');?>">棕色</a>
-                         <a class="c10" href="<?php echo search_tag($key,'彩色');?>">彩色</a>
+                         <a class="c1" href="<?php echo search_tag($catid,$key,'红色');?>">红色</a>
+                         <a class="c2" href="<?php echo search_tag($catid,$key,'橙色');?>">橙色</a>
+                         <a class="c3" href="<?php echo search_tag($catid,$key,'黄色');?>">黄色</a>
+                         <a class="c4" href="<?php echo search_tag($catid,$key,'绿色');?>">绿色</a>
+                         <a class="c5" href="<?php echo search_tag($catid,$key,'蓝色');?>">蓝色</a>
+                         <a class="c6" href="<?php echo search_tag($catid,$key,'灰色');?>">灰色</a>
+                         <a class="c7" href="<?php echo search_tag($catid,$key,'黑色');?>">黑色</a>
+                         <a class="c8" href="<?php echo search_tag($catid,$key,'紫色');?>">紫色</a>
+                         <a class="c9" href="<?php echo search_tag($catid,$key,'棕色');?>">棕色</a>
+                         <a class="c10" href="<?php echo search_tag($catid,$key,'彩色');?>">彩色</a>
 					</p>
                      
                 </div>
@@ -113,43 +113,43 @@
                 <div class="in-side-menu h535">
 				     <h2>按模板行业分类</h2>
                      <p class="pbutton skey clearfix">
-						<a title="企业网站模板" href="<?php echo search_tag('企业模板',$color);?>">企业</a>
-                         <a title="博客网站模板" href="<?php echo search_tag('博客模板',$color);?>">博客</a>
-                         <a title="简洁网站模板" href="<?php echo search_tag('简洁模板',$color);?>">简洁</a>
-                         <a title="整站网站模板" href="<?php echo search_tag('整站模板',$color);?>">整站</a>
-                         <a title="大气网站模板" href="<?php echo search_tag('大气模板',$color);?>">大气</a>
-                         <a title="商城网站模板" href="<?php echo search_tag('商城模板',$color);?>">商城</a>
-                         <a title="精品网站模板" href="<?php echo search_tag('精品模板',$color);?>">精品</a>
-                         <a title="css3网站模板" href="<?php echo search_tag('CSS3模板',$color);?>">CSS3</a>
-                         <a title="html5网站模板" href="<?php echo search_tag('HTML5模板',$color);?>">HTML5</a>
-                         <a title="响应式网站模板" href="<?php echo search_tag('响应式模板',$color);?>">响应式</a>
-                         <a title="简单网站模板" href="<?php echo search_tag('简单模板',$color);?>">简单</a>
-                         <a title="清爽网站模板" href="<?php echo search_tag('清爽模板',$color);?>">清爽</a>
-                         <a title="干净网站模板" href="<?php echo search_tag('干净模板',$color);?>">干净</a>
-                         <a title="线条网站模板" href="<?php echo search_tag('线条模板',$color);?>">线条</a>
-                         <a title="个人网站模板" href="<?php echo search_tag('个人模板',$color);?>">个人</a>
-                         <a title="漂亮网站模板" href="<?php echo search_tag('漂亮模板',$color);?>">漂亮</a>
-                         <a title="科技网站模板" href="<?php echo search_tag('科技模板',$color);?>">科技</a>
-                         <a title="建筑网站模板" href="<?php echo search_tag('建筑模板',$color);?>">建筑</a>
-                         <a title="大图网站模板" href="<?php echo search_tag('大图模板',$color);?>">大图</a>
-                         <a title="精美网站模板" href="<?php echo search_tag('精美模板',$color);?>">精美</a>
-                         <a title="质感网站模板" href="<?php echo search_tag('质感模板',$color);?>">质感</a>
-                         <a title="web20网站模板" href="<?php echo search_tag('web20模板',$color);?>">web20</a>
-                         <a title="个性网站模板" href="<?php echo search_tag('个性模板',$color);?>">个性</a>
-                         <a title="网店网站模板" href="<?php echo search_tag('网店模板',$color);?>">网店</a>
-                         <a title="家居网站模板" href="<?php echo search_tag('家居模板',$color);?>">家居</a>
-                         <a title="jquery网站模板" href="<?php echo search_tag('jquery模板',$color);?>">jquery</a>
-                         <a title="动画网站模板" href="<?php echo search_tag('动画模板',$color);?>">动画</a>
-                         <a title="幻灯网站模板" href="<?php echo search_tag('幻灯模板',$color);?>">幻灯</a>
-                         <a title="菜单网站模板" href="<?php echo search_tag('菜单模板',$color);?>">菜单</a>
-                         <a title="整体色网站模板" href="<?php echo search_tag('整体色模板',$color);?>">整体色</a>
-                         <a title="商业网站模板" href="<?php echo search_tag('商业模板',$color);?>">商业</a>
-                         <a title="外贸网站模板" href="<?php echo search_tag('外贸模板',$color);?>">外贸</a>
-                         <a title="展示网站模板" href="<?php echo search_tag('展示模板',$color);?>">展示</a>
-                         <a title="透明网站模板" href="<?php echo search_tag('透明模板',$color);?>">透明</a>
-                         <a title="酒店网站模板" href="<?php echo search_tag('酒店模板',$color);?>">酒店</a>
-                         <a title="手机网站模板" href="<?php echo search_tag('手机模板',$color);?>">手机</a>
-                         <a title="app网站模板" href="<?php echo search_tag('APP模板',$color);?>">APP</a>
+						<a title="企业网站模板" href="<?php echo search_tag($catid,'企业模板',$color);?>">企业</a>
+                         <a title="博客网站模板" href="<?php echo search_tag($catid,'博客模板',$color);?>">博客</a>
+                         <a title="简洁网站模板" href="<?php echo search_tag($catid,'简洁模板',$color);?>">简洁</a>
+                         <a title="整站网站模板" href="<?php echo search_tag($catid,'整站模板',$color);?>">整站</a>
+                         <a title="大气网站模板" href="<?php echo search_tag($catid,'大气模板',$color);?>">大气</a>
+                         <a title="商城网站模板" href="<?php echo search_tag($catid,'商城模板',$color);?>">商城</a>
+                         <a title="精品网站模板" href="<?php echo search_tag($catid,'精品模板',$color);?>">精品</a>
+                         <a title="css3网站模板" href="<?php echo search_tag($catid,'CSS3模板',$color);?>">CSS3</a>
+                         <a title="html5网站模板" href="<?php echo search_tag($catid,'HTML5模板',$color);?>">HTML5</a>
+                         <a title="响应式网站模板" href="<?php echo search_tag($catid,'响应式模板',$color);?>">响应式</a>
+                         <a title="简单网站模板" href="<?php echo search_tag($catid,'简单模板',$color);?>">简单</a>
+                         <a title="清爽网站模板" href="<?php echo search_tag($catid,'清爽模板',$color);?>">清爽</a>
+                         <a title="干净网站模板" href="<?php echo search_tag($catid,'干净模板',$color);?>">干净</a>
+                         <a title="线条网站模板" href="<?php echo search_tag($catid,'线条模板',$color);?>">线条</a>
+                         <a title="个人网站模板" href="<?php echo search_tag($catid,'个人模板',$color);?>">个人</a>
+                         <a title="漂亮网站模板" href="<?php echo search_tag($catid,'漂亮模板',$color);?>">漂亮</a>
+                         <a title="科技网站模板" href="<?php echo search_tag($catid,'科技模板',$color);?>">科技</a>
+                         <a title="建筑网站模板" href="<?php echo search_tag($catid,'建筑模板',$color);?>">建筑</a>
+                         <a title="大图网站模板" href="<?php echo search_tag($catid,'大图模板',$color);?>">大图</a>
+                         <a title="精美网站模板" href="<?php echo search_tag($catid,'精美模板',$color);?>">精美</a>
+                         <a title="质感网站模板" href="<?php echo search_tag($catid,'质感模板',$color);?>">质感</a>
+                         <a title="web20网站模板" href="<?php echo search_tag($catid,'web20模板',$color);?>">web20</a>
+                         <a title="个性网站模板" href="<?php echo search_tag($catid,'个性模板',$color);?>">个性</a>
+                         <a title="网店网站模板" href="<?php echo search_tag($catid,'网店模板',$color);?>">网店</a>
+                         <a title="家居网站模板" href="<?php echo search_tag($catid,'家居模板',$color);?>">家居</a>
+                         <a title="jquery网站模板" href="<?php echo search_tag($catid,'jquery模板',$color);?>">jquery</a>
+                         <a title="动画网站模板" href="<?php echo search_tag($catid,'动画模板',$color);?>">动画</a>
+                         <a title="幻灯网站模板" href="<?php echo search_tag($catid,'幻灯模板',$color);?>">幻灯</a>
+                         <a title="菜单网站模板" href="<?php echo search_tag($catid,'菜单模板',$color);?>">菜单</a>
+                         <a title="整体色网站模板" href="<?php echo search_tag($catid,'整体色模板',$color);?>">整体色</a>
+                         <a title="商业网站模板" href="<?php echo search_tag($catid,'商业模板',$color);?>">商业</a>
+                         <a title="外贸网站模板" href="<?php echo search_tag($catid,'外贸模板',$color);?>">外贸</a>
+                         <a title="展示网站模板" href="<?php echo search_tag($catid,'展示模板',$color);?>">展示</a>
+                         <a title="透明网站模板" href="<?php echo search_tag($catid,'透明模板',$color);?>">透明</a>
+                         <a title="酒店网站模板" href="<?php echo search_tag($catid,'酒店模板',$color);?>">酒店</a>
+                         <a title="手机网站模板" href="<?php echo search_tag($catid,'手机模板',$color);?>">手机</a>
+                         <a title="app网站模板" href="<?php echo search_tag($catid,'APP模板',$color);?>">APP</a>
 						<a title="app网站模板" href="index.php?m=content&c=index&a=lists&catid=6">更多>></a>
 					
 					</p>
