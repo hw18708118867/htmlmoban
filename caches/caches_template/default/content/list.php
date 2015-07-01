@@ -34,13 +34,10 @@
 
         
 		<div class="constr Main2 fix">
-
-
-		      
             <div   class="cell inline_box fix tj m_Grid1 last">
-			    <!--<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=5ab4b05e97fd14c3ed386604ee1a9399&action=lists&catid=%24catid&num=25&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 25;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>-->
+			    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e4051cd42d050de6466f7cff3f7c7721&action=lists&catid=%24catid&num=16&order=id+DESC&moreinfo=1&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 16;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
 			    <?php $i=1;?>
-				<?php $n=1;if(is_array(get_moban_list($catid))) foreach(get_moban_list($catid) AS $r) { ?>
+				<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
                 <?php if($i%4 != 0) { ?>
                 <div class="post-home">
                 <?php } else { ?>
@@ -76,13 +73,12 @@
                             <a rel="nofollow" href="#" class="citemfimg">
                                 <img width="24" height="24" src="http://www.sj5d.com/uc_server/avatar.php?uid=4745&amp;size=small"><?php echo do_str($r[tag]);?></a>
                         </div>
-                        <!--<span>分享在<a target="_blank" title="网页模板" href="forum.php?mod=forumdisplay&amp;fid=2" style="margin-left:10px;">网页模板</a></span>-->
                     </div>
                 </div>
                 <?php $i++;?>
 				<?php $n++;}unset($n); ?>
-						<!--<div id="pages" class="text-c"><?php echo $pages;?></div>-->
-				<!--<?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>-->
+						<div id="pages" class="text-c"><?php echo $pages;?></div>
+				<?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
                      <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN>
 
             </div>

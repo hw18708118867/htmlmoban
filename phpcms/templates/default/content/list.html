@@ -34,13 +34,10 @@
 
         
 		<div class="constr Main2 fix">
-
-
-		      
             <div   class="cell inline_box fix tj m_Grid1 last">
-			    <!--{pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}-->
+			    {pc:content action="lists" catid="$catid" num="16" order="id DESC" moreinfo="1" page="$page"}
 			    <?php $i=1;?>
-				{loop get_moban_list($catid) $r}
+				{loop $data $r}
                 {if $i%4 != 0}
                 <div class="post-home">
                 {else}
@@ -76,13 +73,12 @@
                             <a rel="nofollow" href="#" class="citemfimg">
                                 <img width="24" height="24" src="http://www.sj5d.com/uc_server/avatar.php?uid=4745&amp;size=small">{do_str($r[tag])}</a>
                         </div>
-                        <!--<span>分享在<a target="_blank" title="网页模板" href="forum.php?mod=forumdisplay&amp;fid=2" style="margin-left:10px;">网页模板</a></span>-->
                     </div>
                 </div>
                 <?php $i++;?>
 				{/loop}
-						<!--<div id="pages" class="text-c">{$pages}</div>-->
-				<!--{/pc}-->
+						<div id="pages" class="text-c">{$pages}</div>
+				{/pc}
                      <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN>
 
             </div>

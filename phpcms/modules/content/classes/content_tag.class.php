@@ -101,8 +101,13 @@ class content_tag {
 		return $return;
 	}
 
+    /**
+     * 查询列表
+     * @param $data
+     * @return bool
+     */
 
-    public function moban_list($data){
+    public function search_list($data){
         $catid = intval($data['catid']);
         if(!$this->set_modelid($catid)) return false;
         if(isset($data['where'])) {
@@ -119,7 +124,6 @@ class content_tag {
             }
         }
         $order = $data['order'];
-
         $return = $this->db->select($sql, '*', $data['limit'], $order, '', 'id');
 
         //调用副表的数据
@@ -143,6 +147,7 @@ class content_tag {
                 }
             }
         }
+        pre($return);
         return $return;
     }
 	/**
