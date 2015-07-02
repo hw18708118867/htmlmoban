@@ -24,6 +24,18 @@ return array (
     'siteid' => '1',
     'thumb' => '',
   ),
+  17 => 
+  array (
+    'posid' => '17',
+    'modelid' => '0',
+    'catid' => '0',
+    'name' => '视频栏目精彩推荐',
+    'maxnum' => '20',
+    'extention' => '',
+    'listorder' => '0',
+    'siteid' => '1',
+    'thumb' => '',
+  ),
   16 => 
   array (
     'posid' => '16',
@@ -132,12 +144,12 @@ return array (
     'siteid' => '1',
     'thumb' => '',
   ),
-  17 => 
+  18 => 
   array (
-    'posid' => '17',
-    'modelid' => '0',
+    'posid' => '18',
+    'modelid' => '12',
     'catid' => '0',
-    'name' => '视频栏目精彩推荐',
+    'name' => '精品模板推荐',
     'maxnum' => '20',
     'extention' => '',
     'listorder' => '0',

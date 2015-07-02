@@ -38,7 +38,7 @@ $("a.fancybox").fancybox();
                             精品模板推荐
                         </font>
                     </div>
-                    {php $recommend_moban = get_recommend_moban()}
+                    {php $recommend_moban = get_recommend_moban($catid)}
                     <div class="tejia">
                         <div class="box1">
                             <a href="{$recommend_moban['url']}" title="{$recommend_moban['title']}">
@@ -78,7 +78,7 @@ $("a.fancybox").fancybox();
                 </div>
 				-->
                 <div class="m_Grid4">
-                    {php $hits_moban = hits_moban('weekviews')}
+                    {php $hits_moban = hits_moban('weekviews',$catid)}
                     <div class="m_T9">
                         随机主题展示
                     </div>

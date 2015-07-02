@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div   class="cell inline_box fix tj m_Grid1 last">
-                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=10a7ab4560e2273548e8f99f3a60f765&action=search_list&catid=%24catid&num=16&where=%24where&order=id+DESC&moreinfo=1&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'search_list')) {$pagesize = 16;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'where'=>$where,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'search_list',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->search_list(array('catid'=>$catid,'where'=>$where,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'search_list',));}?>
+                <!--<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e5ea570dd1452da6ff1810b6e249ea9b&action=search_list&catid=%24catid&num=16&order=id+DESC&page=%24page&key=%24key&color=%24color\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'search_list')) {$pagesize = 16;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','key'=>$key,'color'=>$color,'limit'=>$offset.",".$pagesize,'action'=>'search_list',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->search_list(array('catid'=>$catid,'order'=>'id DESC','key'=>$key,'color'=>$color,'limit'=>$offset.",".$pagesize,'action'=>'search_list',));}?>-->
                 <?php $i=1;?>
                 <?php $n=1;if(is_array($datas)) foreach($datas AS $r) { ?>
                 <?php if($i%3 != 0) { ?>
@@ -200,6 +200,7 @@
                     </div>
                     <?php $i++;?>
                     <?php $n++;}unset($n); ?>
+                    <div id="pages" class="text-c"><?php echo $pages;?></div>
 
                      <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN>
 

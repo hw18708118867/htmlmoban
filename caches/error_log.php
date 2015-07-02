@@ -145,3 +145,5 @@
 <?php exit;?>06-30 16:13:11 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>06-30 17:12:12 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>06-30 17:12:26 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-02 11:24:56 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-02 11:35:01 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70

@@ -147,7 +147,6 @@ class content_tag {
                 }
             }
         }
-        pre($return);
         return $return;
     }
 	/**

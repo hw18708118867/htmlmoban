@@ -25,7 +25,7 @@ class tags {
 			$sql_count  = "SELECT COUNT(*) AS num FROM `{$tablename}` a,`{$tablename}_data` b WHERE a.id=b.id AND a.status=99 AND a.catid=$catid";
 			$where = '';
             if($key)
-			    $where .= " AND  b.`tag` LIKE '%".$key."%'";
+			    $where .= " AND b.`tag` LIKE '%".$key."%'";
 			if($color)
                 $where .=" AND b.`style` LIKE '%".$color."%'";
 			$pagesize = 20;
@@ -47,7 +47,6 @@ class tags {
 				$datas = array();
 				$pages = '';
 			}
-
 		    include template('content','tags');
 	}
 }

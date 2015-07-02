@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div   class="cell inline_box fix tj m_Grid1 last">
-                {pc:content action="search_list" catid="$catid" num="16" where="$where" order="id DESC" moreinfo="1" page="$page"}
+                <!--{pc:content action="search_list" catid="$catid" num="16" order="id DESC" page="$page" key="$key" color="$color"}-->
                 <?php $i=1;?>
                 {loop $datas $r}
                 {if $i%3 != 0}
@@ -200,6 +200,7 @@
                     </div>
                     <?php $i++;?>
                     {/loop}
+                    <div id="pages" class="text-c">{$pages}</div>
 
                      <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN>
 
