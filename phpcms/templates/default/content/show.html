@@ -158,7 +158,7 @@ $("a.fancybox").fancybox();
 			    <div class="main_l_box">
                 <div class="m_T10">
                     <h2>
-                        wordpress主题下载：{$title}
+                        {$title}
                     </h2>
                 </div>
 				<div class="m_Box11">
@@ -472,128 +472,64 @@ $("a.fancybox").fancybox();
                     <div class="clear">
                     </div>
                 </div>
-
-
-				<div class="m_T12">
+				<!--<div class="m_T12">
                     发表评论：
-                </div>
+                </div>-->
+                {php $data = comment_list($page, $catid, $id)}
                 <div class="m_Box19">
                     <div class="comment-amount">
-                        <a href="javascript:;" class="comment_num" title="《wordpress主题下载：斌果博客自用主题Bing-blog分享》上的评论">
-                            共有2 条留言
+                        <a href="javascript:;" class="comment_num" title="">
+                            共有{$data['total']}条评论
                         </a>
                     </div>
                     <div id="comments">
                         <ul class="commentlist">
+                            {loop $data['commentDatas'] $comment}
                             <li class="comment even thread-even depth-1" id="li-comment-">
                                 <div id="comment-1744" class="comment-body">
                                     <div class="author">
-                                        <img alt='' src='http://0.gravatar.com/avatar/4c1bd12b2ed1770ef6ad6ff3e739aec5?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G'
-                                        class='avatar avatar-38 photo' height='38' width='38' />
+                                        <img alt='' src='#' class='avatar avatar-38 photo' height='38' width='38' />
                                     </div>
                                     <div class="comment-meta">
                                         <div style="float:left;width:100%;">
                                             <span class="name">
                                                 <a href='javascript:;' rel='external nofollow' class='url' target='_blank'>
-                                                    丘淳
+                                                    {$comment['username']}
                                                 </a>
                                             </span>
                                             <span class="time">
-                                                ( 4天前 )
+                                                {date('Y-m-d H:i:s',$comment['creat_at'])}
                                             </span>
-                                            <div class="reply">
-                                                <a class='comment-reply-link' href='javascript:;' onclick='return addComment.moveForm("comment-1744", "1744", "respond", "6563")'>
-                                                    回复
-                                                </a>
-                                            </div>
                                         </div>
                                         <div class="text">
                                             <p>
-                                                不错，适合个人~！
+                                                {$comment['content']}
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="floor">
-                                        # 1
-                                    </div>
                                 </div>
                             </li>
-                            <!-- #comment-## -->
-                            <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-">
-                                <div id="comment-1750" class="comment-body">
-                                    <div class="author">
-                                        <img alt='' src='http://1.gravatar.com/avatar/534174f4aec042bf3bb51cff9313c99a?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G'
-                                        class='avatar avatar-38 photo' height='38' width='38' />
-                                    </div>
-                                    <div class="comment-meta">
-                                        <div style="float:left;width:100%;">
-                                            <span class="name">
-                                                <a href='javascript:;' rel='external nofollow' class='url' target='_blank'>
-                                                    WordPress下载吧
-                                                </a>
-                                            </span>
-                                            <span class="time">
-                                                ( 2天前 )
-                                            </span>
-                                            <div class="reply">
-                                                <a class='comment-reply-link' href='javascript:;' onclick='return addComment.moveForm("comment-1750", "1750", "respond", "6563")'>
-                                                    回复
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="text">
-                                            <p>
-                                                <img src="./images/icon/icon_redface.gif" alt=":oops:" class="wp-smiley" />
-                                                过来走场下，已经转载了，支持支持
-                                                <img src="./images/icon/icon_neutral.gif" alt=":neutral:" class="wp-smiley"
-                                                />
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="floor">
-                                        # 2
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- #comment-## -->
+                            {/loop}
+                            <li class="comment even thread-even depth-1" id="comment_add"></li>
                         </ul>
-                        <div class="commentnavi">
+                        <div id="pages" class="text-c">{$data['commentPages']}</div>
+<!--                        <div class="commentnavi">
                             <span id="cp_post_id" style="display:none;">
                                 6563
                             </span>
-                        </div>
+                        </div>-->
                         <div id="respond">
-                            <div class="cancel_comment_reply">
+                            <!--<div class="cancel_comment_reply">
                                 <a rel="nofollow" id="cancel-comment-reply-link" href="javascript:;" style="display:none;">
                                     取消回复
                                 </a>
-                            </div>
-                            <form action="http://www.2zzt.com/wp-comments-post.php" method="post"
-                            id="commentform">
-                                <div class="welcome">
-                                    填写昵称和邮箱即可留言！
-                                </div>
+                            </div>-->
+                            <form action="#" method="post" id="commentform">
+                                <input type="hidden" id="url" value="{php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']}" name="url"/>
+                                <input type="hidden" id="title" value="{$title}" name="title"/>
+                                <input type="hidden" id="direction" value="1" name="direction"/>
                                 <div>
-                                    <input type="text" name="author" id="author" value="" tabindex="1" aria-required='true'
-                                    />
-                                    <label>
-                                        昵称
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="text" name="email" id="email" value="" tabindex="2" aria-required='true'
-                                    />
-                                    <label>
-                                        邮箱
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="text" name="url" id="url" value="" tabindex="3" />
-                                    <label>
-                                        网站
-                                    </label>
-                                </div>
-                                <div>
+                                    <span>发布评论：</span>
                                     <div class="biaoqing">
                                         <script type="text/javascript">
                                             /* <![CDATA[ */
@@ -625,7 +561,7 @@ $("a.fancybox").fancybox();
                                                 }
                                             }
                                             /* ]]> */
-                                            
+
                                         </script>
                                         <a href="javascript:;">
                                             <img src="./images/icon/icon_question.gif" alt="" />
@@ -639,73 +575,62 @@ $("a.fancybox").fancybox();
                                         <a href="javascript:;">
                                             <img src="./images/icon/icon_smile.gif" alt="" />
                                         </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_redface.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_biggrin.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_surprised.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_eek.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_confused.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_cool.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_lol.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_mad.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_rolleyes.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_wink.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_neutral.gif" alt="" />
-                                        </a>
-                                        <a href="javascript:;">
-                                            <img src="./images/icon/icon_cry.gif" alt="" />
-                                        </a>
                                         <br />
                                     </div>
-                                    <textarea name="comment" id="comment" tabindex="4" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                                    <textarea name="content" id="content" tabindex="4" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                                 </div>
                                 <div>
-                                    <input name="submit" type="submit" id="submit" tabindex="5" value="发布"
-                                    />
-                                    <input type='hidden' name='comment_post_ID' value='6563' id='comment_post_ID'
-                                    />
-                                    <input type='hidden' name='comment_parent' id='comment_parent' value='0'
-                                    />
+                                    <!--<input name="submit" type="submit" id="submit" tabindex="5" value="发布"/>-->
+                                    <input name="submit" type="button" id="submit" tabindex="5" value="发布" onclick="commit()"/>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-				 </div>
-
-
+			</div>
             </div>
             
             <div class="clear">
             </div>
-            <div class="AD_1080_1">
-                <a target="_blank" rel="nofollow" href="javascript:;">
-                    <img src="./images/adin1080.jpg" width="1080" alt="wordpress主题推荐">
-                </a>
-            </div>
         </div>
+<script type="text/javascript">
+    function commit(){
+        if($('#content').val() != ''){
+            $.ajax({
+                type: 'post',
+                url: '/index.php?m=comment&c=index&a=post&commentid=content_{$catid}-{$id}-1',
+                data: {title:$('#title').val(),direction:$('#direction').val(),url:$('#url').val(),content:$('#content').val()},
+                dataType: 'json',
+                success: function(data){
+                    if(data.status == 200){
+                    $('#comment_add').html(
+                     '<div id="comment-1744" class="comment-body">'+
+                            '<div class="author">'+
+                            "<img alt='' src='#' class='avatar avatar-38 photo' height='38' width='38' />"+
+                            '</div>'+
+                    '<div class="comment-meta">'+
+                            '<div style="float:left;width:100%;">'+
+                            '<span class="name">'+
+                                "<a href='javascript:;' rel='external nofollow' class='url' target='_blank'>"+
+                                data.posTdata.username+
+                                '</a>'+
+                            '</span>'+
+                            '<span class="time">'+
+                                data.posTdata.postTime+
+                             '</span>'+
+                    '</div>'+
+                    '<div class="text"><p>'+
+                             data.posTdata.content+
+                             '</p></div>'+
+                    '</div></div>');}
+                    alert(data.msg);
+                }
+            });
+        }else
+            alert('请填写内容！');
 
+    }
+</script>
 
 <script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
 {template "content","footer"}

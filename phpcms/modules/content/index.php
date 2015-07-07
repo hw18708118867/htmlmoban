@@ -35,7 +35,6 @@ class index {
 	public function show() {
 		$catid = intval($_GET['catid']);
 		$id = intval($_GET['id']);
-
 		if(!$catid || !$id) showmessage(L('information_does_not_exist'),'blank');
 		$_userid = $this->_userid;
 		$_username = $this->_username;
@@ -115,7 +114,6 @@ class index {
 				$allow_visitor = 1;
 			}
 		}
-		 
 		//最顶级栏目ID
 		$arrparentid = explode(',', $CAT['arrparentid']);
 		$top_parentid = $arrparentid[1] ? $arrparentid[1] : $catid;
@@ -202,10 +200,8 @@ class index {
 		if(empty($next_page)) {
 			$next_page = array('title'=>L('last_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\''.L('last_page').'\');');
 		}
-
-
-
-	 
+        //get comment list
+        $page = max(intval($_GET['page']), 1);
 		include template('content',$template);
 	}
 	//列表页

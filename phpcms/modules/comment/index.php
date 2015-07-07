@@ -66,28 +66,33 @@ class index {
 			//是否允许游客
 			if (!$setting['guest']) {
 				if (!$username || !$userid) {
-					$this->_show_msg(L('landing_users_to_comment'), HTTP_REFERER);
+					//$this->_show_msg(L('landing_users_to_comment'), HTTP_REFERER);
+					die(json_encode(array('msg' => '必须登录才可以评论！', 'status' => 400,)));
 				}
 			}
+
 			if ($setting['code']) {
 				$session_storage = 'session_'.pc_base::load_config('system','session_storage');
 				pc_base::load_sys_class($session_storage);
 				session_start();
-				$code = isset($_POST['code']) && trim($_POST['code']) ? strtolower(trim($_POST['code'])) : $this->_show_msg(L('please_enter_code'), HTTP_REFERER);
+				//$code = isset($_POST['code']) && trim($_POST['code']) ? strtolower(trim($_POST['code'])) : $this->_show_msg(L('please_enter_code'), HTTP_REFERER);
+				$code = isset($_POST['code']) && trim($_POST['code']) ? strtolower(trim($_POST['code'])) : '';
+                if(!$code)
+                    die(json_encode(array('msg' => '请输入验证码！', 'status' => 400,)));
 				if ($code != $_SESSION['code']) {
-					$this->_show_msg(L('code_error'), HTTP_REFERER);
+					//$this->_show_msg(L('code_error'), HTTP_REFERER);
+					die(json_encode(array('msg' => '验证码错误！', 'status' => 400,)));
 				}
 			}
 		}
-		
 		//通过API接口调用数据的标题、URL地址
 		if (!$data = get_comment_api($this->commentid)) {
 			$this->_show_msg(L('illegal_parameters'));
 		} else {
-			$title = $data['title'];
+            $title = $data['title'];
 			$url = $data['url'];
 			unset($data);
-		} 
+		}
 
 		if (strpos($url,APP_PATH) === 0) {
 			$domain = APP_PATH;
@@ -95,12 +100,20 @@ class index {
 			$urls = parse_url($url);
 			$domain = $urls['scheme'].'://'.$urls['host'].(isset($urls['port']) && !empty($urls['port']) ? ":".$urls['port'] : '').'/';
 		}
-		
-		$content = isset($_POST['content']) && trim($_POST['content']) ? trim($_POST['content']) : $this->_show_msg(L('please_enter_content'), HTTP_REFERER);
+        //$content = isset($_POST['content']) && trim($_POST['content']) ? trim($_POST['content']) : $this->_show_msg(L('please_enter_content'), HTTP_REFERER);
+        $content = isset($_POST['content']) && trim($_POST['content']) ? trim($_POST['content']) : '';
+        if(!$content)
+            die(json_encode(array('msg' => '请填写类容！', 'status' => 400,)));
 		$direction = isset($_POST['direction']) && intval($_POST['direction']) ? intval($_POST['direction']) : '';
 		$data = array('userid'=>$userid, 'username'=>$username, 'content'=>$content, 'direction'=>$direction);
 		$comment->add($this->commentid, $this->siteid, $data, $id, $title, $url);
-		$this->_show_msg($comment->get_error()."<iframe width='0' id='top_src' height='0' src='$domain/js.html?200'></iframe>", (in_array($comment->msg_code, array(0,7)) ? HTTP_REFERER : ''), (in_array($comment->msg_code, array(0,7)) ? 1 : 0));
+        echo json_encode(array(
+                'msg' => '评论成功!',
+                'status' => 200,
+                'posTdata' => array('username' => $username, 'content' => $content, 'postTime' => date('Y-m-d H:i:s',time())),
+            )
+        );
+	    //$this->_show_msg($comment->get_error()."<iframe width='0' id='top_src' height='0' src='$domain/js.html?200'></iframe>", (in_array($comment->msg_code, array(0,7)) ? HTTP_REFERER : ''), (in_array($comment->msg_code, array(0,7)) ? 1 : 0));
 	}
 	
 	public function support() {
