@@ -138,5 +138,28 @@ return array (
     'sort' => '0',
     'type' => '0',
   ),
+  14 => 
+  array (
+    'modelid' => '14',
+    'siteid' => '1',
+    'name' => '特效模型',
+    'description' => '',
+    'tablename' => 'tx',
+    'setting' => '',
+    'addtime' => '0',
+    'items' => '0',
+    'enablesearch' => '1',
+    'disabled' => '0',
+    'default_style' => '',
+    'category_template' => '',
+    'list_template' => '',
+    'show_template' => '',
+    'js_template' => '',
+    'admin_list_template' => '',
+    'member_add_template' => '',
+    'member_list_template' => '',
+    'sort' => '0',
+    'type' => '0',
+  ),
 );
 ?>

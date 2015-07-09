@@ -1,0 +1,76 @@
+body {
+    background: none repeat scroll 0 0 #fff;
+}
+#l{width:844px;float:left;border-right:1px solid #DDD;padding-right:10px;position:relative}
+#m{width:670px;float:left;border-right:1px solid #DDD;padding-right:10px;position:relative}
+#r{width:336px;float:right;padding-bottom:60px}
+#l1{width:160px;height:400px;float:left;margin-right:10px}
+
+
+.list-pngjs{float:left;margin-bottom:16px}
+.list-pngjs dd{width:282px;height:180px;margin:20px 0 0 36px;float:left;display:inline}
+.list-pngjs dd a{color:#666;border-bottom:4px solid #fff;line-height:30px;display:block}
+.list-pngjs dd a:hover{color:#390;border-bottom:4px solid #333;text-decoration:none}
+.list-pngjs dd span{float:right;margin-top:-25px;color:#BBB;font-size:12px}
+.list-pngjs dd img{width:280px;height:140px;border:1px solid #EEE}
+
+/* 标语 */
+.slogan{height:80px;margin: 0 0 9px;overflow:hidden}
+.slogan span{background:url(../images/s.png);width:120px;height:80px;float:left}
+.text{height:50px;line-height:24px;color:#666;border:1px solid #EEE;padding:14px 20px 14px 139px;*padding-left:19px}
+.slogan a{color:#390;text-decoration:underline}
+.slogan a:hover{text-decoration:none}
+
+.slogan .vector{background-position:-120px 0}
+.slogan .png{background-position:0 -80px}
+.slogan .psd{background-position:-120px -80px}
+.slogan .js{background-position:0 -160px}
+.slogan .tx{background-position:-120px -160px}
+.slogan .bg{background-position:0 -240px}
+.slogan .gif{background-position:-120px -240px}
+.slogan .qq{background-position:0 -320px}
+.slogan .xixi{background-position:-120px -320px}
+
+/* 热荐-50x50 */
+.h{width:336px;height:370px}
+.h dt{height:30px;line-height:30px;color:#333;font-size:14px;font-weight:bold;border-bottom:1px solid #EEE;padding-left:10px}
+.h dd{width:336px;height:66px;line-height:17px;float:left;border-bottom:1px solid #EEE}
+.h dd:hover{background:#F6F6F6}
+.h dd a{color:#666;display:block;padding:8px 10px}
+.h dd a:hover{color:#390;text-decoration:none}
+.h dd p{width:50px;height:50px;float:left;margin-right:10px;overflow:hidden}
+
+.h dd .l{color:#999;display:block}
+.h dd .t{color:#CCC;font-size:10px}
+
+
+
+
+.nav-sub{width:336px;display:table;margin-bottom:8px}
+.nav-sub dt{border-bottom:1px solid #eee;height:40px;line-height:40px;margin-bottom:2px;}
+.nav-sub dt span{font-size:14px;font-weight:bold;color:#666;margin-left:15px;float:left}
+.nav-sub dt div{width:16px;height:30px;margin-left:10px;float:left}
+.nav-sub dt a{float:right;color:#FFF;margin-right:10px;filter:alpha(opacity=60)}
+.nav-sub dt a:hover{filter:alpha(opacity=100)}
+.nav-sub dd{width:84px;height:30px;line-height:30px;float:left;text-align:center;}
+.nav-sub dd a{color:#666;line-height:30px;display:block}
+.nav-sub dd a.on{color:#390}
+.nav-sub dd a:hover{color:#390}
+.nav-sub .jx{border-left:3px solid #56b9e0; border-top: 1px solid #eee;}
+.nav-sub .tx{border-top: 1px solid #eee;border-left:3px solid #84BB44}
+.l1 dd{width:326px;padding-left:10px;text-align:left}
+.l3 dd{width:102px;padding-left:10px;text-align:left}
+
+
+/* 左侧导航 */
+.nav-left{width:158px;margin-bottom:10px;border:1px solid #EEE}
+.nav-left dl{padding-bottom:22px;display:table}
+.nav-left dt{color:#666;font-size:14px;font-weight:bold;padding:10px 0 8px 20px;position:relative}
+.nav-left dt a{color:#CCC;font-size:12px;font-weight:normal;position:absolute;right:8px}
+.nav-left dd{width:140px;height:32px;float:left;margin-left:10px}
+.nav-left dd:hover{color:#390;background:#F6F6F6}
+.nav-left dd a{color:#999;border-bottom:1px solid #F0F0F0;line-height:32px;display:block;padding-left:10px}
+.nav-left dd a:hover{color:#390;text-decoration:none}
+
+.tougao{width:160px;height:50px;display:block;margin:8px 0;background:url(../images/a.png) no-repeat 0 -217px;filter:alpha(opacity=40)gray()}
+.tougao:hover{filter:alpha(opacity=100)}

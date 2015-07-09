@@ -34,27 +34,21 @@ var unit_3 = true;
 	    <div class="header_con">
 		    <div id="logo"><a title="" href="javascript:;"></a></div>
 
-			<div class="nav-mo clearfix">
-           
-            <div class="nav-home">
-			<a class="n-c" href="./">首页</a>
-			</div>
 
-			<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=b43f1459ac702900c8d44c91a5e796dd&action=category&catid=0&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'0','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
+            <div class="nav">
+          <ul>
+			 <li><a href="/">首页</a></li>
+      <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=b43f1459ac702900c8d44c91a5e796dd&action=category&catid=0&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'0','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
       
 	     <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
-	      <div class="nav-lis">
-			<a class="n-c" href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a>
-							<i class="hot-ico" style="display: inline;"></i>
-			 
-			</div>
-			 
-			 
-            <?php $n++;}unset($n); ?>
+      <li><a href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a></li>
+	  <?php $n++;}unset($n); ?>
 	     <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-		    
-					 
-			</div>
+       
+          </ul>
+       </div>
+
+			 
 		 
 			
 			<div id="tool">	
@@ -64,12 +58,22 @@ var unit_3 = true;
 		</div>
 	</div>
 <div id="index">
-    <div id="article">
-	    <div id="postblog">
-			<a href="javascript:;" onclick="changeFeeds('feeds',this)" class="current"><span>最新店酷</span></a>
-	
-	                		                        		                        			    <td><div class="list"><a href="javascript:;" class="photo" title=""><span>+ 作品</span></a><div class="postline"></div></div></td>
-		  </div>
+
+
+ 
+ <div class="bm cl" id="pt">
+<div class="z">
+<a title="首页" class="nvhm" href="./">设计我的</a><em>›</em><a title="酷站欣赏" href="view.html">酷站欣赏</a><em>›</em>酷站列表
+</div>
+</div>
+
+
+ <div id="article">
+
+
+
+
+	     
 
  <div class="paixu">
 	<h1>按颜色：</h1>

@@ -122,7 +122,7 @@ $("a.fancybox").fancybox();
                     <!--<div class="m_T9">-->
                         <!--html模板分类-->
                     <!--</div>-->
-                     <div class="side-group side-group-w FR">
+                     <div class="n_h FR">
                          <div class="in-side-menu">
                              <h2>按模板行业分类</h2>
                              <p class="pbutton sort clearfix">
@@ -513,17 +513,7 @@ $("a.fancybox").fancybox();
                             <li class="comment even thread-even depth-1" id="comment_add"></li>
                         </ul>
                         <div id="pages" class="text-c"><?php echo $data['commentPages'];?></div>
-<!--                        <div class="commentnavi">
-                            <span id="cp_post_id" style="display:none;">
-                                6563
-                            </span>
-                        </div>-->
                         <div id="respond">
-                            <!--<div class="cancel_comment_reply">
-                                <a rel="nofollow" id="cancel-comment-reply-link" href="javascript:;" style="display:none;">
-                                    取消回复
-                                </a>
-                            </div>-->
                             <form action="#" method="post" id="commentform">
                                 <input type="hidden" id="url" value="<?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']?>" name="url"/>
                                 <input type="hidden" id="title" value="<?php echo $title;?>" name="title"/>
@@ -604,31 +594,23 @@ $("a.fancybox").fancybox();
                 success: function(data){
                     if(data.status == 200){
                     $('#comment_add').html(
-                     '<div id="comment-1744" class="comment-body">'+
-                            '<div class="author">'+
+                     '<div id="comment-1744" class="comment-body"><div class="author">'+
                             "<img alt='' src='#' class='avatar avatar-38 photo' height='38' width='38' />"+
                             '</div>'+
-                    '<div class="comment-meta">'+
-                            '<div style="float:left;width:100%;">'+
+                    '<div class="comment-meta"><div style="float:left;width:100%;">'+
                             '<span class="name">'+
-                                "<a href='javascript:;' rel='external nofollow' class='url' target='_blank'>"+
-                                data.posTdata.username+
-                                '</a>'+
+                                "<a href='javascript:;' rel='external nofollow' class='url' target='_blank'>"+data.posTdata.username+'</a>'+
                             '</span>'+
-                            '<span class="time">'+
-                                data.posTdata.postTime+
-                             '</span>'+
-                    '</div>'+
-                    '<div class="text"><p>'+
-                             data.posTdata.content+
-                             '</p></div>'+
-                    '</div></div>');}
+                            '<span class="time">'+data.posTdata.postTime+'</span></div>'+
+                    '<div class="text"><p>'+data.posTdata.content+'</p></div>'+
+                    '</div></div>');
+                    $('#content').val('');
+                    }
                     alert(data.msg);
                 }
             });
         }else
             alert('请填写内容！');
-
     }
 </script>
 

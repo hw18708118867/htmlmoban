@@ -74,11 +74,11 @@ function get_moban_list($catid = 6, $limit = 12){
  * @return mixed
  * 获取推荐模板
  */
-function get_recommend_moban($catid = 6){
+function get_recommend_moban($catid){
     $moban_db = pc_base::load_model('content_model');
     $moban_db->set_model(12);
     $tablename = $moban_db->table_name;
-    $sql  = "SELECT * FROM `{$tablename}` a,`{$tablename}_data` b WHERE a.id=b.id AND a.status=99 AND a.posids=1 AND a.catid=$catid";
+    $sql = "SELECT * FROM `mb_position_data` a LEFT JOIN `{$tablename}` b ON a.id=b.id AND a.catid=$catid AND a.posid=18 LEFT JOIN `{$tablename}_data` c ON b.id=c.id WHERE b.status=99 AND b.posids=1";
     $moban_db->query($sql);
     $rs = $moban_db->fetch_array();
     return $rs[0];
@@ -88,47 +88,22 @@ function get_recommend_moban($catid = 6){
  * @return mixed
  * 获取点击量排行
  */
-function hits_moban($views = 'views', $catid = 6){
+function hits_moban($views = 'views'){
    $moban_db = pc_base::load_model('content_model');
    $sql = "SELECT a.$views,b.title,b.thumb,b.description,b.url,c.tag FROM `mb_hits` a left join `mb_moban` b on substr(a.hitsid,6)=b.id left join `mb_moban_data` c on b.id=c.id";
-   $sql .= " WHERE a.catid=$catid AND b.status=99 ";
+   $sql .= " WHERE a.catid=6 AND b.status=99 ";
    $sql .= " ORDER BY a.$views DESC";
    $sql .= " LIMIT 8";
    $moban_db->query($sql);
    return $moban_db->fetch_array();
 }
 
-/**
- * @param $page
- * @param $catid
- * @param $id
- * @return array
- * 获取评论列表
- */
 
-function comment_list($page, $catid, $id){
-    $moban_db = pc_base::load_model('content_model');
-    $pagesize = 5;
-    $offset = intval($pagesize*($page-1));
-    $commentid = 'content_'.$catid.'-'.$id.'-1';
-    $sqlCount = "SELECT COUNT(*) AS num FROM `mb_comment_data_1` WHERE commentid='".$commentid."' AND status=1";
-    $sql = "SELECT * FROM `mb_comment_data_1` WHERE commentid='".$commentid."' AND status=1 ORDER BY id DESC";
-    $moban_db->query($sqlCount);
-    $total = $moban_db->fetch_array();
-    $total = $total[0]['num'];
-    if($total!=0) {
-        $sql .= " LIMIT $offset,$pagesize";
-        $moban_db->query($sql);
-        $commentDatas = $moban_db->fetch_array();
-        $commentPages = pages($total, $page, $pagesize);
-    } else {
-        $commentDatas = array();
-        $commentPages = '';
-    }
-    return array(
-        'total' => $total,
-        'commentDatas' => $commentDatas,
-        'commentPages' => $commentPages,
-    );
+/**
+ * @param string $toolname
+ * 工具url
+ */
+function tool_url($toolname=""){
+    return "index.php?m=tool&c=index&a=show&mod=".$toolname;
 }
 ?>

@@ -104,6 +104,8 @@ class index {
         $content = isset($_POST['content']) && trim($_POST['content']) ? trim($_POST['content']) : '';
         if(!$content)
             die(json_encode(array('msg' => '请填写类容！', 'status' => 400,)));
+        elseif(strlen($content) <= 10)
+            die(json_encode(array('msg' => '内容过少！', 'status' => 400,)));
 		$direction = isset($_POST['direction']) && intval($_POST['direction']) ? intval($_POST['direction']) : '';
 		$data = array('userid'=>$userid, 'username'=>$username, 'content'=>$content, 'direction'=>$direction);
 		$comment->add($this->commentid, $this->siteid, $data, $id, $title, $url);

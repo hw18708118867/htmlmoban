@@ -116,25 +116,25 @@
                     <ul id="inbanimg">
                         <li>
                             <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>aliyun4.jpg" width="769" height="250"
+                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>aliyun4.jpg" width="695" height="250"
                                 />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>ban1.jpg" width="769" height="250"
+                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>ban1.jpg" width="695" height="250"
                                 />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>suxing.jpg" width="769" height="250"
+                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>suxing.jpg" width="695" height="250"
                                 />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>ban3.jpg" width="769" height="250"
+                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>ban3.jpg" width="695" height="250"
                                 />
                             </a>
                         </li>
@@ -161,7 +161,7 @@
                     var oli = num.getElementsByTagName("li");
                     var time = null;
 					lanrenzhijiaing = document.getElementById("lanrenzhijia");
-                    img.style.width = ali.length * 769 + "px",
+                    img.style.width = ali.length * 695 + "px",
                     inow = 0;
                     for (var i = 0; i < oli.length; i++) {
                         oli[i].index = i;
@@ -180,7 +180,7 @@
                         }
                         oli[inow].className = "hover";
 						startMove(img, {
-                            left: -inow * 769
+                            left: -inow * 695
                         },
                         'buffer')
                     }
@@ -205,7 +205,7 @@
 
 		    <div class="sidebar-tab FR">
 						 <div class="post-home-r clearfix" id="index_tool">
-					<h2 class="title"><!--[diy=xinyun_bbs_004_05]--><div class="area" id="xinyun_bbs_004_05"><div class="frame move-span cl frame-1" id="frameMClj1m"><div class="column frame-1-c" id="frameMClj1m_left"><div class="move-span temp" id="frameMClj1m_left_temp"></div><div class="block move-span" id="portal_block_191"><div class="dxb_bc" id="portal_block_191_content"><div class="portal_block_summary">快速入口</div></div></div></div></div></div><!--[/diy]-->		</h2>
+					<h2 class="title"><!--[diy=xinyun_bbs_004_05]--><div class="area" id="xinyun_bbs_004_05"><div class="frame move-span cl frame-1" id="frameMClj1m"><div class="column frame-1-c" id="frameMClj1m_left"><div class="move-span temp" id="frameMClj1m_left_temp"></div><div class="block move-span" id="portal_block_191"><div class="dxb_bc" id="portal_block_191_content"><div class="portal_block_summary">按模板行业分类</div></div></div></div></div></div><!--[/diy]-->		</h2>
 				  
 					<ul class="tool_icon">
 						<!--[diy=xinyun_bbs_004_06]--><div class="area" id="xinyun_bbs_004_06"><div class="frame move-span cl frame-1" id="framehswjQa"><div class="column frame-1-c" id="framehswjQa_left"><div class="move-span temp" id="framehswjQa_left_temp"></div><div class="block move-span" id="portal_block_192"><div class="dxb_bc" id="portal_block_192_content"><div class="portal_block_summary"><li><a href="http://www.sj5d.com/misc.php?mod=faq" class="ps2" target="_blank"></a><p>新手入门</p></li>

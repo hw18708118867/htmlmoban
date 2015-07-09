@@ -12,6 +12,12 @@ return array (
     'name' => '酷站模型',
     'sort' => '0',
   ),
+  14 => 
+  array (
+    'typeid' => '56',
+    'name' => '特效模型',
+    'sort' => '0',
+  ),
   1 => 
   array (
     'typeid' => '1',

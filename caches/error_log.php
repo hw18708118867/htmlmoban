@@ -147,3 +147,6 @@
 <?php exit;?>06-30 17:12:26 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>07-02 11:24:56 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>07-02 11:35:01 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-09 14:30:14 | 2 | fsockopen() [<a href='function.fsockopen'>function.fsockopen</a>]: unable to connect to juhe.gcvideo.cn:80 (由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>07-09 17:42:44 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
