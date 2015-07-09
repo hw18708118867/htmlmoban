@@ -110,48 +110,25 @@
        
     </div>
 
-
+            {pc:content action="position" posid="1" order="listorder DESC" thumb="1" num="5"}
 	       <div id="demoContent" >
                 <div id="inbanad">
                     <ul id="inbanimg">
+                        {loop $data $v}
                         <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="{IMG_PATH}aliyun4.jpg" width="695" height="250"
-                                />
+                            <a rel="nofollow" href="{$v[url]}" title="{$v[title]}" target="_blank">
+                                <img alt="{$v[title]}" src="{thumb($v[thumb],695,250)}" width="695" height="250"/>
                             </a>
                         </li>
-                        <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="{IMG_PATH}ban1.jpg" width="695" height="250"
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="{IMG_PATH}suxing.jpg" width="695" height="250"
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="{IMG_PATH}ban3.jpg" width="695" height="250"
-                                />
-                            </a>
-                        </li>
+                        {/loop}
                     </ul>
                     <ul id="inbannum">
-                        <li class="hover">
-                            1
-                        </li>
-                        <li>
-                            2
-                        </li>
-                        <li>
-                            3
-                        </li>
-                        <li>
-                            4
-                        </li>
+                        {php $i = 1}
+                        {loop $data $v}
+                            <li {php echo ($i == 1) ? 'class="hover"' : ''}>
+                                {php echo $i++}
+                            </li>
+                        {/loop}
                     </ul>
                 </div>
                 <script type="text/javascript">

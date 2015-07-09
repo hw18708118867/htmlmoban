@@ -110,48 +110,25 @@
        
     </div>
 
-
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=132335f99fcf4a0ddd78b4f4e1cd12b9&action=position&posid=1&order=listorder+DESC&thumb=1&num=5\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'position')) {$data = $content_tag->position(array('posid'=>'1','order'=>'listorder DESC','thumb'=>'1','limit'=>'5',));}?>
 	       <div id="demoContent" >
                 <div id="inbanad">
                     <ul id="inbanimg">
+                        <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
                         <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>aliyun4.jpg" width="695" height="250"
-                                />
+                            <a rel="nofollow" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>" target="_blank">
+                                <img alt="<?php echo $v['title'];?>" src="<?php echo thumb($v[thumb],695,250);?>" width="695" height="250"/>
                             </a>
                         </li>
-                        <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>ban1.jpg" width="695" height="250"
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>suxing.jpg" width="695" height="250"
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a rel="nofollow" href="javascript:;" title="wordpress主题下载站推荐" target="_blank">
-                                <img alt="wordpress主题下载站推荐" src="<?php echo IMG_PATH;?>ban3.jpg" width="695" height="250"
-                                />
-                            </a>
-                        </li>
+                        <?php $n++;}unset($n); ?>
                     </ul>
                     <ul id="inbannum">
-                        <li class="hover">
-                            1
-                        </li>
-                        <li>
-                            2
-                        </li>
-                        <li>
-                            3
-                        </li>
-                        <li>
-                            4
-                        </li>
+                        <?php $i = 1?>
+                        <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                            <li <?php echo ($i == 1) ? 'class="hover"' : ''?>>
+                                <?php echo $i++?>
+                            </li>
+                        <?php $n++;}unset($n); ?>
                     </ul>
                 </div>
                 <script type="text/javascript">

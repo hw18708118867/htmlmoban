@@ -74,7 +74,7 @@ function get_moban_list($catid = 6, $limit = 12){
  * @return mixed
  * 获取推荐模板
  */
-function get_recommend_moban($catid){
+function get_recommend_moban($catid = 6){
     $moban_db = pc_base::load_model('content_model');
     $moban_db->set_model(12);
     $tablename = $moban_db->table_name;
@@ -98,6 +98,39 @@ function hits_moban($views = 'views'){
    return $moban_db->fetch_array();
 }
 
+/**
+ * @param $page
+ * @param $catid
+ * @param $id
+ * @return array
+ * 获取评论列表
+ */
+
+function comment_list($page, $catid, $id){
+    $moban_db = pc_base::load_model('content_model');
+    $pagesize = 5;
+    $offset = intval($pagesize*($page-1));
+    $commentid = 'content_'.$catid.'-'.$id.'-1';
+    $sqlCount = "SELECT COUNT(*) AS num FROM `mb_comment_data_1` WHERE commentid='".$commentid."' AND status=1";
+    $sql = "SELECT * FROM `mb_comment_data_1` WHERE commentid='".$commentid."' AND status=1 ORDER BY id DESC";
+    $moban_db->query($sqlCount);
+    $total = $moban_db->fetch_array();
+    $total = $total[0]['num'];
+    if($total!=0) {
+        $sql .= " LIMIT $offset,$pagesize";
+        $moban_db->query($sql);
+        $commentDatas = $moban_db->fetch_array();
+        $commentPages = pages($total, $page, $pagesize);
+    } else {
+        $commentDatas = array();
+        $commentPages = '';
+    }
+    return array(
+        'total' => $total,
+        'commentDatas' => $commentDatas,
+        'commentPages' => $commentPages,
+    );
+}
 
 /**
  * @param string $toolname
@@ -105,5 +138,21 @@ function hits_moban($views = 'views'){
  */
 function tool_url($toolname=""){
     return "index.php?m=tool&c=index&a=show&mod=".$toolname;
+}
+
+function get_relation_moban($cattype, $id, $catid = 6){
+    $moban_db = pc_base::load_model('content_model');
+    $moban_db->set_model(12);
+    $tablename = $moban_db->table_name;
+    $sql = "SELECT * FROM `{$tablename}` a,`{$tablename}_data` b WHERE a.id=b.id AND a.status=99 AND a.catid=$catid AND a.id!=$id";
+    $like = '';
+    foreach($cattype as $tag){
+        $like .= "OR b.tag LIKE '%$tag%' ";
+    }
+    $sql .= ' AND ('.ltrim($like,'OR').')';
+    $sql .= ' ORDER BY a.id DESC';
+    $sql .= ' LIMIT 12';
+    $moban_db->query($sql);
+    return $moban_db->fetch_array();
 }
 ?>
