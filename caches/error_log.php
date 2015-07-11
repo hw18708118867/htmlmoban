@@ -1318,3 +1318,15 @@
 <?php exit;?>07-10 07:24:41 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
 <?php exit;?>07-10 07:24:43 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
 <?php exit;?>07-10 07:24:43 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-10 16:13:24 | 2 | file_put_contents(D:\WWW\htmlmoban\caches\poster_js/11.js) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory | phpcms\modules\poster\classes\html.class.php | 67
+<?php exit;?>07-10 16:13:24 | 2 | chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory | phpcms\modules\poster\classes\html.class.php | 68
+<?php exit;?>07-10 16:13:24 | 2 | Invalid argument supplied for foreach() | phpcms\modules\poster\poster.php | 47
+<?php exit;?>07-10 16:14:04 | 2 | file_put_contents(D:\WWW\htmlmoban\caches\poster_js/11.js) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory | phpcms\modules\poster\classes\html.class.php | 67
+<?php exit;?>07-10 16:14:04 | 2 | chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory | phpcms\modules\poster\classes\html.class.php | 68
+<?php exit;?>07-10 16:14:04 | 2 | Invalid argument supplied for foreach() | phpcms\modules\poster\poster.php | 47
+<?php exit;?>07-10 16:14:37 | 2 | file_put_contents(D:\WWW\htmlmoban\caches\poster_js/11.js) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory | phpcms\modules\poster\classes\html.class.php | 67
+<?php exit;?>07-10 16:14:37 | 2 | chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory | phpcms\modules\poster\classes\html.class.php | 68
+<?php exit;?>07-10 16:14:37 | 2 | Invalid argument supplied for foreach() | phpcms\modules\poster\poster.php | 47
+<?php exit;?>07-10 16:15:21 | 2 | file_put_contents(D:\WWW\htmlmoban\caches\poster_js/11.js) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory | phpcms\modules\poster\classes\html.class.php | 67
+<?php exit;?>07-10 16:15:21 | 2 | chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory | phpcms\modules\poster\classes\html.class.php | 68
+<?php exit;?>07-10 16:15:21 | 2 | Invalid argument supplied for foreach() | phpcms\modules\poster\poster.php | 47

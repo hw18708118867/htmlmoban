@@ -110,14 +110,16 @@
        
     </div>
 
-            {pc:content action="position" posid="1" order="listorder DESC" thumb="1" num="5"}
-	       <div id="demoContent" >
+            <!--{pc:content action="position" posid="1" order="listorder DESC" thumb="1" num="5"}-->
+            {pc:get sql="SELECT setting FROM mb_poster WHERE spaceid = 11 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="4"}
+            <div id="demoContent" >
                 <div id="inbanad">
                     <ul id="inbanimg">
                         {loop $data $v}
+                        <?php $focus = string2array($v[setting]);?>
                         <li>
-                            <a rel="nofollow" href="{$v[url]}" title="{$v[title]}" target="_blank">
-                                <img alt="{$v[title]}" src="{thumb($v[thumb],695,250)}" width="695" height="250"/>
+                            <a rel="nofollow" href="{$focus[1][linkurl]}" title="{$focus[1][alt]}" target="_blank">
+                                <img alt="{$focus[1][alt]}" src="{$focus[1][imageurl]}" width="695" height="250"/>
                             </a>
                         </li>
                         {/loop}
@@ -271,9 +273,8 @@
                         <div class="citemqt citemfoot">
                             <div class="citemzl">
                                 <a rel="nofollow" href="#" class="citemfimg">
-                                    <img width="24" height="24" src="http://www.sj5d.com/uc_server/avatar.php?uid=4745&amp;size=small">{do_str($r[tag])}</a>
+                                    <img width="24" height="24" src="{IMG_PATH}list_icon.jpg">{do_str($r[tag])}</a>
                             </div>
-                            <!--<span>分享在<a target="_blank" title="网页模板" href="forum.php?mod=forumdisplay&amp;fid=2" style="margin-left:10px;">网页模板</a></span>-->
                         </div>
                     </div>
                     <?php $i++;?>

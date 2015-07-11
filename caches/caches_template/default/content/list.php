@@ -29,13 +29,10 @@
                 </div>
 		     
         </div>
-
-
-
         
 		<div class="constr Main2 fix">
             <div   class="cell inline_box fix tj m_Grid1 last">
-			    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e4051cd42d050de6466f7cff3f7c7721&action=lists&catid=%24catid&num=16&order=id+DESC&moreinfo=1&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 16;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
+			    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=35ab7e69aba0456b8495e10fb007dab4&action=lists&catid=%24catid&num=20&order=id+DESC&moreinfo=1&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 20;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','moreinfo'=>'1','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
 			    <?php $i=1;?>
 				<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
                 <?php if($i%4 != 0) { ?>
@@ -50,7 +47,6 @@
                             <a target="_blank" title="<?php echo $r['title'];?>" href="<?php echo $r['url'];?>">
                                 <?php echo $r['description'];?>
                     </a></div>  </div>
-                    <!--end .post-thumbnail -->
                     <div class="post-info">
                         <ul class="title">
                             <a target="_blank" title="<?php echo $r['title'];?>" href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a></ul>
@@ -71,119 +67,22 @@
                     <div class="citemqt citemfoot">
                         <div class="citemzl">
                             <a rel="nofollow" href="#" class="citemfimg">
-                                <img width="24" height="24" src="http://www.sj5d.com/uc_server/avatar.php?uid=4745&amp;size=small"><?php echo do_str($r[tag]);?></a>
+                                <img width="24" height="24" src="<?php echo IMG_PATH;?>list_icon.jpg"><?php echo do_str($r[tag]);?></a>
                         </div>
                     </div>
                 </div>
                 <?php $i++;?>
 				<?php $n++;}unset($n); ?>
-						<div id="pages" class="text-c"><?php echo $pages;?></div>
+						<!--<div id="pages" class="text-c"><?php echo $pages;?></div>-->
+                    <div class="inline_box fix tj m_Grid1">
+                        <div class="page_navi">
+                            <?php echo $pages;?>
+                        </div>
+                    </div>
 				<?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
                      <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN>
-
             </div>
-          
-            
             <div class="clear">
-            </div>
-        </div>
-
-
-
-        <div class="constr Main2">
-            <div class="m_T1">
-                <h3>
-                    最新wordpress主题
-                </h3>
-                <span>
-                    <a rel="nofollow" target="_blank" href="javascript:;">
-                        欢迎投稿
-                    </a>
-                    /
-                    <a rel="nofollow" target="_blank" href="javascript:;">
-                        主题定制
-                    </a>
-                    /
-                    <a rel="nofollow" target="_blank" href="javascript:;">
-                        收费主题
-                    </a>
-                </span>
-            </div>
-
-
-			
-<DIV class="inline_box fix tj m_Grid1">
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A class="aimg" href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://www.cssmoban.com/UploadFiles/2014/2/2014071614243528914.jpg"   data-url="http://www.cssmoban.com/UploadFiles/2014/2/2014071614243528914.jpg"><em></em></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
- 
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
-
-
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
- 
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
-<SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A href="/meishi/1480/" target=_blank><IMG class=jsLazyImage src="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg" width=290 height=180 data-url="http://upload1.95171.cn/meal/CashPic/300_200/39be24b1-9f59-4f39-b9bb-d80cf189fb75.jpg"></A>  </SPAN><p class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅 100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN class=l>110人已购买</SPAN></SPAN></SPAN></SPAN> 
-
-
- 
-<SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> <SPAN class="w300 inline_any">&nbsp;</SPAN> </DIV>
-   
-                    
-            <div class="page_navi">
-                <a href='javascript:;' class='current'>
-                    1
-                </a>
-                <a href='javascript:;'>
-                    2
-                </a>
-                <a href='javascript:;'>
-                    3
-                </a>
-                <a href='javascript:;'>
-                    4
-                </a>
-                <a href='javascript:;'>
-                    5
-                </a>
-                <a href='javascript:;'>
-                    6
-                </a>
-                <a href='javascript:;'>
-                    7
-                </a>
-                <a href='javascript:;'>
-                    8
-                </a>
-                <a href='javascript:;'>
-                    9
-                </a>
-                <a href='javascript:;'>
-                    10
-                </a>
-                <a href="javascript:;">
-                    下一页
-                </a>
-                <a href='javascript:;' class='extend' title='跳转到最后一页'>
-                    最后一页
-                </a>
-            </div>
-            <div class="AD_1080_1">
-                <a target="_blank" rel="nofollow" href="javascript:;">
-                    <img src="./images/adin1080.jpg" width="1080" alt="wordpress主题推荐">
-                </a>
             </div>
         </div>
         <div class="constr Main3">

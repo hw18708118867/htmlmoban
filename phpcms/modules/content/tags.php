@@ -28,7 +28,7 @@ class tags {
 			    $where .= " AND b.`tag` LIKE '%".$key."%'";
 			if($color)
                 $where .=" AND b.`style` LIKE '%".$color."%'";
-			$pagesize = 20;
+			$pagesize = 21;
 			$offset = intval($pagesize*($page-1));
 			$sql_count .= $where;
 			$this->db->query($sql_count);
