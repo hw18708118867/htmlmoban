@@ -283,7 +283,7 @@ return array (
     'parentdir' => '',
     'catdir' => 'houtaimoban',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=8',
-    'items' => '0',
+    'items' => '2',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -334,7 +334,7 @@ return array (
     'parentdir' => '',
     'catdir' => 'shoujimoban',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=9',
-    'items' => '0',
+    'items' => '3',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

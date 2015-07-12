@@ -110,14 +110,16 @@
        
     </div>
 
-            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=132335f99fcf4a0ddd78b4f4e1cd12b9&action=position&posid=1&order=listorder+DESC&thumb=1&num=5\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'position')) {$data = $content_tag->position(array('posid'=>'1','order'=>'listorder DESC','thumb'=>'1','limit'=>'5',));}?>
-	       <div id="demoContent" >
+            <!--<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=132335f99fcf4a0ddd78b4f4e1cd12b9&action=position&posid=1&order=listorder+DESC&thumb=1&num=5\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'position')) {$data = $content_tag->position(array('posid'=>'1','order'=>'listorder DESC','thumb'=>'1','limit'=>'5',));}?>-->
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=0c861eb2c45be67c9134abe77722bf57&sql=SELECT+setting+FROM+mb_poster+WHERE+spaceid+%3D+11+AND+type%3D%27images%27+AND+disabled%3D0+ORDER+BY+listorder+ASC&num=4\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT setting FROM mb_poster WHERE spaceid = 11 AND type='images' AND disabled=0 ORDER BY listorder ASC LIMIT 4");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$data = $a;unset($a);?>
+            <div id="demoContent" >
                 <div id="inbanad">
                     <ul id="inbanimg">
                         <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                        <?php $focus = string2array($v[setting]);?>
                         <li>
-                            <a rel="nofollow" href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>" target="_blank">
-                                <img alt="<?php echo $v['title'];?>" src="<?php echo thumb($v[thumb],695,250);?>" width="695" height="250"/>
+                            <a rel="nofollow" href="<?php echo $focus['1']['linkurl'];?>" title="<?php echo $focus['1']['alt'];?>" target="_blank">
+                                <img alt="<?php echo $focus['1']['alt'];?>" src="<?php echo $focus['1']['imageurl'];?>" width="695" height="250"/>
                             </a>
                         </li>
                         <?php $n++;}unset($n); ?>
@@ -271,9 +273,8 @@
                         <div class="citemqt citemfoot">
                             <div class="citemzl">
                                 <a rel="nofollow" href="#" class="citemfimg">
-                                    <img width="24" height="24" src="http://www.sj5d.com/uc_server/avatar.php?uid=4745&amp;size=small"><?php echo do_str($r[tag]);?></a>
+                                    <img width="24" height="24" src="<?php echo IMG_PATH;?>list_icon.jpg"><?php echo do_str($r[tag]);?></a>
                             </div>
-                            <!--<span>分享在<a target="_blank" title="网页模板" href="forum.php?mod=forumdisplay&amp;fid=2" style="margin-left:10px;">网页模板</a></span>-->
                         </div>
                     </div>
                     <?php $i++;?>

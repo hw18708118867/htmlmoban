@@ -200,7 +200,6 @@ class index {
 		if(empty($next_page)) {
 			$next_page = array('title'=>L('last_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\''.L('last_page').'\');');
 		}
-        //get comment list
         $page = max(intval($_GET['page']), 1);
 		include template('content',$template);
 	}
@@ -263,7 +262,6 @@ class index {
 			$GLOBALS['URL_ARRAY']['categorydir'] = $categorydir;
 			$GLOBALS['URL_ARRAY']['catdir'] = $catdir;
 			$GLOBALS['URL_ARRAY']['catid'] = $catid;
-			 
 			include template('content',$template);
 		} else {
 		//单网页
