@@ -16,8 +16,11 @@ class tags {
             $catid = $_GET['catid'];
 	        $key = $_GET['key'];
             $color = $_GET['color'];
+            $area = isset($_GET['area']) ? $_GET['area'] : '';
+            $class = isset($_GET['class']) ? $_GET['class'] : '';
+            $modelid = isset($_GET['mid']) ? $_GET['mid'] : 12;
 
-			$this->db->set_model(12);
+			$this->db->set_model($modelid);
 			$tablename = $this->db->table_name;
 			
 			$page = max(intval($_GET['page']), 1);
@@ -28,6 +31,10 @@ class tags {
 			    $where .= " AND b.`tag` LIKE '%".$key."%'";
 			if($color)
                 $where .=" AND b.`style` LIKE '%".$color."%'";
+            if($area)
+                $where .= " AND b.`area` LIKE '%".$area."%'";
+            if($class)
+                $where .= " AND b.`class` LIKE '%".$class."%'";
 			$pagesize = 21;
 			$offset = intval($pagesize*($page-1));
 			$sql_count .= $where;
@@ -47,7 +54,10 @@ class tags {
 				$datas = array();
 				$pages = '';
 			}
+        if($modelid == 12)
 		    include template('content','tags');
+        elseif($modelid == 13)
+            include template('content','tags_cool');
 	}
 }
 ?>

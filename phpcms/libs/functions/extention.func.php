@@ -12,17 +12,17 @@
  * @return string
  * 组装查询模板url
  */
-function search_tag($catid = 6, $tag = null, $color = null){
-    return 'index.php?m=content&c=tags&a=init&catid='.$catid.'&key='.$tag.'&color='.$color;
+function search_tag($catid = 6, $tag = null, $color = null, $mid = 12, $area = null, $class = null){
+    return 'index.php?m=content&c=tags&a=init&catid='.$catid.'&key='.$tag.'&color='.$color.'&mid='.$mid.'&area='.$area.'&class='.$class;
 }
 
 /**
  * @return array
- * 获取模板分类
+ * 获取模板(酷站)分类
  */
-function get_tag_list(){
+function get_tag_list($fieldid = 130){
     $tag_db = pc_base::load_model('model_field_model');
-    $taginfo = $tag_db->get_one(array('fieldid'=>130));
+    $taginfo = $tag_db->get_one(array('fieldid'=>$fieldid));
     $tags = string2array($taginfo['setting']);
     $tagsArr = explode("\n",$tags['options']);
     $tagData = array();

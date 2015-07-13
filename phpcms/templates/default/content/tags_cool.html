@@ -55,40 +55,40 @@
         <div id="article">
             <div class="paixu">
                 <h1>按颜色：</h1>
-                <a class="red" href="{search_tag($catid,'','',13)}">全部</a>
-                <a title="红色" href="{search_tag($catid,'','红色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509484077.jpg"></a>
-                <a title="粉色" href="{search_tag($catid,'','粉色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509485415.jpg"></a>
-                <a title="橘色" href="{search_tag($catid,'','橘色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509490679.jpg"></a>
-                <a title="黄色" href="{search_tag($catid,'','黄色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509491954.jpg"></a>
-                <a title="蓝色" href="{search_tag($catid,'','蓝色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509493285.jpg"></a>
-                <a title="绿色" href="{search_tag($catid,'','绿色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509494789.jpg"></a>
-                <a title="紫色" href="{search_tag($catid,'','紫色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509500299.jpg"></a>
-                <a title="黑色" href="{search_tag($catid,'','黑色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509501523.jpg"></a>
-                <a title="白色" href="{search_tag($catid,'','白色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509502786.jpg"></a>
-                <a title="灰色" href="{search_tag($catid,'','灰色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509503847.jpg"></a>
-                <a title="棕色" href="{search_tag($catid,'','棕色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509505195.jpg"></a>
-                <a title="彩色" href="{search_tag($catid,'','彩色',13)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509510222.jpg"></a>
+                <a class="red" href="{search_tag($catid,$key,'',13,$area,$class)}">全部</a>
+                <a title="红色" href="{search_tag($catid,$key,'红色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509484077.jpg"></a>
+                <a title="粉色" href="{search_tag($catid,$key,'粉色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509485415.jpg"></a>
+                <a title="橘色" href="{search_tag($catid,$key,'橘色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509490679.jpg"></a>
+                <a title="黄色" href="{search_tag($catid,$key,'黄色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509491954.jpg"></a>
+                <a title="蓝色" href="{search_tag($catid,$key,'蓝色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509493285.jpg"></a>
+                <a title="绿色" href="{search_tag($catid,$key,'绿色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509494789.jpg"></a>
+                <a title="紫色" href="{search_tag($catid,$key,'紫色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509500299.jpg"></a>
+                <a title="黑色" href="{search_tag($catid,$key,'黑色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509501523.jpg"></a>
+                <a title="白色" href="{search_tag($catid,$key,'白色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509502786.jpg"></a>
+                <a title="灰色" href="{search_tag($catid,$key,'灰色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509503847.jpg"></a>
+                <a title="棕色" href="{search_tag($catid,$key,'棕色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509505195.jpg"></a>
+                <a title="彩色" href="{search_tag($catid,$key,'彩色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509510222.jpg"></a>
             </div>
             <div class="paixu">
                 <h1>按行业：</h1>
-                <a class="red" href="{search_tag($catid,'','',13)}">全部</a>
+                <a class="red" href="{search_tag($catid,'',$color,13,$area,$class)}">全部</a>
                 {loop get_tag_list(180) $tag}
-                <a href="{search_tag($catid,$tag,'',13)}">{$tag}</a>
+                <a href="{search_tag($catid,$tag,$color,13,$area,$class)}">{$tag}</a>
                 {/loop}
             </div>
 
             <div class="paixu">
                 <h1>按地区：</h1>
-                <a class="red" href="{search_tag($catid,'','',13)}">全部</a>
+                <a class="red" href="{search_tag($catid,$key,$color,13,'',$class)}">全部</a>
                 {loop get_tag_list(181) $tag}
-                <a href="{search_tag($catid,'','',13,$tag)}">{$tag}酷站</a>
+                <a href="{search_tag($catid,$key,$color,13,$tag,$class)}">{$tag}酷站</a>
                 {/loop}
             </div>
             <div class="paixu">
                 <h1>按类别：</h1>
-                <a class="red" href="{search_tag($catid,'','',13)}">全部</a>
+                <a class="red" href="{search_tag($catid,$key,$color,13,$area,'')}">全部</a>
                 {loop get_tag_list(182) $tag}
-                <a href="{search_tag($catid,'','',13,'',$tag)}">{$tag}酷站</a>
+                <a href="{search_tag($catid,$key,$color,13,$area,$tag)}">{$tag}酷站</a>
                 {/loop}
             </div>
 
@@ -97,8 +97,7 @@
 
 
                 <!--------feedarea------------>
-                {pc:content action="lists" catid="$catid" num="10" moreinfo="1" order="id DESC" page="$page"}
-                {loop $data $vo}
+                {loop $datas $vo}
                 <div class="masonry">
                     <div id="blog_2113" class="box masonry-brick">
                         <div class="content" id="feedText_2113">
@@ -121,7 +120,6 @@
                         </div>
                     </div>
                     {/loop}
-                    {/pc}
 
 
                     <!--------feedarea--------------->

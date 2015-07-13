@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version phpStudy 2014
+-- version 4.2.8.1
 -- http://www.phpmyadmin.net
 --
--- 主机: localhost
--- 生成日期: 2015 年 07 月 13 日 17:46
--- 服务器版本: 5.5.36
--- PHP 版本: 5.3.28
+-- Host: localhost
+-- Generation Time: 2015-07-14 07:29:03
+-- 服务器版本： 5.6.20
+-- PHP Version: 5.6.0
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `htmlmoban`
+-- Database: `htmlmoban`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `mb_admin` (
-  `userid` mediumint(6) unsigned NOT NULL AUTO_INCREMENT,
+`userid` mediumint(6) unsigned NOT NULL,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `roleid` smallint(5) DEFAULT '0',
@@ -37,10 +37,8 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
   `email` varchar(40) DEFAULT NULL,
   `realname` varchar(50) NOT NULL DEFAULT '',
   `card` varchar(255) NOT NULL,
-  `lang` varchar(6) NOT NULL,
-  PRIMARY KEY (`userid`),
-  KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `lang` varchar(6) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_admin`
@@ -48,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
 
 INSERT INTO `mb_admin` (`userid`, `username`, `password`, `roleid`, `encrypt`, `lastloginip`, `lastlogintime`, `email`, `realname`, `card`, `lang`) VALUES
 (1, 'admin', '52433b33c7ff3a8dc647a10939a91628', 1, 'SwFNZd', '127.0.0.1', 1435650303, 'wewe@qq.com', '', '', ''),
-(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1436779482, 'sdsd@qq.com', 'qg', '', '');
+(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1436826211, 'sdsd@qq.com', 'qg', '', '');
 
 -- --------------------------------------------------------
 
@@ -61,8 +59,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin_panel` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `name` char(32) DEFAULT NULL,
   `url` char(255) DEFAULT NULL,
-  `datetime` int(10) unsigned DEFAULT '0',
-  UNIQUE KEY `userid` (`menuid`,`userid`)
+  `datetime` int(10) unsigned DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,15 +69,12 @@ CREATE TABLE IF NOT EXISTS `mb_admin_panel` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_admin_role` (
-  `roleid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+`roleid` tinyint(3) unsigned NOT NULL,
   `rolename` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`roleid`),
-  KEY `listorder` (`listorder`),
-  KEY `disabled` (`disabled`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_admin_role`
@@ -106,8 +100,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin_role_priv` (
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
   `data` char(30) NOT NULL DEFAULT '',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  KEY `roleid` (`roleid`,`m`,`c`,`a`,`siteid`)
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -117,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin_role_priv` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_announce` (
-  `aid` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
+`aid` smallint(4) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `title` char(80) NOT NULL,
   `content` text NOT NULL,
@@ -128,10 +121,8 @@ CREATE TABLE IF NOT EXISTS `mb_announce` (
   `hits` smallint(5) unsigned NOT NULL DEFAULT '0',
   `passed` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `style` char(15) NOT NULL,
-  `show_template` char(30) NOT NULL,
-  PRIMARY KEY (`aid`),
-  KEY `siteid` (`siteid`,`passed`,`endtime`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `show_template` char(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -140,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `mb_announce` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_attachment` (
-  `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`aid` int(10) unsigned NOT NULL,
   `module` char(15) NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `filename` char(50) NOT NULL,
@@ -155,10 +146,8 @@ CREATE TABLE IF NOT EXISTS `mb_attachment` (
   `uploadip` char(15) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `authcode` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`aid`),
-  KEY `authcode` (`authcode`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=52 ;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_attachment`
@@ -217,9 +206,7 @@ INSERT INTO `mb_attachment` (`aid`, `module`, `catid`, `filename`, `filepath`, `
 
 CREATE TABLE IF NOT EXISTS `mb_attachment_index` (
   `keyid` char(30) NOT NULL,
-  `aid` char(10) NOT NULL,
-  KEY `keyid` (`keyid`),
-  KEY `aid` (`aid`)
+  `aid` char(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -281,17 +268,13 @@ INSERT INTO `mb_attachment_index` (`keyid`, `aid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_badword` (
-  `badid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`badid` smallint(5) unsigned NOT NULL,
   `badword` char(20) NOT NULL,
   `level` tinyint(5) NOT NULL DEFAULT '1',
   `replaceword` char(20) NOT NULL DEFAULT '0',
   `lastusetime` int(10) unsigned NOT NULL DEFAULT '0',
-  `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`badid`),
-  UNIQUE KEY `badword` (`badword`),
-  KEY `usetimes` (`replaceword`,`listorder`),
-  KEY `hits` (`listorder`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -300,18 +283,14 @@ CREATE TABLE IF NOT EXISTS `mb_badword` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `name` char(50) DEFAULT NULL,
   `pos` char(30) DEFAULT NULL,
   `type` tinyint(1) DEFAULT '0',
   `data` text,
-  `template` text,
-  PRIMARY KEY (`id`),
-  KEY `pos` (`pos`),
-  KEY `type` (`type`),
-  KEY `siteid` (`siteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `template` text
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -320,14 +299,13 @@ CREATE TABLE IF NOT EXISTS `mb_block` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block_history` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `blockid` int(10) unsigned DEFAULT '0',
   `data` text,
   `creat_at` int(10) unsigned DEFAULT '0',
   `userid` mediumint(8) unsigned DEFAULT '0',
-  `username` char(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `username` char(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -336,14 +314,11 @@ CREATE TABLE IF NOT EXISTS `mb_block_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block_priv` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `roleid` tinyint(3) unsigned DEFAULT '0',
   `siteid` smallint(5) unsigned DEFAULT '0',
-  `blockid` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `blockid` (`blockid`),
-  KEY `roleid` (`roleid`,`siteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `blockid` int(10) unsigned DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -354,8 +329,7 @@ CREATE TABLE IF NOT EXISTS `mb_block_priv` (
 CREATE TABLE IF NOT EXISTS `mb_cache` (
   `filename` char(50) NOT NULL,
   `path` char(50) NOT NULL,
-  `data` mediumtext NOT NULL,
-  PRIMARY KEY (`filename`,`path`)
+  `data` mediumtext NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -403,7 +377,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_category` (
-  `catid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`catid` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `module` varchar(15) NOT NULL,
   `type` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -426,11 +400,8 @@ CREATE TABLE IF NOT EXISTS `mb_category` (
   `ismenu` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `sethtml` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `letter` varchar(30) NOT NULL,
-  `usable_type` varchar(255) NOT NULL,
-  PRIMARY KEY (`catid`),
-  KEY `module` (`module`,`parentid`,`listorder`,`catid`),
-  KEY `siteid` (`siteid`,`type`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+  `usable_type` varchar(255) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_category`
@@ -473,9 +444,7 @@ CREATE TABLE IF NOT EXISTS `mb_category_priv` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `roleid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `action` char(30) NOT NULL,
-  KEY `catid` (`catid`,`roleid`,`is_admin`,`action`),
-  KEY `siteid` (`siteid`)
+  `action` char(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -485,17 +454,14 @@ CREATE TABLE IF NOT EXISTS `mb_category_priv` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_content` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` mediumint(5) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `url` char(255) NOT NULL,
   `title` char(100) NOT NULL,
-  `data` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nodeid` (`nodeid`,`siteid`),
-  KEY `status` (`status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `data` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -505,8 +471,7 @@ CREATE TABLE IF NOT EXISTS `mb_collection_content` (
 
 CREATE TABLE IF NOT EXISTS `mb_collection_history` (
   `md5` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`md5`,`siteid`)
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -516,7 +481,7 @@ CREATE TABLE IF NOT EXISTS `mb_collection_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_node` (
-  `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+`nodeid` smallint(6) unsigned NOT NULL,
   `name` varchar(20) NOT NULL,
   `lastdate` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -549,10 +514,8 @@ CREATE TABLE IF NOT EXISTS `mb_collection_node` (
   `down_attachment` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `watermark` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `coll_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `customize_config` text NOT NULL,
-  PRIMARY KEY (`nodeid`),
-  KEY `siteid` (`siteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `customize_config` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -561,16 +524,13 @@ CREATE TABLE IF NOT EXISTS `mb_collection_node` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_program` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
   `modelid` mediumint(6) unsigned NOT NULL DEFAULT '0',
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
-  `config` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `siteid` (`siteid`),
-  KEY `nodeid` (`nodeid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `config` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -589,10 +549,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment` (
   `neutral` mediumint(8) unsigned DEFAULT '0',
   `display_type` tinyint(1) DEFAULT '0',
   `tableid` mediumint(8) unsigned DEFAULT '0',
-  `lastupdate` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`commentid`),
-  KEY `lastupdate` (`lastupdate`),
-  KEY `siteid` (`siteid`)
+  `lastupdate` int(10) unsigned DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -610,14 +567,11 @@ INSERT INTO `mb_comment` (`commentid`, `siteid`, `title`, `url`, `total`, `squar
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_check` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `comment_data_id` int(10) DEFAULT '0' COMMENT '论评ID号',
   `siteid` smallint(5) NOT NULL DEFAULT '0' COMMENT '站点ID',
-  `tableid` mediumint(8) DEFAULT '0' COMMENT '数据存储表ID',
-  PRIMARY KEY (`id`),
-  KEY `siteid` (`siteid`),
-  KEY `comment_data_id` (`comment_data_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `tableid` mediumint(8) DEFAULT '0' COMMENT '数据存储表ID'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -626,7 +580,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment_check` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+`id` int(10) unsigned NOT NULL COMMENT '评论ID',
   `commentid` char(30) NOT NULL DEFAULT '' COMMENT '评论ID号',
   `siteid` smallint(5) NOT NULL DEFAULT '0' COMMENT '站点ID',
   `userid` int(10) unsigned DEFAULT '0' COMMENT '用户ID',
@@ -637,13 +591,8 @@ CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
   `content` text COMMENT '评论内容',
   `direction` tinyint(1) DEFAULT '0' COMMENT '评论方向{0:无方向,1:正文,2:反方,3:中立}',
   `support` mediumint(8) unsigned DEFAULT '0' COMMENT '支持数',
-  `reply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为回复',
-  PRIMARY KEY (`id`),
-  KEY `commentid` (`commentid`),
-  KEY `direction` (`direction`),
-  KEY `siteid` (`siteid`),
-  KEY `support` (`support`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `reply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为回复'
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_comment_data_1`
@@ -668,8 +617,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment_setting` (
   `check` tinyint(1) DEFAULT '0' COMMENT '是否需要审核',
   `code` tinyint(1) DEFAULT '0' COMMENT '是否开启验证码',
   `add_point` tinyint(3) unsigned DEFAULT '0' COMMENT '添加的积分数',
-  `del_point` tinyint(3) unsigned DEFAULT '0' COMMENT '扣除的积分数',
-  PRIMARY KEY (`siteid`)
+  `del_point` tinyint(3) unsigned DEFAULT '0' COMMENT '扣除的积分数'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -686,11 +634,10 @@ INSERT INTO `mb_comment_setting` (`siteid`, `guest`, `check`, `code`, `add_point
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_table` (
-  `tableid` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '表ID号',
+`tableid` mediumint(8) NOT NULL COMMENT '表ID号',
   `total` int(10) unsigned DEFAULT '0' COMMENT '数据总量',
-  `creat_at` int(10) DEFAULT '0' COMMENT '创建时间',
-  PRIMARY KEY (`tableid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `creat_at` int(10) DEFAULT '0' COMMENT '创建时间'
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_comment_table`
@@ -712,10 +659,7 @@ CREATE TABLE IF NOT EXISTS `mb_content_check` (
   `title` char(80) NOT NULL,
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  KEY `username` (`username`),
-  KEY `checkid` (`checkid`),
-  KEY `status` (`status`,`inputtime`)
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -725,7 +669,7 @@ CREATE TABLE IF NOT EXISTS `mb_content_check` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_cool` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -741,19 +685,15 @@ CREATE TABLE IF NOT EXISTS `mb_cool` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_cool`
 --
 
 INSERT INTO `mb_cool` (`id`, `catid`, `typeid`, `title`, `style`, `thumb`, `keywords`, `description`, `posids`, `url`, `listorder`, `status`, `sysadd`, `islink`, `username`, `inputtime`, `updatetime`) VALUES
-(1, 11, 0, '粉色系浪漫酷站', '', 'http://www.htmlmoban.net/uploadfile/2015/0630/20150630031403632.jpg', '酷站 粉色', 'asdasdasdasdsad', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=11&id=1', 0, 99, 1, 0, 'admin', 1435647684, 1436071315);
+(1, 11, 0, '粉色系浪漫酷站', '', 'http://www.htmlmoban.net/uploadfile/2015/0630/20150630031403632.jpg', '酷站 粉色', 'asdasdasdasdsad', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=11&id=1', 0, 99, 1, 0, 'admin', 1435647684, 1436827134);
 
 -- --------------------------------------------------------
 
@@ -775,15 +715,17 @@ CREATE TABLE IF NOT EXISTS `mb_cool_data` (
   `photo` mediumtext NOT NULL,
   `style` varchar(255) NOT NULL DEFAULT '',
   `tag` varchar(255) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
+  `area` varchar(255) NOT NULL DEFAULT '',
+  `class` varchar(255) NOT NULL DEFAULT '',
+  `scan_url` varchar(100) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_cool_data`
 --
 
-INSERT INTO `mb_cool_data` (`id`, `content`, `readpoint`, `groupids_view`, `paginationtype`, `maxcharperpage`, `template`, `paytype`, `allow_comment`, `relation`, `photo`, `style`, `tag`) VALUES
-(1, 'asdasdasdasdsad', 0, '', 0, 10000, '', 0, 1, '', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0705/20150705111325553.png'',\n    ''alt'' => ''20150705111325517'',\n  ),\n)', '', '');
+INSERT INTO `mb_cool_data` (`id`, `content`, `readpoint`, `groupids_view`, `paginationtype`, `maxcharperpage`, `template`, `paytype`, `allow_comment`, `relation`, `photo`, `style`, `tag`, `area`, `class`, `scan_url`) VALUES
+(1, '　　　asdasdasdasdsad', 0, '', 0, 10000, '', 0, 1, '', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0705/20150705111325553.png'',\n    ''alt'' => ''20150705111325517'',\n  ),\n)', ',粉色,彩色,', ',相集摄影,服饰,', ',国内,', ',图文,', 'http://www.baidu.com');
 
 -- --------------------------------------------------------
 
@@ -792,14 +734,13 @@ INSERT INTO `mb_cool_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagi
 --
 
 CREATE TABLE IF NOT EXISTS `mb_copyfrom` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sitename` varchar(30) NOT NULL,
   `siteurl` varchar(100) NOT NULL,
   `thumb` varchar(100) NOT NULL,
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -808,7 +749,7 @@ CREATE TABLE IF NOT EXISTS `mb_copyfrom` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_datacall` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `name` char(40) DEFAULT NULL,
   `dis_type` tinyint(1) unsigned DEFAULT '0',
   `type` tinyint(1) DEFAULT '0',
@@ -817,10 +758,8 @@ CREATE TABLE IF NOT EXISTS `mb_datacall` (
   `data` text,
   `template` text,
   `cache` mediumint(8) DEFAULT NULL,
-  `num` smallint(6) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `type` (`type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `num` smallint(6) unsigned DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -829,7 +768,7 @@ CREATE TABLE IF NOT EXISTS `mb_datacall` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_dbsource` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL,
   `host` varchar(20) NOT NULL,
@@ -838,10 +777,8 @@ CREATE TABLE IF NOT EXISTS `mb_dbsource` (
   `password` varchar(50) NOT NULL,
   `dbname` varchar(50) NOT NULL,
   `dbtablepre` varchar(30) NOT NULL,
-  `charset` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `siteid` (`siteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `charset` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -850,7 +787,7 @@ CREATE TABLE IF NOT EXISTS `mb_dbsource` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_download` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -873,12 +810,8 @@ CREATE TABLE IF NOT EXISTS `mb_download` (
   `classtype` varchar(20) NOT NULL DEFAULT '',
   `version` varchar(20) NOT NULL DEFAULT '',
   `filesize` varchar(10) NOT NULL DEFAULT 'Unkown',
-  `stars` varchar(20) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `stars` varchar(20) NOT NULL DEFAULT ''
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -898,8 +831,7 @@ CREATE TABLE IF NOT EXISTS `mb_download_data` (
   `relation` varchar(255) NOT NULL DEFAULT '',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `downfiles` mediumtext NOT NULL,
-  `downfile` varchar(255) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
+  `downfile` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -909,13 +841,12 @@ CREATE TABLE IF NOT EXISTS `mb_download_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_downservers` (
-  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) NOT NULL,
   `sitename` varchar(100) DEFAULT NULL,
   `siteurl` varchar(255) DEFAULT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -924,12 +855,10 @@ CREATE TABLE IF NOT EXISTS `mb_downservers` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_extend_setting` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(5) unsigned NOT NULL,
   `key` char(30) NOT NULL,
-  `data` mediumtext,
-  PRIMARY KEY (`id`),
-  KEY `key` (`key`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `data` mediumtext
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -938,14 +867,12 @@ CREATE TABLE IF NOT EXISTS `mb_extend_setting` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_favorite` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `title` char(100) NOT NULL,
   `url` char(100) NOT NULL,
-  `adddate` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `userid` (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `adddate` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -961,8 +888,7 @@ CREATE TABLE IF NOT EXISTS `mb_hits` (
   `dayviews` int(10) unsigned NOT NULL DEFAULT '0',
   `weekviews` int(10) unsigned NOT NULL DEFAULT '0',
   `monthviews` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`hitsid`)
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1005,11 +931,10 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 --
 
 CREATE TABLE IF NOT EXISTS `mb_ipbanned` (
-  `ipbannedid` smallint(5) NOT NULL AUTO_INCREMENT,
+`ipbannedid` smallint(5) NOT NULL,
   `ip` char(15) NOT NULL,
-  `expires` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ipbannedid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `expires` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1018,11 +943,10 @@ CREATE TABLE IF NOT EXISTS `mb_ipbanned` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keylink` (
-  `keylinkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`keylinkid` smallint(5) unsigned NOT NULL,
   `word` char(40) NOT NULL,
-  `url` char(100) NOT NULL,
-  PRIMARY KEY (`keylinkid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `url` char(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1031,15 +955,13 @@ CREATE TABLE IF NOT EXISTS `mb_keylink` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keyword` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `keyword` char(100) NOT NULL,
   `pinyin` char(100) NOT NULL,
   `videonum` int(11) NOT NULL DEFAULT '0',
-  `searchnums` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `keyword` (`keyword`,`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+  `searchnums` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_keyword`
@@ -1061,7 +983,7 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (13, 1, 'html5', 'html5', 3, 0),
 (14, 1, '婚纱摄影', 'hunshasheying', 3, 0),
 (15, 1, '网站设计', 'wangzhansheji', 3, 0),
-(16, 1, '粉色', 'fense', 8, 0),
+(16, 1, '粉色', 'fense', 11, 0),
 (17, 1, '企业网站', 'qiyewangzhan', 9, 0),
 (18, 1, '清爽', 'qingshuang', 1, 0),
 (19, 1, '简单', 'jiandan', 1, 0),
@@ -1085,7 +1007,7 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (37, 1, '化妆品', 'huazhuangpin', 2, 0),
 (38, 1, '商城', 'shangcheng', 2, 0),
 (39, 1, '品牌', 'pinpai', 2, 0),
-(40, 1, '酷站', 'kuzhan', 5, 0),
+(40, 1, '酷站', 'kuzhan', 8, 0),
 (41, 1, '猎豹', 'liebao', 1, 0),
 (42, 1, '代码', 'daima', 1, 0),
 (43, 1, '焦点', 'jiaodian', 2, 0),
@@ -1103,13 +1025,11 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keyword_data` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `tagid` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `contentid` char(30) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tagid` (`tagid`,`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
+  `contentid` char(30) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_keyword_data`
@@ -1234,7 +1154,7 @@ INSERT INTO `mb_keyword_data` (`id`, `tagid`, `siteid`, `contentid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_link` (
-  `linkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`linkid` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `linktype` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1246,10 +1166,8 @@ CREATE TABLE IF NOT EXISTS `mb_link` (
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `elite` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `passed` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `addtime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`linkid`),
-  KEY `typeid` (`typeid`,`passed`,`listorder`,`linkid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `addtime` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_link`
@@ -1266,7 +1184,7 @@ INSERT INTO `mb_link` (`linkid`, `siteid`, `typeid`, `linktype`, `name`, `url`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_linkage` (
-  `linkageid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`linkageid` smallint(5) unsigned NOT NULL,
   `name` varchar(30) NOT NULL,
   `style` varchar(35) NOT NULL,
   `parentid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -1276,10 +1194,8 @@ CREATE TABLE IF NOT EXISTS `mb_linkage` (
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `description` varchar(255) DEFAULT NULL,
   `setting` varchar(255) DEFAULT NULL,
-  `siteid` smallint(5) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`linkageid`,`keyid`),
-  KEY `parentid` (`parentid`,`listorder`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3360 ;
+  `siteid` smallint(5) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=3360 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_linkage`
@@ -4581,7 +4497,7 @@ INSERT INTO `mb_linkage` (`linkageid`, `name`, `style`, `parentid`, `child`, `ar
 --
 
 CREATE TABLE IF NOT EXISTS `mb_log` (
-  `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`logid` int(10) unsigned NOT NULL,
   `field` varchar(15) NOT NULL,
   `value` int(10) unsigned NOT NULL DEFAULT '0',
   `module` varchar(15) NOT NULL,
@@ -4592,11 +4508,8 @@ CREATE TABLE IF NOT EXISTS `mb_log` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `username` varchar(20) NOT NULL,
   `ip` varchar(15) NOT NULL,
-  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`logid`),
-  KEY `module` (`module`,`file`,`action`),
-  KEY `username` (`username`,`action`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=606 ;
+  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM AUTO_INCREMENT=644 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_log`
@@ -5208,7 +5121,45 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 (602, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=listorder', '', 2, 'admin2', '127.0.0.1', '2015-07-13 17:31:24'),
 (603, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-13 17:34:55'),
 (604, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 17:35:07'),
-(605, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 17:35:18');
+(605, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 17:35:18'),
+(606, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-13 21:44:12'),
+(607, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-13 21:44:24'),
+(608, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 21:47:58'),
+(609, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 21:54:49'),
+(610, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 21:55:45'),
+(611, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 21:57:19'),
+(612, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-13 21:57:49'),
+(613, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-13 22:00:10'),
+(614, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-13 22:00:58'),
+(615, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=listorder', '', 2, 'admin2', '127.0.0.1', '2015-07-13 22:01:34'),
+(616, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-13 22:35:33'),
+(617, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-13 22:35:33'),
+(618, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-13 22:35:45'),
+(619, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-13 22:36:15'),
+(620, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-13 22:38:51'),
+(621, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=listorder', '', 2, 'admin2', '127.0.0.1', '2015-07-13 22:39:38'),
+(622, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-14 06:23:17'),
+(623, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-14 06:23:31'),
+(624, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:23:55'),
+(625, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:29:25'),
+(626, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:29:47'),
+(627, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:30:00'),
+(628, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:30:05'),
+(629, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:30:52'),
+(630, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:30:57'),
+(631, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:31:12'),
+(632, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:31:19'),
+(633, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=listorder', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:32:27'),
+(634, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:33:07'),
+(635, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:33:14'),
+(636, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:33:35'),
+(637, '', 0, 'content', '', 'sitemodel_field', '?m=content&c=sitemodel_field&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:33:43'),
+(638, '', 0, 'content', '', 'content', '?m=content&c=content&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:34:19'),
+(639, '', 0, 'content', '', 'content', '?m=content&c=content&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:35:24'),
+(640, '', 0, 'content', '', 'content', '?m=content&c=content&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:37:14'),
+(641, '', 0, 'content', '', 'content', '?m=content&c=content&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:37:26'),
+(642, '', 0, 'content', '', 'content', '?m=content&c=content&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:38:42'),
+(643, '', 0, 'content', '', 'content', '?m=content&c=content&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-14 06:38:54');
 
 -- --------------------------------------------------------
 
@@ -5217,7 +5168,7 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member` (
-  `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`userid` mediumint(8) unsigned NOT NULL,
   `phpssouid` mediumint(8) unsigned NOT NULL,
   `username` char(20) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
@@ -5241,12 +5192,8 @@ CREATE TABLE IF NOT EXISTS `mb_member` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '1',
   `connectid` char(40) NOT NULL DEFAULT '',
   `from` char(10) NOT NULL DEFAULT '',
-  `mobile` char(11) NOT NULL DEFAULT '',
-  PRIMARY KEY (`userid`),
-  UNIQUE KEY `username` (`username`),
-  KEY `email` (`email`(20)),
-  KEY `phpssouid` (`phpssouid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `mobile` char(11) NOT NULL DEFAULT ''
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_member`
@@ -5263,8 +5210,7 @@ INSERT INTO `mb_member` (`userid`, `phpssouid`, `username`, `password`, `encrypt
 
 CREATE TABLE IF NOT EXISTS `mb_member_detail` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `birthday` date DEFAULT NULL,
-  UNIQUE KEY `userid` (`userid`)
+  `birthday` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -5281,7 +5227,7 @@ INSERT INTO `mb_member_detail` (`userid`, `birthday`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_group` (
-  `groupid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+`groupid` tinyint(3) unsigned NOT NULL,
   `name` char(15) NOT NULL,
   `issystem` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `starnum` tinyint(2) unsigned NOT NULL,
@@ -5302,11 +5248,8 @@ CREATE TABLE IF NOT EXISTS `mb_member_group` (
   `usernamecolor` char(7) NOT NULL,
   `description` char(100) NOT NULL,
   `sort` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`groupid`),
-  KEY `disabled` (`disabled`),
-  KEY `listorder` (`sort`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_member_group`
@@ -5328,7 +5271,7 @@ INSERT INTO `mb_member_group` (`groupid`, `name`, `issystem`, `starnum`, `point`
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_menu` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(6) unsigned NOT NULL,
   `name` char(40) NOT NULL DEFAULT '',
   `parentid` smallint(6) NOT NULL DEFAULT '0',
   `m` char(20) NOT NULL DEFAULT '',
@@ -5338,12 +5281,8 @@ CREATE TABLE IF NOT EXISTS `mb_member_menu` (
   `listorder` smallint(6) unsigned NOT NULL DEFAULT '0',
   `display` enum('1','0') NOT NULL DEFAULT '1',
   `isurl` enum('1','0') NOT NULL DEFAULT '0',
-  `url` char(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  KEY `listorder` (`listorder`),
-  KEY `parentid` (`parentid`),
-  KEY `module` (`m`,`c`,`a`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `url` char(255) NOT NULL DEFAULT ''
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_member_menu`
@@ -5361,7 +5300,7 @@ INSERT INTO `mb_member_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_verify` (
-  `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`userid` mediumint(8) unsigned NOT NULL,
   `username` char(20) NOT NULL,
   `password` char(32) NOT NULL,
   `encrypt` char(6) NOT NULL,
@@ -5376,11 +5315,8 @@ CREATE TABLE IF NOT EXISTS `mb_member_verify` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `siteid` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `message` char(100) DEFAULT NULL,
-  `mobile` char(11) NOT NULL DEFAULT '',
-  PRIMARY KEY (`userid`),
-  UNIQUE KEY `username` (`username`),
-  KEY `email` (`email`(20))
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `mobile` char(11) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5389,8 +5325,7 @@ CREATE TABLE IF NOT EXISTS `mb_member_verify` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_vip` (
-  `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  UNIQUE KEY `userid` (`userid`)
+  `userid` mediumint(8) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5400,7 +5335,7 @@ CREATE TABLE IF NOT EXISTS `mb_member_vip` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_menu` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(6) unsigned NOT NULL,
   `name` char(40) NOT NULL DEFAULT '',
   `parentid` smallint(6) NOT NULL DEFAULT '0',
   `m` char(20) NOT NULL DEFAULT '',
@@ -5413,12 +5348,8 @@ CREATE TABLE IF NOT EXISTS `mb_menu` (
   `project2` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `project3` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `project4` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `project5` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `listorder` (`listorder`),
-  KEY `parentid` (`parentid`),
-  KEY `module` (`m`,`c`,`a`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1562 ;
+  `project5` tinyint(1) unsigned NOT NULL DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=1562 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_menu`
@@ -5753,7 +5684,7 @@ INSERT INTO `mb_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listord
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message` (
-  `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`messageid` int(10) unsigned NOT NULL,
   `send_from_id` char(30) NOT NULL DEFAULT '0',
   `send_to_id` char(30) NOT NULL DEFAULT '0',
   `folder` enum('all','inbox','outbox') NOT NULL,
@@ -5762,12 +5693,8 @@ CREATE TABLE IF NOT EXISTS `mb_message` (
   `subject` char(80) DEFAULT NULL,
   `content` text NOT NULL,
   `replyid` int(10) unsigned NOT NULL DEFAULT '0',
-  `del_type` tinyint(1) unsigned DEFAULT '0',
-  PRIMARY KEY (`messageid`),
-  KEY `msgtoid` (`send_to_id`,`folder`),
-  KEY `replyid` (`replyid`),
-  KEY `folder` (`send_from_id`,`folder`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `del_type` tinyint(1) unsigned DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5776,12 +5703,10 @@ CREATE TABLE IF NOT EXISTS `mb_message` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message_data` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
+`id` int(4) NOT NULL,
   `userid` mediumint(8) NOT NULL,
-  `group_message_id` int(5) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `message` (`userid`,`group_message_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `group_message_id` int(5) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5790,15 +5715,14 @@ CREATE TABLE IF NOT EXISTS `mb_message_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message_group` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(5) unsigned NOT NULL,
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `groupid` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '用户组id',
   `subject` char(80) DEFAULT NULL,
   `content` text NOT NULL COMMENT '内容',
   `inputtime` int(10) unsigned DEFAULT '0',
-  `status` tinyint(2) unsigned DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(2) unsigned DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5807,7 +5731,7 @@ CREATE TABLE IF NOT EXISTS `mb_message_group` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_moban` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -5823,12 +5747,8 @@ CREATE TABLE IF NOT EXISTS `mb_moban` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_moban`
@@ -5877,8 +5797,7 @@ CREATE TABLE IF NOT EXISTS `mb_moban_data` (
   `tag` varchar(255) NOT NULL DEFAULT '',
   `photo` mediumtext NOT NULL,
   `down_url` mediumtext NOT NULL,
-  `demo_url` varchar(255) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
+  `demo_url` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -5914,7 +5833,7 @@ INSERT INTO `mb_moban_data` (`id`, `content`, `readpoint`, `groupids_view`, `pag
 --
 
 CREATE TABLE IF NOT EXISTS `mb_model` (
-  `modelid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`modelid` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` char(30) NOT NULL,
   `description` char(100) NOT NULL,
@@ -5933,10 +5852,8 @@ CREATE TABLE IF NOT EXISTS `mb_model` (
   `member_add_template` varchar(30) NOT NULL,
   `member_list_template` varchar(30) NOT NULL,
   `sort` tinyint(3) NOT NULL,
-  `type` tinyint(1) NOT NULL,
-  PRIMARY KEY (`modelid`),
-  KEY `type` (`type`,`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+  `type` tinyint(1) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_model`
@@ -5959,7 +5876,7 @@ INSERT INTO `mb_model` (`modelid`, `siteid`, `name`, `description`, `tablename`,
 --
 
 CREATE TABLE IF NOT EXISTS `mb_model_field` (
-  `fieldid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`fieldid` mediumint(8) unsigned NOT NULL,
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `field` varchar(20) NOT NULL,
@@ -5985,11 +5902,8 @@ CREATE TABLE IF NOT EXISTS `mb_model_field` (
   `isposition` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `listorder` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isomnipotent` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`fieldid`),
-  KEY `modelid` (`modelid`,`disabled`),
-  KEY `field` (`field`,`modelid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=181 ;
+  `isomnipotent` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_model_field`
@@ -6129,15 +6043,15 @@ INSERT INTO `mb_model_field` (`fieldid`, `modelid`, `siteid`, `field`, `name`, `
 (137, 13, 1, 'typeid', '类别', '', '', 0, 0, '', '', 'typeid', 'array (\n  ''minnumber'' => '''',\n  ''defaultvalue'' => '''',\n)', '', '', '', 0, 1, 0, 1, 1, 1, 0, 0, 2, 0, 0),
 (138, 13, 1, 'title', '标题', '', 'inputtitle', 1, 80, '', '请输入标题', 'title', '', '', '', '', 0, 1, 0, 1, 1, 1, 1, 1, 4, 0, 0),
 (139, 13, 1, 'keywords', '关键词', '多关键词之间用空格或者“,”隔开', '', 0, 40, '', '', 'keyword', 'array (\r\n  ''size'' => ''100'',\r\n  ''defaultvalue'' => '''',\r\n)', '', '-99', '-99', 0, 1, 0, 1, 1, 1, 1, 0, 7, 0, 0),
-(140, 13, 1, 'description', '摘要', '', '', 0, 255, '', '', 'textarea', 'array (\r\n  ''width'' => ''98'',\r\n  ''height'' => ''46'',\r\n  ''defaultvalue'' => '''',\r\n  ''enablehtml'' => ''0'',\r\n)', '', '', '', 0, 1, 0, 1, 0, 1, 1, 1, 10, 0, 0),
-(141, 13, 1, 'updatetime', '更新时间', '', '', 0, 0, '', '', 'datetime', 'array (\r\n  ''dateformat'' => ''int'',\r\n  ''format'' => ''Y-m-d H:i:s'',\r\n  ''defaulttype'' => ''1'',\r\n  ''defaultvalue'' => '''',\r\n)', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 12, 0, 0),
-(142, 13, 1, 'content', '内容', '<div class="content_attr"><label><input name="add_introduce" type="checkbox"  value="1" checked>是否截取内容</label><input type="text" name="introcude_length" value="200" size="3">字符至内容摘要\r\n<label><input type=''checkbox'' name=''auto_thumb'' value="1" checked>是否获取内容第</label><input type="text" name="auto_thumb_no" value="1" size="2" class="">张图片作为标题图片\r\n</div>', '', 1, 999999, '', '内容不能为空', 'editor', 'array (\n  ''toolbar'' => ''full'',\n  ''defaultvalue'' => '''',\n  ''enablekeylink'' => ''1'',\n  ''replacenum'' => ''2'',\n  ''link_mode'' => ''0'',\n  ''enablesaveimage'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 0, 1, 1, 0, 13, 0, 0),
-(143, 13, 1, 'thumb', '缩略图', '', '', 0, 100, '', '', 'image', 'array (\n  ''size'' => ''50'',\n  ''defaultvalue'' => '''',\n  ''show_type'' => ''1'',\n  ''upload_maxsize'' => ''1024'',\n  ''upload_allowext'' => ''jpg|jpeg|gif|png|bmp'',\n  ''watermark'' => ''0'',\n  ''isselectimage'' => ''1'',\n  ''images_width'' => '''',\n  ''images_height'' => '''',\n)', '', '', '', 0, 1, 0, 0, 0, 1, 0, 1, 14, 0, 0),
-(144, 13, 1, 'relation', '相关文章', '', '', 0, 0, '', '', 'omnipotent', 'array (\n  ''formtext'' => ''<input type=\\''hidden\\'' name=\\''info[relation]\\'' id=\\''relation\\'' value=\\''{FIELD_VALUE}\\'' style=\\''50\\'' >\r\n<ul class="list-dot" id="relation_text"></ul>\r\n<div>\r\n<input type=\\''button\\'' value="添加相关" onclick="omnipotent(\\''selectid\\'',\\''?m=content&c=content&a=public_relationlist&modelid={MODELID}\\'',\\''添加相关文章\\'',1)" class="button" style="width:66px;">\r\n<span class="edit_content">\r\n<input type=\\''button\\'' value="显示已有" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">\r\n</span>\r\n</div>'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n)', '', '2,6,4,5,1,17,18,7', '', 0, 0, 0, 0, 0, 0, 1, 0, 15, 0, 0),
-(145, 13, 1, 'pages', '分页方式', '', '', 0, 0, '', '', 'pages', '', '', '-99', '-99', 0, 0, 0, 1, 0, 0, 0, 0, 16, 0, 0),
-(146, 13, 1, 'inputtime', '发布时间', '', '', 0, 0, '', '', 'datetime', 'array (\n  ''fieldtype'' => ''int'',\n  ''format'' => ''Y-m-d H:i:s'',\n  ''defaulttype'' => ''0'',\n)', '', '', '', 0, 1, 0, 0, 0, 0, 0, 1, 17, 0, 0),
-(147, 13, 1, 'posids', '推荐位', '', '', 0, 0, '', '', 'posid', 'array (\n  ''cols'' => ''4'',\n  ''width'' => ''125'',\n)', '', '', '', 0, 1, 0, 1, 0, 0, 0, 0, 18, 0, 0),
-(148, 13, 1, 'groupids_view', '阅读权限', '', '', 0, 100, '', '', 'groupid', 'array (\n  ''groupids'' => '''',\n)', '', '', '', 0, 0, 0, 1, 0, 0, 0, 0, 19, 0, 0),
+(140, 13, 1, 'description', '摘要', '', '', 0, 255, '', '', 'textarea', 'array (\r\n  ''width'' => ''98'',\r\n  ''height'' => ''46'',\r\n  ''defaultvalue'' => '''',\r\n  ''enablehtml'' => ''0'',\r\n)', '', '', '', 0, 1, 0, 1, 0, 1, 1, 1, 13, 0, 0),
+(141, 13, 1, 'updatetime', '更新时间', '', '', 0, 0, '', '', 'datetime', 'array (\r\n  ''dateformat'' => ''int'',\r\n  ''format'' => ''Y-m-d H:i:s'',\r\n  ''defaulttype'' => ''1'',\r\n  ''defaultvalue'' => '''',\r\n)', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 15, 0, 0),
+(142, 13, 1, 'content', '内容', '<div class="content_attr"><label><input name="add_introduce" type="checkbox"  value="1" checked>是否截取内容</label><input type="text" name="introcude_length" value="200" size="3">字符至内容摘要\r\n<label><input type=''checkbox'' name=''auto_thumb'' value="1" checked>是否获取内容第</label><input type="text" name="auto_thumb_no" value="1" size="2" class="">张图片作为标题图片\r\n</div>', '', 1, 999999, '', '内容不能为空', 'editor', 'array (\n  ''toolbar'' => ''full'',\n  ''defaultvalue'' => '''',\n  ''enablekeylink'' => ''1'',\n  ''replacenum'' => ''2'',\n  ''link_mode'' => ''0'',\n  ''enablesaveimage'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 0, 1, 1, 0, 16, 0, 0),
+(143, 13, 1, 'thumb', '缩略图', '', '', 0, 100, '', '', 'image', 'array (\n  ''size'' => ''50'',\n  ''defaultvalue'' => '''',\n  ''show_type'' => ''1'',\n  ''upload_maxsize'' => ''1024'',\n  ''upload_allowext'' => ''jpg|jpeg|gif|png|bmp'',\n  ''watermark'' => ''0'',\n  ''isselectimage'' => ''1'',\n  ''images_width'' => '''',\n  ''images_height'' => '''',\n)', '', '', '', 0, 1, 0, 0, 0, 1, 0, 1, 17, 0, 0),
+(144, 13, 1, 'relation', '相关文章', '', '', 0, 0, '', '', 'omnipotent', 'array (\n  ''formtext'' => ''<input type=\\''hidden\\'' name=\\''info[relation]\\'' id=\\''relation\\'' value=\\''{FIELD_VALUE}\\'' style=\\''50\\'' >\r\n<ul class="list-dot" id="relation_text"></ul>\r\n<div>\r\n<input type=\\''button\\'' value="添加相关" onclick="omnipotent(\\''selectid\\'',\\''?m=content&c=content&a=public_relationlist&modelid={MODELID}\\'',\\''添加相关文章\\'',1)" class="button" style="width:66px;">\r\n<span class="edit_content">\r\n<input type=\\''button\\'' value="显示已有" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">\r\n</span>\r\n</div>'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n)', '', '2,6,4,5,1,17,18,7', '', 0, 0, 0, 0, 0, 0, 1, 0, 18, 0, 0),
+(145, 13, 1, 'pages', '分页方式', '', '', 0, 0, '', '', 'pages', '', '', '-99', '-99', 0, 0, 0, 1, 0, 0, 0, 0, 19, 0, 0),
+(146, 13, 1, 'inputtime', '发布时间', '', '', 0, 0, '', '', 'datetime', 'array (\n  ''fieldtype'' => ''int'',\n  ''format'' => ''Y-m-d H:i:s'',\n  ''defaulttype'' => ''0'',\n)', '', '', '', 0, 1, 0, 0, 0, 0, 0, 1, 20, 0, 0),
+(147, 13, 1, 'posids', '推荐位', '', '', 0, 0, '', '', 'posid', 'array (\n  ''cols'' => ''4'',\n  ''width'' => ''125'',\n)', '', '', '', 0, 1, 0, 1, 0, 0, 0, 0, 21, 0, 0),
+(148, 13, 1, 'groupids_view', '阅读权限', '', '', 0, 100, '', '', 'groupid', 'array (\n  ''groupids'' => '''',\n)', '', '', '', 0, 0, 0, 1, 0, 0, 0, 0, 22, 0, 0),
 (149, 13, 1, 'url', 'URL', '', '', 0, 100, '', '', 'text', '', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 50, 0, 0),
 (150, 13, 1, 'listorder', '排序', '', '', 0, 6, '', '', 'number', '', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 51, 0, 0),
 (151, 13, 1, 'template', '内容页模板', '', '', 0, 30, '', '', 'template', 'array (\n  ''size'' => '''',\n  ''defaultvalue'' => '''',\n)', '', '-99', '-99', 0, 0, 0, 0, 0, 0, 0, 0, 53, 0, 0),
@@ -6145,8 +6059,8 @@ INSERT INTO `mb_model_field` (`fieldid`, `modelid`, `siteid`, `field`, `name`, `
 (153, 13, 1, 'status', '状态', '', '', 0, 2, '', '', 'box', '', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 55, 0, 0),
 (154, 13, 1, 'readpoint', '阅读收费', '', '', 0, 5, '', '', 'readpoint', 'array (\n  ''minnumber'' => ''1'',\n  ''maxnumber'' => ''99999'',\n  ''decimaldigits'' => ''0'',\n  ''defaultvalue'' => '''',\n)', '', '-99', '-99', 0, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0),
 (155, 13, 1, 'username', '用户名', '', '', 0, 20, '', '', 'text', '', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 98, 0, 0),
-(156, 13, 1, 'islink', '转向链接', '', '', 0, 0, '', '', 'islink', '', '', '', '', 0, 1, 0, 1, 0, 1, 0, 0, 20, 0, 0),
-(157, 13, 1, 'photo', '酷站图片展示', '', '', 0, 0, '', '', 'images', 'array (\n  ''upload_allowext'' => ''gif|jpg|jpeg|png|bmp'',\n  ''isselectimage'' => ''0'',\n  ''upload_number'' => ''10'',\n)', '', '', '', 0, 0, 0, 1, 0, 1, 0, 0, 11, 0, 0),
+(156, 13, 1, 'islink', '转向链接', '', '', 0, 0, '', '', 'islink', '', '', '', '', 0, 1, 0, 1, 0, 1, 0, 0, 23, 0, 0),
+(157, 13, 1, 'photo', '酷站图片展示', '', '', 0, 0, '', '', 'images', 'array (\n  ''upload_allowext'' => ''gif|jpg|jpeg|png|bmp'',\n  ''isselectimage'' => ''0'',\n  ''upload_number'' => ''10'',\n)', '', '', '', 0, 0, 0, 1, 0, 1, 0, 0, 14, 0, 0),
 (158, 14, 1, 'catid', '栏目', '', '', 1, 6, '/^[0-9]{1,6}$/', '请选择栏目', 'catid', 'array (\n  ''defaultvalue'' => '''',\n)', '', '-99', '-99', 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0),
 (159, 14, 1, 'typeid', '类别', '', '', 0, 0, '', '', 'typeid', 'array (\n  ''minnumber'' => '''',\n  ''defaultvalue'' => '''',\n)', '', '', '', 0, 1, 0, 1, 1, 1, 0, 0, 2, 0, 0),
 (160, 14, 1, 'title', '标题', '', 'inputtitle', 1, 80, '', '请输入标题', 'title', '', '', '', '', 0, 1, 0, 1, 1, 1, 1, 1, 4, 0, 0),
@@ -6168,8 +6082,12 @@ INSERT INTO `mb_model_field` (`fieldid`, `modelid`, `siteid`, `field`, `name`, `
 (176, 14, 1, 'readpoint', '阅读收费', '', '', 0, 5, '', '', 'readpoint', 'array (\n  ''minnumber'' => ''1'',\n  ''maxnumber'' => ''99999'',\n  ''decimaldigits'' => ''0'',\n  ''defaultvalue'' => '''',\n)', '', '-99', '-99', 0, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0),
 (177, 14, 1, 'username', '用户名', '', '', 0, 20, '', '', 'text', '', '', '', '', 1, 1, 0, 1, 0, 0, 0, 0, 98, 0, 0),
 (178, 14, 1, 'islink', '转向链接', '', '', 0, 0, '', '', 'islink', '', '', '', '', 0, 1, 0, 1, 0, 1, 0, 0, 20, 0, 0),
-(179, 13, 1, 'style', '酷站颜色', '', '', 0, 0, '', '', 'box', 'array (\n  ''options'' => ''红色|红色\r\n橙色|橙色\r\n黄色|黄色\r\n绿色|绿色\r\n蓝色|蓝色\r\n灰色|灰色\r\n黑色|黑色\r\n紫色|紫色\r\n棕色|棕色\r\n彩色|彩色'',\n  ''boxtype'' => ''checkbox'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n  ''width'' => ''80'',\n  ''size'' => ''1'',\n  ''defaultvalue'' => '''',\n  ''outputtype'' => ''0'',\n  ''filtertype'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 1, 1, 0, 0, 8, 0, 0),
-(180, 13, 1, 'tag', '行业分类', '', '', 0, 0, '', '', 'box', 'array (\n  ''options'' => ''企业模板|企业模板\r\n商务模板|商务模板\r\n博客模板|博客模板\r\nHTML5模板|HTML5模板\r\nCSS3模板|CSS3模板\r\n金融模板|金融模板\r\n科技模板|科技模板\r\n电脑模板|电脑模板\r\n珠宝首饰模板|珠宝首饰模板\r\n摄影模板|摄影模板\r\n相册模板|相册模板\r\n婚嫁模板|婚嫁模板\r\n商城模板|商城模板\r\n餐饮模板|餐饮模板\r\n酒店模板|酒店模板\r\n旅游模板|旅游模板\r\n体育模板|体育模板\r\n交友模板|交友模板\r\n美容模板|美容模板\r\n会所模板|会所模板\r\n医疗模板|医疗模板\r\n美容模板|美容模板\r\n宠物模板|宠物模板\r\n汽车模板|汽车模板\r\n建筑模板|建筑模板\r\n学校模板|学校模板\r\n咖啡模板|咖啡模板\r\n简历模板|简历模板'',\n  ''boxtype'' => ''checkbox'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n  ''width'' => ''80'',\n  ''size'' => ''1'',\n  ''defaultvalue'' => '''',\n  ''outputtype'' => ''0'',\n  ''filtertype'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 1, 1, 0, 0, 9, 0, 0);
+(179, 13, 1, 'style', '酷站颜色', '', '', 0, 0, '', '', 'box', 'array (\n  ''options'' => ''红色|红色\r\n粉色|粉色\r\n橙色|橙色\r\n黄色|黄色\r\n绿色|绿色\r\n蓝色|蓝色\r\n灰色|灰色\r\n黑色|黑色\r\n紫色|紫色\r\n白色|白色\r\n棕色|棕色\r\n彩色|彩色'',\n  ''boxtype'' => ''checkbox'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n  ''width'' => ''80'',\n  ''size'' => ''1'',\n  ''defaultvalue'' => '''',\n  ''outputtype'' => ''0'',\n  ''filtertype'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 1, 1, 0, 0, 8, 0, 0),
+(180, 13, 1, 'tag', '行业分类', '', '', 0, 0, '', '', 'box', 'array (\n  ''options'' => ''房地产|房地产\r\n影视音乐|影视音乐\r\n相集摄影|相集摄影\r\n游戏娱乐|游戏娱乐\r\n卡通漫画|卡通漫画\r\n企业品牌|企业品牌\r\n个人主页|个人主页\r\n设计团队|设计团队\r\n汽车|汽车\r\n体育|体育\r\n饮食|饮食\r\nIT通讯|IT通讯\r\n生活时尚|生活时尚\r\n旅游|旅游\r\n服饰|服饰\r\n儿童|儿童\r\n专题活动|专题活动\r\n中国风|中国风\r\nAppSite|AppSite'',\n  ''boxtype'' => ''checkbox'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n  ''width'' => ''80'',\n  ''size'' => ''1'',\n  ''defaultvalue'' => '''',\n  ''outputtype'' => ''0'',\n  ''filtertype'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 1, 1, 0, 0, 9, 0, 0),
+(181, 13, 1, 'area', '地区分类', '', '', 0, 0, '', '', 'box', 'array (\n  ''options'' => ''韩国|韩国\r\n国内|国内\r\n欧美|欧美\r\n日本|日本'',\n  ''boxtype'' => ''checkbox'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n  ''width'' => ''80'',\n  ''size'' => ''1'',\n  ''defaultvalue'' => '''',\n  ''outputtype'' => ''0'',\n  ''filtertype'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 1, 1, 0, 0, 10, 0, 0);
+INSERT INTO `mb_model_field` (`fieldid`, `modelid`, `siteid`, `field`, `name`, `tips`, `css`, `minlength`, `maxlength`, `pattern`, `errortips`, `formtype`, `setting`, `formattribute`, `unsetgroupids`, `unsetroleids`, `iscore`, `issystem`, `isunique`, `isbase`, `issearch`, `isadd`, `isfulltext`, `isposition`, `listorder`, `disabled`, `isomnipotent`) VALUES
+(182, 13, 1, 'class', '类别分类', '', '', 0, 0, '', '', 'box', 'array (\n  ''options'' => ''FLASH|FLASH\r\nHTML5|HTML5\r\nJavaScript|JavaScript\r\n单页|单页\r\n图文|图文'',\n  ''boxtype'' => ''checkbox'',\n  ''fieldtype'' => ''varchar'',\n  ''minnumber'' => ''1'',\n  ''width'' => ''80'',\n  ''size'' => ''1'',\n  ''defaultvalue'' => '''',\n  ''outputtype'' => ''0'',\n  ''filtertype'' => ''1'',\n)', '', '', '', 0, 0, 0, 1, 1, 1, 0, 0, 11, 0, 0),
+(183, 13, 1, 'scan_url', '浏览地址', '', '', 0, 100, '', '', 'text', 'array (\n  ''size'' => ''60'',\n  ''defaultvalue'' => '''',\n  ''ispassword'' => ''0'',\n)', '', '', '', 0, 0, 0, 1, 0, 1, 1, 0, 12, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6188,8 +6106,7 @@ CREATE TABLE IF NOT EXISTS `mb_module` (
   `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `installdate` date NOT NULL DEFAULT '0000-00-00',
-  `updatedate` date NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`module`)
+  `updatedate` date NOT NULL DEFAULT '0000-00-00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6229,7 +6146,7 @@ INSERT INTO `mb_module` (`module`, `name`, `url`, `iscore`, `version`, `descript
 --
 
 CREATE TABLE IF NOT EXISTS `mb_mood` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `catid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目id',
   `siteid` mediumint(6) unsigned NOT NULL DEFAULT '0' COMMENT '站点ID',
   `contentid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
@@ -6244,12 +6161,8 @@ CREATE TABLE IF NOT EXISTS `mb_mood` (
   `n8` int(10) unsigned NOT NULL DEFAULT '0',
   `n9` int(10) unsigned NOT NULL DEFAULT '0',
   `n10` int(10) unsigned NOT NULL DEFAULT '0',
-  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间',
-  PRIMARY KEY (`id`),
-  KEY `total` (`total`),
-  KEY `lastupdate` (`lastupdate`),
-  KEY `catid` (`catid`,`siteid`,`contentid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6258,7 +6171,7 @@ CREATE TABLE IF NOT EXISTS `mb_mood` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_news` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` varchar(80) NOT NULL DEFAULT '',
@@ -6274,12 +6187,8 @@ CREATE TABLE IF NOT EXISTS `mb_news` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6299,8 +6208,7 @@ CREATE TABLE IF NOT EXISTS `mb_news_data` (
   `relation` varchar(255) NOT NULL DEFAULT '',
   `voteid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `copyfrom` varchar(100) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
+  `copyfrom` varchar(100) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6316,8 +6224,7 @@ CREATE TABLE IF NOT EXISTS `mb_page` (
   `keywords` varchar(40) NOT NULL,
   `content` text NOT NULL,
   `template` varchar(30) NOT NULL,
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  KEY `catid` (`catid`)
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6327,7 +6234,7 @@ CREATE TABLE IF NOT EXISTS `mb_page` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_account` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `trade_sn` char(50) NOT NULL,
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
@@ -6346,12 +6253,8 @@ CREATE TABLE IF NOT EXISTS `mb_pay_account` (
   `type` tinyint(3) NOT NULL DEFAULT '1',
   `ip` char(15) NOT NULL DEFAULT '0.0.0.0',
   `status` enum('succ','failed','error','progress','timeout','cancel','waitting','unpay') NOT NULL DEFAULT 'unpay',
-  `adminnote` char(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`),
-  KEY `userid` (`userid`),
-  KEY `trade_sn` (`trade_sn`,`money`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `adminnote` char(20) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_pay_account`
@@ -6368,7 +6271,7 @@ INSERT INTO `mb_pay_account` (`id`, `trade_sn`, `userid`, `username`, `contactna
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_payment` (
-  `pay_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+`pay_id` tinyint(3) unsigned NOT NULL,
   `name` varchar(120) NOT NULL,
   `pay_name` varchar(120) NOT NULL,
   `pay_code` varchar(20) NOT NULL,
@@ -6382,10 +6285,8 @@ CREATE TABLE IF NOT EXISTS `mb_pay_payment` (
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `author` varchar(100) NOT NULL,
   `website` varchar(100) NOT NULL,
-  `version` varchar(20) NOT NULL,
-  PRIMARY KEY (`pay_id`),
-  KEY `pay_code` (`pay_code`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `version` varchar(20) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_pay_payment`
@@ -6402,7 +6303,7 @@ INSERT INTO `mb_pay_payment` (`pay_id`, `name`, `pay_name`, `pay_code`, `pay_des
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `creat_at` int(10) unsigned NOT NULL DEFAULT '0',
   `userid` int(10) unsigned NOT NULL DEFAULT '0',
   `username` varchar(20) NOT NULL,
@@ -6411,13 +6312,8 @@ CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
   `value` int(5) NOT NULL,
   `op_userid` int(10) unsigned NOT NULL DEFAULT '0',
   `op_username` char(20) NOT NULL,
-  `msg` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `type` (`type`),
-  KEY `creat_at` (`creat_at`),
-  KEY `logo` (`logo`),
-  KEY `userid` (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `msg` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6426,7 +6322,7 @@ CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_picture` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -6442,12 +6338,8 @@ CREATE TABLE IF NOT EXISTS `mb_picture` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6469,8 +6361,7 @@ CREATE TABLE IF NOT EXISTS `mb_picture_data` (
   `copyfrom` varchar(255) NOT NULL DEFAULT '',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `style` varchar(255) NOT NULL DEFAULT '',
-  `tag` varchar(255) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
+  `tag` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6480,7 +6371,7 @@ CREATE TABLE IF NOT EXISTS `mb_picture_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_position` (
-  `posid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`posid` smallint(5) unsigned NOT NULL,
   `modelid` smallint(5) unsigned DEFAULT '0',
   `catid` smallint(5) unsigned DEFAULT '0',
   `name` char(30) NOT NULL DEFAULT '',
@@ -6488,9 +6379,8 @@ CREATE TABLE IF NOT EXISTS `mb_position` (
   `extention` char(100) DEFAULT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `thumb` varchar(150) NOT NULL DEFAULT '',
-  PRIMARY KEY (`posid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+  `thumb` varchar(150) NOT NULL DEFAULT ''
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_position`
@@ -6529,9 +6419,7 @@ CREATE TABLE IF NOT EXISTS `mb_position_data` (
   `listorder` mediumint(8) DEFAULT '0',
   `expiration` int(10) NOT NULL,
   `extention` char(30) DEFAULT NULL,
-  `synedit` tinyint(1) DEFAULT '0',
-  KEY `posid` (`posid`),
-  KEY `listorder` (`listorder`)
+  `synedit` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6555,7 +6443,7 @@ INSERT INTO `mb_position_data` (`id`, `catid`, `posid`, `module`, `modelid`, `th
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(40) NOT NULL,
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6567,10 +6455,8 @@ CREATE TABLE IF NOT EXISTS `mb_poster` (
   `hits` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `clicks` smallint(5) unsigned NOT NULL DEFAULT '0',
   `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `spaceid` (`spaceid`,`siteid`,`disabled`,`listorder`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_poster`
@@ -6603,7 +6489,7 @@ INSERT INTO `mb_poster` (`id`, `siteid`, `name`, `spaceid`, `type`, `setting`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `pid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6612,10 +6498,8 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
   `ip` char(15) NOT NULL,
   `referer` char(120) NOT NULL,
   `clicktime` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `pid` (`pid`,`type`,`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6624,7 +6508,7 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `pid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6633,10 +6517,8 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
   `ip` char(15) NOT NULL,
   `referer` char(120) NOT NULL,
   `clicktime` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `pid` (`pid`,`type`,`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6645,7 +6527,7 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_space` (
-  `spaceid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`spaceid` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` char(50) NOT NULL,
   `type` char(30) NOT NULL,
@@ -6655,10 +6537,8 @@ CREATE TABLE IF NOT EXISTS `mb_poster_space` (
   `setting` char(100) NOT NULL,
   `description` char(100) NOT NULL,
   `items` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`spaceid`),
-  KEY `disabled` (`disabled`,`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_poster_space`
@@ -6685,7 +6565,7 @@ INSERT INTO `mb_poster_space` (`spaceid`, `siteid`, `name`, `type`, `path`, `wid
 --
 
 CREATE TABLE IF NOT EXISTS `mb_queue` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `type` char(5) DEFAULT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `path` varchar(100) DEFAULT NULL,
@@ -6693,11 +6573,8 @@ CREATE TABLE IF NOT EXISTS `mb_queue` (
   `status2` tinyint(1) DEFAULT '0',
   `status3` tinyint(1) DEFAULT '0',
   `status4` tinyint(1) DEFAULT '0',
-  `times` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `siteid` (`siteid`),
-  KEY `times` (`times`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `times` int(10) unsigned DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6706,7 +6583,7 @@ CREATE TABLE IF NOT EXISTS `mb_queue` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_release_point` (
-  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) NOT NULL,
   `name` varchar(30) DEFAULT NULL,
   `host` varchar(100) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
@@ -6714,9 +6591,8 @@ CREATE TABLE IF NOT EXISTS `mb_release_point` (
   `port` varchar(10) DEFAULT '21',
   `pasv` tinyint(1) DEFAULT '0',
   `ssl` tinyint(1) DEFAULT '0',
-  `path` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `path` varchar(50) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6725,17 +6601,13 @@ CREATE TABLE IF NOT EXISTS `mb_release_point` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_search` (
-  `searchid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`searchid` int(10) unsigned NOT NULL,
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `adddate` int(10) unsigned NOT NULL,
   `data` text NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`searchid`),
-  KEY `typeid` (`typeid`,`id`),
-  KEY `siteid` (`siteid`),
-  FULLTEXT KEY `data` (`data`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_search`
@@ -6780,10 +6652,7 @@ CREATE TABLE IF NOT EXISTS `mb_search_keyword` (
   `keyword` char(20) NOT NULL,
   `pinyin` char(20) NOT NULL,
   `searchnums` int(10) unsigned NOT NULL,
-  `data` char(20) NOT NULL,
-  UNIQUE KEY `keyword` (`keyword`),
-  UNIQUE KEY `pinyin` (`pinyin`),
-  FULLTEXT KEY `data` (`data`)
+  `data` char(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6802,9 +6671,7 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
   `m` char(20) NOT NULL,
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
-  `data` char(255) NOT NULL,
-  PRIMARY KEY (`sessionid`),
-  KEY `lastvisit` (`lastvisit`)
+  `data` char(255) NOT NULL
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 --
@@ -6812,7 +6679,7 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
 --
 
 INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `groupid`, `m`, `c`, `a`, `data`) VALUES
-('eddpj8hjr7asgt0bonibjtk3r0', 2, '127.0.0.1', 1436780764, 1, 0, 'admin', 'index', 'public_session_life', 'code|s:4:"wv5m";userid|s:1:"2";roleid|s:1:"1";pc_hash|s:6:"e8YhsS";lock_screen|i:0;');
+('9g9iv6ktcpmjnhf3hgfpbo2hf5', 0, '127.0.0.1', 1436830068, 0, 0, 'admin', 'index', 'public_session_life', '');
 
 -- --------------------------------------------------------
 
@@ -6821,7 +6688,7 @@ INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `g
 --
 
 CREATE TABLE IF NOT EXISTS `mb_site` (
-  `siteid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`siteid` smallint(5) unsigned NOT NULL,
   `name` char(30) DEFAULT '',
   `dirname` char(255) DEFAULT '',
   `domain` char(255) DEFAULT '',
@@ -6832,9 +6699,8 @@ CREATE TABLE IF NOT EXISTS `mb_site` (
   `default_style` char(50) DEFAULT NULL,
   `template` text,
   `setting` mediumtext,
-  `uuid` char(40) DEFAULT '',
-  PRIMARY KEY (`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `uuid` char(40) DEFAULT ''
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_site`
@@ -6850,7 +6716,7 @@ INSERT INTO `mb_site` (`siteid`, `name`, `dirname`, `domain`, `site_title`, `key
 --
 
 CREATE TABLE IF NOT EXISTS `mb_special` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`id` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `aid` int(10) unsigned NOT NULL DEFAULT '0',
   `title` char(60) NOT NULL,
@@ -6875,10 +6741,8 @@ CREATE TABLE IF NOT EXISTS `mb_special` (
   `listorder` smallint(5) unsigned NOT NULL,
   `elite` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isvideo` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `disabled` (`disabled`,`siteid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `isvideo` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6887,7 +6751,7 @@ CREATE TABLE IF NOT EXISTS `mb_special` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_special_content` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `specialid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `title` char(80) NOT NULL,
   `style` char(24) NOT NULL,
@@ -6905,11 +6769,8 @@ CREATE TABLE IF NOT EXISTS `mb_special_content` (
   `searchid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `isdata` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `videoid` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `specialid` (`specialid`,`typeid`,`isdata`),
-  KEY `typeid` (`typeid`,`isdata`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `videoid` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6924,8 +6785,7 @@ CREATE TABLE IF NOT EXISTS `mb_special_c_data` (
   `paginationtype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `maxcharperpage` mediumint(6) unsigned NOT NULL DEFAULT '0',
   `style` char(20) NOT NULL,
-  `show_template` varchar(30) NOT NULL,
-  UNIQUE KEY `id` (`id`)
+  `show_template` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6936,8 +6796,7 @@ CREATE TABLE IF NOT EXISTS `mb_special_c_data` (
 
 CREATE TABLE IF NOT EXISTS `mb_sphinx_counter` (
   `counter_id` int(11) unsigned NOT NULL,
-  `max_doc_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`counter_id`)
+  `max_doc_id` int(11) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6947,16 +6806,14 @@ CREATE TABLE IF NOT EXISTS `mb_sphinx_counter` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_admin` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+`id` smallint(6) NOT NULL,
   `username` char(20) NOT NULL,
   `password` char(32) NOT NULL,
   `encrypt` char(6) DEFAULT NULL,
   `issuper` tinyint(1) DEFAULT '0',
   `lastlogin` int(10) DEFAULT NULL,
-  `ip` char(15) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `ip` char(15) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_sso_admin`
@@ -6972,7 +6829,7 @@ INSERT INTO `mb_sso_admin` (`id`, `username`, `password`, `encrypt`, `issuper`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_applications` (
-  `appid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+`appid` smallint(6) unsigned NOT NULL,
   `type` char(16) NOT NULL DEFAULT '',
   `name` char(20) NOT NULL DEFAULT '',
   `url` char(255) NOT NULL DEFAULT '',
@@ -6980,10 +6837,8 @@ CREATE TABLE IF NOT EXISTS `mb_sso_applications` (
   `ip` char(15) NOT NULL DEFAULT '',
   `apifilename` char(30) NOT NULL DEFAULT 'phpsso.php',
   `charset` char(8) NOT NULL DEFAULT '',
-  `synlogin` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`appid`),
-  KEY `synlogin` (`synlogin`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `synlogin` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_sso_applications`
@@ -6999,7 +6854,7 @@ INSERT INTO `mb_sso_applications` (`appid`, `type`, `name`, `url`, `authkey`, `i
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_members` (
-  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`uid` int(10) unsigned NOT NULL,
   `username` char(20) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
   `random` char(8) NOT NULL DEFAULT '',
@@ -7011,12 +6866,8 @@ CREATE TABLE IF NOT EXISTS `mb_sso_members` (
   `appname` char(15) NOT NULL,
   `type` enum('app','connect') DEFAULT NULL,
   `avatar` tinyint(1) NOT NULL DEFAULT '0',
-  `ucuserid` mediumint(8) unsigned DEFAULT '0',
-  PRIMARY KEY (`uid`),
-  UNIQUE KEY `username` (`username`),
-  KEY `email` (`email`),
-  KEY `ucuserid` (`ucuserid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `ucuserid` mediumint(8) unsigned DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_sso_members`
@@ -7032,17 +6883,14 @@ INSERT INTO `mb_sso_members` (`uid`, `username`, `password`, `random`, `email`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_messagequeue` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `operation` char(32) NOT NULL,
   `succeed` tinyint(1) NOT NULL DEFAULT '0',
   `totalnum` smallint(6) unsigned NOT NULL DEFAULT '0',
   `noticedata` mediumtext NOT NULL,
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
-  `appstatus` mediumtext,
-  PRIMARY KEY (`id`),
-  KEY `dateline` (`dateline`),
-  KEY `succeed` (`succeed`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `appstatus` mediumtext
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_sso_messagequeue`
@@ -7067,9 +6915,7 @@ CREATE TABLE IF NOT EXISTS `mb_sso_session` (
   `m` char(20) NOT NULL,
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
-  `data` char(255) NOT NULL,
-  PRIMARY KEY (`sessionid`),
-  KEY `lastvisit` (`lastvisit`)
+  `data` char(255) NOT NULL
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7080,8 +6926,7 @@ CREATE TABLE IF NOT EXISTS `mb_sso_session` (
 
 CREATE TABLE IF NOT EXISTS `mb_sso_settings` (
   `name` varchar(32) NOT NULL DEFAULT '',
-  `data` text NOT NULL,
-  PRIMARY KEY (`name`)
+  `data` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -7102,7 +6947,7 @@ INSERT INTO `mb_sso_settings` (`name`, `data`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_tag` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `tag` text NOT NULL,
   `name` char(40) NOT NULL,
@@ -7113,9 +6958,8 @@ CREATE TABLE IF NOT EXISTS `mb_tag` (
   `page` char(15) NOT NULL,
   `return` char(20) NOT NULL,
   `cache` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `num` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `num` smallint(5) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7124,15 +6968,13 @@ CREATE TABLE IF NOT EXISTS `mb_tag` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_template_bak` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `creat_at` int(10) unsigned DEFAULT '0',
   `fileid` char(50) DEFAULT NULL,
   `userid` mediumint(8) DEFAULT NULL,
   `username` char(20) DEFAULT NULL,
-  `template` text,
-  PRIMARY KEY (`id`),
-  KEY `fileid` (`fileid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `template` text
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7145,8 +6987,7 @@ CREATE TABLE IF NOT EXISTS `mb_times` (
   `ip` char(15) NOT NULL,
   `logintime` int(10) unsigned NOT NULL DEFAULT '0',
   `isadmin` tinyint(1) NOT NULL DEFAULT '0',
-  `times` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`username`,`isadmin`)
+  `times` tinyint(1) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7156,7 +6997,7 @@ CREATE TABLE IF NOT EXISTS `mb_times` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_tx` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -7172,12 +7013,8 @@ CREATE TABLE IF NOT EXISTS `mb_tx` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_tx`
@@ -7203,8 +7040,7 @@ CREATE TABLE IF NOT EXISTS `mb_tx_data` (
   `template` varchar(30) NOT NULL,
   `paytype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `relation` varchar(255) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
+  `relation` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -7222,7 +7058,7 @@ INSERT INTO `mb_tx_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagina
 --
 
 CREATE TABLE IF NOT EXISTS `mb_type` (
-  `typeid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`typeid` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `module` char(15) NOT NULL,
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -7232,10 +7068,8 @@ CREATE TABLE IF NOT EXISTS `mb_type` (
   `url` char(100) NOT NULL,
   `template` char(30) NOT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`typeid`),
-  KEY `module` (`module`,`parentid`,`siteid`,`listorder`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_type`
@@ -7257,14 +7091,13 @@ INSERT INTO `mb_type` (`typeid`, `siteid`, `module`, `modelid`, `name`, `parenti
 --
 
 CREATE TABLE IF NOT EXISTS `mb_urlrule` (
-  `urlruleid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`urlruleid` smallint(5) unsigned NOT NULL,
   `module` varchar(15) NOT NULL,
   `file` varchar(20) NOT NULL,
   `ishtml` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `urlrule` varchar(255) NOT NULL,
-  `example` varchar(255) NOT NULL,
-  PRIMARY KEY (`urlruleid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+  `example` varchar(255) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_urlrule`
@@ -7287,7 +7120,7 @@ INSERT INTO `mb_urlrule` (`urlruleid`, `module`, `file`, `ishtml`, `urlrule`, `e
 --
 
 CREATE TABLE IF NOT EXISTS `mb_video` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`id` mediumint(8) unsigned NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -7305,12 +7138,8 @@ CREATE TABLE IF NOT EXISTS `mb_video` (
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
   `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
   `vision` varchar(255) NOT NULL DEFAULT '',
-  `video_category` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`,`listorder`,`id`),
-  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
-  KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `video_category` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7322,8 +7151,7 @@ CREATE TABLE IF NOT EXISTS `mb_video_content` (
   `contentid` int(10) unsigned NOT NULL DEFAULT '0',
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `videoid` int(10) unsigned NOT NULL DEFAULT '0',
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  KEY `videoid` (`videoid`)
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7343,8 +7171,7 @@ CREATE TABLE IF NOT EXISTS `mb_video_data` (
   `paytype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `relation` varchar(255) NOT NULL DEFAULT '',
-  `video` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  KEY `id` (`id`)
+  `video` tinyint(3) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7354,7 +7181,7 @@ CREATE TABLE IF NOT EXISTS `mb_video_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_video_store` (
-  `videoid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`videoid` int(10) unsigned NOT NULL,
   `title` char(60) NOT NULL,
   `vid` char(40) NOT NULL,
   `keywords` char(40) NOT NULL,
@@ -7367,10 +7194,8 @@ CREATE TABLE IF NOT EXISTS `mb_video_store` (
   `size` char(20) NOT NULL,
   `timelen` mediumint(9) NOT NULL DEFAULT '0',
   `userupload` tinyint(1) NOT NULL DEFAULT '0',
-  `channelid` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`videoid`),
-  KEY `videoid` (`videoid`,`status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `channelid` tinyint(3) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7385,10 +7210,7 @@ CREATE TABLE IF NOT EXISTS `mb_vote_data` (
   `time` int(10) unsigned NOT NULL DEFAULT '0',
   `ip` char(15) NOT NULL,
   `data` text NOT NULL,
-  `userinfo` text NOT NULL,
-  KEY `subjectid` (`subjectid`),
-  KEY `userid` (`userid`),
-  KEY `ip` (`ip`)
+  `userinfo` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7398,15 +7220,13 @@ CREATE TABLE IF NOT EXISTS `mb_vote_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_vote_option` (
-  `optionid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`optionid` mediumint(8) unsigned NOT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `subjectid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `option` varchar(255) NOT NULL,
   `image` varchar(100) DEFAULT NULL,
-  `listorder` tinyint(2) unsigned DEFAULT '0',
-  PRIMARY KEY (`optionid`),
-  KEY `subjectid` (`subjectid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `listorder` tinyint(2) unsigned DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7415,7 +7235,7 @@ CREATE TABLE IF NOT EXISTS `mb_vote_option` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
-  `subjectid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+`subjectid` mediumint(8) unsigned NOT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `subject` char(255) NOT NULL,
   `ismultiple` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -7434,12 +7254,8 @@ CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
   `minval` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `allowview` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `optionnumber` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `votenumber` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`subjectid`),
-  KEY `enabled` (`enabled`),
-  KEY `fromdate` (`fromdate`,`todate`),
-  KEY `todate` (`todate`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `votenumber` mediumint(8) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7448,15 +7264,14 @@ CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_workflow` (
-  `workflowid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+`workflowid` smallint(5) unsigned NOT NULL,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `steps` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `workname` varchar(20) NOT NULL,
   `description` varchar(255) NOT NULL,
   `setting` text NOT NULL,
-  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`workflowid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mb_workflow`
@@ -7468,6 +7283,992 @@ INSERT INTO `mb_workflow` (`workflowid`, `siteid`, `steps`, `workname`, `descrip
 (3, 1, 3, '三级审核', '审核三次', '', 0),
 (4, 1, 4, '四级审核', '四级审核', '', 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `mb_admin`
+--
+ALTER TABLE `mb_admin`
+ ADD PRIMARY KEY (`userid`), ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `mb_admin_panel`
+--
+ALTER TABLE `mb_admin_panel`
+ ADD UNIQUE KEY `userid` (`menuid`,`userid`);
+
+--
+-- Indexes for table `mb_admin_role`
+--
+ALTER TABLE `mb_admin_role`
+ ADD PRIMARY KEY (`roleid`), ADD KEY `listorder` (`listorder`), ADD KEY `disabled` (`disabled`);
+
+--
+-- Indexes for table `mb_admin_role_priv`
+--
+ALTER TABLE `mb_admin_role_priv`
+ ADD KEY `roleid` (`roleid`,`m`,`c`,`a`,`siteid`);
+
+--
+-- Indexes for table `mb_announce`
+--
+ALTER TABLE `mb_announce`
+ ADD PRIMARY KEY (`aid`), ADD KEY `siteid` (`siteid`,`passed`,`endtime`);
+
+--
+-- Indexes for table `mb_attachment`
+--
+ALTER TABLE `mb_attachment`
+ ADD PRIMARY KEY (`aid`), ADD KEY `authcode` (`authcode`);
+
+--
+-- Indexes for table `mb_attachment_index`
+--
+ALTER TABLE `mb_attachment_index`
+ ADD KEY `keyid` (`keyid`), ADD KEY `aid` (`aid`);
+
+--
+-- Indexes for table `mb_badword`
+--
+ALTER TABLE `mb_badword`
+ ADD PRIMARY KEY (`badid`), ADD UNIQUE KEY `badword` (`badword`), ADD KEY `usetimes` (`replaceword`,`listorder`), ADD KEY `hits` (`listorder`);
+
+--
+-- Indexes for table `mb_block`
+--
+ALTER TABLE `mb_block`
+ ADD PRIMARY KEY (`id`), ADD KEY `pos` (`pos`), ADD KEY `type` (`type`), ADD KEY `siteid` (`siteid`);
+
+--
+-- Indexes for table `mb_block_history`
+--
+ALTER TABLE `mb_block_history`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mb_block_priv`
+--
+ALTER TABLE `mb_block_priv`
+ ADD PRIMARY KEY (`id`), ADD KEY `blockid` (`blockid`), ADD KEY `roleid` (`roleid`,`siteid`);
+
+--
+-- Indexes for table `mb_cache`
+--
+ALTER TABLE `mb_cache`
+ ADD PRIMARY KEY (`filename`,`path`);
+
+--
+-- Indexes for table `mb_category`
+--
+ALTER TABLE `mb_category`
+ ADD PRIMARY KEY (`catid`), ADD KEY `module` (`module`,`parentid`,`listorder`,`catid`), ADD KEY `siteid` (`siteid`,`type`);
+
+--
+-- Indexes for table `mb_category_priv`
+--
+ALTER TABLE `mb_category_priv`
+ ADD KEY `catid` (`catid`,`roleid`,`is_admin`,`action`), ADD KEY `siteid` (`siteid`);
+
+--
+-- Indexes for table `mb_collection_content`
+--
+ALTER TABLE `mb_collection_content`
+ ADD PRIMARY KEY (`id`), ADD KEY `nodeid` (`nodeid`,`siteid`), ADD KEY `status` (`status`);
+
+--
+-- Indexes for table `mb_collection_history`
+--
+ALTER TABLE `mb_collection_history`
+ ADD PRIMARY KEY (`md5`,`siteid`);
+
+--
+-- Indexes for table `mb_collection_node`
+--
+ALTER TABLE `mb_collection_node`
+ ADD PRIMARY KEY (`nodeid`), ADD KEY `siteid` (`siteid`);
+
+--
+-- Indexes for table `mb_collection_program`
+--
+ALTER TABLE `mb_collection_program`
+ ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `nodeid` (`nodeid`);
+
+--
+-- Indexes for table `mb_comment`
+--
+ALTER TABLE `mb_comment`
+ ADD PRIMARY KEY (`commentid`), ADD KEY `lastupdate` (`lastupdate`), ADD KEY `siteid` (`siteid`);
+
+--
+-- Indexes for table `mb_comment_check`
+--
+ALTER TABLE `mb_comment_check`
+ ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `comment_data_id` (`comment_data_id`);
+
+--
+-- Indexes for table `mb_comment_data_1`
+--
+ALTER TABLE `mb_comment_data_1`
+ ADD PRIMARY KEY (`id`), ADD KEY `commentid` (`commentid`), ADD KEY `direction` (`direction`), ADD KEY `siteid` (`siteid`), ADD KEY `support` (`support`);
+
+--
+-- Indexes for table `mb_comment_setting`
+--
+ALTER TABLE `mb_comment_setting`
+ ADD PRIMARY KEY (`siteid`);
+
+--
+-- Indexes for table `mb_comment_table`
+--
+ALTER TABLE `mb_comment_table`
+ ADD PRIMARY KEY (`tableid`);
+
+--
+-- Indexes for table `mb_content_check`
+--
+ALTER TABLE `mb_content_check`
+ ADD KEY `username` (`username`), ADD KEY `checkid` (`checkid`), ADD KEY `status` (`status`,`inputtime`);
+
+--
+-- Indexes for table `mb_cool`
+--
+ALTER TABLE `mb_cool`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_cool_data`
+--
+ALTER TABLE `mb_cool_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_copyfrom`
+--
+ALTER TABLE `mb_copyfrom`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mb_datacall`
+--
+ALTER TABLE `mb_datacall`
+ ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`);
+
+--
+-- Indexes for table `mb_dbsource`
+--
+ALTER TABLE `mb_dbsource`
+ ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`);
+
+--
+-- Indexes for table `mb_download`
+--
+ALTER TABLE `mb_download`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_download_data`
+--
+ALTER TABLE `mb_download_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_downservers`
+--
+ALTER TABLE `mb_downservers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mb_extend_setting`
+--
+ALTER TABLE `mb_extend_setting`
+ ADD PRIMARY KEY (`id`), ADD KEY `key` (`key`);
+
+--
+-- Indexes for table `mb_favorite`
+--
+ALTER TABLE `mb_favorite`
+ ADD PRIMARY KEY (`id`), ADD KEY `userid` (`userid`);
+
+--
+-- Indexes for table `mb_hits`
+--
+ALTER TABLE `mb_hits`
+ ADD PRIMARY KEY (`hitsid`);
+
+--
+-- Indexes for table `mb_ipbanned`
+--
+ALTER TABLE `mb_ipbanned`
+ ADD PRIMARY KEY (`ipbannedid`);
+
+--
+-- Indexes for table `mb_keylink`
+--
+ALTER TABLE `mb_keylink`
+ ADD PRIMARY KEY (`keylinkid`);
+
+--
+-- Indexes for table `mb_keyword`
+--
+ALTER TABLE `mb_keyword`
+ ADD PRIMARY KEY (`id`), ADD KEY `keyword` (`keyword`,`siteid`);
+
+--
+-- Indexes for table `mb_keyword_data`
+--
+ALTER TABLE `mb_keyword_data`
+ ADD PRIMARY KEY (`id`), ADD KEY `tagid` (`tagid`,`siteid`);
+
+--
+-- Indexes for table `mb_link`
+--
+ALTER TABLE `mb_link`
+ ADD PRIMARY KEY (`linkid`), ADD KEY `typeid` (`typeid`,`passed`,`listorder`,`linkid`);
+
+--
+-- Indexes for table `mb_linkage`
+--
+ALTER TABLE `mb_linkage`
+ ADD PRIMARY KEY (`linkageid`,`keyid`), ADD KEY `parentid` (`parentid`,`listorder`);
+
+--
+-- Indexes for table `mb_log`
+--
+ALTER TABLE `mb_log`
+ ADD PRIMARY KEY (`logid`), ADD KEY `module` (`module`,`file`,`action`), ADD KEY `username` (`username`,`action`);
+
+--
+-- Indexes for table `mb_member`
+--
+ALTER TABLE `mb_member`
+ ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`(20)), ADD KEY `phpssouid` (`phpssouid`);
+
+--
+-- Indexes for table `mb_member_detail`
+--
+ALTER TABLE `mb_member_detail`
+ ADD UNIQUE KEY `userid` (`userid`);
+
+--
+-- Indexes for table `mb_member_group`
+--
+ALTER TABLE `mb_member_group`
+ ADD PRIMARY KEY (`groupid`), ADD KEY `disabled` (`disabled`), ADD KEY `listorder` (`sort`);
+
+--
+-- Indexes for table `mb_member_menu`
+--
+ALTER TABLE `mb_member_menu`
+ ADD PRIMARY KEY (`id`), ADD KEY `listorder` (`listorder`), ADD KEY `parentid` (`parentid`), ADD KEY `module` (`m`,`c`,`a`);
+
+--
+-- Indexes for table `mb_member_verify`
+--
+ALTER TABLE `mb_member_verify`
+ ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`(20));
+
+--
+-- Indexes for table `mb_member_vip`
+--
+ALTER TABLE `mb_member_vip`
+ ADD UNIQUE KEY `userid` (`userid`);
+
+--
+-- Indexes for table `mb_menu`
+--
+ALTER TABLE `mb_menu`
+ ADD PRIMARY KEY (`id`), ADD KEY `listorder` (`listorder`), ADD KEY `parentid` (`parentid`), ADD KEY `module` (`m`,`c`,`a`);
+
+--
+-- Indexes for table `mb_message`
+--
+ALTER TABLE `mb_message`
+ ADD PRIMARY KEY (`messageid`), ADD KEY `msgtoid` (`send_to_id`,`folder`), ADD KEY `replyid` (`replyid`), ADD KEY `folder` (`send_from_id`,`folder`);
+
+--
+-- Indexes for table `mb_message_data`
+--
+ALTER TABLE `mb_message_data`
+ ADD PRIMARY KEY (`id`), ADD KEY `message` (`userid`,`group_message_id`);
+
+--
+-- Indexes for table `mb_message_group`
+--
+ALTER TABLE `mb_message_group`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mb_moban`
+--
+ALTER TABLE `mb_moban`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_moban_data`
+--
+ALTER TABLE `mb_moban_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_model`
+--
+ALTER TABLE `mb_model`
+ ADD PRIMARY KEY (`modelid`), ADD KEY `type` (`type`,`siteid`);
+
+--
+-- Indexes for table `mb_model_field`
+--
+ALTER TABLE `mb_model_field`
+ ADD PRIMARY KEY (`fieldid`), ADD KEY `modelid` (`modelid`,`disabled`), ADD KEY `field` (`field`,`modelid`);
+
+--
+-- Indexes for table `mb_module`
+--
+ALTER TABLE `mb_module`
+ ADD PRIMARY KEY (`module`);
+
+--
+-- Indexes for table `mb_mood`
+--
+ALTER TABLE `mb_mood`
+ ADD PRIMARY KEY (`id`), ADD KEY `total` (`total`), ADD KEY `lastupdate` (`lastupdate`), ADD KEY `catid` (`catid`,`siteid`,`contentid`);
+
+--
+-- Indexes for table `mb_news`
+--
+ALTER TABLE `mb_news`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_news_data`
+--
+ALTER TABLE `mb_news_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_page`
+--
+ALTER TABLE `mb_page`
+ ADD KEY `catid` (`catid`);
+
+--
+-- Indexes for table `mb_pay_account`
+--
+ALTER TABLE `mb_pay_account`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`), ADD KEY `userid` (`userid`), ADD KEY `trade_sn` (`trade_sn`,`money`,`status`,`id`);
+
+--
+-- Indexes for table `mb_pay_payment`
+--
+ALTER TABLE `mb_pay_payment`
+ ADD PRIMARY KEY (`pay_id`), ADD KEY `pay_code` (`pay_code`);
+
+--
+-- Indexes for table `mb_pay_spend`
+--
+ALTER TABLE `mb_pay_spend`
+ ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`), ADD KEY `creat_at` (`creat_at`), ADD KEY `logo` (`logo`), ADD KEY `userid` (`userid`);
+
+--
+-- Indexes for table `mb_picture`
+--
+ALTER TABLE `mb_picture`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_picture_data`
+--
+ALTER TABLE `mb_picture_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_position`
+--
+ALTER TABLE `mb_position`
+ ADD PRIMARY KEY (`posid`);
+
+--
+-- Indexes for table `mb_position_data`
+--
+ALTER TABLE `mb_position_data`
+ ADD KEY `posid` (`posid`), ADD KEY `listorder` (`listorder`);
+
+--
+-- Indexes for table `mb_poster`
+--
+ALTER TABLE `mb_poster`
+ ADD PRIMARY KEY (`id`), ADD KEY `spaceid` (`spaceid`,`siteid`,`disabled`,`listorder`);
+
+--
+-- Indexes for table `mb_poster_201408`
+--
+ALTER TABLE `mb_poster_201408`
+ ADD PRIMARY KEY (`id`), ADD KEY `pid` (`pid`,`type`,`ip`);
+
+--
+-- Indexes for table `mb_poster_201502`
+--
+ALTER TABLE `mb_poster_201502`
+ ADD PRIMARY KEY (`id`), ADD KEY `pid` (`pid`,`type`,`ip`);
+
+--
+-- Indexes for table `mb_poster_space`
+--
+ALTER TABLE `mb_poster_space`
+ ADD PRIMARY KEY (`spaceid`), ADD KEY `disabled` (`disabled`,`siteid`);
+
+--
+-- Indexes for table `mb_queue`
+--
+ALTER TABLE `mb_queue`
+ ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `times` (`times`);
+
+--
+-- Indexes for table `mb_release_point`
+--
+ALTER TABLE `mb_release_point`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mb_search`
+--
+ALTER TABLE `mb_search`
+ ADD PRIMARY KEY (`searchid`), ADD KEY `typeid` (`typeid`,`id`), ADD KEY `siteid` (`siteid`), ADD FULLTEXT KEY `data` (`data`);
+
+--
+-- Indexes for table `mb_search_keyword`
+--
+ALTER TABLE `mb_search_keyword`
+ ADD UNIQUE KEY `keyword` (`keyword`), ADD UNIQUE KEY `pinyin` (`pinyin`), ADD FULLTEXT KEY `data` (`data`);
+
+--
+-- Indexes for table `mb_session`
+--
+ALTER TABLE `mb_session`
+ ADD PRIMARY KEY (`sessionid`), ADD KEY `lastvisit` (`lastvisit`);
+
+--
+-- Indexes for table `mb_site`
+--
+ALTER TABLE `mb_site`
+ ADD PRIMARY KEY (`siteid`);
+
+--
+-- Indexes for table `mb_special`
+--
+ALTER TABLE `mb_special`
+ ADD PRIMARY KEY (`id`), ADD KEY `disabled` (`disabled`,`siteid`);
+
+--
+-- Indexes for table `mb_special_content`
+--
+ALTER TABLE `mb_special_content`
+ ADD PRIMARY KEY (`id`), ADD KEY `specialid` (`specialid`,`typeid`,`isdata`), ADD KEY `typeid` (`typeid`,`isdata`);
+
+--
+-- Indexes for table `mb_special_c_data`
+--
+ALTER TABLE `mb_special_c_data`
+ ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_sphinx_counter`
+--
+ALTER TABLE `mb_sphinx_counter`
+ ADD PRIMARY KEY (`counter_id`);
+
+--
+-- Indexes for table `mb_sso_admin`
+--
+ALTER TABLE `mb_sso_admin`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `mb_sso_applications`
+--
+ALTER TABLE `mb_sso_applications`
+ ADD PRIMARY KEY (`appid`), ADD KEY `synlogin` (`synlogin`);
+
+--
+-- Indexes for table `mb_sso_members`
+--
+ALTER TABLE `mb_sso_members`
+ ADD PRIMARY KEY (`uid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`), ADD KEY `ucuserid` (`ucuserid`);
+
+--
+-- Indexes for table `mb_sso_messagequeue`
+--
+ALTER TABLE `mb_sso_messagequeue`
+ ADD PRIMARY KEY (`id`), ADD KEY `dateline` (`dateline`), ADD KEY `succeed` (`succeed`,`id`);
+
+--
+-- Indexes for table `mb_sso_session`
+--
+ALTER TABLE `mb_sso_session`
+ ADD PRIMARY KEY (`sessionid`), ADD KEY `lastvisit` (`lastvisit`);
+
+--
+-- Indexes for table `mb_sso_settings`
+--
+ALTER TABLE `mb_sso_settings`
+ ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `mb_tag`
+--
+ALTER TABLE `mb_tag`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mb_template_bak`
+--
+ALTER TABLE `mb_template_bak`
+ ADD PRIMARY KEY (`id`), ADD KEY `fileid` (`fileid`);
+
+--
+-- Indexes for table `mb_times`
+--
+ALTER TABLE `mb_times`
+ ADD PRIMARY KEY (`username`,`isadmin`);
+
+--
+-- Indexes for table `mb_tx`
+--
+ALTER TABLE `mb_tx`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_tx_data`
+--
+ALTER TABLE `mb_tx_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_type`
+--
+ALTER TABLE `mb_type`
+ ADD PRIMARY KEY (`typeid`), ADD KEY `module` (`module`,`parentid`,`siteid`,`listorder`);
+
+--
+-- Indexes for table `mb_urlrule`
+--
+ALTER TABLE `mb_urlrule`
+ ADD PRIMARY KEY (`urlruleid`);
+
+--
+-- Indexes for table `mb_video`
+--
+ALTER TABLE `mb_video`
+ ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
+
+--
+-- Indexes for table `mb_video_content`
+--
+ALTER TABLE `mb_video_content`
+ ADD KEY `videoid` (`videoid`);
+
+--
+-- Indexes for table `mb_video_data`
+--
+ALTER TABLE `mb_video_data`
+ ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `mb_video_store`
+--
+ALTER TABLE `mb_video_store`
+ ADD PRIMARY KEY (`videoid`), ADD KEY `videoid` (`videoid`,`status`);
+
+--
+-- Indexes for table `mb_vote_data`
+--
+ALTER TABLE `mb_vote_data`
+ ADD KEY `subjectid` (`subjectid`), ADD KEY `userid` (`userid`), ADD KEY `ip` (`ip`);
+
+--
+-- Indexes for table `mb_vote_option`
+--
+ALTER TABLE `mb_vote_option`
+ ADD PRIMARY KEY (`optionid`), ADD KEY `subjectid` (`subjectid`);
+
+--
+-- Indexes for table `mb_vote_subject`
+--
+ALTER TABLE `mb_vote_subject`
+ ADD PRIMARY KEY (`subjectid`), ADD KEY `enabled` (`enabled`), ADD KEY `fromdate` (`fromdate`,`todate`), ADD KEY `todate` (`todate`);
+
+--
+-- Indexes for table `mb_workflow`
+--
+ALTER TABLE `mb_workflow`
+ ADD PRIMARY KEY (`workflowid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `mb_admin`
+--
+ALTER TABLE `mb_admin`
+MODIFY `userid` mediumint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mb_admin_role`
+--
+ALTER TABLE `mb_admin_role`
+MODIFY `roleid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `mb_announce`
+--
+ALTER TABLE `mb_announce`
+MODIFY `aid` smallint(4) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_attachment`
+--
+ALTER TABLE `mb_attachment`
+MODIFY `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT for table `mb_badword`
+--
+ALTER TABLE `mb_badword`
+MODIFY `badid` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_block`
+--
+ALTER TABLE `mb_block`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_block_history`
+--
+ALTER TABLE `mb_block_history`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_block_priv`
+--
+ALTER TABLE `mb_block_priv`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_category`
+--
+ALTER TABLE `mb_category`
+MODIFY `catid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT for table `mb_collection_content`
+--
+ALTER TABLE `mb_collection_content`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_collection_node`
+--
+ALTER TABLE `mb_collection_node`
+MODIFY `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_collection_program`
+--
+ALTER TABLE `mb_collection_program`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_comment_check`
+--
+ALTER TABLE `mb_comment_check`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_comment_data_1`
+--
+ALTER TABLE `mb_comment_data_1`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `mb_comment_table`
+--
+ALTER TABLE `mb_comment_table`
+MODIFY `tableid` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '表ID号',AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_cool`
+--
+ALTER TABLE `mb_cool`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_copyfrom`
+--
+ALTER TABLE `mb_copyfrom`
+MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_datacall`
+--
+ALTER TABLE `mb_datacall`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_dbsource`
+--
+ALTER TABLE `mb_dbsource`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_download`
+--
+ALTER TABLE `mb_download`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_downservers`
+--
+ALTER TABLE `mb_downservers`
+MODIFY `id` mediumint(8) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_extend_setting`
+--
+ALTER TABLE `mb_extend_setting`
+MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_favorite`
+--
+ALTER TABLE `mb_favorite`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_ipbanned`
+--
+ALTER TABLE `mb_ipbanned`
+MODIFY `ipbannedid` smallint(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_keylink`
+--
+ALTER TABLE `mb_keylink`
+MODIFY `keylinkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_keyword`
+--
+ALTER TABLE `mb_keyword`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+--
+-- AUTO_INCREMENT for table `mb_keyword_data`
+--
+ALTER TABLE `mb_keyword_data`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111;
+--
+-- AUTO_INCREMENT for table `mb_link`
+--
+ALTER TABLE `mb_link`
+MODIFY `linkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mb_linkage`
+--
+ALTER TABLE `mb_linkage`
+MODIFY `linkageid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3360;
+--
+-- AUTO_INCREMENT for table `mb_log`
+--
+ALTER TABLE `mb_log`
+MODIFY `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=644;
+--
+-- AUTO_INCREMENT for table `mb_member`
+--
+ALTER TABLE `mb_member`
+MODIFY `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_member_group`
+--
+ALTER TABLE `mb_member_group`
+MODIFY `groupid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `mb_member_menu`
+--
+ALTER TABLE `mb_member_menu`
+MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `mb_member_verify`
+--
+ALTER TABLE `mb_member_verify`
+MODIFY `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_menu`
+--
+ALTER TABLE `mb_menu`
+MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1562;
+--
+-- AUTO_INCREMENT for table `mb_message`
+--
+ALTER TABLE `mb_message`
+MODIFY `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_message_data`
+--
+ALTER TABLE `mb_message_data`
+MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_message_group`
+--
+ALTER TABLE `mb_message_group`
+MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_moban`
+--
+ALTER TABLE `mb_moban`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+--
+-- AUTO_INCREMENT for table `mb_model`
+--
+ALTER TABLE `mb_model`
+MODIFY `modelid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `mb_model_field`
+--
+ALTER TABLE `mb_model_field`
+MODIFY `fieldid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=184;
+--
+-- AUTO_INCREMENT for table `mb_mood`
+--
+ALTER TABLE `mb_mood`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_news`
+--
+ALTER TABLE `mb_news`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_pay_account`
+--
+ALTER TABLE `mb_pay_account`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mb_pay_payment`
+--
+ALTER TABLE `mb_pay_payment`
+MODIFY `pay_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mb_pay_spend`
+--
+ALTER TABLE `mb_pay_spend`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_picture`
+--
+ALTER TABLE `mb_picture`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `mb_position`
+--
+ALTER TABLE `mb_position`
+MODIFY `posid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `mb_poster`
+--
+ALTER TABLE `mb_poster`
+MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `mb_poster_201408`
+--
+ALTER TABLE `mb_poster_201408`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_poster_201502`
+--
+ALTER TABLE `mb_poster_201502`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_poster_space`
+--
+ALTER TABLE `mb_poster_space`
+MODIFY `spaceid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `mb_queue`
+--
+ALTER TABLE `mb_queue`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_release_point`
+--
+ALTER TABLE `mb_release_point`
+MODIFY `id` mediumint(8) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_search`
+--
+ALTER TABLE `mb_search`
+MODIFY `searchid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+--
+-- AUTO_INCREMENT for table `mb_site`
+--
+ALTER TABLE `mb_site`
+MODIFY `siteid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_special`
+--
+ALTER TABLE `mb_special`
+MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_special_content`
+--
+ALTER TABLE `mb_special_content`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_sso_admin`
+--
+ALTER TABLE `mb_sso_admin`
+MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_sso_applications`
+--
+ALTER TABLE `mb_sso_applications`
+MODIFY `appid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_sso_members`
+--
+ALTER TABLE `mb_sso_members`
+MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_sso_messagequeue`
+--
+ALTER TABLE `mb_sso_messagequeue`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mb_tag`
+--
+ALTER TABLE `mb_tag`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_template_bak`
+--
+ALTER TABLE `mb_template_bak`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_tx`
+--
+ALTER TABLE `mb_tx`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mb_type`
+--
+ALTER TABLE `mb_type`
+MODIFY `typeid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+--
+-- AUTO_INCREMENT for table `mb_urlrule`
+--
+ALTER TABLE `mb_urlrule`
+MODIFY `urlruleid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `mb_video`
+--
+ALTER TABLE `mb_video`
+MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_video_store`
+--
+ALTER TABLE `mb_video_store`
+MODIFY `videoid` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_vote_option`
+--
+ALTER TABLE `mb_vote_option`
+MODIFY `optionid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_vote_subject`
+--
+ALTER TABLE `mb_vote_subject`
+MODIFY `subjectid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mb_workflow`
+--
+ALTER TABLE `mb_workflow`
+MODIFY `workflowid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

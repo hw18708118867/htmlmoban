@@ -55,40 +55,40 @@
         <div id="article">
             <div class="paixu">
                 <h1>按颜色：</h1>
-                <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
-                <a title="红色" href="<?php echo search_tag($catid,'','红色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509484077.jpg"></a>
-                <a title="粉色" href="<?php echo search_tag($catid,'','粉色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509485415.jpg"></a>
-                <a title="橘色" href="<?php echo search_tag($catid,'','橘色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509490679.jpg"></a>
-                <a title="黄色" href="<?php echo search_tag($catid,'','黄色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509491954.jpg"></a>
-                <a title="蓝色" href="<?php echo search_tag($catid,'','蓝色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509493285.jpg"></a>
-                <a title="绿色" href="<?php echo search_tag($catid,'','绿色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509494789.jpg"></a>
-                <a title="紫色" href="<?php echo search_tag($catid,'','紫色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509500299.jpg"></a>
-                <a title="黑色" href="<?php echo search_tag($catid,'','黑色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509501523.jpg"></a>
-                <a title="白色" href="<?php echo search_tag($catid,'','白色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509502786.jpg"></a>
-                <a title="灰色" href="<?php echo search_tag($catid,'','灰色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509503847.jpg"></a>
-                <a title="棕色" href="<?php echo search_tag($catid,'','棕色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509505195.jpg"></a>
-                <a title="彩色" href="<?php echo search_tag($catid,'','彩色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509510222.jpg"></a>
+                <a class="red" href="<?php echo search_tag($catid,$key,'',13,$area,$class);?>">全部</a>
+                <a title="红色" href="<?php echo search_tag($catid,$key,'红色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509484077.jpg"></a>
+                <a title="粉色" href="<?php echo search_tag($catid,$key,'粉色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509485415.jpg"></a>
+                <a title="橘色" href="<?php echo search_tag($catid,$key,'橘色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509490679.jpg"></a>
+                <a title="黄色" href="<?php echo search_tag($catid,$key,'黄色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509491954.jpg"></a>
+                <a title="蓝色" href="<?php echo search_tag($catid,$key,'蓝色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509493285.jpg"></a>
+                <a title="绿色" href="<?php echo search_tag($catid,$key,'绿色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509494789.jpg"></a>
+                <a title="紫色" href="<?php echo search_tag($catid,$key,'紫色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509500299.jpg"></a>
+                <a title="黑色" href="<?php echo search_tag($catid,$key,'黑色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509501523.jpg"></a>
+                <a title="白色" href="<?php echo search_tag($catid,$key,'白色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509502786.jpg"></a>
+                <a title="灰色" href="<?php echo search_tag($catid,$key,'灰色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509503847.jpg"></a>
+                <a title="棕色" href="<?php echo search_tag($catid,$key,'棕色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509505195.jpg"></a>
+                <a title="彩色" href="<?php echo search_tag($catid,$key,'彩色',13,$area,$class);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509510222.jpg"></a>
             </div>
             <div class="paixu">
                 <h1>按行业：</h1>
-                <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
+                <a class="red" href="<?php echo search_tag($catid,'',$color,13,$area,$class);?>">全部</a>
                 <?php $n=1;if(is_array(get_tag_list(180))) foreach(get_tag_list(180) AS $tag) { ?>
-                <a href="<?php echo search_tag($catid,$tag,'',13);?>"><?php echo $tag;?></a>
+                <a href="<?php echo search_tag($catid,$tag,$color,13,$area,$class);?>"><?php echo $tag;?></a>
                 <?php $n++;}unset($n); ?>
             </div>
 
             <div class="paixu">
                 <h1>按地区：</h1>
-                <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
+                <a class="red" href="<?php echo search_tag($catid,$key,$color,13,'',$class);?>">全部</a>
                 <?php $n=1;if(is_array(get_tag_list(181))) foreach(get_tag_list(181) AS $tag) { ?>
-                <a href="<?php echo search_tag($catid,'','',13,$tag);?>"><?php echo $tag;?>酷站</a>
+                <a href="<?php echo search_tag($catid,$key,$color,13,$tag,$class);?>"><?php echo $tag;?>酷站</a>
                 <?php $n++;}unset($n); ?>
             </div>
             <div class="paixu">
                 <h1>按类别：</h1>
-                <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
+                <a class="red" href="<?php echo search_tag($catid,$key,$color,13,$area,'');?>">全部</a>
                 <?php $n=1;if(is_array(get_tag_list(182))) foreach(get_tag_list(182) AS $tag) { ?>
-                <a href="<?php echo search_tag($catid,'','',13,'',$tag);?>"><?php echo $tag;?>酷站</a>
+                <a href="<?php echo search_tag($catid,$key,$color,13,$area,$tag);?>"><?php echo $tag;?>酷站</a>
                 <?php $n++;}unset($n); ?>
             </div>
 
@@ -97,8 +97,7 @@
 
 
                 <!--------feedarea------------>
-                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=8b4cb33be597462fe6155be4cd415a26&action=lists&catid=%24catid&num=10&moreinfo=1&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 10;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'moreinfo'=>'1','order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'moreinfo'=>'1','order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
-                <?php $n=1;if(is_array($data)) foreach($data AS $vo) { ?>
+                <?php $n=1;if(is_array($datas)) foreach($datas AS $vo) { ?>
                 <div class="masonry">
                     <div id="blog_2113" class="box masonry-brick">
                         <div class="content" id="feedText_2113">
@@ -121,7 +120,6 @@
                         </div>
                     </div>
                     <?php $n++;}unset($n); ?>
-                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 
 
                     <!--------feedarea--------------->

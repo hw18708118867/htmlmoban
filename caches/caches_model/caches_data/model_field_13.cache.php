@@ -149,6 +149,7 @@ return array (
     'formtype' => 'box',
     'setting' => 'array (
   \'options\' => \'红色|红色
+粉色|粉色
 橙色|橙色
 黄色|黄色
 绿色|绿色
@@ -156,6 +157,7 @@ return array (
 灰色|灰色
 黑色|黑色
 紫色|紫色
+白色|白色
 棕色|棕色
 彩色|彩色\',
   \'boxtype\' => \'checkbox\',
@@ -182,6 +184,7 @@ return array (
     'disabled' => '0',
     'isomnipotent' => '0',
     'options' => '红色|红色
+粉色|粉色
 橙色|橙色
 黄色|黄色
 绿色|绿色
@@ -189,6 +192,7 @@ return array (
 灰色|灰色
 黑色|黑色
 紫色|紫色
+白色|白色
 棕色|棕色
 彩色|彩色',
     'boxtype' => 'checkbox',
@@ -215,34 +219,25 @@ return array (
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'企业模板|企业模板
-商务模板|商务模板
-博客模板|博客模板
-HTML5模板|HTML5模板
-CSS3模板|CSS3模板
-金融模板|金融模板
-科技模板|科技模板
-电脑模板|电脑模板
-珠宝首饰模板|珠宝首饰模板
-摄影模板|摄影模板
-相册模板|相册模板
-婚嫁模板|婚嫁模板
-商城模板|商城模板
-餐饮模板|餐饮模板
-酒店模板|酒店模板
-旅游模板|旅游模板
-体育模板|体育模板
-交友模板|交友模板
-美容模板|美容模板
-会所模板|会所模板
-医疗模板|医疗模板
-美容模板|美容模板
-宠物模板|宠物模板
-汽车模板|汽车模板
-建筑模板|建筑模板
-学校模板|学校模板
-咖啡模板|咖啡模板
-简历模板|简历模板\',
+  \'options\' => \'房地产|房地产
+影视音乐|影视音乐
+相集摄影|相集摄影
+游戏娱乐|游戏娱乐
+卡通漫画|卡通漫画
+企业品牌|企业品牌
+个人主页|个人主页
+设计团队|设计团队
+汽车|汽车
+体育|体育
+饮食|饮食
+IT通讯|IT通讯
+生活时尚|生活时尚
+旅游|旅游
+服饰|服饰
+儿童|儿童
+专题活动|专题活动
+中国风|中国风
+AppSite|AppSite\',
   \'boxtype\' => \'checkbox\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -266,34 +261,25 @@ CSS3模板|CSS3模板
     'listorder' => '9',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => '企业模板|企业模板
-商务模板|商务模板
-博客模板|博客模板
-HTML5模板|HTML5模板
-CSS3模板|CSS3模板
-金融模板|金融模板
-科技模板|科技模板
-电脑模板|电脑模板
-珠宝首饰模板|珠宝首饰模板
-摄影模板|摄影模板
-相册模板|相册模板
-婚嫁模板|婚嫁模板
-商城模板|商城模板
-餐饮模板|餐饮模板
-酒店模板|酒店模板
-旅游模板|旅游模板
-体育模板|体育模板
-交友模板|交友模板
-美容模板|美容模板
-会所模板|会所模板
-医疗模板|医疗模板
-美容模板|美容模板
-宠物模板|宠物模板
-汽车模板|汽车模板
-建筑模板|建筑模板
-学校模板|学校模板
-咖啡模板|咖啡模板
-简历模板|简历模板',
+    'options' => '房地产|房地产
+影视音乐|影视音乐
+相集摄影|相集摄影
+游戏娱乐|游戏娱乐
+卡通漫画|卡通漫画
+企业品牌|企业品牌
+个人主页|个人主页
+设计团队|设计团队
+汽车|汽车
+体育|体育
+饮食|饮食
+IT通讯|IT通讯
+生活时尚|生活时尚
+旅游|旅游
+服饰|服饰
+儿童|儿童
+专题活动|专题活动
+中国风|中国风
+AppSite|AppSite',
     'boxtype' => 'checkbox',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
@@ -302,6 +288,155 @@ CSS3模板|CSS3模板
     'defaultvalue' => '',
     'outputtype' => '0',
     'filtertype' => '1',
+  ),
+  'area' => 
+  array (
+    'fieldid' => '181',
+    'modelid' => '13',
+    'siteid' => '1',
+    'field' => 'area',
+    'name' => '地区分类',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'韩国|韩国
+国内|国内
+欧美|欧美
+日本|日本\',
+  \'boxtype\' => \'checkbox\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'0\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '0',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '1',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '10',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => '韩国|韩国
+国内|国内
+欧美|欧美
+日本|日本',
+    'boxtype' => 'checkbox',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '0',
+    'filtertype' => '1',
+  ),
+  'class' => 
+  array (
+    'fieldid' => '182',
+    'modelid' => '13',
+    'siteid' => '1',
+    'field' => 'class',
+    'name' => '类别分类',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'FLASH|FLASH
+HTML5|HTML5
+JavaScript|JavaScript
+单页|单页
+图文|图文\',
+  \'boxtype\' => \'checkbox\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'0\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '0',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '1',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '11',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => 'FLASH|FLASH
+HTML5|HTML5
+JavaScript|JavaScript
+单页|单页
+图文|图文',
+    'boxtype' => 'checkbox',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '0',
+    'filtertype' => '1',
+  ),
+  'scan_url' => 
+  array (
+    'fieldid' => '183',
+    'modelid' => '13',
+    'siteid' => '1',
+    'field' => 'scan_url',
+    'name' => '浏览地址',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '100',
+    'pattern' => '',
+    'errortips' => '',
+    'formtype' => 'text',
+    'setting' => 'array (
+  \'size\' => \'60\',
+  \'defaultvalue\' => \'\',
+  \'ispassword\' => \'0\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '0',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '0',
+    'isadd' => '1',
+    'isfulltext' => '1',
+    'isposition' => '0',
+    'listorder' => '12',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'size' => '60',
+    'defaultvalue' => '',
+    'ispassword' => '0',
   ),
   'description' => 
   array (
@@ -334,7 +469,7 @@ CSS3模板|CSS3模板
     'isadd' => '1',
     'isfulltext' => '1',
     'isposition' => '1',
-    'listorder' => '10',
+    'listorder' => '13',
     'disabled' => '0',
     'isomnipotent' => '0',
     'width' => '98',
@@ -372,7 +507,7 @@ CSS3模板|CSS3模板
     'isadd' => '1',
     'isfulltext' => '0',
     'isposition' => '0',
-    'listorder' => '11',
+    'listorder' => '14',
     'disabled' => '0',
     'isomnipotent' => '0',
     'upload_allowext' => 'gif|jpg|jpeg|png|bmp',
@@ -410,7 +545,7 @@ CSS3模板|CSS3模板
     'isadd' => '0',
     'isfulltext' => '0',
     'isposition' => '0',
-    'listorder' => '12',
+    'listorder' => '15',
     'disabled' => '0',
     'isomnipotent' => '0',
     'dateformat' => 'int',
@@ -453,7 +588,7 @@ CSS3模板|CSS3模板
     'isadd' => '1',
     'isfulltext' => '1',
     'isposition' => '0',
-    'listorder' => '13',
+    'listorder' => '16',
     'disabled' => '0',
     'isomnipotent' => '0',
     'toolbar' => 'full',
@@ -499,7 +634,7 @@ CSS3模板|CSS3模板
     'isadd' => '1',
     'isfulltext' => '0',
     'isposition' => '1',
-    'listorder' => '14',
+    'listorder' => '17',
     'disabled' => '0',
     'isomnipotent' => '0',
     'size' => '50',
@@ -549,7 +684,7 @@ CSS3模板|CSS3模板
     'isadd' => '0',
     'isfulltext' => '1',
     'isposition' => '0',
-    'listorder' => '15',
+    'listorder' => '18',
     'disabled' => '0',
     'isomnipotent' => '0',
     'formtext' => '<input type=\'hidden\' name=\'info[relation]\' id=\'relation\' value=\'{FIELD_VALUE}\' style=\'50\' >
@@ -589,7 +724,7 @@ CSS3模板|CSS3模板
     'isadd' => '0',
     'isfulltext' => '0',
     'isposition' => '0',
-    'listorder' => '16',
+    'listorder' => '19',
     'disabled' => '0',
     'isomnipotent' => '0',
   ),
@@ -623,7 +758,7 @@ CSS3模板|CSS3模板
     'isadd' => '0',
     'isfulltext' => '0',
     'isposition' => '1',
-    'listorder' => '17',
+    'listorder' => '20',
     'disabled' => '0',
     'isomnipotent' => '0',
     'fieldtype' => 'int',
@@ -659,7 +794,7 @@ CSS3模板|CSS3模板
     'isadd' => '0',
     'isfulltext' => '0',
     'isposition' => '0',
-    'listorder' => '18',
+    'listorder' => '21',
     'disabled' => '0',
     'isomnipotent' => '0',
     'cols' => '4',
@@ -693,7 +828,7 @@ CSS3模板|CSS3模板
     'isadd' => '0',
     'isfulltext' => '0',
     'isposition' => '0',
-    'listorder' => '19',
+    'listorder' => '22',
     'disabled' => '0',
     'isomnipotent' => '0',
     'groupids' => '',
@@ -724,7 +859,7 @@ CSS3模板|CSS3模板
     'isadd' => '1',
     'isfulltext' => '0',
     'isposition' => '0',
-    'listorder' => '20',
+    'listorder' => '23',
     'disabled' => '0',
     'isomnipotent' => '0',
   ),
