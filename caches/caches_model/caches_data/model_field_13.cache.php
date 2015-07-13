@@ -133,6 +133,176 @@ return array (
     'size' => '100',
     'defaultvalue' => '',
   ),
+  'style' => 
+  array (
+    'fieldid' => '179',
+    'modelid' => '13',
+    'siteid' => '1',
+    'field' => 'style',
+    'name' => '酷站颜色',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'红色|红色
+橙色|橙色
+黄色|黄色
+绿色|绿色
+蓝色|蓝色
+灰色|灰色
+黑色|黑色
+紫色|紫色
+棕色|棕色
+彩色|彩色\',
+  \'boxtype\' => \'checkbox\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'0\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '0',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '1',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '8',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => '红色|红色
+橙色|橙色
+黄色|黄色
+绿色|绿色
+蓝色|蓝色
+灰色|灰色
+黑色|黑色
+紫色|紫色
+棕色|棕色
+彩色|彩色',
+    'boxtype' => 'checkbox',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '0',
+    'filtertype' => '1',
+  ),
+  'tag' => 
+  array (
+    'fieldid' => '180',
+    'modelid' => '13',
+    'siteid' => '1',
+    'field' => 'tag',
+    'name' => '行业分类',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'企业模板|企业模板
+商务模板|商务模板
+博客模板|博客模板
+HTML5模板|HTML5模板
+CSS3模板|CSS3模板
+金融模板|金融模板
+科技模板|科技模板
+电脑模板|电脑模板
+珠宝首饰模板|珠宝首饰模板
+摄影模板|摄影模板
+相册模板|相册模板
+婚嫁模板|婚嫁模板
+商城模板|商城模板
+餐饮模板|餐饮模板
+酒店模板|酒店模板
+旅游模板|旅游模板
+体育模板|体育模板
+交友模板|交友模板
+美容模板|美容模板
+会所模板|会所模板
+医疗模板|医疗模板
+美容模板|美容模板
+宠物模板|宠物模板
+汽车模板|汽车模板
+建筑模板|建筑模板
+学校模板|学校模板
+咖啡模板|咖啡模板
+简历模板|简历模板\',
+  \'boxtype\' => \'checkbox\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'0\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '0',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '1',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '9',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => '企业模板|企业模板
+商务模板|商务模板
+博客模板|博客模板
+HTML5模板|HTML5模板
+CSS3模板|CSS3模板
+金融模板|金融模板
+科技模板|科技模板
+电脑模板|电脑模板
+珠宝首饰模板|珠宝首饰模板
+摄影模板|摄影模板
+相册模板|相册模板
+婚嫁模板|婚嫁模板
+商城模板|商城模板
+餐饮模板|餐饮模板
+酒店模板|酒店模板
+旅游模板|旅游模板
+体育模板|体育模板
+交友模板|交友模板
+美容模板|美容模板
+会所模板|会所模板
+医疗模板|医疗模板
+美容模板|美容模板
+宠物模板|宠物模板
+汽车模板|汽车模板
+建筑模板|建筑模板
+学校模板|学校模板
+咖啡模板|咖啡模板
+简历模板|简历模板',
+    'boxtype' => 'checkbox',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '0',
+    'filtertype' => '1',
+  ),
   'description' => 
   array (
     'fieldid' => '140',

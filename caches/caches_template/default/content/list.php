@@ -11,7 +11,6 @@
                          <?php $n++;}unset($n); ?>
                      </p>
 
-
 						 <h2>按模板颜色</h2>
                      <p   class="pbutton color clearfix">
                          <a class="c1" href="<?php echo search_tag($catid,'','红色');?>">红色</a>
@@ -25,9 +24,7 @@
                          <a class="c9" href="<?php echo search_tag($catid,'','棕色');?>">棕色</a>
                          <a class="c10" href="<?php echo search_tag($catid,'','彩色');?>">彩色</a>
 					</p>
-                     
                 </div>
-		     
         </div>
         
 		<div class="constr Main2 fix">
@@ -61,7 +58,6 @@
                                 <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')" href="javascript:;" title="">8</a></li>
                             <li class="views">
                                 587 </li>
-
                         </ul>
                     </div>
                     <div class="citemqt citemfoot">
