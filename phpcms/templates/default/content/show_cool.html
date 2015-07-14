@@ -87,7 +87,17 @@ var unit_3 = true;
 			<h2 class="pages_title">{$title}</h2>
 		 </div>
 		  <div class="pages_sitestatus tbmu cl">
-				<span class="xg1">点击: </span><span class="xi1">3765</span><span class="pipe">|</span> <a rel="nofollow" href="">二十啷当岁</a> 推荐的酷站<span class="pipe">|</span><a rel="nofollow" class="blue" href="">查看 Ta 的全部推荐</a>
+			  <span class="xg1">点击: </span><span class="xi1">3765</span>
+              <span class="pipe">|</span>
+              {php $cattype = array_filter(explode(',',$rs['tag']))}
+              {loop $cattype $ct}
+              <a href="{search_tag($catid,$ct,'',13)}" title="{$ct}下载" rel="category tag"> {$ct} </a>
+              {/loop}
+              <span class="pipe">|</span>
+              {php $styletype = array_filter(explode(',',$rs['style']))}
+              {loop $styletype $ct}
+              <a href="{search_tag($catid,'',$ct,13)}" title="{$ct}下载" rel="category tag"> {$ct} </a>
+              {/loop}
 			 </div>
 
 		   <div class="pages_sitecontent clearfix">
@@ -95,7 +105,6 @@ var unit_3 = true;
 
 
 	 <ul class="clearfix">
-	 
 			{loop $photo $r}
 			 <li>
 				<a href="javascript:void(0);" title="点击放{$r[alt]}图片" class="pages_img_p">
@@ -109,8 +118,8 @@ var unit_3 = true;
 
                   
 				  <div id="sange">
-						<div class="sange_1"><a title="点击直接进入该站点" rel="nofollow" class="da12" target="_blank" href="http://www.nightowlinteractive.com/">直接进入此酷站</a></div>
-						<div class="sange_2"><a title="点击查看此酷站截图，共2张" rel="nofollow" class="da12" href="/tu/2015/0701/9001104.html"><span class="url2">找达人建设此酷站</span></a></div>
+						<div class="sange_1"><a title="点击直接进入该站点" rel="nofollow" class="da12" target="_blank" href="{$scan_url}">直接进入此酷站</a></div>
+						<div class="sange_2"><a title="找达人建设此酷站" rel="nofollow" class="da12" href="#"><span class="url2">找达人建设此酷站</span></a></div>
 						 
 					 </div>
 				</div>
@@ -130,7 +139,7 @@ var unit_3 = true;
 				<dd><strong>6</strong></dd-->
 				 
 				<dt>地址:</dt>
-				<dd><span><a target="_blank" title="点击在新的页面浏览该酷站" href="go.html?tid=419">http://www.tengsj.com</a></span></dd>
+				<dd><span><a target="_blank" title="点击在新的页面浏览该酷站" href="go.html?tid=419">{$scan_url}</a></span></dd>
 				<dt>创建:</dt>
 				<dd>{$inputtime}</dd>
 				 
@@ -138,10 +147,8 @@ var unit_3 = true;
 				<dd> 
 				 {php $cattype = array_filter(explode(',',$rs['tag']))}
 							     {loop $cattype $ct}
-                                   <a href="{search_tag($ct)}" title="{$ct}下载" rel="category tag"> {$ct} </a>
+                                   <a href="{search_tag($catid,$ct,'',13)}" title="{$ct}下载" rel="category tag"> {$ct} </a>
                                  {/loop}
-				 
-										 
 				</dd>
 				<dt>描述:</dt>
 				<dd>{$content}</dd>
@@ -149,18 +156,14 @@ var unit_3 = true;
 				</dl>
 
 				<div class="bugbot">
-				<a target="_blank" rel="nofollow" class="bluebot" href="/home.php?mod=spacecp&amp;ac=credit&amp;op=buy">定制该网站</a>
+				<a target="_blank" rel="nofollow" class="bluebot" href="#">定制该网站</a>
 
-				<a rel="nofollow" class="orangebot" onclick="window.open('/demo.php?url=demo/_43')" href="javascript:;">浏览该网站</a>
+				<a rel="nofollow" class="orangebot"  href="{$scan_url}" target="_blank">浏览该网站</a>
 				</div>
 				</div>
 				</div>
 
 <!--------box end--------->
-				
- 
-
-
 	 </div>
 
  </div>

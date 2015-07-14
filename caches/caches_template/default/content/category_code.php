@@ -145,8 +145,9 @@
                             <div id="portal_block_190_content" class="dxb_bc">
                                 <li id="msg_scroll">
                                     <ul style="margin-top: 0px;">
-                                        <li class="text_news"><a href="" title="本网站将关闭论坛灌水区、软文栏目，并提升服务需求！"
-                                                                 target="_blank">本网站将关闭论坛灌水区、软文栏目，并提升</a></li>
+                                        <li class="text_news">
+                                            <a href="" title="本网站将关闭论坛灌水区、软文栏目，并提升服务需求！" target="_blank">本网站将关闭论坛灌水区、软文栏目，并提升</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </div>
@@ -184,18 +185,11 @@
                 <dt class="tx"><span>特效代码</span>
                 <div></div>
                 <a href="/js/texiao.html">全部››</a></dt>
-                <dd><a href="/js/nav.html">导航菜单</a></dd>
-                <dd><a href="/js/form.html">表单按钮</a></dd>
-                <dd><a href="/js/text.html">文字特效</a></dd>
-                <dd><a href="/js/table.html">表格图层</a></dd>
-                <dd><a href="/js/picture.html">图片特效</a></dd>
-                <dd><a href="/js/date.html">时间日期</a></dd>
-                <dd><a href="/js/scroll.html">滚动代码</a></dd>
-                <dd><a href="/js/window.html">窗口特效</a></dd>
-                <dd><a href="/js/color.html">颜色背景</a></dd>
-                <dd><a href="/js/website.html">网站常用</a></dd>
-                <dd><a href="/js/css.html">CSS样式</a></dd>
-                <dd><a href="/js/other.html">其他特效</a></dd>
+                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f0ed520873c7a7abeff2e6c2087cd281&action=category&catid=30&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'30','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
+                <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
+                <dd><a href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a></dd>
+                <?php $n++;}unset($n); ?>
+                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
             </dl>
         </div>
 

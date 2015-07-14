@@ -3474,3 +3474,5 @@
 <?php exit;?>07-14 07:28:38 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
 <?php exit;?>07-14 07:28:40 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
 <?php exit;?>07-14 07:28:43 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-14 15:58:55 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-14 17:04:01 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70

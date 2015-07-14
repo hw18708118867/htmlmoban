@@ -86,11 +86,9 @@
 	 <dl>
 		<dt class="jx"><span>广告代码</span><div></div><a href="/js/p1.html">全部››</a></dt>
 		{pc:content action="category" catid="17" num="25" siteid="$siteid" order="listorder ASC"}
-
 		 {loop $data $cat}
 		    <dd><a href="{$cat[url]}">{$cat[catname]}</a></dd> 
 		 {/loop}
-
 		  {/pc}
 	 </dl>	
 </div>
@@ -98,8 +96,12 @@
 <div class="nav-sub">
 <dl>
 <dt class="tx"><span>特效代码</span><div></div><a href="/js/texiao.html">全部››</a></dt>
-<dd><a href="/js/nav.html">导航菜单</a></dd><dd><a href="/js/form.html">表单按钮</a></dd><dd><a href="/js/text.html">文字特效</a></dd><dd><a href="/js/table.html">表格图层</a></dd><dd><a href="/js/picture.html">图片特效</a></dd><dd><a href="/js/date.html">时间日期</a></dd><dd><a href="/js/scroll.html">滚动代码</a></dd><dd><a href="/js/window.html">窗口特效</a></dd><dd><a href="/js/color.html">颜色背景</a></dd><dd><a href="/js/website.html">网站常用</a></dd><dd><a href="/js/css.html">CSS样式</a></dd><dd><a href="/js/other.html">其他特效</a></dd>				 
-</dl>	
+    {pc:content action="category" catid="30" num="25" siteid="$siteid" order="listorder ASC"}
+    {loop $data $cat}
+    <dd><a href="{$cat[url]}">{$cat[catname]}</a></dd>
+    {/loop}
+    {/pc}
+</dl>
 </div>
 	 		
 	<div class="h">

@@ -266,22 +266,10 @@ $("a.fancybox").fancybox();
 								   
 									<p class="cl" ><font class="xg1">提示：付款后即可直接在线下载资源</font>&nbsp; &nbsp;<a href="/article-16-1.html" class="c4095CE" target="_blank" rel="nofollow">如何购买资源？</a> &nbsp; <a href="/article-9-1.html" class="c4095CE" target="_blank" rel="nofollow">如何充值积分？</a></p>
 
-                                    <dl>
-
-									
-									 
 							</div>
-											
 							</div>
 							<div class="fix mtw">
-							            	 
-
-								　         
-								   
-
 							</div>
-							</td></tr>
-							</td></tr></table>
 						</div>
 
 
