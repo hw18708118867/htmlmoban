@@ -91,45 +91,18 @@
                     <div id="frameAJVyUD_left" class="column frame-1-c">
                         <div id="frameAJVyUD_left_temp" class="move-span temp"></div>
                         <div id="portal_block_189" class="block move-span">
+                            <?php $data = get_tx_list(30,6,1);?>
                             <div id="portal_block_189_content" class="dxb_bc">
-                                <li>
-                                    <a href="thread-106922-1-1.html" title="全功能版-金满仓进销存3.0【商业版完整代码，设计大气完美】"
-                                       target="_blank">全功能版-金满仓进销存3.0【商业</a>
+                                <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                    <li>
+                                        <a href="<?php echo $v['url'];?>" title="<?php echo $v['title'];?>"
+                                           target="_blank"><?php echo $v['title'];?></a>
 
-                                    <div>
-                                        胡大福 &nbsp;|&nbsp; 2015-07-02
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="thread-106757-1-1.html" title="Discuz时尚门户资讯模版 价值300元 GBK编码 DX3.1 X3.2"
-                                       target="_blank">Discuz时尚门户资讯模版 价值300</a>
-
-                                    <div>
-                                        二十啷当岁 &nbsp;|&nbsp; 2015-06-22
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="thread-106756-1-1.html" title="Winter个人博客模板 价值200元 GBK UTF8双版本"
-                                       target="_blank">Winter个人博客模板 价值200元 G</a>
-
-                                    <div>
-                                        二十啷当岁 &nbsp;|&nbsp; 2015-06-22
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="thread-106087-1-1.html" title="HTML5响应式系列之小情绪风格" target="_blank">HTML5响应式系列之小情绪风格</a>
-
-                                    <div>
-                                        夜太美 &nbsp;|&nbsp; 2015-05-15
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="thread-106086-1-1.html" title="HTML5响应式系列之旅游模板" target="_blank">HTML5响应式系列之旅游模板</a>
-
-                                    <div>
-                                        夜太美 &nbsp;|&nbsp; 2015-05-15
-                                    </div>
-                                </li>
+                                        <div>
+                                            <?php echo date('Y-m-d H:i:s',$v[inputtime]);?>
+                                        </div>
+                                    </li>
+                                <?php $n++;}unset($n); ?>
                             </div>
                         </div>
                     </div>
@@ -146,7 +119,7 @@
                                 <li id="msg_scroll">
                                     <ul style="margin-top: 0px;">
                                         <li class="text_news">
-                                            <a href="" title="本网站将关闭论坛灌水区、软文栏目，并提升服务需求！" target="_blank">本网站将关闭论坛灌水区、软文栏目，并提升</a>
+                                            <a href="" title="" target="_blank"></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -293,6 +266,7 @@
                 </div>
                 <!--[/diy]-->
             </div>
+            <?php $data = get_tx_list(17,6);?>
             <ul style="margin-left:10px">
                 <!--[diy=xinyun_bbs_004_12]-->
                 <div id="xinyun_bbs_004_12" class="area">
@@ -304,34 +278,13 @@
                                 <div id="portal_block_200_content" class="dxb_bc">
 
                                     <!-----content-------->
+                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
                                     <dl>
-
-                                        <dd><a target="_blank" href="/js/xiangce-1203.html"><img
-                                                src="http://d.lanrentuku.com/down/js/xiangce-1203/index.jpg"
-                                                alt="简约jQuery幻灯片相册代码"
-                                                style="opacity: 1;">简约jQuery幻灯片相册代码</a><span>相册代码</span></dd>
-                                        <dd><a target="_blank" href="/js/tupian-1202.html"><img
-                                                src="http://d.lanrentuku.com/down/js/tupian-1202/index.jpg"
-                                                alt="jQuery图片列表动画显示效果" style="opacity: 1;">jQuery图片列表动画显示效果</a><span>图片特效</span>
+                                        <dd><a target="_blank" href="<?php echo $v['url'];?>">
+                                            <img src="<?php echo $v['thumb'];?>" alt="<?php echo $v['title'];?>" style="opacity: 1;"><?php echo $v['title'];?></a><span><?php echo get_catname($v[catid]);?></span>
                                         </dd>
-                                        <dd><a target="_blank" href="/js/jiaodiantu-1201.html"><img
-                                                src="http://d.lanrentuku.com/down/js/jiaodiantu-1201/index.jpg"
-                                                alt="猎豹jQuery全屏焦点图代码"
-                                                style="opacity: 1;">猎豹jQuery全屏焦点图代码</a><span>焦点图</span></dd>
-                                        <dd><a target="_blank" href="/js/tupian-1200.html"><img
-                                                src="http://d.lanrentuku.com/down/js/tupian-1200/index.jpg"
-                                                alt="CSS3圆形图片鼠标经过旋转效果" style="opacity: 1;">CSS3圆形图片鼠标经过旋转效果</a><span>图片特效</span>
-                                        </dd>
-                                        <dd><a target="_blank" href="/js/qita-1199.html"><img
-                                                src="http://d.lanrentuku.com/down/js/qita-1199/index.jpg"
-                                                alt="HTML5+CSS3音量调节旋转按钮"
-                                                style="opacity: 1;">HTML5+CSS3音量调节旋转按钮</a><span>其他代码</span></dd>
-                                        <dd><a target="_blank" href="/js/tupian-1198.html"><img
-                                                src="http://d.lanrentuku.com/down/js/tupian-1198/index.jpg"
-                                                alt="jQuery鼠标经过方形图片切换成圆边特效"
-                                                style="opacity: 1;">jQuery鼠标经过方形图片切换成圆边特效</a><span>图片特效</span></dd>
                                     </dl>
-
+                                    <?php $n++;}unset($n); ?>
                                     <!------content------>
 
                                 </div>
@@ -354,18 +307,18 @@
 </div>
 
 <div class="constr Main3 bc4">
+    <?php $data = get_tx_list(30,10);?>
     <div class="mobanshangcheng">
-        <ul class="mobanshangcheng_ul1"><h3 class="mobanshangcheng_ul1_p1 blink b">最新flash特效</h3></ul>
+        <ul class="mobanshangcheng_ul1"><h3 class="mobanshangcheng_ul1_p1 blink b">最新特效代码</h3></ul>
         <ul class="mobanshangcheng_ul2">
-
+            <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
             <li>
-                <div class="pic"><a title="机械工程类网站PSD模板" href=""><img width="170" height="120" alt="机械工程类网站PSD模板"
-                                                                      src="data/attachment/dsu_c2cmoban/1700770097.JPG_t.jpg"></a>
+                <div class="pic"><a title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
+                    <img width="170" height="120" alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>"></a>
                 </div>
-                <div class="title"><a title="机械工程类网站PSD模板" href="">机械工程类网站PSD模板</a></div>
+                <div class="title"><a title="<?php echo $v['title'];?>" href=""><?php echo $v['title'];?></a></div>
             </li>
-
-
+            <?php $n++;}unset($n); ?>
         </ul>
     </div>
 </div>

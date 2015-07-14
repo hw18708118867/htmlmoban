@@ -140,6 +140,13 @@ function tool_url($toolname=""){
     return "index.php?m=tool&c=index&a=show&mod=".$toolname;
 }
 
+/**
+ * @param $cattype
+ * @param $id
+ * @param int $catid
+ * @return mixed
+ * 查询相关的模板
+ */
 function get_relation_moban($cattype, $id, $catid = 6){
     $moban_db = pc_base::load_model('content_model');
     $moban_db->set_model(12);
@@ -154,5 +161,38 @@ function get_relation_moban($cattype, $id, $catid = 6){
     $sql .= ' LIMIT 12';
     $moban_db->query($sql);
     return $moban_db->fetch_array();
+}
+
+
+/**
+ * @param $catid
+ * @return mixed
+ * 获取分类名
+ */
+function get_catname($catid){
+    $cat_db = pc_base::load_model('category_model');
+    $catinfo = $cat_db->get_one(array('catid'=>$catid));
+    return $catinfo['catname'];
+}
+
+function get_tx_list($catid, $limit=10, $total = 0){
+    $cat_db = pc_base::load_model('category_model');
+    if(!$total){
+        $catinfo = $cat_db->get_one(array('catid'=>$catid));
+        $arrchildid = $catinfo['arrchildid'];
+        $arrchildid = explode(',',$arrchildid);
+        $catids = '';
+        foreach($arrchildid as $v){
+            $catids .= "'".$v."',";
+        }
+        $catids = rtrim($catids,',');
+    }
+    $sql  = "SELECT * FROM `mb_tx` a,`mb_tx_data` b WHERE a.id=b.id AND a.status=99 ";
+    if(!$total)
+        $sql .= "AND a.catid IN (".$catids.")";
+    $sql .= ' ORDER BY a.id DESC';
+    $sql .= ' LIMIT '.$limit;
+    $cat_db->query($sql);
+    return $cat_db->fetch_array();
 }
 ?>
