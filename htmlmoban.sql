@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.8.1
+-- version phpStudy 2014
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 2015-07-15 07:26:05
--- 服务器版本： 5.6.20
--- PHP Version: 5.6.0
+-- 主机: localhost
+-- 生成日期: 2015 年 07 月 15 日 18:04
+-- 服务器版本: 5.5.36
+-- PHP 版本: 5.3.28
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `htmlmoban`
+-- 数据库: `htmlmoban`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `mb_admin` (
-`userid` mediumint(6) unsigned NOT NULL,
+  `userid` mediumint(6) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `roleid` smallint(5) DEFAULT '0',
@@ -37,8 +37,10 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
   `email` varchar(40) DEFAULT NULL,
   `realname` varchar(50) NOT NULL DEFAULT '',
   `card` varchar(255) NOT NULL,
-  `lang` varchar(6) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `lang` varchar(6) NOT NULL,
+  PRIMARY KEY (`userid`),
+  KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_admin`
@@ -46,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
 
 INSERT INTO `mb_admin` (`userid`, `username`, `password`, `roleid`, `encrypt`, `lastloginip`, `lastlogintime`, `email`, `realname`, `card`, `lang`) VALUES
 (1, 'admin', '52433b33c7ff3a8dc647a10939a91628', 1, 'SwFNZd', '127.0.0.1', 1435650303, 'wewe@qq.com', '', '', ''),
-(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1436882503, 'sdsd@qq.com', 'qg', '', '');
+(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1436952276, 'sdsd@qq.com', 'qg', '', '');
 
 -- --------------------------------------------------------
 
@@ -59,7 +61,8 @@ CREATE TABLE IF NOT EXISTS `mb_admin_panel` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `name` char(32) DEFAULT NULL,
   `url` char(255) DEFAULT NULL,
-  `datetime` int(10) unsigned DEFAULT '0'
+  `datetime` int(10) unsigned DEFAULT '0',
+  UNIQUE KEY `userid` (`menuid`,`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -69,12 +72,15 @@ CREATE TABLE IF NOT EXISTS `mb_admin_panel` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_admin_role` (
-`roleid` tinyint(3) unsigned NOT NULL,
+  `roleid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `rolename` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`roleid`),
+  KEY `listorder` (`listorder`),
+  KEY `disabled` (`disabled`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `mb_admin_role`
@@ -100,7 +106,8 @@ CREATE TABLE IF NOT EXISTS `mb_admin_role_priv` (
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
   `data` char(30) NOT NULL DEFAULT '',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  KEY `roleid` (`roleid`,`m`,`c`,`a`,`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -110,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin_role_priv` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_announce` (
-`aid` smallint(4) unsigned NOT NULL,
+  `aid` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `title` char(80) NOT NULL,
   `content` text NOT NULL,
@@ -121,8 +128,10 @@ CREATE TABLE IF NOT EXISTS `mb_announce` (
   `hits` smallint(5) unsigned NOT NULL DEFAULT '0',
   `passed` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `style` char(15) NOT NULL,
-  `show_template` char(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `show_template` char(30) NOT NULL,
+  PRIMARY KEY (`aid`),
+  KEY `siteid` (`siteid`,`passed`,`endtime`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -131,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `mb_announce` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_attachment` (
-`aid` int(10) unsigned NOT NULL,
+  `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `module` char(15) NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `filename` char(50) NOT NULL,
@@ -146,8 +155,10 @@ CREATE TABLE IF NOT EXISTS `mb_attachment` (
   `uploadip` char(15) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `authcode` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`aid`),
+  KEY `authcode` (`authcode`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=59 ;
 
 --
 -- 转存表中的数据 `mb_attachment`
@@ -213,7 +224,9 @@ INSERT INTO `mb_attachment` (`aid`, `module`, `catid`, `filename`, `filepath`, `
 
 CREATE TABLE IF NOT EXISTS `mb_attachment_index` (
   `keyid` char(30) NOT NULL,
-  `aid` char(10) NOT NULL
+  `aid` char(10) NOT NULL,
+  KEY `keyid` (`keyid`),
+  KEY `aid` (`aid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -282,13 +295,17 @@ INSERT INTO `mb_attachment_index` (`keyid`, `aid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_badword` (
-`badid` smallint(5) unsigned NOT NULL,
+  `badid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `badword` char(20) NOT NULL,
   `level` tinyint(5) NOT NULL DEFAULT '1',
   `replaceword` char(20) NOT NULL DEFAULT '0',
   `lastusetime` int(10) unsigned NOT NULL DEFAULT '0',
-  `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`badid`),
+  UNIQUE KEY `badword` (`badword`),
+  KEY `usetimes` (`replaceword`,`listorder`),
+  KEY `hits` (`listorder`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -297,14 +314,18 @@ CREATE TABLE IF NOT EXISTS `mb_badword` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `name` char(50) DEFAULT NULL,
   `pos` char(30) DEFAULT NULL,
   `type` tinyint(1) DEFAULT '0',
   `data` text,
-  `template` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `template` text,
+  PRIMARY KEY (`id`),
+  KEY `pos` (`pos`),
+  KEY `type` (`type`),
+  KEY `siteid` (`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -313,13 +334,14 @@ CREATE TABLE IF NOT EXISTS `mb_block` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block_history` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `blockid` int(10) unsigned DEFAULT '0',
   `data` text,
   `creat_at` int(10) unsigned DEFAULT '0',
   `userid` mediumint(8) unsigned DEFAULT '0',
-  `username` char(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `username` char(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -328,11 +350,14 @@ CREATE TABLE IF NOT EXISTS `mb_block_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block_priv` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `roleid` tinyint(3) unsigned DEFAULT '0',
   `siteid` smallint(5) unsigned DEFAULT '0',
-  `blockid` int(10) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `blockid` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `blockid` (`blockid`),
+  KEY `roleid` (`roleid`,`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -343,7 +368,8 @@ CREATE TABLE IF NOT EXISTS `mb_block_priv` (
 CREATE TABLE IF NOT EXISTS `mb_cache` (
   `filename` char(50) NOT NULL,
   `path` char(50) NOT NULL,
-  `data` mediumtext NOT NULL
+  `data` mediumtext NOT NULL,
+  PRIMARY KEY (`filename`,`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -354,7 +380,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 ('mood_program.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    1 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''震惊'',\n      ''pic'' => ''mood/a1.gif'',\n    ),\n    2 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''不解'',\n      ''pic'' => ''mood/a2.gif'',\n    ),\n    3 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''愤怒'',\n      ''pic'' => ''mood/a3.gif'',\n    ),\n    4 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''杯具'',\n      ''pic'' => ''mood/a4.gif'',\n    ),\n    5 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''无聊'',\n      ''pic'' => ''mood/a5.gif'',\n    ),\n    6 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''高兴'',\n      ''pic'' => ''mood/a6.gif'',\n    ),\n    7 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''支持'',\n      ''pic'' => ''mood/a7.gif'',\n    ),\n    8 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''超赞'',\n      ''pic'' => ''mood/a8.gif'',\n    ),\n    9 => \n    array (\n      ''use'' => NULL,\n      ''name'' => '''',\n      ''pic'' => '''',\n    ),\n    10 => \n    array (\n      ''use'' => NULL,\n      ''name'' => '''',\n      ''pic'' => '''',\n    ),\n  ),\n);\n?>'),
 ('category_content.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => ''1'',\n  2 => ''1'',\n  3 => ''1'',\n  4 => ''1'',\n  5 => ''1'',\n  6 => ''1'',\n  8 => ''1'',\n  9 => ''1'',\n  11 => ''1'',\n  15 => ''1'',\n  16 => ''1'',\n  17 => ''1'',\n  18 => ''1'',\n  19 => ''1'',\n  20 => ''1'',\n  21 => ''1'',\n  22 => ''1'',\n  23 => ''1'',\n  24 => ''1'',\n  25 => ''1'',\n  26 => ''1'',\n  27 => ''1'',\n  28 => ''1'',\n  29 => ''1'',\n  30 => ''1'',\n  31 => ''1'',\n  32 => ''1'',\n  33 => ''1'',\n  34 => ''1'',\n  35 => ''1'',\n  36 => ''1'',\n  37 => ''1'',\n  38 => ''1'',\n  39 => ''1'',\n  40 => ''1'',\n  41 => ''1'',\n  42 => ''1'',\n);\n?>');
 INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
-('category_content_1.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''catid'' => ''1'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''1,2,3,4,5'',\n    ''catname'' => ''网站介绍'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''about'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanjieshao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  2 => \n  array (\n    ''catid'' => ''2'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''2'',\n    ''catname'' => ''关于我们'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''aboutus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/aboutus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''关于我们\\'',\n  \\''meta_keywords\\'' => \\''关于我们\\'',\n  \\''meta_description\\'' => \\''关于我们\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''guanyuwomen'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  3 => \n  array (\n    ''catid'' => ''3'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''3'',\n    ''catname'' => ''联系方式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''contactus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/contactus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''联系方式\\'',\n  \\''meta_keywords\\'' => \\''联系方式\\'',\n  \\''meta_description\\'' => \\''联系方式\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''2'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''lianxifangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  4 => \n  array (\n    ''catid'' => ''4'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''4'',\n    ''catname'' => ''版权声明'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''copyright'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=4'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''版权声明\\'',\n  \\''meta_keywords\\'' => \\''版权声明\\'',\n  \\''meta_description\\'' => \\''版权声明\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''3'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''banquanshengming'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  5 => \n  array (\n    ''catid'' => ''5'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''5'',\n    ''catname'' => ''招聘信息'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''hr'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/hr/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''4'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zhaopinxinxi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  6 => \n  array (\n    ''catid'' => ''6'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''6'',\n    ''catname'' => ''网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''wangyemoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6'',\n    ''items'' => ''15'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''6'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyemoban'',\n    ''usable_type'' => '',54,'',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  8 => \n  array (\n    ''catid'' => ''8'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''8'',\n    ''catname'' => ''后台模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''houtaimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=8'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''8'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''houtaimoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  9 => \n  array (\n    ''catid'' => ''9'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''9'',\n    ''catname'' => ''手机网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''shoujimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=9'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''9'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shoujiwangyemoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  11 => \n  array (\n    ''catid'' => ''11'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''13'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''11'',\n    ''catname'' => ''酷站欣赏'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''kuzhan'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=11'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_cool\\'',\n  \\''show_template\\'' => \\''show_cool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''11'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''kuzhanxinshang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  15 => \n  array (\n    ''catid'' => ''15'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''15'',\n    ''catname'' => ''前端神器'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''tool'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=15'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page_tool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''15'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qianduanshenqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  16 => \n  array (\n    ''catid'' => ''16'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''16,30,31,32,33,34,35,36,37,38,39,40,41,42,17,18,19,20,21,22,23,24,25,26,27,28,29'',\n    ''catname'' => ''网页特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''texiao'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=16'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''16'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyetexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  17 => \n  array (\n    ''catid'' => ''17'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''17,18,19,20,21,22,23,24,25,26,27,28,29'',\n    ''catname'' => ''jquery特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/'',\n    ''catdir'' => ''jquery'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=17'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''17'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jquerytexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  18 => \n  array (\n    ''catid'' => ''18'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''18'',\n    ''catname'' => ''焦点图'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''jiaodiantu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=18'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''18'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jiaodiantu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  19 => \n  array (\n    ''catid'' => ''19'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''19'',\n    ''catname'' => ''全屏广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''quanping'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=19'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''19'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''quanpingguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  20 => \n  array (\n    ''catid'' => ''20'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''20'',\n    ''catname'' => ''对联广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''duilian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=20'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''20'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''duilianguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  21 => \n  array (\n    ''catid'' => ''21'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''21'',\n    ''catname'' => ''在线客服'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''zaixiankefu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=21'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''21'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zaixiankefu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  22 => \n  array (\n    ''catid'' => ''22'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''22'',\n    ''catname'' => ''相册代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xiangce'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=22'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''22'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xiangcedaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  23 => \n  array (\n    ''catid'' => ''23'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''23'',\n    ''catname'' => ''菜单导航'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''daohang'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=23'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''23'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''caidandaohang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  24 => \n  array (\n    ''catid'' => ''24'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''24'',\n    ''catname'' => ''TAB标签'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tab'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=24'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''24'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tabbiaoqian'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  25 => \n  array (\n    ''catid'' => ''25'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''25'',\n    ''catname'' => ''悬浮漂浮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xuanfu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=25'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''25'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xuanfupiaofu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  26 => \n  array (\n    ''catid'' => ''26'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''26'',\n    ''catname'' => ''视频播放'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''shipin'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=26'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''26'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shipinbofang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  27 => \n  array (\n    ''catid'' => ''27'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''27'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tupian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=27'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''27'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  28 => \n  array (\n    ''catid'' => ''28'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''28'',\n    ''catname'' => ''翻牌书角'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''fanpai'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=28'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''28'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''fanpaishujiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  29 => \n  array (\n    ''catid'' => ''29'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''29'',\n    ''catname'' => ''其他代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''other'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=29'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''29'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitadaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  30 => \n  array (\n    ''catid'' => ''30'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''30,31,32,33,34,35,36,37,38,39,40,41,42'',\n    ''catname'' => ''特效代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''txcode'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=30'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''30'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''texiaodaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  31 => \n  array (\n    ''catid'' => ''31'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''31'',\n    ''catname'' => ''导航菜单'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''nav'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=31'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''31'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''daohangcaidan'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  32 => \n  array (\n    ''catid'' => ''32'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''32'',\n    ''catname'' => ''表单按钮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''frombutton'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=32'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''32'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaodananniu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  33 => \n  array (\n    ''catid'' => ''33'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''33'',\n    ''catname'' => ''文字特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''fonttx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=33'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''33'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wenzitexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  34 => \n  array (\n    ''catid'' => ''34'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''34'',\n    ''catname'' => ''表格图层'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''tableimg'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=34'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''34'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaogetuceng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  35 => \n  array (\n    ''catid'' => ''35'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''35'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''imgtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=35'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''35'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  36 => \n  array (\n    ''catid'' => ''36'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''36'',\n    ''catname'' => ''时间日期'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''timedate'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=36'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''36'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shijianriqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  37 => \n  array (\n    ''catid'' => ''37'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''37'',\n    ''catname'' => ''滚动代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''scroll'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=37'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''37'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''gundongdaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  38 => \n  array (\n    ''catid'' => ''38'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''38'',\n    ''catname'' => ''窗口特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''windowtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=38'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''38'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''chuangkoutexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  39 => \n  array (\n    ''catid'' => ''39'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''39'',\n    ''catname'' => ''颜色背景'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''color'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=39'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''39'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''yansebeijing'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  40 => \n  array (\n    ''catid'' => ''40'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''40'',\n    ''catname'' => ''网站常用'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''website'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=40'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''40'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanchangyong'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  41 => \n  array (\n    ''catid'' => ''41'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''41'',\n    ''catname'' => ''css样式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''cssStyle'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=41'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''41'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''cssyangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  42 => \n  array (\n    ''catid'' => ''42'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''42'',\n    ''catname'' => ''其他特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''othertx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=42'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''42'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitatexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n);\n?>');
+('category_content_1.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''catid'' => ''1'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''1,2,3,4,5'',\n    ''catname'' => ''网站介绍'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''about'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanjieshao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  2 => \n  array (\n    ''catid'' => ''2'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''2'',\n    ''catname'' => ''关于我们'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''aboutus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/aboutus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''关于我们\\'',\n  \\''meta_keywords\\'' => \\''关于我们\\'',\n  \\''meta_description\\'' => \\''关于我们\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''guanyuwomen'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  3 => \n  array (\n    ''catid'' => ''3'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''3'',\n    ''catname'' => ''联系方式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''contactus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/contactus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''联系方式\\'',\n  \\''meta_keywords\\'' => \\''联系方式\\'',\n  \\''meta_description\\'' => \\''联系方式\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''2'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''lianxifangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  4 => \n  array (\n    ''catid'' => ''4'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''4'',\n    ''catname'' => ''版权声明'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''copyright'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=4'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''版权声明\\'',\n  \\''meta_keywords\\'' => \\''版权声明\\'',\n  \\''meta_description\\'' => \\''版权声明\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''3'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''banquanshengming'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  5 => \n  array (\n    ''catid'' => ''5'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''5'',\n    ''catname'' => ''招聘信息'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''hr'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/hr/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''4'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zhaopinxinxi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  6 => \n  array (\n    ''catid'' => ''6'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''6'',\n    ''catname'' => ''网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''wangyemoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6'',\n    ''items'' => ''15'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''6'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyemoban'',\n    ''usable_type'' => '',54,'',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  8 => \n  array (\n    ''catid'' => ''8'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''8'',\n    ''catname'' => ''后台模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''houtaimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=8'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''8'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''houtaimoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  9 => \n  array (\n    ''catid'' => ''9'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''9'',\n    ''catname'' => ''手机网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''shoujimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=9'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''9'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shoujiwangyemoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  11 => \n  array (\n    ''catid'' => ''11'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''13'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''11'',\n    ''catname'' => ''酷站欣赏'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''kuzhan'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=11'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_cool\\'',\n  \\''show_template\\'' => \\''show_cool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''11'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''kuzhanxinshang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  15 => \n  array (\n    ''catid'' => ''15'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''15'',\n    ''catname'' => ''前端神器'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''tool'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=15'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page_tool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''15'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qianduanshenqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  16 => \n  array (\n    ''catid'' => ''16'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''16,30,31,32,33,34,35,36,37,38,39,40,41,42,17,18,19,20,21,22,23,24,25,26,27,28,29'',\n    ''catname'' => ''网页特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''texiao'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=16'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''16'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyetexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  17 => \n  array (\n    ''catid'' => ''17'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''17,18,19,20,21,22,23,24,25,26,27,28,29'',\n    ''catname'' => ''jquery特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/'',\n    ''catdir'' => ''jquery'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=17'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''17'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jquerytexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  18 => \n  array (\n    ''catid'' => ''18'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''18'',\n    ''catname'' => ''焦点图'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''jiaodiantu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=18'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''18'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jiaodiantu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  19 => \n  array (\n    ''catid'' => ''19'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''19'',\n    ''catname'' => ''全屏广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''quanping'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=19'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''19'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''quanpingguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  20 => \n  array (\n    ''catid'' => ''20'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''20'',\n    ''catname'' => ''对联广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''duilian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=20'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''20'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''duilianguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  21 => \n  array (\n    ''catid'' => ''21'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''21'',\n    ''catname'' => ''在线客服'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''zaixiankefu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=21'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''21'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zaixiankefu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  22 => \n  array (\n    ''catid'' => ''22'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''22'',\n    ''catname'' => ''相册代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xiangce'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=22'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''22'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xiangcedaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  23 => \n  array (\n    ''catid'' => ''23'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''23'',\n    ''catname'' => ''菜单导航'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''daohang'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=23'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''23'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''caidandaohang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  24 => \n  array (\n    ''catid'' => ''24'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''24'',\n    ''catname'' => ''TAB标签'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tab'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=24'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''24'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tabbiaoqian'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  25 => \n  array (\n    ''catid'' => ''25'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''25'',\n    ''catname'' => ''悬浮漂浮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xuanfu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=25'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''25'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xuanfupiaofu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  26 => \n  array (\n    ''catid'' => ''26'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''26'',\n    ''catname'' => ''视频播放'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''shipin'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=26'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''26'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shipinbofang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  27 => \n  array (\n    ''catid'' => ''27'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''27'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tupian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=27'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''27'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  28 => \n  array (\n    ''catid'' => ''28'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''28'',\n    ''catname'' => ''翻牌书角'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''fanpai'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=28'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''28'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''fanpaishujiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  29 => \n  array (\n    ''catid'' => ''29'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''29'',\n    ''catname'' => ''其他代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''other'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=29'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''29'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitadaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  30 => \n  array (\n    ''catid'' => ''30'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''30,31,32,33,34,35,36,37,38,39,40,41,42'',\n    ''catname'' => ''特效代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''txcode'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=30'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''30'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''texiaodaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  31 => \n  array (\n    ''catid'' => ''31'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''31'',\n    ''catname'' => ''导航菜单'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''nav'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=31'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''31'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''daohangcaidan'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  32 => \n  array (\n    ''catid'' => ''32'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''32'',\n    ''catname'' => ''表单按钮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''frombutton'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=32'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''32'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaodananniu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  33 => \n  array (\n    ''catid'' => ''33'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''33'',\n    ''catname'' => ''文字特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''fonttx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=33'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''33'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wenzitexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  34 => \n  array (\n    ''catid'' => ''34'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''34'',\n    ''catname'' => ''表格图层'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''tableimg'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=34'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''34'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaogetuceng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  35 => \n  array (\n    ''catid'' => ''35'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''35'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''imgtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=35'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''35'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  36 => \n  array (\n    ''catid'' => ''36'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''36'',\n    ''catname'' => ''时间日期'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''timedate'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=36'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''36'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shijianriqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  37 => \n  array (\n    ''catid'' => ''37'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''37'',\n    ''catname'' => ''滚动代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''scroll'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=37'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''37'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''gundongdaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  38 => \n  array (\n    ''catid'' => ''38'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''38'',\n    ''catname'' => ''窗口特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''windowtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=38'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''38'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''chuangkoutexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  39 => \n  array (\n    ''catid'' => ''39'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''39'',\n    ''catname'' => ''颜色背景'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''color'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=39'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''39'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''yansebeijing'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  40 => \n  array (\n    ''catid'' => ''40'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''40'',\n    ''catname'' => ''网站常用'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''website'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=40'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''40'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanchangyong'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  41 => \n  array (\n    ''catid'' => ''41'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''41'',\n    ''catname'' => ''css样式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''cssStyle'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=41'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''41'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''cssyangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  42 => \n  array (\n    ''catid'' => ''42'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''42'',\n    ''catname'' => ''其他特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''/'',\n    ''catdir'' => ''othertx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=42'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''42'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitatexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n);\n?>');
 INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 ('sitelist.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''siteid'' => ''1'',\n    ''name'' => ''默认站点'',\n    ''dirname'' => '''',\n    ''domain'' => ''http://www.htmlmoban.net/'',\n    ''site_title'' => ''PHPCMS演示站'',\n    ''keywords'' => ''PHPCMS演示站'',\n    ''description'' => ''PHPCMS演示站'',\n    ''release_point'' => '''',\n    ''default_style'' => ''default'',\n    ''template'' => ''default'',\n    ''setting'' => ''array (\n  \\''upload_maxsize\\'' => \\''20480\\'',\n  \\''upload_allowext\\'' => \\''jpg|jpeg|gif|bmp|png|doc|docx|xls|xlsx|ppt|pptx|pdf|txt|rar|zip|swf\\'',\n  \\''watermark_enable\\'' => \\''1\\'',\n  \\''watermark_minwidth\\'' => \\''300\\'',\n  \\''watermark_minheight\\'' => \\''300\\'',\n  \\''watermark_img\\'' => \\''statics/images/water//mark.png\\'',\n  \\''watermark_pct\\'' => \\''85\\'',\n  \\''watermark_quality\\'' => \\''80\\'',\n  \\''watermark_pos\\'' => \\''9\\'',\n)'',\n    ''uuid'' => ''740a7e10-29d8-11e4-bfd7-74d4356524b7'',\n    ''url'' => ''http://www.htmlmoban.net/'',\n  ),\n);\n?>'),
 ('downservers.cache.php', 'caches_commons/caches_data/', '<?php\nreturn NULL;\n?>'),
@@ -392,7 +418,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_category` (
-`catid` smallint(5) unsigned NOT NULL,
+  `catid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `module` varchar(15) NOT NULL,
   `type` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -415,8 +441,11 @@ CREATE TABLE IF NOT EXISTS `mb_category` (
   `ismenu` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `sethtml` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `letter` varchar(30) NOT NULL,
-  `usable_type` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+  `usable_type` varchar(255) NOT NULL,
+  PRIMARY KEY (`catid`),
+  KEY `module` (`module`,`parentid`,`listorder`,`catid`),
+  KEY `siteid` (`siteid`,`type`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 --
 -- 转存表中的数据 `mb_category`
@@ -472,7 +501,9 @@ CREATE TABLE IF NOT EXISTS `mb_category_priv` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `roleid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `action` char(30) NOT NULL
+  `action` char(30) NOT NULL,
+  KEY `catid` (`catid`,`roleid`,`is_admin`,`action`),
+  KEY `siteid` (`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -482,14 +513,17 @@ CREATE TABLE IF NOT EXISTS `mb_category_priv` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_content` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` mediumint(5) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `url` char(255) NOT NULL,
   `title` char(100) NOT NULL,
-  `data` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `data` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `nodeid` (`nodeid`,`siteid`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -499,7 +533,8 @@ CREATE TABLE IF NOT EXISTS `mb_collection_content` (
 
 CREATE TABLE IF NOT EXISTS `mb_collection_history` (
   `md5` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`md5`,`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -509,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `mb_collection_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_node` (
-`nodeid` smallint(6) unsigned NOT NULL,
+  `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `lastdate` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -542,8 +577,10 @@ CREATE TABLE IF NOT EXISTS `mb_collection_node` (
   `down_attachment` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `watermark` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `coll_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `customize_config` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `customize_config` text NOT NULL,
+  PRIMARY KEY (`nodeid`),
+  KEY `siteid` (`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -552,13 +589,16 @@ CREATE TABLE IF NOT EXISTS `mb_collection_node` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_program` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
   `modelid` mediumint(6) unsigned NOT NULL DEFAULT '0',
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
-  `config` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `config` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`),
+  KEY `nodeid` (`nodeid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -577,7 +617,10 @@ CREATE TABLE IF NOT EXISTS `mb_comment` (
   `neutral` mediumint(8) unsigned DEFAULT '0',
   `display_type` tinyint(1) DEFAULT '0',
   `tableid` mediumint(8) unsigned DEFAULT '0',
-  `lastupdate` int(10) unsigned DEFAULT '0'
+  `lastupdate` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`commentid`),
+  KEY `lastupdate` (`lastupdate`),
+  KEY `siteid` (`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -587,7 +630,8 @@ CREATE TABLE IF NOT EXISTS `mb_comment` (
 INSERT INTO `mb_comment` (`commentid`, `siteid`, `title`, `url`, `total`, `square`, `anti`, `neutral`, `display_type`, `tableid`, `lastupdate`) VALUES
 ('content_6-30-1', 1, '清爽的响应式蓝色企业模板', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=30', 2, 2, 0, 0, 1, 1, 1436449461),
 ('content_6-43-1', 1, '适合做代购类的品牌小型化妆品商城', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=43', 3, 3, 0, 0, 1, 1, 1436451141),
-('content_34-3-1', 1, '好看的表格图层', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=34&id=3', 2, 2, 0, 0, 1, 1, 1436865497);
+('content_34-3-1', 1, '好看的表格图层', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=34&id=3', 2, 2, 0, 0, 1, 1, 1436865497),
+('content_27-8-1', 1, 'Jquery经过方形图片圆角特效', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=27&id=8', 2, 2, 0, 0, 1, 1, 1436933913);
 
 -- --------------------------------------------------------
 
@@ -596,11 +640,14 @@ INSERT INTO `mb_comment` (`commentid`, `siteid`, `title`, `url`, `total`, `squar
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_check` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `comment_data_id` int(10) DEFAULT '0' COMMENT '论评ID号',
   `siteid` smallint(5) NOT NULL DEFAULT '0' COMMENT '站点ID',
-  `tableid` mediumint(8) DEFAULT '0' COMMENT '数据存储表ID'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `tableid` mediumint(8) DEFAULT '0' COMMENT '数据存储表ID',
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`),
+  KEY `comment_data_id` (`comment_data_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -609,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment_check` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
-`id` int(10) unsigned NOT NULL COMMENT '评论ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',
   `commentid` char(30) NOT NULL DEFAULT '' COMMENT '评论ID号',
   `siteid` smallint(5) NOT NULL DEFAULT '0' COMMENT '站点ID',
   `userid` int(10) unsigned DEFAULT '0' COMMENT '用户ID',
@@ -620,8 +667,13 @@ CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
   `content` text COMMENT '评论内容',
   `direction` tinyint(1) DEFAULT '0' COMMENT '评论方向{0:无方向,1:正文,2:反方,3:中立}',
   `support` mediumint(8) unsigned DEFAULT '0' COMMENT '支持数',
-  `reply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为回复'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `reply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为回复',
+  PRIMARY KEY (`id`),
+  KEY `commentid` (`commentid`),
+  KEY `direction` (`direction`),
+  KEY `siteid` (`siteid`),
+  KEY `support` (`support`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- 转存表中的数据 `mb_comment_data_1`
@@ -634,7 +686,9 @@ INSERT INTO `mb_comment_data_1` (`id`, `commentid`, `siteid`, `userid`, `usernam
 (4, 'content_6-43-1', 1, 0, '默认站点网友', 1436450471, '127.0.0.1', 1, '变风格和规范化的法国恢复', 1, 0, 0),
 (5, 'content_6-43-1', 1, 0, '默认站点网友', 1436451141, '127.0.0.1', 1, 'dddgadsfdsfffsfadsfafdf', 1, 0, 0),
 (6, 'content_34-3-1', 1, 0, '默认站点网友', 1436865489, '127.0.0.1', 1, '人人人人人人人人人人人人人人人人人', 1, 0, 0),
-(7, 'content_34-3-1', 1, 0, '默认站点网友', 1436865497, '127.0.0.1', 1, '呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵', 1, 0, 0);
+(7, 'content_34-3-1', 1, 0, '默认站点网友', 1436865497, '127.0.0.1', 1, '呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵', 1, 0, 0),
+(8, 'content_27-8-1', 1, 0, '默认站点网友', 1436933906, '127.0.0.1', 1, '二二二二二二二二二二二二', 1, 0, 0),
+(9, 'content_27-8-1', 1, 0, '默认站点网友', 1436933913, '127.0.0.1', 1, '鹅鹅鹅饿鹅鹅鹅饿鹅鹅鹅饿鹅鹅鹅饿鹅鹅鹅饿鹅鹅鹅饿鹅鹅鹅饿鹅鹅鹅饿', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -648,7 +702,8 @@ CREATE TABLE IF NOT EXISTS `mb_comment_setting` (
   `check` tinyint(1) DEFAULT '0' COMMENT '是否需要审核',
   `code` tinyint(1) DEFAULT '0' COMMENT '是否开启验证码',
   `add_point` tinyint(3) unsigned DEFAULT '0' COMMENT '添加的积分数',
-  `del_point` tinyint(3) unsigned DEFAULT '0' COMMENT '扣除的积分数'
+  `del_point` tinyint(3) unsigned DEFAULT '0' COMMENT '扣除的积分数',
+  PRIMARY KEY (`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -665,17 +720,18 @@ INSERT INTO `mb_comment_setting` (`siteid`, `guest`, `check`, `code`, `add_point
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_table` (
-`tableid` mediumint(8) NOT NULL COMMENT '表ID号',
+  `tableid` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '表ID号',
   `total` int(10) unsigned DEFAULT '0' COMMENT '数据总量',
-  `creat_at` int(10) DEFAULT '0' COMMENT '创建时间'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `creat_at` int(10) DEFAULT '0' COMMENT '创建时间',
+  PRIMARY KEY (`tableid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_comment_table`
 --
 
 INSERT INTO `mb_comment_table` (`tableid`, `total`, `creat_at`) VALUES
-(1, 7, 0);
+(1, 9, 0);
 
 -- --------------------------------------------------------
 
@@ -690,7 +746,10 @@ CREATE TABLE IF NOT EXISTS `mb_content_check` (
   `title` char(80) NOT NULL,
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0'
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  KEY `username` (`username`),
+  KEY `checkid` (`checkid`),
+  KEY `status` (`status`,`inputtime`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -700,7 +759,7 @@ CREATE TABLE IF NOT EXISTS `mb_content_check` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_cool` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -716,8 +775,12 @@ CREATE TABLE IF NOT EXISTS `mb_cool` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_cool`
@@ -749,7 +812,8 @@ CREATE TABLE IF NOT EXISTS `mb_cool_data` (
   `tag` varchar(255) NOT NULL DEFAULT '',
   `area` varchar(255) NOT NULL DEFAULT '',
   `class` varchar(255) NOT NULL DEFAULT '',
-  `scan_url` varchar(100) NOT NULL DEFAULT ''
+  `scan_url` varchar(100) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -767,13 +831,14 @@ INSERT INTO `mb_cool_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagi
 --
 
 CREATE TABLE IF NOT EXISTS `mb_copyfrom` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sitename` varchar(30) NOT NULL,
   `siteurl` varchar(100) NOT NULL,
   `thumb` varchar(100) NOT NULL,
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -782,7 +847,7 @@ CREATE TABLE IF NOT EXISTS `mb_copyfrom` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_datacall` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` char(40) DEFAULT NULL,
   `dis_type` tinyint(1) unsigned DEFAULT '0',
   `type` tinyint(1) DEFAULT '0',
@@ -791,8 +856,10 @@ CREATE TABLE IF NOT EXISTS `mb_datacall` (
   `data` text,
   `template` text,
   `cache` mediumint(8) DEFAULT NULL,
-  `num` smallint(6) unsigned DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `num` smallint(6) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -801,7 +868,7 @@ CREATE TABLE IF NOT EXISTS `mb_datacall` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_dbsource` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL,
   `host` varchar(20) NOT NULL,
@@ -810,8 +877,10 @@ CREATE TABLE IF NOT EXISTS `mb_dbsource` (
   `password` varchar(50) NOT NULL,
   `dbname` varchar(50) NOT NULL,
   `dbtablepre` varchar(30) NOT NULL,
-  `charset` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `charset` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -820,7 +889,7 @@ CREATE TABLE IF NOT EXISTS `mb_dbsource` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_download` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -843,8 +912,12 @@ CREATE TABLE IF NOT EXISTS `mb_download` (
   `classtype` varchar(20) NOT NULL DEFAULT '',
   `version` varchar(20) NOT NULL DEFAULT '',
   `filesize` varchar(10) NOT NULL DEFAULT 'Unkown',
-  `stars` varchar(20) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `stars` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -864,7 +937,8 @@ CREATE TABLE IF NOT EXISTS `mb_download_data` (
   `relation` varchar(255) NOT NULL DEFAULT '',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `downfiles` mediumtext NOT NULL,
-  `downfile` varchar(255) NOT NULL DEFAULT ''
+  `downfile` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -874,12 +948,13 @@ CREATE TABLE IF NOT EXISTS `mb_download_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_downservers` (
-`id` mediumint(8) NOT NULL,
+  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `sitename` varchar(100) DEFAULT NULL,
   `siteurl` varchar(255) DEFAULT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -888,10 +963,12 @@ CREATE TABLE IF NOT EXISTS `mb_downservers` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_extend_setting` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `key` char(30) NOT NULL,
-  `data` mediumtext
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `data` mediumtext,
+  PRIMARY KEY (`id`),
+  KEY `key` (`key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -900,12 +977,14 @@ CREATE TABLE IF NOT EXISTS `mb_extend_setting` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_favorite` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `title` char(100) NOT NULL,
   `url` char(100) NOT NULL,
-  `adddate` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `adddate` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -921,7 +1000,8 @@ CREATE TABLE IF NOT EXISTS `mb_hits` (
   `dayviews` int(10) unsigned NOT NULL DEFAULT '0',
   `weekviews` int(10) unsigned NOT NULL DEFAULT '0',
   `monthviews` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`hitsid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -942,27 +1022,27 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 ('c-12-35', 6, 3, 0, 3, 3, 3, 1436454276),
 ('c-12-36', 6, 6, 0, 1, 3, 5, 1436708223),
 ('c-12-37', 6, 1, 0, 1, 1, 1, 1434614128),
-('c-12-38', 6, 3, 0, 1, 1, 1, 1436606252),
+('c-12-38', 6, 4, 0, 1, 1, 2, 1436945498),
 ('c-12-39', 6, 9, 0, 8, 8, 9, 1436587583),
 ('c-12-40', 6, 0, 0, 0, 0, 0, 1425959523),
 ('c-12-41', 6, 7, 0, 6, 6, 7, 1436410697),
 ('c-12-42', 6, 5, 0, 1, 1, 1, 1436162816),
-('c-12-43', 6, 28, 1, 1, 2, 25, 1436866141),
+('c-12-43', 6, 30, 1, 2, 4, 27, 1436943626),
 ('c-13-1', 11, 1, 0, 1, 1, 1, 1435648494),
 ('c-14-1', 18, 5, 1, 1, 2, 5, 1436865513),
-('c-14-2', 18, 44, 5, 3, 8, 44, 1436881166),
+('c-14-2', 18, 52, 3, 8, 16, 52, 1436945370),
 ('c-12-44', 8, 3, 0, 3, 3, 3, 1436706190),
-('c-12-45', 8, 1, 0, 1, 1, 1, 1436743874),
+('c-12-45', 8, 2, 0, 1, 2, 2, 1436934177),
 ('c-12-46', 9, 1, 0, 1, 1, 1, 1436706414),
 ('c-12-47', 9, 2, 0, 2, 2, 2, 1436706552),
 ('c-12-48', 9, 1, 0, 1, 1, 1, 1436706649),
 ('c-13-2', 11, 0, 0, 0, 0, 0, 1436860735),
-('c-14-3', 34, 14, 0, 14, 14, 14, 1436866380),
+('c-14-3', 34, 19, 14, 5, 19, 19, 1436953944),
 ('c-14-4', 22, 0, 0, 0, 0, 0, 1436882622),
-('c-14-5', 27, 0, 0, 0, 0, 0, 1436882689),
-('c-14-6', 27, 0, 0, 0, 0, 0, 1436882786),
-('c-14-7', 29, 1, 0, 1, 1, 1, 1436916331),
-('c-14-8', 27, 1, 0, 1, 1, 1, 1436882952);
+('c-14-5', 27, 2, 0, 2, 2, 2, 1436934039),
+('c-14-6', 27, 1, 0, 1, 1, 1, 1436934025),
+('c-14-7', 29, 6, 0, 6, 6, 6, 1436944059),
+('c-14-8', 27, 6, 1, 5, 6, 6, 1436944159);
 
 -- --------------------------------------------------------
 
@@ -971,10 +1051,11 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 --
 
 CREATE TABLE IF NOT EXISTS `mb_ipbanned` (
-`ipbannedid` smallint(5) NOT NULL,
+  `ipbannedid` smallint(5) NOT NULL AUTO_INCREMENT,
   `ip` char(15) NOT NULL,
-  `expires` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `expires` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ipbannedid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -983,10 +1064,11 @@ CREATE TABLE IF NOT EXISTS `mb_ipbanned` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keylink` (
-`keylinkid` smallint(5) unsigned NOT NULL,
+  `keylinkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `word` char(40) NOT NULL,
-  `url` char(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `url` char(100) NOT NULL,
+  PRIMARY KEY (`keylinkid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -995,13 +1077,15 @@ CREATE TABLE IF NOT EXISTS `mb_keylink` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keyword` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `keyword` char(100) NOT NULL,
   `pinyin` char(100) NOT NULL,
   `videonum` int(11) NOT NULL DEFAULT '0',
-  `searchnums` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+  `searchnums` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `keyword` (`keyword`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
 --
 -- 转存表中的数据 `mb_keyword`
@@ -1076,11 +1160,13 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keyword_data` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tagid` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `contentid` char(30) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
+  `contentid` char(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tagid` (`tagid`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=126 ;
 
 --
 -- 转存表中的数据 `mb_keyword_data`
@@ -1220,7 +1306,7 @@ INSERT INTO `mb_keyword_data` (`id`, `tagid`, `siteid`, `contentid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_link` (
-`linkid` smallint(5) unsigned NOT NULL,
+  `linkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `linktype` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1232,8 +1318,10 @@ CREATE TABLE IF NOT EXISTS `mb_link` (
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `elite` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `passed` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `addtime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `addtime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`linkid`),
+  KEY `typeid` (`typeid`,`passed`,`listorder`,`linkid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_link`
@@ -1250,7 +1338,7 @@ INSERT INTO `mb_link` (`linkid`, `siteid`, `typeid`, `linktype`, `name`, `url`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_linkage` (
-`linkageid` smallint(5) unsigned NOT NULL,
+  `linkageid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `style` varchar(35) NOT NULL,
   `parentid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -1260,8 +1348,10 @@ CREATE TABLE IF NOT EXISTS `mb_linkage` (
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `description` varchar(255) DEFAULT NULL,
   `setting` varchar(255) DEFAULT NULL,
-  `siteid` smallint(5) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3360 DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`linkageid`,`keyid`),
+  KEY `parentid` (`parentid`,`listorder`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3360 ;
 
 --
 -- 转存表中的数据 `mb_linkage`
@@ -4563,7 +4653,7 @@ INSERT INTO `mb_linkage` (`linkageid`, `name`, `style`, `parentid`, `child`, `ar
 --
 
 CREATE TABLE IF NOT EXISTS `mb_log` (
-`logid` int(10) unsigned NOT NULL,
+  `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `field` varchar(15) NOT NULL,
   `value` int(10) unsigned NOT NULL DEFAULT '0',
   `module` varchar(15) NOT NULL,
@@ -4574,8 +4664,11 @@ CREATE TABLE IF NOT EXISTS `mb_log` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `username` varchar(20) NOT NULL,
   `ip` varchar(15) NOT NULL,
-  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM AUTO_INCREMENT=709 DEFAULT CHARSET=utf8;
+  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`logid`),
+  KEY `module` (`module`,`file`,`action`),
+  KEY `username` (`username`,`action`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=712 ;
 
 --
 -- 转存表中的数据 `mb_log`
@@ -5290,7 +5383,10 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 (705, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 22:06:43'),
 (706, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 22:07:26'),
 (707, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 22:07:55'),
-(708, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 22:08:38');
+(708, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-14 22:08:38'),
+(709, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-15 17:24:30'),
+(710, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-15 17:24:36'),
+(711, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-15 17:24:53');
 
 -- --------------------------------------------------------
 
@@ -5299,7 +5395,7 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member` (
-`userid` mediumint(8) unsigned NOT NULL,
+  `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `phpssouid` mediumint(8) unsigned NOT NULL,
   `username` char(20) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
@@ -5323,8 +5419,12 @@ CREATE TABLE IF NOT EXISTS `mb_member` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '1',
   `connectid` char(40) NOT NULL DEFAULT '',
   `from` char(10) NOT NULL DEFAULT '',
-  `mobile` char(11) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `mobile` char(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`(20)),
+  KEY `phpssouid` (`phpssouid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_member`
@@ -5341,7 +5441,8 @@ INSERT INTO `mb_member` (`userid`, `phpssouid`, `username`, `password`, `encrypt
 
 CREATE TABLE IF NOT EXISTS `mb_member_detail` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `birthday` date DEFAULT NULL
+  `birthday` date DEFAULT NULL,
+  UNIQUE KEY `userid` (`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -5358,7 +5459,7 @@ INSERT INTO `mb_member_detail` (`userid`, `birthday`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_group` (
-`groupid` tinyint(3) unsigned NOT NULL,
+  `groupid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(15) NOT NULL,
   `issystem` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `starnum` tinyint(2) unsigned NOT NULL,
@@ -5379,8 +5480,11 @@ CREATE TABLE IF NOT EXISTS `mb_member_group` (
   `usernamecolor` char(7) NOT NULL,
   `description` char(100) NOT NULL,
   `sort` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`groupid`),
+  KEY `disabled` (`disabled`),
+  KEY `listorder` (`sort`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `mb_member_group`
@@ -5402,7 +5506,7 @@ INSERT INTO `mb_member_group` (`groupid`, `name`, `issystem`, `starnum`, `point`
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_menu` (
-`id` smallint(6) unsigned NOT NULL,
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(40) NOT NULL DEFAULT '',
   `parentid` smallint(6) NOT NULL DEFAULT '0',
   `m` char(20) NOT NULL DEFAULT '',
@@ -5412,8 +5516,12 @@ CREATE TABLE IF NOT EXISTS `mb_member_menu` (
   `listorder` smallint(6) unsigned NOT NULL DEFAULT '0',
   `display` enum('1','0') NOT NULL DEFAULT '1',
   `isurl` enum('1','0') NOT NULL DEFAULT '0',
-  `url` char(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `url` char(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `listorder` (`listorder`),
+  KEY `parentid` (`parentid`),
+  KEY `module` (`m`,`c`,`a`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `mb_member_menu`
@@ -5431,7 +5539,7 @@ INSERT INTO `mb_member_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_verify` (
-`userid` mediumint(8) unsigned NOT NULL,
+  `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `username` char(20) NOT NULL,
   `password` char(32) NOT NULL,
   `encrypt` char(6) NOT NULL,
@@ -5446,8 +5554,11 @@ CREATE TABLE IF NOT EXISTS `mb_member_verify` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `siteid` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `message` char(100) DEFAULT NULL,
-  `mobile` char(11) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `mobile` char(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`(20))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -5456,7 +5567,8 @@ CREATE TABLE IF NOT EXISTS `mb_member_verify` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_vip` (
-  `userid` mediumint(8) unsigned NOT NULL DEFAULT '0'
+  `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  UNIQUE KEY `userid` (`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5466,7 +5578,7 @@ CREATE TABLE IF NOT EXISTS `mb_member_vip` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_menu` (
-`id` smallint(6) unsigned NOT NULL,
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(40) NOT NULL DEFAULT '',
   `parentid` smallint(6) NOT NULL DEFAULT '0',
   `m` char(20) NOT NULL DEFAULT '',
@@ -5479,8 +5591,12 @@ CREATE TABLE IF NOT EXISTS `mb_menu` (
   `project2` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `project3` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `project4` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `project5` tinyint(1) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=1562 DEFAULT CHARSET=utf8;
+  `project5` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `listorder` (`listorder`),
+  KEY `parentid` (`parentid`),
+  KEY `module` (`m`,`c`,`a`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1562 ;
 
 --
 -- 转存表中的数据 `mb_menu`
@@ -5815,7 +5931,7 @@ INSERT INTO `mb_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listord
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message` (
-`messageid` int(10) unsigned NOT NULL,
+  `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `send_from_id` char(30) NOT NULL DEFAULT '0',
   `send_to_id` char(30) NOT NULL DEFAULT '0',
   `folder` enum('all','inbox','outbox') NOT NULL,
@@ -5824,8 +5940,12 @@ CREATE TABLE IF NOT EXISTS `mb_message` (
   `subject` char(80) DEFAULT NULL,
   `content` text NOT NULL,
   `replyid` int(10) unsigned NOT NULL DEFAULT '0',
-  `del_type` tinyint(1) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `del_type` tinyint(1) unsigned DEFAULT '0',
+  PRIMARY KEY (`messageid`),
+  KEY `msgtoid` (`send_to_id`,`folder`),
+  KEY `replyid` (`replyid`),
+  KEY `folder` (`send_from_id`,`folder`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -5834,10 +5954,12 @@ CREATE TABLE IF NOT EXISTS `mb_message` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message_data` (
-`id` int(4) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `userid` mediumint(8) NOT NULL,
-  `group_message_id` int(5) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `group_message_id` int(5) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `message` (`userid`,`group_message_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -5846,14 +5968,15 @@ CREATE TABLE IF NOT EXISTS `mb_message_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message_group` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `groupid` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '用户组id',
   `subject` char(80) DEFAULT NULL,
   `content` text NOT NULL COMMENT '内容',
   `inputtime` int(10) unsigned DEFAULT '0',
-  `status` tinyint(2) unsigned DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(2) unsigned DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -5862,7 +5985,7 @@ CREATE TABLE IF NOT EXISTS `mb_message_group` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_moban` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -5878,8 +6001,12 @@ CREATE TABLE IF NOT EXISTS `mb_moban` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
 -- 转存表中的数据 `mb_moban`
@@ -5928,7 +6055,8 @@ CREATE TABLE IF NOT EXISTS `mb_moban_data` (
   `tag` varchar(255) NOT NULL DEFAULT '',
   `photo` mediumtext NOT NULL,
   `down_url` mediumtext NOT NULL,
-  `demo_url` varchar(255) NOT NULL DEFAULT ''
+  `demo_url` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -5964,7 +6092,7 @@ INSERT INTO `mb_moban_data` (`id`, `content`, `readpoint`, `groupids_view`, `pag
 --
 
 CREATE TABLE IF NOT EXISTS `mb_model` (
-`modelid` smallint(5) unsigned NOT NULL,
+  `modelid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` char(30) NOT NULL,
   `description` char(100) NOT NULL,
@@ -5983,8 +6111,10 @@ CREATE TABLE IF NOT EXISTS `mb_model` (
   `member_add_template` varchar(30) NOT NULL,
   `member_list_template` varchar(30) NOT NULL,
   `sort` tinyint(3) NOT NULL,
-  `type` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `type` tinyint(1) NOT NULL,
+  PRIMARY KEY (`modelid`),
+  KEY `type` (`type`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- 转存表中的数据 `mb_model`
@@ -6007,7 +6137,7 @@ INSERT INTO `mb_model` (`modelid`, `siteid`, `name`, `description`, `tablename`,
 --
 
 CREATE TABLE IF NOT EXISTS `mb_model_field` (
-`fieldid` mediumint(8) unsigned NOT NULL,
+  `fieldid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `field` varchar(20) NOT NULL,
@@ -6033,8 +6163,11 @@ CREATE TABLE IF NOT EXISTS `mb_model_field` (
   `isposition` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `listorder` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isomnipotent` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
+  `isomnipotent` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`fieldid`),
+  KEY `modelid` (`modelid`,`disabled`),
+  KEY `field` (`field`,`modelid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=184 ;
 
 --
 -- 转存表中的数据 `mb_model_field`
@@ -6237,7 +6370,8 @@ CREATE TABLE IF NOT EXISTS `mb_module` (
   `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `installdate` date NOT NULL DEFAULT '0000-00-00',
-  `updatedate` date NOT NULL DEFAULT '0000-00-00'
+  `updatedate` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`module`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6277,7 +6411,7 @@ INSERT INTO `mb_module` (`module`, `name`, `url`, `iscore`, `version`, `descript
 --
 
 CREATE TABLE IF NOT EXISTS `mb_mood` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目id',
   `siteid` mediumint(6) unsigned NOT NULL DEFAULT '0' COMMENT '站点ID',
   `contentid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
@@ -6292,8 +6426,12 @@ CREATE TABLE IF NOT EXISTS `mb_mood` (
   `n8` int(10) unsigned NOT NULL DEFAULT '0',
   `n9` int(10) unsigned NOT NULL DEFAULT '0',
   `n10` int(10) unsigned NOT NULL DEFAULT '0',
-  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间',
+  PRIMARY KEY (`id`),
+  KEY `total` (`total`),
+  KEY `lastupdate` (`lastupdate`),
+  KEY `catid` (`catid`,`siteid`,`contentid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6302,7 +6440,7 @@ CREATE TABLE IF NOT EXISTS `mb_mood` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_news` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` varchar(80) NOT NULL DEFAULT '',
@@ -6318,8 +6456,12 @@ CREATE TABLE IF NOT EXISTS `mb_news` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6339,7 +6481,8 @@ CREATE TABLE IF NOT EXISTS `mb_news_data` (
   `relation` varchar(255) NOT NULL DEFAULT '',
   `voteid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `copyfrom` varchar(100) NOT NULL DEFAULT ''
+  `copyfrom` varchar(100) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6355,7 +6498,8 @@ CREATE TABLE IF NOT EXISTS `mb_page` (
   `keywords` varchar(40) NOT NULL,
   `content` text NOT NULL,
   `template` varchar(30) NOT NULL,
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  KEY `catid` (`catid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6365,7 +6509,7 @@ CREATE TABLE IF NOT EXISTS `mb_page` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_account` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `trade_sn` char(50) NOT NULL,
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
@@ -6384,8 +6528,12 @@ CREATE TABLE IF NOT EXISTS `mb_pay_account` (
   `type` tinyint(3) NOT NULL DEFAULT '1',
   `ip` char(15) NOT NULL DEFAULT '0.0.0.0',
   `status` enum('succ','failed','error','progress','timeout','cancel','waitting','unpay') NOT NULL DEFAULT 'unpay',
-  `adminnote` char(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `adminnote` char(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`),
+  KEY `userid` (`userid`),
+  KEY `trade_sn` (`trade_sn`,`money`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_pay_account`
@@ -6402,7 +6550,7 @@ INSERT INTO `mb_pay_account` (`id`, `trade_sn`, `userid`, `username`, `contactna
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_payment` (
-`pay_id` tinyint(3) unsigned NOT NULL,
+  `pay_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(120) NOT NULL,
   `pay_name` varchar(120) NOT NULL,
   `pay_code` varchar(20) NOT NULL,
@@ -6416,8 +6564,10 @@ CREATE TABLE IF NOT EXISTS `mb_pay_payment` (
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `author` varchar(100) NOT NULL,
   `website` varchar(100) NOT NULL,
-  `version` varchar(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `version` varchar(20) NOT NULL,
+  PRIMARY KEY (`pay_id`),
+  KEY `pay_code` (`pay_code`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_pay_payment`
@@ -6434,7 +6584,7 @@ INSERT INTO `mb_pay_payment` (`pay_id`, `name`, `pay_name`, `pay_code`, `pay_des
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `creat_at` int(10) unsigned NOT NULL DEFAULT '0',
   `userid` int(10) unsigned NOT NULL DEFAULT '0',
   `username` varchar(20) NOT NULL,
@@ -6443,8 +6593,13 @@ CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
   `value` int(5) NOT NULL,
   `op_userid` int(10) unsigned NOT NULL DEFAULT '0',
   `op_username` char(20) NOT NULL,
-  `msg` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `msg` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`),
+  KEY `creat_at` (`creat_at`),
+  KEY `logo` (`logo`),
+  KEY `userid` (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6453,7 +6608,7 @@ CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_picture` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -6469,8 +6624,12 @@ CREATE TABLE IF NOT EXISTS `mb_picture` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -6492,7 +6651,8 @@ CREATE TABLE IF NOT EXISTS `mb_picture_data` (
   `copyfrom` varchar(255) NOT NULL DEFAULT '',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `style` varchar(255) NOT NULL DEFAULT '',
-  `tag` varchar(255) NOT NULL DEFAULT ''
+  `tag` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6502,7 +6662,7 @@ CREATE TABLE IF NOT EXISTS `mb_picture_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_position` (
-`posid` smallint(5) unsigned NOT NULL,
+  `posid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `modelid` smallint(5) unsigned DEFAULT '0',
   `catid` smallint(5) unsigned DEFAULT '0',
   `name` char(30) NOT NULL DEFAULT '',
@@ -6510,8 +6670,9 @@ CREATE TABLE IF NOT EXISTS `mb_position` (
   `extention` char(100) DEFAULT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `thumb` varchar(150) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `thumb` varchar(150) NOT NULL DEFAULT '',
+  PRIMARY KEY (`posid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `mb_position`
@@ -6550,7 +6711,9 @@ CREATE TABLE IF NOT EXISTS `mb_position_data` (
   `listorder` mediumint(8) DEFAULT '0',
   `expiration` int(10) NOT NULL,
   `extention` char(30) DEFAULT NULL,
-  `synedit` tinyint(1) DEFAULT '0'
+  `synedit` tinyint(1) DEFAULT '0',
+  KEY `posid` (`posid`),
+  KEY `listorder` (`listorder`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6574,7 +6737,7 @@ INSERT INTO `mb_position_data` (`id`, `catid`, `posid`, `module`, `modelid`, `th
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(40) NOT NULL,
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6586,8 +6749,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster` (
   `hits` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `clicks` smallint(5) unsigned NOT NULL DEFAULT '0',
   `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `spaceid` (`spaceid`,`siteid`,`disabled`,`listorder`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `mb_poster`
@@ -6620,7 +6785,7 @@ INSERT INTO `mb_poster` (`id`, `siteid`, `name`, `spaceid`, `type`, `setting`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6629,8 +6794,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
   `ip` char(15) NOT NULL,
   `referer` char(120) NOT NULL,
   `clicktime` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`,`type`,`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6639,7 +6806,7 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6648,8 +6815,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
   `ip` char(15) NOT NULL,
   `referer` char(120) NOT NULL,
   `clicktime` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`,`type`,`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6658,7 +6827,7 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_space` (
-`spaceid` smallint(5) unsigned NOT NULL,
+  `spaceid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` char(50) NOT NULL,
   `type` char(30) NOT NULL,
@@ -6668,8 +6837,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster_space` (
   `setting` char(100) NOT NULL,
   `description` char(100) NOT NULL,
   `items` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`spaceid`),
+  KEY `disabled` (`disabled`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- 转存表中的数据 `mb_poster_space`
@@ -6696,7 +6867,7 @@ INSERT INTO `mb_poster_space` (`spaceid`, `siteid`, `name`, `type`, `path`, `wid
 --
 
 CREATE TABLE IF NOT EXISTS `mb_queue` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `type` char(5) DEFAULT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `path` varchar(100) DEFAULT NULL,
@@ -6704,8 +6875,11 @@ CREATE TABLE IF NOT EXISTS `mb_queue` (
   `status2` tinyint(1) DEFAULT '0',
   `status3` tinyint(1) DEFAULT '0',
   `status4` tinyint(1) DEFAULT '0',
-  `times` int(10) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `times` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`),
+  KEY `times` (`times`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6714,7 +6888,7 @@ CREATE TABLE IF NOT EXISTS `mb_queue` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_release_point` (
-`id` mediumint(8) NOT NULL,
+  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
   `host` varchar(100) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
@@ -6722,8 +6896,9 @@ CREATE TABLE IF NOT EXISTS `mb_release_point` (
   `port` varchar(10) DEFAULT '21',
   `pasv` tinyint(1) DEFAULT '0',
   `ssl` tinyint(1) DEFAULT '0',
-  `path` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `path` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6732,13 +6907,17 @@ CREATE TABLE IF NOT EXISTS `mb_release_point` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_search` (
-`searchid` int(10) unsigned NOT NULL,
+  `searchid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `adddate` int(10) unsigned NOT NULL,
   `data` text NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`searchid`),
+  KEY `typeid` (`typeid`,`id`),
+  KEY `siteid` (`siteid`),
+  FULLTEXT KEY `data` (`data`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
 -- 转存表中的数据 `mb_search`
@@ -6790,7 +6969,10 @@ CREATE TABLE IF NOT EXISTS `mb_search_keyword` (
   `keyword` char(20) NOT NULL,
   `pinyin` char(20) NOT NULL,
   `searchnums` int(10) unsigned NOT NULL,
-  `data` char(20) NOT NULL
+  `data` char(20) NOT NULL,
+  UNIQUE KEY `keyword` (`keyword`),
+  UNIQUE KEY `pinyin` (`pinyin`),
+  FULLTEXT KEY `data` (`data`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6809,7 +6991,9 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
   `m` char(20) NOT NULL,
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
-  `data` char(255) NOT NULL
+  `data` char(255) NOT NULL,
+  PRIMARY KEY (`sessionid`),
+  KEY `lastvisit` (`lastvisit`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 --
@@ -6817,7 +7001,7 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
 --
 
 INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `groupid`, `m`, `c`, `a`, `data`) VALUES
-('mk7aef9si379b2d8g3to9mlt57', 0, '127.0.0.1', 1436916261, 0, 0, 'admin', 'index', 'public_session_life', '');
+('o84s60cbf9c49lkqntgh0qofs7', 2, '127.0.0.1', 1436954678, 1, 0, 'admin', 'index', 'public_session_life', 'code|s:4:"ucle";userid|s:1:"2";roleid|s:1:"1";pc_hash|s:6:"1nGcrE";lock_screen|i:0;');
 
 -- --------------------------------------------------------
 
@@ -6826,7 +7010,7 @@ INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `g
 --
 
 CREATE TABLE IF NOT EXISTS `mb_site` (
-`siteid` smallint(5) unsigned NOT NULL,
+  `siteid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(30) DEFAULT '',
   `dirname` char(255) DEFAULT '',
   `domain` char(255) DEFAULT '',
@@ -6837,8 +7021,9 @@ CREATE TABLE IF NOT EXISTS `mb_site` (
   `default_style` char(50) DEFAULT NULL,
   `template` text,
   `setting` mediumtext,
-  `uuid` char(40) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `uuid` char(40) DEFAULT '',
+  PRIMARY KEY (`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_site`
@@ -6854,7 +7039,7 @@ INSERT INTO `mb_site` (`siteid`, `name`, `dirname`, `domain`, `site_title`, `key
 --
 
 CREATE TABLE IF NOT EXISTS `mb_special` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `aid` int(10) unsigned NOT NULL DEFAULT '0',
   `title` char(60) NOT NULL,
@@ -6879,8 +7064,10 @@ CREATE TABLE IF NOT EXISTS `mb_special` (
   `listorder` smallint(5) unsigned NOT NULL,
   `elite` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isvideo` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `isvideo` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `disabled` (`disabled`,`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6889,7 +7076,7 @@ CREATE TABLE IF NOT EXISTS `mb_special` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_special_content` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `specialid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `title` char(80) NOT NULL,
   `style` char(24) NOT NULL,
@@ -6907,8 +7094,11 @@ CREATE TABLE IF NOT EXISTS `mb_special_content` (
   `searchid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `isdata` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `videoid` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `videoid` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `specialid` (`specialid`,`typeid`,`isdata`),
+  KEY `typeid` (`typeid`,`isdata`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6923,7 +7113,8 @@ CREATE TABLE IF NOT EXISTS `mb_special_c_data` (
   `paginationtype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `maxcharperpage` mediumint(6) unsigned NOT NULL DEFAULT '0',
   `style` char(20) NOT NULL,
-  `show_template` varchar(30) NOT NULL
+  `show_template` varchar(30) NOT NULL,
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6934,7 +7125,8 @@ CREATE TABLE IF NOT EXISTS `mb_special_c_data` (
 
 CREATE TABLE IF NOT EXISTS `mb_sphinx_counter` (
   `counter_id` int(11) unsigned NOT NULL,
-  `max_doc_id` int(11) unsigned NOT NULL
+  `max_doc_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`counter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6944,14 +7136,16 @@ CREATE TABLE IF NOT EXISTS `mb_sphinx_counter` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_admin` (
-`id` smallint(6) NOT NULL,
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `username` char(20) NOT NULL,
   `password` char(32) NOT NULL,
   `encrypt` char(6) DEFAULT NULL,
   `issuper` tinyint(1) DEFAULT '0',
   `lastlogin` int(10) DEFAULT NULL,
-  `ip` char(15) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `ip` char(15) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_admin`
@@ -6967,7 +7161,7 @@ INSERT INTO `mb_sso_admin` (`id`, `username`, `password`, `encrypt`, `issuper`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_applications` (
-`appid` smallint(6) unsigned NOT NULL,
+  `appid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `type` char(16) NOT NULL DEFAULT '',
   `name` char(20) NOT NULL DEFAULT '',
   `url` char(255) NOT NULL DEFAULT '',
@@ -6975,8 +7169,10 @@ CREATE TABLE IF NOT EXISTS `mb_sso_applications` (
   `ip` char(15) NOT NULL DEFAULT '',
   `apifilename` char(30) NOT NULL DEFAULT 'phpsso.php',
   `charset` char(8) NOT NULL DEFAULT '',
-  `synlogin` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `synlogin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`appid`),
+  KEY `synlogin` (`synlogin`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_applications`
@@ -6992,7 +7188,7 @@ INSERT INTO `mb_sso_applications` (`appid`, `type`, `name`, `url`, `authkey`, `i
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_members` (
-`uid` int(10) unsigned NOT NULL,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` char(20) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
   `random` char(8) NOT NULL DEFAULT '',
@@ -7004,8 +7200,12 @@ CREATE TABLE IF NOT EXISTS `mb_sso_members` (
   `appname` char(15) NOT NULL,
   `type` enum('app','connect') DEFAULT NULL,
   `avatar` tinyint(1) NOT NULL DEFAULT '0',
-  `ucuserid` mediumint(8) unsigned DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `ucuserid` mediumint(8) unsigned DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`),
+  KEY `ucuserid` (`ucuserid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_members`
@@ -7021,14 +7221,17 @@ INSERT INTO `mb_sso_members` (`uid`, `username`, `password`, `random`, `email`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_messagequeue` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `operation` char(32) NOT NULL,
   `succeed` tinyint(1) NOT NULL DEFAULT '0',
   `totalnum` smallint(6) unsigned NOT NULL DEFAULT '0',
   `noticedata` mediumtext NOT NULL,
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
-  `appstatus` mediumtext
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `appstatus` mediumtext,
+  PRIMARY KEY (`id`),
+  KEY `dateline` (`dateline`),
+  KEY `succeed` (`succeed`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_messagequeue`
@@ -7053,7 +7256,9 @@ CREATE TABLE IF NOT EXISTS `mb_sso_session` (
   `m` char(20) NOT NULL,
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
-  `data` char(255) NOT NULL
+  `data` char(255) NOT NULL,
+  PRIMARY KEY (`sessionid`),
+  KEY `lastvisit` (`lastvisit`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7064,7 +7269,8 @@ CREATE TABLE IF NOT EXISTS `mb_sso_session` (
 
 CREATE TABLE IF NOT EXISTS `mb_sso_settings` (
   `name` varchar(32) NOT NULL DEFAULT '',
-  `data` text NOT NULL
+  `data` text NOT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -7085,7 +7291,7 @@ INSERT INTO `mb_sso_settings` (`name`, `data`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_tag` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `tag` text NOT NULL,
   `name` char(40) NOT NULL,
@@ -7096,8 +7302,9 @@ CREATE TABLE IF NOT EXISTS `mb_tag` (
   `page` char(15) NOT NULL,
   `return` char(20) NOT NULL,
   `cache` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `num` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `num` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7106,13 +7313,15 @@ CREATE TABLE IF NOT EXISTS `mb_tag` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_template_bak` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `creat_at` int(10) unsigned DEFAULT '0',
   `fileid` char(50) DEFAULT NULL,
   `userid` mediumint(8) DEFAULT NULL,
   `username` char(20) DEFAULT NULL,
-  `template` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `template` text,
+  PRIMARY KEY (`id`),
+  KEY `fileid` (`fileid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7125,7 +7334,8 @@ CREATE TABLE IF NOT EXISTS `mb_times` (
   `ip` char(15) NOT NULL,
   `logintime` int(10) unsigned NOT NULL DEFAULT '0',
   `isadmin` tinyint(1) NOT NULL DEFAULT '0',
-  `times` tinyint(1) unsigned NOT NULL DEFAULT '0'
+  `times` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`username`,`isadmin`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7135,7 +7345,7 @@ CREATE TABLE IF NOT EXISTS `mb_times` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_tx` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -7151,8 +7361,12 @@ CREATE TABLE IF NOT EXISTS `mb_tx` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `mb_tx`
@@ -7184,7 +7398,8 @@ CREATE TABLE IF NOT EXISTS `mb_tx_data` (
   `template` varchar(30) NOT NULL,
   `paytype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `relation` varchar(255) NOT NULL DEFAULT ''
+  `relation` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -7208,7 +7423,7 @@ INSERT INTO `mb_tx_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagina
 --
 
 CREATE TABLE IF NOT EXISTS `mb_type` (
-`typeid` smallint(5) unsigned NOT NULL,
+  `typeid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `module` char(15) NOT NULL,
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -7218,8 +7433,10 @@ CREATE TABLE IF NOT EXISTS `mb_type` (
   `url` char(100) NOT NULL,
   `template` char(30) NOT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `description` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`typeid`),
+  KEY `module` (`module`,`parentid`,`siteid`,`listorder`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
 
 --
 -- 转存表中的数据 `mb_type`
@@ -7241,13 +7458,14 @@ INSERT INTO `mb_type` (`typeid`, `siteid`, `module`, `modelid`, `name`, `parenti
 --
 
 CREATE TABLE IF NOT EXISTS `mb_urlrule` (
-`urlruleid` smallint(5) unsigned NOT NULL,
+  `urlruleid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `module` varchar(15) NOT NULL,
   `file` varchar(20) NOT NULL,
   `ishtml` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `urlrule` varchar(255) NOT NULL,
-  `example` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+  `example` varchar(255) NOT NULL,
+  PRIMARY KEY (`urlruleid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- 转存表中的数据 `mb_urlrule`
@@ -7270,7 +7488,7 @@ INSERT INTO `mb_urlrule` (`urlruleid`, `module`, `file`, `ishtml`, `urlrule`, `e
 --
 
 CREATE TABLE IF NOT EXISTS `mb_video` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -7288,8 +7506,12 @@ CREATE TABLE IF NOT EXISTS `mb_video` (
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
   `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
   `vision` varchar(255) NOT NULL DEFAULT '',
-  `video_category` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `video_category` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7301,7 +7523,8 @@ CREATE TABLE IF NOT EXISTS `mb_video_content` (
   `contentid` int(10) unsigned NOT NULL DEFAULT '0',
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `videoid` int(10) unsigned NOT NULL DEFAULT '0',
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0'
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
+  KEY `videoid` (`videoid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7321,7 +7544,8 @@ CREATE TABLE IF NOT EXISTS `mb_video_data` (
   `paytype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `relation` varchar(255) NOT NULL DEFAULT '',
-  `video` tinyint(3) unsigned NOT NULL DEFAULT '0'
+  `video` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7331,7 +7555,7 @@ CREATE TABLE IF NOT EXISTS `mb_video_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_video_store` (
-`videoid` int(10) unsigned NOT NULL,
+  `videoid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` char(60) NOT NULL,
   `vid` char(40) NOT NULL,
   `keywords` char(40) NOT NULL,
@@ -7344,8 +7568,10 @@ CREATE TABLE IF NOT EXISTS `mb_video_store` (
   `size` char(20) NOT NULL,
   `timelen` mediumint(9) NOT NULL DEFAULT '0',
   `userupload` tinyint(1) NOT NULL DEFAULT '0',
-  `channelid` tinyint(3) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `channelid` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`videoid`),
+  KEY `videoid` (`videoid`,`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7360,7 +7586,10 @@ CREATE TABLE IF NOT EXISTS `mb_vote_data` (
   `time` int(10) unsigned NOT NULL DEFAULT '0',
   `ip` char(15) NOT NULL,
   `data` text NOT NULL,
-  `userinfo` text NOT NULL
+  `userinfo` text NOT NULL,
+  KEY `subjectid` (`subjectid`),
+  KEY `userid` (`userid`),
+  KEY `ip` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7370,13 +7599,15 @@ CREATE TABLE IF NOT EXISTS `mb_vote_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_vote_option` (
-`optionid` mediumint(8) unsigned NOT NULL,
+  `optionid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `subjectid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `option` varchar(255) NOT NULL,
   `image` varchar(100) DEFAULT NULL,
-  `listorder` tinyint(2) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `listorder` tinyint(2) unsigned DEFAULT '0',
+  PRIMARY KEY (`optionid`),
+  KEY `subjectid` (`subjectid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7385,7 +7616,7 @@ CREATE TABLE IF NOT EXISTS `mb_vote_option` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
-`subjectid` mediumint(8) unsigned NOT NULL,
+  `subjectid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `subject` char(255) NOT NULL,
   `ismultiple` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -7404,8 +7635,12 @@ CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
   `minval` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `allowview` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `optionnumber` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `votenumber` mediumint(8) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `votenumber` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`subjectid`),
+  KEY `enabled` (`enabled`),
+  KEY `fromdate` (`fromdate`,`todate`),
+  KEY `todate` (`todate`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7414,14 +7649,15 @@ CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_workflow` (
-`workflowid` smallint(5) unsigned NOT NULL,
+  `workflowid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `steps` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `workname` varchar(20) NOT NULL,
   `description` varchar(255) NOT NULL,
   `setting` text NOT NULL,
-  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`workflowid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `mb_workflow`
@@ -7433,992 +7669,6 @@ INSERT INTO `mb_workflow` (`workflowid`, `siteid`, `steps`, `workname`, `descrip
 (3, 1, 3, '三级审核', '审核三次', '', 0),
 (4, 1, 4, '四级审核', '四级审核', '', 0);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `mb_admin`
---
-ALTER TABLE `mb_admin`
- ADD PRIMARY KEY (`userid`), ADD KEY `username` (`username`);
-
---
--- Indexes for table `mb_admin_panel`
---
-ALTER TABLE `mb_admin_panel`
- ADD UNIQUE KEY `userid` (`menuid`,`userid`);
-
---
--- Indexes for table `mb_admin_role`
---
-ALTER TABLE `mb_admin_role`
- ADD PRIMARY KEY (`roleid`), ADD KEY `listorder` (`listorder`), ADD KEY `disabled` (`disabled`);
-
---
--- Indexes for table `mb_admin_role_priv`
---
-ALTER TABLE `mb_admin_role_priv`
- ADD KEY `roleid` (`roleid`,`m`,`c`,`a`,`siteid`);
-
---
--- Indexes for table `mb_announce`
---
-ALTER TABLE `mb_announce`
- ADD PRIMARY KEY (`aid`), ADD KEY `siteid` (`siteid`,`passed`,`endtime`);
-
---
--- Indexes for table `mb_attachment`
---
-ALTER TABLE `mb_attachment`
- ADD PRIMARY KEY (`aid`), ADD KEY `authcode` (`authcode`);
-
---
--- Indexes for table `mb_attachment_index`
---
-ALTER TABLE `mb_attachment_index`
- ADD KEY `keyid` (`keyid`), ADD KEY `aid` (`aid`);
-
---
--- Indexes for table `mb_badword`
---
-ALTER TABLE `mb_badword`
- ADD PRIMARY KEY (`badid`), ADD UNIQUE KEY `badword` (`badword`), ADD KEY `usetimes` (`replaceword`,`listorder`), ADD KEY `hits` (`listorder`);
-
---
--- Indexes for table `mb_block`
---
-ALTER TABLE `mb_block`
- ADD PRIMARY KEY (`id`), ADD KEY `pos` (`pos`), ADD KEY `type` (`type`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_block_history`
---
-ALTER TABLE `mb_block_history`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_block_priv`
---
-ALTER TABLE `mb_block_priv`
- ADD PRIMARY KEY (`id`), ADD KEY `blockid` (`blockid`), ADD KEY `roleid` (`roleid`,`siteid`);
-
---
--- Indexes for table `mb_cache`
---
-ALTER TABLE `mb_cache`
- ADD PRIMARY KEY (`filename`,`path`);
-
---
--- Indexes for table `mb_category`
---
-ALTER TABLE `mb_category`
- ADD PRIMARY KEY (`catid`), ADD KEY `module` (`module`,`parentid`,`listorder`,`catid`), ADD KEY `siteid` (`siteid`,`type`);
-
---
--- Indexes for table `mb_category_priv`
---
-ALTER TABLE `mb_category_priv`
- ADD KEY `catid` (`catid`,`roleid`,`is_admin`,`action`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_collection_content`
---
-ALTER TABLE `mb_collection_content`
- ADD PRIMARY KEY (`id`), ADD KEY `nodeid` (`nodeid`,`siteid`), ADD KEY `status` (`status`);
-
---
--- Indexes for table `mb_collection_history`
---
-ALTER TABLE `mb_collection_history`
- ADD PRIMARY KEY (`md5`,`siteid`);
-
---
--- Indexes for table `mb_collection_node`
---
-ALTER TABLE `mb_collection_node`
- ADD PRIMARY KEY (`nodeid`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_collection_program`
---
-ALTER TABLE `mb_collection_program`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `nodeid` (`nodeid`);
-
---
--- Indexes for table `mb_comment`
---
-ALTER TABLE `mb_comment`
- ADD PRIMARY KEY (`commentid`), ADD KEY `lastupdate` (`lastupdate`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_comment_check`
---
-ALTER TABLE `mb_comment_check`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `comment_data_id` (`comment_data_id`);
-
---
--- Indexes for table `mb_comment_data_1`
---
-ALTER TABLE `mb_comment_data_1`
- ADD PRIMARY KEY (`id`), ADD KEY `commentid` (`commentid`), ADD KEY `direction` (`direction`), ADD KEY `siteid` (`siteid`), ADD KEY `support` (`support`);
-
---
--- Indexes for table `mb_comment_setting`
---
-ALTER TABLE `mb_comment_setting`
- ADD PRIMARY KEY (`siteid`);
-
---
--- Indexes for table `mb_comment_table`
---
-ALTER TABLE `mb_comment_table`
- ADD PRIMARY KEY (`tableid`);
-
---
--- Indexes for table `mb_content_check`
---
-ALTER TABLE `mb_content_check`
- ADD KEY `username` (`username`), ADD KEY `checkid` (`checkid`), ADD KEY `status` (`status`,`inputtime`);
-
---
--- Indexes for table `mb_cool`
---
-ALTER TABLE `mb_cool`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_cool_data`
---
-ALTER TABLE `mb_cool_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_copyfrom`
---
-ALTER TABLE `mb_copyfrom`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_datacall`
---
-ALTER TABLE `mb_datacall`
- ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`);
-
---
--- Indexes for table `mb_dbsource`
---
-ALTER TABLE `mb_dbsource`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_download`
---
-ALTER TABLE `mb_download`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_download_data`
---
-ALTER TABLE `mb_download_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_downservers`
---
-ALTER TABLE `mb_downservers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_extend_setting`
---
-ALTER TABLE `mb_extend_setting`
- ADD PRIMARY KEY (`id`), ADD KEY `key` (`key`);
-
---
--- Indexes for table `mb_favorite`
---
-ALTER TABLE `mb_favorite`
- ADD PRIMARY KEY (`id`), ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_hits`
---
-ALTER TABLE `mb_hits`
- ADD PRIMARY KEY (`hitsid`);
-
---
--- Indexes for table `mb_ipbanned`
---
-ALTER TABLE `mb_ipbanned`
- ADD PRIMARY KEY (`ipbannedid`);
-
---
--- Indexes for table `mb_keylink`
---
-ALTER TABLE `mb_keylink`
- ADD PRIMARY KEY (`keylinkid`);
-
---
--- Indexes for table `mb_keyword`
---
-ALTER TABLE `mb_keyword`
- ADD PRIMARY KEY (`id`), ADD KEY `keyword` (`keyword`,`siteid`);
-
---
--- Indexes for table `mb_keyword_data`
---
-ALTER TABLE `mb_keyword_data`
- ADD PRIMARY KEY (`id`), ADD KEY `tagid` (`tagid`,`siteid`);
-
---
--- Indexes for table `mb_link`
---
-ALTER TABLE `mb_link`
- ADD PRIMARY KEY (`linkid`), ADD KEY `typeid` (`typeid`,`passed`,`listorder`,`linkid`);
-
---
--- Indexes for table `mb_linkage`
---
-ALTER TABLE `mb_linkage`
- ADD PRIMARY KEY (`linkageid`,`keyid`), ADD KEY `parentid` (`parentid`,`listorder`);
-
---
--- Indexes for table `mb_log`
---
-ALTER TABLE `mb_log`
- ADD PRIMARY KEY (`logid`), ADD KEY `module` (`module`,`file`,`action`), ADD KEY `username` (`username`,`action`);
-
---
--- Indexes for table `mb_member`
---
-ALTER TABLE `mb_member`
- ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`(20)), ADD KEY `phpssouid` (`phpssouid`);
-
---
--- Indexes for table `mb_member_detail`
---
-ALTER TABLE `mb_member_detail`
- ADD UNIQUE KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_member_group`
---
-ALTER TABLE `mb_member_group`
- ADD PRIMARY KEY (`groupid`), ADD KEY `disabled` (`disabled`), ADD KEY `listorder` (`sort`);
-
---
--- Indexes for table `mb_member_menu`
---
-ALTER TABLE `mb_member_menu`
- ADD PRIMARY KEY (`id`), ADD KEY `listorder` (`listorder`), ADD KEY `parentid` (`parentid`), ADD KEY `module` (`m`,`c`,`a`);
-
---
--- Indexes for table `mb_member_verify`
---
-ALTER TABLE `mb_member_verify`
- ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`(20));
-
---
--- Indexes for table `mb_member_vip`
---
-ALTER TABLE `mb_member_vip`
- ADD UNIQUE KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_menu`
---
-ALTER TABLE `mb_menu`
- ADD PRIMARY KEY (`id`), ADD KEY `listorder` (`listorder`), ADD KEY `parentid` (`parentid`), ADD KEY `module` (`m`,`c`,`a`);
-
---
--- Indexes for table `mb_message`
---
-ALTER TABLE `mb_message`
- ADD PRIMARY KEY (`messageid`), ADD KEY `msgtoid` (`send_to_id`,`folder`), ADD KEY `replyid` (`replyid`), ADD KEY `folder` (`send_from_id`,`folder`);
-
---
--- Indexes for table `mb_message_data`
---
-ALTER TABLE `mb_message_data`
- ADD PRIMARY KEY (`id`), ADD KEY `message` (`userid`,`group_message_id`);
-
---
--- Indexes for table `mb_message_group`
---
-ALTER TABLE `mb_message_group`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_moban`
---
-ALTER TABLE `mb_moban`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_moban_data`
---
-ALTER TABLE `mb_moban_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_model`
---
-ALTER TABLE `mb_model`
- ADD PRIMARY KEY (`modelid`), ADD KEY `type` (`type`,`siteid`);
-
---
--- Indexes for table `mb_model_field`
---
-ALTER TABLE `mb_model_field`
- ADD PRIMARY KEY (`fieldid`), ADD KEY `modelid` (`modelid`,`disabled`), ADD KEY `field` (`field`,`modelid`);
-
---
--- Indexes for table `mb_module`
---
-ALTER TABLE `mb_module`
- ADD PRIMARY KEY (`module`);
-
---
--- Indexes for table `mb_mood`
---
-ALTER TABLE `mb_mood`
- ADD PRIMARY KEY (`id`), ADD KEY `total` (`total`), ADD KEY `lastupdate` (`lastupdate`), ADD KEY `catid` (`catid`,`siteid`,`contentid`);
-
---
--- Indexes for table `mb_news`
---
-ALTER TABLE `mb_news`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_news_data`
---
-ALTER TABLE `mb_news_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_page`
---
-ALTER TABLE `mb_page`
- ADD KEY `catid` (`catid`);
-
---
--- Indexes for table `mb_pay_account`
---
-ALTER TABLE `mb_pay_account`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`), ADD KEY `userid` (`userid`), ADD KEY `trade_sn` (`trade_sn`,`money`,`status`,`id`);
-
---
--- Indexes for table `mb_pay_payment`
---
-ALTER TABLE `mb_pay_payment`
- ADD PRIMARY KEY (`pay_id`), ADD KEY `pay_code` (`pay_code`);
-
---
--- Indexes for table `mb_pay_spend`
---
-ALTER TABLE `mb_pay_spend`
- ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`), ADD KEY `creat_at` (`creat_at`), ADD KEY `logo` (`logo`), ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_picture`
---
-ALTER TABLE `mb_picture`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_picture_data`
---
-ALTER TABLE `mb_picture_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_position`
---
-ALTER TABLE `mb_position`
- ADD PRIMARY KEY (`posid`);
-
---
--- Indexes for table `mb_position_data`
---
-ALTER TABLE `mb_position_data`
- ADD KEY `posid` (`posid`), ADD KEY `listorder` (`listorder`);
-
---
--- Indexes for table `mb_poster`
---
-ALTER TABLE `mb_poster`
- ADD PRIMARY KEY (`id`), ADD KEY `spaceid` (`spaceid`,`siteid`,`disabled`,`listorder`);
-
---
--- Indexes for table `mb_poster_201408`
---
-ALTER TABLE `mb_poster_201408`
- ADD PRIMARY KEY (`id`), ADD KEY `pid` (`pid`,`type`,`ip`);
-
---
--- Indexes for table `mb_poster_201502`
---
-ALTER TABLE `mb_poster_201502`
- ADD PRIMARY KEY (`id`), ADD KEY `pid` (`pid`,`type`,`ip`);
-
---
--- Indexes for table `mb_poster_space`
---
-ALTER TABLE `mb_poster_space`
- ADD PRIMARY KEY (`spaceid`), ADD KEY `disabled` (`disabled`,`siteid`);
-
---
--- Indexes for table `mb_queue`
---
-ALTER TABLE `mb_queue`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `times` (`times`);
-
---
--- Indexes for table `mb_release_point`
---
-ALTER TABLE `mb_release_point`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_search`
---
-ALTER TABLE `mb_search`
- ADD PRIMARY KEY (`searchid`), ADD KEY `typeid` (`typeid`,`id`), ADD KEY `siteid` (`siteid`), ADD FULLTEXT KEY `data` (`data`);
-
---
--- Indexes for table `mb_search_keyword`
---
-ALTER TABLE `mb_search_keyword`
- ADD UNIQUE KEY `keyword` (`keyword`), ADD UNIQUE KEY `pinyin` (`pinyin`), ADD FULLTEXT KEY `data` (`data`);
-
---
--- Indexes for table `mb_session`
---
-ALTER TABLE `mb_session`
- ADD PRIMARY KEY (`sessionid`), ADD KEY `lastvisit` (`lastvisit`);
-
---
--- Indexes for table `mb_site`
---
-ALTER TABLE `mb_site`
- ADD PRIMARY KEY (`siteid`);
-
---
--- Indexes for table `mb_special`
---
-ALTER TABLE `mb_special`
- ADD PRIMARY KEY (`id`), ADD KEY `disabled` (`disabled`,`siteid`);
-
---
--- Indexes for table `mb_special_content`
---
-ALTER TABLE `mb_special_content`
- ADD PRIMARY KEY (`id`), ADD KEY `specialid` (`specialid`,`typeid`,`isdata`), ADD KEY `typeid` (`typeid`,`isdata`);
-
---
--- Indexes for table `mb_special_c_data`
---
-ALTER TABLE `mb_special_c_data`
- ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `mb_sphinx_counter`
---
-ALTER TABLE `mb_sphinx_counter`
- ADD PRIMARY KEY (`counter_id`);
-
---
--- Indexes for table `mb_sso_admin`
---
-ALTER TABLE `mb_sso_admin`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `mb_sso_applications`
---
-ALTER TABLE `mb_sso_applications`
- ADD PRIMARY KEY (`appid`), ADD KEY `synlogin` (`synlogin`);
-
---
--- Indexes for table `mb_sso_members`
---
-ALTER TABLE `mb_sso_members`
- ADD PRIMARY KEY (`uid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`), ADD KEY `ucuserid` (`ucuserid`);
-
---
--- Indexes for table `mb_sso_messagequeue`
---
-ALTER TABLE `mb_sso_messagequeue`
- ADD PRIMARY KEY (`id`), ADD KEY `dateline` (`dateline`), ADD KEY `succeed` (`succeed`,`id`);
-
---
--- Indexes for table `mb_sso_session`
---
-ALTER TABLE `mb_sso_session`
- ADD PRIMARY KEY (`sessionid`), ADD KEY `lastvisit` (`lastvisit`);
-
---
--- Indexes for table `mb_sso_settings`
---
-ALTER TABLE `mb_sso_settings`
- ADD PRIMARY KEY (`name`);
-
---
--- Indexes for table `mb_tag`
---
-ALTER TABLE `mb_tag`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_template_bak`
---
-ALTER TABLE `mb_template_bak`
- ADD PRIMARY KEY (`id`), ADD KEY `fileid` (`fileid`);
-
---
--- Indexes for table `mb_times`
---
-ALTER TABLE `mb_times`
- ADD PRIMARY KEY (`username`,`isadmin`);
-
---
--- Indexes for table `mb_tx`
---
-ALTER TABLE `mb_tx`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_tx_data`
---
-ALTER TABLE `mb_tx_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_type`
---
-ALTER TABLE `mb_type`
- ADD PRIMARY KEY (`typeid`), ADD KEY `module` (`module`,`parentid`,`siteid`,`listorder`);
-
---
--- Indexes for table `mb_urlrule`
---
-ALTER TABLE `mb_urlrule`
- ADD PRIMARY KEY (`urlruleid`);
-
---
--- Indexes for table `mb_video`
---
-ALTER TABLE `mb_video`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_video_content`
---
-ALTER TABLE `mb_video_content`
- ADD KEY `videoid` (`videoid`);
-
---
--- Indexes for table `mb_video_data`
---
-ALTER TABLE `mb_video_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_video_store`
---
-ALTER TABLE `mb_video_store`
- ADD PRIMARY KEY (`videoid`), ADD KEY `videoid` (`videoid`,`status`);
-
---
--- Indexes for table `mb_vote_data`
---
-ALTER TABLE `mb_vote_data`
- ADD KEY `subjectid` (`subjectid`), ADD KEY `userid` (`userid`), ADD KEY `ip` (`ip`);
-
---
--- Indexes for table `mb_vote_option`
---
-ALTER TABLE `mb_vote_option`
- ADD PRIMARY KEY (`optionid`), ADD KEY `subjectid` (`subjectid`);
-
---
--- Indexes for table `mb_vote_subject`
---
-ALTER TABLE `mb_vote_subject`
- ADD PRIMARY KEY (`subjectid`), ADD KEY `enabled` (`enabled`), ADD KEY `fromdate` (`fromdate`,`todate`), ADD KEY `todate` (`todate`);
-
---
--- Indexes for table `mb_workflow`
---
-ALTER TABLE `mb_workflow`
- ADD PRIMARY KEY (`workflowid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `mb_admin`
---
-ALTER TABLE `mb_admin`
-MODIFY `userid` mediumint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_admin_role`
---
-ALTER TABLE `mb_admin_role`
-MODIFY `roleid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `mb_announce`
---
-ALTER TABLE `mb_announce`
-MODIFY `aid` smallint(4) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_attachment`
---
-ALTER TABLE `mb_attachment`
-MODIFY `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
---
--- AUTO_INCREMENT for table `mb_badword`
---
-ALTER TABLE `mb_badword`
-MODIFY `badid` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_block`
---
-ALTER TABLE `mb_block`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_block_history`
---
-ALTER TABLE `mb_block_history`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_block_priv`
---
-ALTER TABLE `mb_block_priv`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_category`
---
-ALTER TABLE `mb_category`
-MODIFY `catid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
---
--- AUTO_INCREMENT for table `mb_collection_content`
---
-ALTER TABLE `mb_collection_content`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_collection_node`
---
-ALTER TABLE `mb_collection_node`
-MODIFY `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_collection_program`
---
-ALTER TABLE `mb_collection_program`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_comment_check`
---
-ALTER TABLE `mb_comment_check`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_comment_data_1`
---
-ALTER TABLE `mb_comment_data_1`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `mb_comment_table`
---
-ALTER TABLE `mb_comment_table`
-MODIFY `tableid` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '表ID号',AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_cool`
---
-ALTER TABLE `mb_cool`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_copyfrom`
---
-ALTER TABLE `mb_copyfrom`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_datacall`
---
-ALTER TABLE `mb_datacall`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_dbsource`
---
-ALTER TABLE `mb_dbsource`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_download`
---
-ALTER TABLE `mb_download`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_downservers`
---
-ALTER TABLE `mb_downservers`
-MODIFY `id` mediumint(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_extend_setting`
---
-ALTER TABLE `mb_extend_setting`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_favorite`
---
-ALTER TABLE `mb_favorite`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_ipbanned`
---
-ALTER TABLE `mb_ipbanned`
-MODIFY `ipbannedid` smallint(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_keylink`
---
-ALTER TABLE `mb_keylink`
-MODIFY `keylinkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_keyword`
---
-ALTER TABLE `mb_keyword`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
---
--- AUTO_INCREMENT for table `mb_keyword_data`
---
-ALTER TABLE `mb_keyword_data`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=126;
---
--- AUTO_INCREMENT for table `mb_link`
---
-ALTER TABLE `mb_link`
-MODIFY `linkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_linkage`
---
-ALTER TABLE `mb_linkage`
-MODIFY `linkageid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3360;
---
--- AUTO_INCREMENT for table `mb_log`
---
-ALTER TABLE `mb_log`
-MODIFY `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=709;
---
--- AUTO_INCREMENT for table `mb_member`
---
-ALTER TABLE `mb_member`
-MODIFY `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_member_group`
---
-ALTER TABLE `mb_member_group`
-MODIFY `groupid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `mb_member_menu`
---
-ALTER TABLE `mb_member_menu`
-MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `mb_member_verify`
---
-ALTER TABLE `mb_member_verify`
-MODIFY `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_menu`
---
-ALTER TABLE `mb_menu`
-MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1562;
---
--- AUTO_INCREMENT for table `mb_message`
---
-ALTER TABLE `mb_message`
-MODIFY `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_message_data`
---
-ALTER TABLE `mb_message_data`
-MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_message_group`
---
-ALTER TABLE `mb_message_group`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_moban`
---
-ALTER TABLE `mb_moban`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
---
--- AUTO_INCREMENT for table `mb_model`
---
-ALTER TABLE `mb_model`
-MODIFY `modelid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `mb_model_field`
---
-ALTER TABLE `mb_model_field`
-MODIFY `fieldid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=184;
---
--- AUTO_INCREMENT for table `mb_mood`
---
-ALTER TABLE `mb_mood`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_news`
---
-ALTER TABLE `mb_news`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_pay_account`
---
-ALTER TABLE `mb_pay_account`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_pay_payment`
---
-ALTER TABLE `mb_pay_payment`
-MODIFY `pay_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_pay_spend`
---
-ALTER TABLE `mb_pay_spend`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_picture`
---
-ALTER TABLE `mb_picture`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `mb_position`
---
-ALTER TABLE `mb_position`
-MODIFY `posid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `mb_poster`
---
-ALTER TABLE `mb_poster`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `mb_poster_201408`
---
-ALTER TABLE `mb_poster_201408`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_poster_201502`
---
-ALTER TABLE `mb_poster_201502`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_poster_space`
---
-ALTER TABLE `mb_poster_space`
-MODIFY `spaceid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `mb_queue`
---
-ALTER TABLE `mb_queue`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_release_point`
---
-ALTER TABLE `mb_release_point`
-MODIFY `id` mediumint(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_search`
---
-ALTER TABLE `mb_search`
-MODIFY `searchid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=63;
---
--- AUTO_INCREMENT for table `mb_site`
---
-ALTER TABLE `mb_site`
-MODIFY `siteid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_special`
---
-ALTER TABLE `mb_special`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_special_content`
---
-ALTER TABLE `mb_special_content`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_sso_admin`
---
-ALTER TABLE `mb_sso_admin`
-MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_sso_applications`
---
-ALTER TABLE `mb_sso_applications`
-MODIFY `appid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_sso_members`
---
-ALTER TABLE `mb_sso_members`
-MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_sso_messagequeue`
---
-ALTER TABLE `mb_sso_messagequeue`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_tag`
---
-ALTER TABLE `mb_tag`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_template_bak`
---
-ALTER TABLE `mb_template_bak`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_tx`
---
-ALTER TABLE `mb_tx`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `mb_type`
---
-ALTER TABLE `mb_type`
-MODIFY `typeid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
---
--- AUTO_INCREMENT for table `mb_urlrule`
---
-ALTER TABLE `mb_urlrule`
-MODIFY `urlruleid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `mb_video`
---
-ALTER TABLE `mb_video`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_video_store`
---
-ALTER TABLE `mb_video_store`
-MODIFY `videoid` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_vote_option`
---
-ALTER TABLE `mb_vote_option`
-MODIFY `optionid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_vote_subject`
---
-ALTER TABLE `mb_vote_subject`
-MODIFY `subjectid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_workflow`
---
-ALTER TABLE `mb_workflow`
-MODIFY `workflowid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

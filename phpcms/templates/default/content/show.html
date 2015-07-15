@@ -347,12 +347,12 @@ $("a.fancybox").fancybox();
                     <div class="clear">
                     </div>
                 </div>
-
+                {php $relation_moban = get_relation_moban($cattype, $id, $catid)}
+                {if count($relation_moban)>0}
 				<div class="m_Boxxg">
                     <div class="m_Boxxgb">
                         类似的模板还有：
                     </div>
-                    {php $relation_moban = get_relation_moban($cattype, $id, $catid)}
                     <ul id="tags_related">
                         {loop $relation_moban $moban}
                         <li>
@@ -369,6 +369,7 @@ $("a.fancybox").fancybox();
                     <div class="clear">
                     </div>
                 </div>
+                {/if}
 				<!--<div class="m_T12">
                     发表评论：
                 </div>-->

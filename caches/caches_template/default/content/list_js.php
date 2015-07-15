@@ -58,11 +58,14 @@
             </div>
         </div>
         <div class="list-pngjs clearfix">
-            <?php $catname = get_catname($catid);?>
             <dl>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e95a7d3aa4116814e3ccbc0a4d0b85a8&action=lists&catid=%24catid&num=18&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 18;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
                 <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
-                <dd><a href="<?php echo $v['url'];?>" target="_blank"><img alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>"/><?php echo $v['title'];?></a><span><?php echo $catname;?></span>
+                <dd>
+                    <a href="<?php echo $v['url'];?>" target="_blank">
+                        <img alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>"/><?php echo $v['title'];?>
+                    </a>
+                    <span><?php echo get_catname($v[catid]);?></span>
                 </dd>
                 <?php $n++;}unset($n); ?>
                 <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
@@ -85,7 +88,7 @@
             <dl>
                 <dt class="jx"><span>广告代码</span>
                 <div></div>
-                <a href="/js/p1.html">全部››</a></dt>
+                <a href="/index.php?m=content&c=index&a=lists&catid=17">全部››</a></dt>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=464a4d526ca6b0be30e16a9e35f4477c&action=category&catid=17&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'17','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
                 <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
                 <dd><a href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a></dd>
@@ -98,7 +101,7 @@
             <dl>
                 <dt class="tx"><span>特效代码</span>
                 <div></div>
-                <a href="/js/texiao.html">全部››</a></dt>
+                <a href="/index.php?m=content&c=index&a=lists&catid=30">全部››</a></dt>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f0ed520873c7a7abeff2e6c2087cd281&action=category&catid=30&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'30','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
                 <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
                 <dd><a href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a></dd>
@@ -108,34 +111,35 @@
         </div>
 
         <div class="h">
+            <?php $hits_tx = hits_moban('weekviews',$catid,14,5)?>
             <dl>
                 <dt>猜你也喜欢看这些 ······</dt>
-                <dd><a href="/js/xiangce-1203.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>简约jQuery幻灯片相册代码<span
-                        class="l">相册代码</span><span class="t">2015-07-03</span></a></dd>
-                <dd><a href="/js/tupian-1202.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>jQuery图片列表动画显示效果<span
-                        class="l">图片特效</span><span class="t">2015-07-03</span></a></dd>
-                <dd><a href="/js/jiaodiantu-1201.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>
-                    猎豹jQuery全屏焦点图代码<span class="l">焦点图</span><span class="t">2015-05-22</span></a></dd>
-                <dd><a href="/js/tupian-1200.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>CSS3圆形图片鼠标经过旋转效果<span
-                        class="l">图片特效</span><span class="t">2015-05-22</span></a></dd>
-                <dd><a href="/js/qita-1199.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>HTML5+CSS3音量调节旋转按钮<span
-                        class="l">其他代码</span><span class="t">2015-05-18</span></a></dd>
+                <?php $n=1;if(is_array($hits_tx)) foreach($hits_tx AS $v) { ?>
+                <dd>
+                    <a href="<?php echo $v['url'];?>">
+                        <p><img src="<?php echo $v['thumb'];?>" class="f" width="100px" height="50px"/></p>
+                        <?php echo $v['title'];?>
+                        <span class="l"><?php echo get_catname($v[catid]);?></span>
+                        <span class="t"><?php echo date('Y-m-d',$v[inputtime]);?></span>
+                    </a>
+                </dd>
+                <?php $n++;}unset($n); ?>
             </dl>
         </div>
 
         <div class="h">
             <dl>
+                <?php $data = get_tx_list(30,10,1);?>
                 <dt>这些是最新的...</dt>
-                <dd><a href="/js/css-1178.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>
-                    CSS布局：上中下三栏自适应高度CSS布局<span class="l">CSS样式</span><span class="t">2015-01-19</span></a></dd>
-                <dd><a href="/js/text-1065.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>JS仿黑客帝国字母掉落效果<span
-                        class="l">文字特效</span><span class="t">2014-06-25</span></a></dd>
-                <dd><a href="/js/text-1064.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>
-                    HTML5模仿骇客帝国文字矩阵效果<span class="l">文字特效</span><span class="t">2014-06-25</span></a></dd>
-                <dd><a href="/js/website-1057.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>
-                    404页面已经被外星人绑架了<span class="l">网站常用</span><span class="t">2014-06-12</span></a></dd>
-                <dd><a href="/js/date-980.html"><p><img src="<?php echo IMG_PATH;?>2zzt_logo.png" class="f"/></p>javascript显示年月日时间代码<span
-                        class="l">时间日期</span><span class="t">2013-05-08</span></a></dd>
+                <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                <dd>
+                    <a href="<?php echo $v['url'];?>">
+                        <p><img src="<?php echo $v['thumb'];?>" class="f" height="50px" width="100px"/></p>
+                        <?php echo $v['title'];?><span class="l"><?php echo get_catname($v[catid]);?></span>
+                        <span class="t"><?php echo date('Y-m-d',$v[inputtime]);?></span>
+                    </a>
+                </dd>
+                <?php $n++;}unset($n); ?>
             </dl>
         </div>
 

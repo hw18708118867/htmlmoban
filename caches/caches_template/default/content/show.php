@@ -77,6 +77,8 @@ $("a.fancybox").fancybox();
                     </a>
                 </div>
 				-->
+                <?php $hits_moban = hits_moban('weekviews',$catid)?>
+                <?php if(count($hits_moban)>0) { ?>
                 <div class="m_Grid4">
                     <?php $hits_moban = hits_moban('weekviews',$catid)?>
                     <div class="m_T9">
@@ -115,8 +117,7 @@ $("a.fancybox").fancybox();
                         </div>
                     </ul>
                 </div>
-
-
+                <?php } ?>
 
                  <!--<div class="m_Grid4">-->
                     <!--<div class="m_T9">-->
@@ -346,12 +347,12 @@ $("a.fancybox").fancybox();
                     <div class="clear">
                     </div>
                 </div>
-
+                <?php $relation_moban = get_relation_moban($cattype, $id, $catid)?>
+                <?php if(count($relation_moban)>0) { ?>
 				<div class="m_Boxxg">
                     <div class="m_Boxxgb">
                         类似的模板还有：
                     </div>
-                    <?php $relation_moban = get_relation_moban($cattype, $id, $catid)?>
                     <ul id="tags_related">
                         <?php $n=1;if(is_array($relation_moban)) foreach($relation_moban AS $moban) { ?>
                         <li>
@@ -368,6 +369,7 @@ $("a.fancybox").fancybox();
                     <div class="clear">
                     </div>
                 </div>
+                <?php } ?>
 				<!--<div class="m_T12">
                     发表评论：
                 </div>-->

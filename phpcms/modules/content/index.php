@@ -236,6 +236,7 @@ class index {
 		$template_list = $setting['list_template'] ? $setting['list_template'] : 'list';
 		if($type==0) {
 			$template = $child ? $template : $template_list;
+            $template = ($catid == 17 || $catid == 30) ? $template_list : $template;
 			$arrparentid = explode(',', $arrparentid);
 			$top_parentid = $arrparentid[1] ? $arrparentid[1] : $catid;
 			$array_child = array();

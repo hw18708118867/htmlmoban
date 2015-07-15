@@ -785,7 +785,7 @@ return array (
     'parentdir' => 'texiao/jquery/',
     'catdir' => 'xiangce',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=22',
-    'items' => '0',
+    'items' => '1',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -1040,7 +1040,7 @@ return array (
     'parentdir' => 'texiao/jquery/',
     'catdir' => 'tupian',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=27',
-    'items' => '0',
+    'items' => '3',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -1142,7 +1142,7 @@ return array (
     'parentdir' => 'texiao/jquery/',
     'catdir' => 'other',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=29',
-    'items' => '0',
+    'items' => '1',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

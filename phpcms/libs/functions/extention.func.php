@@ -86,14 +86,18 @@ function get_recommend_moban($catid = 6){
 
 /**
  * @return mixed
- * 获取点击量排行
+ * 获取点击量排行(模板，特效)
  */
-function hits_moban($views = 'views', $catid = 6){
+function hits_moban($views = 'views', $catid = 6, $modelid = 12, $limit = 8){
    $moban_db = pc_base::load_model('content_model');
-   $sql = "SELECT a.$views,b.title,b.thumb,b.description,b.url,c.tag FROM `mb_hits` a left join `mb_moban` b on substr(a.hitsid,6)=b.id left join `mb_moban_data` c on b.id=c.id";
-   $sql .= " WHERE a.catid=$catid AND b.status=99 ";
+    $moban_db->set_model($modelid);
+    $tablename = $moban_db->table_name;
+   $sql = "SELECT * FROM `mb_hits` a left join `{$tablename}` b on substr(a.hitsid,6)=b.id left join `{$tablename}_data` c on b.id=c.id";
+   $sql .= " WHERE b.status=99 ";
+    if($modelid !=14)
+        $sql .= " AND a.catid=$catid ";
    $sql .= " ORDER BY a.$views DESC";
-   $sql .= " LIMIT 8";
+   $sql .= " LIMIT $limit";
    $moban_db->query($sql);
    return $moban_db->fetch_array();
 }
@@ -145,25 +149,26 @@ function tool_url($toolname=""){
  * @param $id
  * @param int $catid
  * @return mixed
- * 查询相关的模板
+ * 查询相关的模板(特效)
  */
-function get_relation_moban($cattype, $id, $catid = 6){
+function get_relation_moban($cattype, $id, $catid = 6, $modelid = 12){
     $moban_db = pc_base::load_model('content_model');
-    $moban_db->set_model(12);
+    $moban_db->set_model($modelid);
     $tablename = $moban_db->table_name;
     $sql = "SELECT * FROM `{$tablename}` a,`{$tablename}_data` b WHERE a.id=b.id AND a.status=99 AND a.catid=$catid AND a.id!=$id";
-    $like = '';
-    foreach($cattype as $tag){
-        $like .= "OR b.tag LIKE '%$tag%' ";
+    if($cattype){
+        $like = '';
+        foreach($cattype as $tag){
+            $like .= "OR b.tag LIKE '%$tag%' ";
+        }
+        if($like)
+            $sql .= ' AND ('.ltrim($like,'OR').')';
     }
-    $sql .= ' AND ('.ltrim($like,'OR').')';
     $sql .= ' ORDER BY a.id DESC';
     $sql .= ' LIMIT 12';
     $moban_db->query($sql);
     return $moban_db->fetch_array();
 }
-
-
 /**
  * @param $catid
  * @return mixed
@@ -172,9 +177,16 @@ function get_relation_moban($cattype, $id, $catid = 6){
 function get_catname($catid){
     $cat_db = pc_base::load_model('category_model');
     $catinfo = $cat_db->get_one(array('catid'=>$catid));
-    return $catinfo['catname'];
+    return isset($catinfo['catname']) ? $catinfo['catname'] : '';
 }
 
+/**
+ * @param $catid
+ * @param int $limit
+ * @param int $total
+ * @return mixed
+ * 获取特效列表
+ */
 function get_tx_list($catid, $limit=10, $total = 0){
     $cat_db = pc_base::load_model('category_model');
     if(!$total){

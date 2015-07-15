@@ -142,7 +142,7 @@
             <dl>
                 <dt class="jx"><span>广告代码</span>
                 <div></div>
-                <a href="/js/p1.html">全部››</a></dt>
+                <a href="/index.php?m=content&c=index&a=lists&catid=17">全部››</a></dt>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=464a4d526ca6b0be30e16a9e35f4477c&action=category&catid=17&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'17','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
 
                 <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
@@ -157,7 +157,7 @@
             <dl>
                 <dt class="tx"><span>特效代码</span>
                 <div></div>
-                <a href="/js/texiao.html">全部››</a></dt>
+                <a href="/index.php?m=content&c=index&a=lists&catid=30">全部››</a></dt>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f0ed520873c7a7abeff2e6c2087cd281&action=category&catid=30&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'30','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
                 <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
                 <dd><a href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a></dd>
@@ -179,58 +179,15 @@
     <div class="side-group side-group-w FR">
         <div class="in-side-menu">
             <h2 style="border-top:5px solid #38afe5">特效代码</h2>
-
+            <?php $data = get_tx_list(30,10);?>
             <ul class="m_Box3 w250 pl20 h374">
+                <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
                 <li>
-                    <a target="_blank" title="wordpress文章分页" href="">
-                        wordpress文章分页
+                    <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
+                        <?php echo $v['title'];?>
                     </a>
                 </li>
-                <li>
-                    <a target="_blank" title="wordpress主题 仪表盘 添加站外文章列表" href="">
-                        wordpress主题 仪表盘 添加站外文章列表
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="wordpress 获取文章内所有图片" href="">
-                        wordpress 获取文章内所有图片
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="wordpress分页的极简实现" href="">
-                        wordpress分页的极简实现
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="wordpress相关文章的优化机智和自定义设置" href="">
-                        wordpress相关文章的优化机智和自定义设置
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="万网主机 使用 wordpress 无法发送邮件的问题" href="">
-                        万网主机 使用 wordpress 无法发送邮件的问题
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wordpress" href="">
-                        wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wo
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="wordpress教程：面包屑导航（更细版本）" href="">
-                        wordpress教程：面包屑导航（更细版本）
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方法" href="">
-                        WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" title="wordpress 当前页面的子页面 获取" href="">
-                        wordpress 当前页面的子页面 获取
-                    </a>
-                </li>
+                <?php $n++;}unset($n); ?>
                 <div class="clear">
                 </div>
             </ul>
@@ -253,12 +210,10 @@
                                 <div id="portal_block_197_content" class="dxb_bc">
                                     <div class="portal_block_summary">
                                         JS广告特效
-                                        <a class="immore" target="_blank" href="">
+                                        <a class="immore" target="_blank" href="/index.php?m=content&c=index&a=lists&catid=17">
                                             更多
                                         </a>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
