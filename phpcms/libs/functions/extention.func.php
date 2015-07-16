@@ -207,4 +207,29 @@ function get_tx_list($catid, $limit=10, $total = 0){
     $cat_db->query($sql);
     return $cat_db->fetch_array();
 }
+
+/**
+ * @param $catid
+ * @param $id
+ * @return string
+ * 付费演示地址
+ */
+
+function cost_demo_url($catid,$id){
+    return "index.php?m=content&c=demo&catid=$catid&id=$id";
+}
+
+/**
+ * @param int $modelid
+ * @param $id
+ * @return mixed
+ * 获取点击量
+ */
+
+function get_hits($modelid = 12, $id){
+    $hits_db = pc_base::load_model('hits_model');
+    $hitsid = 'c-'.$modelid.'-'.$id;
+    $hitsinfo = $hits_db->get_one(array('hitsid'=>$hitsid));
+    return $hitsinfo['views'];
+}
 ?>

@@ -248,7 +248,7 @@ $("a.fancybox").fancybox();
 									 
 								            	<?php $n=1;if(is_array($keywords)) foreach($keywords AS $keyword) { ?>
 
-												<a target="_blank" href="/tags.php?n=<?php echo $keyword;?>"><?php echo $keyword;?></a> 
+												<a href="#"><?php echo $keyword;?></a>
 
 								　            　<?php $n++;}unset($n); ?>
 								
@@ -259,7 +259,12 @@ $("a.fancybox").fancybox();
 							<p class="pns mbm bugbot" style=" height:48px; line-height:48px;">
 							<a  target="_blank" class="orangebot" href="<?php echo APP_PATH;?>index.php?m=content&c=readpoint&allow_visitor=<?php echo $allow_visitor;?>" rel="nofollow">立即购买</a>
 							 &nbsp; 
-										<a href="javascript:;" onclick="window.open('/demo.php?url=<?php echo $demo_url;?>')" class="greenbot" rel="nofollow">演示网站</a>
+										<!--<a href="javascript:;" onclick="window.open('/demo.php?url=<?php echo $demo_url;?>')" class="greenbot" rel="nofollow">演示网站</a>-->
+                                        <?php if($readpoint >0 ) { ?>
+                                        <a href="<?php echo cost_demo_url($catid,$id);?>" class="greenbot" rel="nofollow">演示网站</a>
+                                        <?php } else { ?>
+                                        <a href="<?php echo $demo_url;?>" class="greenbot" rel="nofollow">演示网站</a>
+                                        <?php } ?>
 										 &nbsp; 
 										<a href="/home.php?mod=spacecp&amp;ac=credit&amp;op=buy" class="bluebot" rel="nofollow" target="_blank">充值积分</a>
 									   
@@ -287,7 +292,15 @@ $("a.fancybox").fancybox();
 			
 					 <li><a class="fancybox" href="<?php echo $r['url'];?>" title="我的网站"><span></span><em><?php echo $r['alt'];?></em><u><img src="<?php echo $r['url'];?>"  alt="<?php echo $r['alt'];?>" /></u></a></li>
 					 <?php $n++;}unset($n); ?>
-					 <li class="xg_demo"><a target="_blank" title="点击网站演示" href="<?php echo $demo_url;?>"><img alt="点击网站演示" src="<?php echo IMG_PATH;?>demo.gif" data-pinit="registered"></a></li>
+					 <li class="xg_demo">
+                         <?php if($readpoint >0 ) { ?>
+                         <a target="_blank" title="点击网站演示" href="<?php echo cost_demo_url($catid,$id);?>">
+                         <?php } else { ?>
+                         <a target="_blank" title="点击网站演示" href="<?php echo $demo_url;?>">
+                         <?php } ?>
+                             <img alt="点击网站演示" src="<?php echo IMG_PATH;?>demo.gif" data-pinit="registered">
+                         </a>
+                     </li>
 					 
 					 </ul>
 					 <div class="clear"></div>

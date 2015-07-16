@@ -380,7 +380,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        587
+                        <?php echo get_hits(12,$r[id]);?>
                     </li>
 
                 </ul>
