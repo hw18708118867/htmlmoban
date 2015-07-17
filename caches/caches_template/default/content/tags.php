@@ -192,7 +192,7 @@
                         <div class="citemqt citemfoot">
                             <div class="citemzl">
                                 <a rel="nofollow" href="#" class="citemfimg">
-                                    <img width="24" height="24" src="http://www.sj5d.com/uc_server/avatar.php?uid=4745&amp;size=small"><?php echo do_str($r[tag]);?></a>
+                                    <img width="24" height="24" src="<?php echo IMG_PATH;?>list_icon.jpg"><?php echo do_str($r[tag]);?></a>
                             </div>
                         </div>
                     </div>

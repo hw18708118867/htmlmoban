@@ -5135,3 +5135,4 @@
 <?php exit;?>07-17 07:31:15 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
 <?php exit;?>07-17 07:31:15 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
 <?php exit;?>07-17 07:31:15 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-17 15:54:37 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
