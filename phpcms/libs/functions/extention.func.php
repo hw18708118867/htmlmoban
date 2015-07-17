@@ -232,4 +232,18 @@ function get_hits($modelid = 12, $id){
     $hitsinfo = $hits_db->get_one(array('hitsid'=>$hitsid));
     return $hitsinfo['views'];
 }
+
+/**
+ * @param $parentid
+ * @param int $modelid
+ * @return mixed
+ * 获取子分类
+ */
+
+function get_child_category($parentid, $modelid = 1){
+    $cat_db = pc_base::load_model('category_model');
+    $sql = "SELECT * FROM `mb_category` WHERE parentid=$parentid AND modelid=$modelid";
+    $cat_db->query($sql);
+    return $cat_db->fetch_array();
+}
 ?>
