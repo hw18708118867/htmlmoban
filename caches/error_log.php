@@ -6530,3 +6530,12 @@
 <?php exit;?>07-18 07:20:58 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
 <?php exit;?>07-18 07:22:20 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
 <?php exit;?>07-18 07:22:20 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-18 17:35:16 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-18 17:36:03 | 2 | copy(http://ztmao.com/wp-content/uploads/2015/06/wordpress-database-reset.png) [<a href='function.copy'>function.copy</a>]: failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+ | phpcms\libs\classes\attachment.class.php | 172
+<?php exit;?>07-18 17:36:03 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-18 17:37:06 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-18 17:37:32 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-18 17:37:59 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-18 17:41:15 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-18 17:41:59 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70

@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.8.1
+-- version phpStudy 2014
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 2015-07-18 07:21:56
--- 服务器版本： 5.6.20
--- PHP Version: 5.6.0
+-- 主机: localhost
+-- 生成日期: 2015 年 07 月 18 日 17:54
+-- 服务器版本: 5.5.36
+-- PHP 版本: 5.3.28
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `htmlmoban`
+-- 数据库: `htmlmoban`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `mb_admin` (
-`userid` mediumint(6) unsigned NOT NULL,
+  `userid` mediumint(6) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `roleid` smallint(5) DEFAULT '0',
@@ -37,8 +37,10 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
   `email` varchar(40) DEFAULT NULL,
   `realname` varchar(50) NOT NULL DEFAULT '',
   `card` varchar(255) NOT NULL,
-  `lang` varchar(6) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `lang` varchar(6) NOT NULL,
+  PRIMARY KEY (`userid`),
+  KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_admin`
@@ -46,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
 
 INSERT INTO `mb_admin` (`userid`, `username`, `password`, `roleid`, `encrypt`, `lastloginip`, `lastlogintime`, `email`, `realname`, `card`, `lang`) VALUES
 (1, 'admin', '52433b33c7ff3a8dc647a10939a91628', 1, 'SwFNZd', '127.0.0.1', 1435650303, 'wewe@qq.com', '', '', ''),
-(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1437172441, 'sdsd@qq.com', 'qg', '', '');
+(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1437200904, 'sdsd@qq.com', 'qg', '', '');
 
 -- --------------------------------------------------------
 
@@ -59,7 +61,8 @@ CREATE TABLE IF NOT EXISTS `mb_admin_panel` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `name` char(32) DEFAULT NULL,
   `url` char(255) DEFAULT NULL,
-  `datetime` int(10) unsigned DEFAULT '0'
+  `datetime` int(10) unsigned DEFAULT '0',
+  UNIQUE KEY `userid` (`menuid`,`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -69,12 +72,15 @@ CREATE TABLE IF NOT EXISTS `mb_admin_panel` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_admin_role` (
-`roleid` tinyint(3) unsigned NOT NULL,
+  `roleid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `rolename` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`roleid`),
+  KEY `listorder` (`listorder`),
+  KEY `disabled` (`disabled`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `mb_admin_role`
@@ -100,7 +106,8 @@ CREATE TABLE IF NOT EXISTS `mb_admin_role_priv` (
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
   `data` char(30) NOT NULL DEFAULT '',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  KEY `roleid` (`roleid`,`m`,`c`,`a`,`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -110,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin_role_priv` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_announce` (
-`aid` smallint(4) unsigned NOT NULL,
+  `aid` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `title` char(80) NOT NULL,
   `content` text NOT NULL,
@@ -121,8 +128,10 @@ CREATE TABLE IF NOT EXISTS `mb_announce` (
   `hits` smallint(5) unsigned NOT NULL DEFAULT '0',
   `passed` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `style` char(15) NOT NULL,
-  `show_template` char(30) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `show_template` char(30) NOT NULL,
+  PRIMARY KEY (`aid`),
+  KEY `siteid` (`siteid`,`passed`,`endtime`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -131,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `mb_announce` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_attachment` (
-`aid` int(10) unsigned NOT NULL,
+  `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `module` char(15) NOT NULL,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `filename` char(50) NOT NULL,
@@ -146,8 +155,10 @@ CREATE TABLE IF NOT EXISTS `mb_attachment` (
   `uploadip` char(15) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `authcode` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`aid`),
+  KEY `authcode` (`authcode`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
 
 --
 -- 转存表中的数据 `mb_attachment`
@@ -216,7 +227,20 @@ INSERT INTO `mb_attachment` (`aid`, `module`, `catid`, `filename`, `filepath`, `
 (68, 'content', 0, '20150717102345338.jpg', '2015/0717/20150717102345338.jpg', 37527, 'jpg', 1, 0, 0, 0, 1437143024, '127.0.0.1', 1, 'd1ba58c11f5d4e97202ed05202985d87', 1),
 (69, 'content', 0, '20150717102345282.jpg', '2015/0717/20150717102345282.jpg', 41938, 'jpg', 1, 0, 0, 0, 1437143024, '127.0.0.1', 1, '16a9b8087ea1de52759813fb2eac0d3e', 1),
 (70, 'content', 0, '20150717102346102.jpg', '2015/0717/20150717102346102.jpg', 36480, 'jpg', 1, 0, 0, 0, 1437143024, '127.0.0.1', 1, '3bd78f4025d7eaaf5530f95aeefad930', 1),
-(71, 'content', 0, '20150718064226827.gif', '2015/0718/20150718064226827.gif', 17717, 'gif', 1, 0, 0, 0, 1437172945, '127.0.0.1', 1, 'cfe0b8d3377f3a71e202e2dd1a654d1d', 1);
+(71, 'content', 0, '20150718064226827.gif', '2015/0718/20150718064226827.gif', 17717, 'gif', 1, 0, 0, 0, 1437172945, '127.0.0.1', 1, 'cfe0b8d3377f3a71e202e2dd1a654d1d', 1),
+(72, 'content', 0, '20150718054115480.jpg', '2015/0718/20150718054115480.jpg', 8018, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, '77e57fb4d707a6cdb7170118f7fed33e', 1),
+(73, 'content', 0, '20150718054115653.jpg', '2015/0718/20150718054115653.jpg', 19156, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, 'c2658da3f7330b966db791dfc8157d68', 1),
+(74, 'content', 0, '20150718054115639.jpg', '2015/0718/20150718054115639.jpg', 33388, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, 'a2bae792a462cafbdd35ac5b7086af7f', 1),
+(75, 'content', 0, '20150718054115240.jpg', '2015/0718/20150718054115240.jpg', 21081, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, '533faba9c21f24903f61e1726990abd3', 1),
+(76, 'content', 0, '20150718054116321.jpg', '2015/0718/20150718054116321.jpg', 24242, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, '37cbab2b1a969158216c0adb475cc06c', 1),
+(77, 'content', 0, '20150718054116280.jpg', '2015/0718/20150718054116280.jpg', 33506, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, '9081ffc1929886e07bfd0d466542bf74', 1),
+(78, 'content', 0, '20150718054116114.jpg', '2015/0718/20150718054116114.jpg', 36701, 'jpg', 1, 0, 0, 0, 1437212475, '127.0.0.1', 1, '573cd9ce0dee720e1ed13350c75d6bdc', 1),
+(79, 'content', 0, '20150718054159869.jpg', '2015/0718/20150718054159869.jpg', 53145, 'jpg', 1, 0, 0, 0, 1437212519, '127.0.0.1', 1, 'd050c56c50adb832d7f832ce08f87229', 1),
+(80, 'content', 0, '20150718054159463.png', '2015/0718/20150718054159463.png', 156501, 'png', 1, 0, 0, 0, 1437212519, '127.0.0.1', 1, '85e1331dbfd68efc1ac7e247f4919189', 1),
+(81, 'content', 0, '20150718054200271.png', '2015/0718/20150718054200271.png', 136316, 'png', 1, 0, 0, 0, 1437212519, '127.0.0.1', 1, 'e8f4549972e201acf336570d575a7025', 1),
+(82, 'content', 0, '20150718054200550.png', '2015/0718/20150718054200550.png', 114257, 'png', 1, 0, 0, 0, 1437212519, '127.0.0.1', 1, '4111e54f3010cbb3466ea4f869dd001f', 1),
+(83, 'content', 0, '20150718054200103.png', '2015/0718/20150718054200103.png', 40414, 'png', 1, 0, 0, 0, 1437212519, '127.0.0.1', 1, '366813955225b1b6b1c5b63e9db11bb0', 1),
+(84, 'content', 0, '20150718054201765.jpg', '2015/0718/20150718054201765.jpg', 56961, 'jpg', 1, 0, 0, 0, 1437212519, '127.0.0.1', 1, '4966d5bf0aa9d1f7d9c6e2b984331105', 1);
 
 -- --------------------------------------------------------
 
@@ -226,7 +250,9 @@ INSERT INTO `mb_attachment` (`aid`, `module`, `catid`, `filename`, `filepath`, `
 
 CREATE TABLE IF NOT EXISTS `mb_attachment_index` (
   `keyid` char(30) NOT NULL,
-  `aid` char(10) NOT NULL
+  `aid` char(10) NOT NULL,
+  KEY `keyid` (`keyid`),
+  KEY `aid` (`aid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -299,7 +325,20 @@ INSERT INTO `mb_attachment_index` (`keyid`, `aid`) VALUES
 ('c-45-4', '68'),
 ('c-45-4', '69'),
 ('c-45-4', '70'),
-('c-48-14', '71');
+('c-48-14', '71'),
+('c-46-22', '72'),
+('c-46-22', '73'),
+('c-46-22', '74'),
+('c-46-22', '75'),
+('c-46-22', '76'),
+('c-46-22', '77'),
+('c-46-22', '78'),
+('c-46-23', '79'),
+('c-46-23', '80'),
+('c-46-23', '81'),
+('c-46-23', '82'),
+('c-46-23', '83'),
+('c-46-23', '84');
 
 -- --------------------------------------------------------
 
@@ -308,13 +347,17 @@ INSERT INTO `mb_attachment_index` (`keyid`, `aid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_badword` (
-`badid` smallint(5) unsigned NOT NULL,
+  `badid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `badword` char(20) NOT NULL,
   `level` tinyint(5) NOT NULL DEFAULT '1',
   `replaceword` char(20) NOT NULL DEFAULT '0',
   `lastusetime` int(10) unsigned NOT NULL DEFAULT '0',
-  `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`badid`),
+  UNIQUE KEY `badword` (`badword`),
+  KEY `usetimes` (`replaceword`,`listorder`),
+  KEY `hits` (`listorder`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -323,14 +366,18 @@ CREATE TABLE IF NOT EXISTS `mb_badword` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `name` char(50) DEFAULT NULL,
   `pos` char(30) DEFAULT NULL,
   `type` tinyint(1) DEFAULT '0',
   `data` text,
-  `template` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `template` text,
+  PRIMARY KEY (`id`),
+  KEY `pos` (`pos`),
+  KEY `type` (`type`),
+  KEY `siteid` (`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -339,13 +386,14 @@ CREATE TABLE IF NOT EXISTS `mb_block` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block_history` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `blockid` int(10) unsigned DEFAULT '0',
   `data` text,
   `creat_at` int(10) unsigned DEFAULT '0',
   `userid` mediumint(8) unsigned DEFAULT '0',
-  `username` char(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `username` char(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -354,11 +402,14 @@ CREATE TABLE IF NOT EXISTS `mb_block_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_block_priv` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `roleid` tinyint(3) unsigned DEFAULT '0',
   `siteid` smallint(5) unsigned DEFAULT '0',
-  `blockid` int(10) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `blockid` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `blockid` (`blockid`),
+  KEY `roleid` (`roleid`,`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -369,7 +420,8 @@ CREATE TABLE IF NOT EXISTS `mb_block_priv` (
 CREATE TABLE IF NOT EXISTS `mb_cache` (
   `filename` char(50) NOT NULL,
   `path` char(50) NOT NULL,
-  `data` mediumtext NOT NULL
+  `data` mediumtext NOT NULL,
+  PRIMARY KEY (`filename`,`path`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -380,7 +432,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 ('mood_program.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    1 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''震惊'',\n      ''pic'' => ''mood/a1.gif'',\n    ),\n    2 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''不解'',\n      ''pic'' => ''mood/a2.gif'',\n    ),\n    3 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''愤怒'',\n      ''pic'' => ''mood/a3.gif'',\n    ),\n    4 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''杯具'',\n      ''pic'' => ''mood/a4.gif'',\n    ),\n    5 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''无聊'',\n      ''pic'' => ''mood/a5.gif'',\n    ),\n    6 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''高兴'',\n      ''pic'' => ''mood/a6.gif'',\n    ),\n    7 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''支持'',\n      ''pic'' => ''mood/a7.gif'',\n    ),\n    8 => \n    array (\n      ''use'' => ''1'',\n      ''name'' => ''超赞'',\n      ''pic'' => ''mood/a8.gif'',\n    ),\n    9 => \n    array (\n      ''use'' => NULL,\n      ''name'' => '''',\n      ''pic'' => '''',\n    ),\n    10 => \n    array (\n      ''use'' => NULL,\n      ''name'' => '''',\n      ''pic'' => '''',\n    ),\n  ),\n);\n?>'),
 ('category_content.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => ''1'',\n  2 => ''1'',\n  3 => ''1'',\n  4 => ''1'',\n  5 => ''1'',\n  6 => ''1'',\n  8 => ''1'',\n  9 => ''1'',\n  11 => ''1'',\n  15 => ''1'',\n  16 => ''1'',\n  17 => ''1'',\n  18 => ''1'',\n  19 => ''1'',\n  20 => ''1'',\n  21 => ''1'',\n  22 => ''1'',\n  23 => ''1'',\n  24 => ''1'',\n  25 => ''1'',\n  26 => ''1'',\n  27 => ''1'',\n  28 => ''1'',\n  29 => ''1'',\n  30 => ''1'',\n  31 => ''1'',\n  32 => ''1'',\n  33 => ''1'',\n  34 => ''1'',\n  35 => ''1'',\n  36 => ''1'',\n  37 => ''1'',\n  38 => ''1'',\n  39 => ''1'',\n  40 => ''1'',\n  41 => ''1'',\n  42 => ''1'',\n  43 => ''1'',\n  44 => ''1'',\n  45 => ''1'',\n  46 => ''1'',\n  47 => ''1'',\n  48 => ''1'',\n  49 => ''1'',\n);\n?>');
 INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
-('category_content_1.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''catid'' => ''1'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''1,2,3,4,5'',\n    ''catname'' => ''网站介绍'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''about'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanjieshao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  2 => \n  array (\n    ''catid'' => ''2'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''2'',\n    ''catname'' => ''关于我们'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''aboutus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/aboutus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''关于我们\\'',\n  \\''meta_keywords\\'' => \\''关于我们\\'',\n  \\''meta_description\\'' => \\''关于我们\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''guanyuwomen'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  3 => \n  array (\n    ''catid'' => ''3'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''3'',\n    ''catname'' => ''联系方式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''contactus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/contactus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''联系方式\\'',\n  \\''meta_keywords\\'' => \\''联系方式\\'',\n  \\''meta_description\\'' => \\''联系方式\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''2'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''lianxifangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  4 => \n  array (\n    ''catid'' => ''4'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''4'',\n    ''catname'' => ''版权声明'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''copyright'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=4'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''版权声明\\'',\n  \\''meta_keywords\\'' => \\''版权声明\\'',\n  \\''meta_description\\'' => \\''版权声明\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''3'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''banquanshengming'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  5 => \n  array (\n    ''catid'' => ''5'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''5'',\n    ''catname'' => ''招聘信息'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''hr'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/hr/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''4'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zhaopinxinxi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  6 => \n  array (\n    ''catid'' => ''6'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''6'',\n    ''catname'' => ''网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''wangyemoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6'',\n    ''items'' => ''16'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''6'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyemoban'',\n    ''usable_type'' => '',54,'',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  8 => \n  array (\n    ''catid'' => ''8'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''8'',\n    ''catname'' => ''后台模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''houtaimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=8'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''8'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''houtaimoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  9 => \n  array (\n    ''catid'' => ''9'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''9'',\n    ''catname'' => ''手机网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''shoujimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=9'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''9'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shoujiwangyemoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  11 => \n  array (\n    ''catid'' => ''11'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''13'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''11'',\n    ''catname'' => ''酷站欣赏'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''kuzhan'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=11'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_cool\\'',\n  \\''show_template\\'' => \\''show_cool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''11'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''kuzhanxinshang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  15 => \n  array (\n    ''catid'' => ''15'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''15'',\n    ''catname'' => ''前端神器'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''tool'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=15'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page_tool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''15'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qianduanshenqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  16 => \n  array (\n    ''catid'' => ''16'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42'',\n    ''catname'' => ''网页特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''texiao'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=16'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''16'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyetexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  17 => \n  array (\n    ''catid'' => ''17'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''17,18,19,20,21,22,23,24,25,26,27,28,29'',\n    ''catname'' => ''jquery特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/'',\n    ''catdir'' => ''jquery'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=17'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''17'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jquerytexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  18 => \n  array (\n    ''catid'' => ''18'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''18'',\n    ''catname'' => ''焦点图'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''jiaodiantu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=18'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''18'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jiaodiantu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  19 => \n  array (\n    ''catid'' => ''19'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''19'',\n    ''catname'' => ''全屏广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''quanping'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=19'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''19'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''quanpingguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  20 => \n  array (\n    ''catid'' => ''20'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''20'',\n    ''catname'' => ''对联广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''duilian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=20'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''20'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''duilianguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  21 => \n  array (\n    ''catid'' => ''21'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''21'',\n    ''catname'' => ''在线客服'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''zaixiankefu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=21'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''21'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zaixiankefu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  22 => \n  array (\n    ''catid'' => ''22'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''22'',\n    ''catname'' => ''相册代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xiangce'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=22'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''22'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xiangcedaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  23 => \n  array (\n    ''catid'' => ''23'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''23'',\n    ''catname'' => ''菜单导航'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''daohang'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=23'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''23'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''caidandaohang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  24 => \n  array (\n    ''catid'' => ''24'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''24'',\n    ''catname'' => ''TAB标签'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tab'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=24'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''24'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tabbiaoqian'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  25 => \n  array (\n    ''catid'' => ''25'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''25'',\n    ''catname'' => ''悬浮漂浮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xuanfu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=25'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''25'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xuanfupiaofu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  26 => \n  array (\n    ''catid'' => ''26'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''26'',\n    ''catname'' => ''视频播放'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''shipin'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=26'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''26'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shipinbofang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  27 => \n  array (\n    ''catid'' => ''27'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''27'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tupian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=27'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''27'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  28 => \n  array (\n    ''catid'' => ''28'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''28'',\n    ''catname'' => ''翻牌书角'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''fanpai'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=28'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''28'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''fanpaishujiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  29 => \n  array (\n    ''catid'' => ''29'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''29'',\n    ''catname'' => ''其他代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''other'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=29'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''29'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitadaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  30 => \n  array (\n    ''catid'' => ''30'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''30,31,32,33,34,35,36,37,38,39,40,41,42'',\n    ''catname'' => ''特效代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/'',\n    ''catdir'' => ''txcode'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=30'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''30'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''texiaodaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  31 => \n  array (\n    ''catid'' => ''31'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''31'',\n    ''catname'' => ''导航菜单'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''nav'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=31'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''31'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''daohangcaidan'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  32 => \n  array (\n    ''catid'' => ''32'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''32'',\n    ''catname'' => ''表单按钮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''frombutton'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=32'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''32'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaodananniu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  33 => \n  array (\n    ''catid'' => ''33'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''33'',\n    ''catname'' => ''文字特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''fonttx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=33'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''33'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wenzitexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  34 => \n  array (\n    ''catid'' => ''34'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''34'',\n    ''catname'' => ''表格图层'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''tableimg'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=34'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''34'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaogetuceng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  35 => \n  array (\n    ''catid'' => ''35'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''35'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''imgtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=35'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''35'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  36 => \n  array (\n    ''catid'' => ''36'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''36'',\n    ''catname'' => ''时间日期'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''timedate'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=36'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''36'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shijianriqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  37 => \n  array (\n    ''catid'' => ''37'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''37'',\n    ''catname'' => ''滚动代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''scroll'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=37'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''37'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''gundongdaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  38 => \n  array (\n    ''catid'' => ''38'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''38'',\n    ''catname'' => ''窗口特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''windowtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=38'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''38'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''chuangkoutexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  39 => \n  array (\n    ''catid'' => ''39'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''39'',\n    ''catname'' => ''颜色背景'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''color'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=39'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''39'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''yansebeijing'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  40 => \n  array (\n    ''catid'' => ''40'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''40'',\n    ''catname'' => ''网站常用'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''website'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=40'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''40'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanchangyong'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  41 => \n  array (\n    ''catid'' => ''41'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''41'',\n    ''catname'' => ''css样式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''cssStyle'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=41'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''41'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''cssyangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  42 => \n  array (\n    ''catid'' => ''42'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''42'',\n    ''catname'' => ''其他特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''othertx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=42'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (  \\''workflowid\\'' => \\''\\'',  \\''ishtml\\'' => \\''0\\'',  \\''content_ishtml\\'' => \\''0\\'',  \\''create_to_html_root\\'' => \\''0\\'',  \\''template_list\\'' => \\''default\\'',  \\''category_template\\'' => \\''category_code\\'',  \\''list_template\\'' => \\''list_js\\'',  \\''show_template\\'' => \\''show_code\\'',  \\''meta_title\\'' => \\''\\'',  \\''meta_keywords\\'' => \\''\\'',  \\''meta_description\\'' => \\''\\'',  \\''presentpoint\\'' => \\''1\\'',  \\''defaultchargepoint\\'' => \\''0\\'',  \\''paytype\\'' => \\''0\\'',  \\''repeatchargedays\\'' => \\''1\\'',  \\''category_ruleid\\'' => \\''6\\'',  \\''show_ruleid\\'' => \\''16\\'',)'',\n    ''listorder'' => ''42'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitatexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  43 => \n  array (\n    ''catid'' => ''43'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''43,44,45,46,47,48,49'',\n    ''catname'' => ''文章教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''article'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=43'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (  \\''workflowid\\'' => \\''\\'',  \\''ishtml\\'' => \\''0\\'',  \\''content_ishtml\\'' => \\''0\\'',  \\''create_to_html_root\\'' => \\''0\\'',  \\''template_list\\'' => \\''default\\'',  \\''category_template\\'' => \\''list_article\\'',  \\''list_template\\'' => \\''list_article\\'',  \\''show_template\\'' => \\''show_article\\'',  \\''meta_title\\'' => \\''\\'',  \\''meta_keywords\\'' => \\''\\'',  \\''meta_description\\'' => \\''\\'',  \\''presentpoint\\'' => \\''1\\'',  \\''defaultchargepoint\\'' => \\''0\\'',  \\''paytype\\'' => \\''0\\'',  \\''repeatchargedays\\'' => \\''1\\'',  \\''category_ruleid\\'' => \\''6\\'',  \\''show_ruleid\\'' => \\''16\\'',)'',\n    ''listorder'' => ''43'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wenzhangjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  44 => \n  array (\n    ''catid'' => ''44'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''44'',\n    ''catname'' => ''wordpress教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''wordpress'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=44'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (  \\''workflowid\\'' => \\''\\'',  \\''ishtml\\'' => \\''0\\'',  \\''content_ishtml\\'' => \\''0\\'',  \\''create_to_html_root\\'' => \\''0\\'',  \\''template_list\\'' => \\''default\\'',  \\''category_template\\'' => \\''category\\'',  \\''list_template\\'' => \\''list_article\\'',  \\''show_template\\'' => \\''show_article\\'',  \\''meta_title\\'' => \\''\\'',  \\''meta_keywords\\'' => \\''\\'',  \\''meta_description\\'' => \\''\\'',  \\''presentpoint\\'' => \\''1\\'',  \\''defaultchargepoint\\'' => \\''0\\'',  \\''paytype\\'' => \\''0\\'',  \\''repeatchargedays\\'' => \\''1\\'',  \\''category_ruleid\\'' => \\''6\\'',  \\''show_ruleid\\'' => \\''16\\'',)'',\n    ''listorder'' => ''44'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wordpressjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  45 => \n  array (\n    ''catid'' => ''45'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''45'',\n    ''catname'' => ''discuz教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''discuz'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=45'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''45'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''discuzjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  46 => \n  array (\n    ''catid'' => ''46'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''46'',\n    ''catname'' => ''phpwind教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''phpwind'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=46'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''46'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''phpwindjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  47 => \n  array (\n    ''catid'' => ''47'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''47'',\n    ''catname'' => ''phpcms教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''phpcms'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=47'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''47'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''phpcmsjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  48 => \n  array (\n    ''catid'' => ''48'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''48'',\n    ''catname'' => ''ecshop教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''ecshop'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=48'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''48'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''ecshopjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  49 => \n  array (\n    ''catid'' => ''49'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''49'',\n    ''catname'' => ''php168教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''php168'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=49'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''49'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''php168jiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n);\n?>');
+('category_content_1.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''catid'' => ''1'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''1,2,3,4,5'',\n    ''catname'' => ''网站介绍'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''about'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanjieshao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  2 => \n  array (\n    ''catid'' => ''2'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''2'',\n    ''catname'' => ''关于我们'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''aboutus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/aboutus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''关于我们\\'',\n  \\''meta_keywords\\'' => \\''关于我们\\'',\n  \\''meta_description\\'' => \\''关于我们\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''1'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''guanyuwomen'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  3 => \n  array (\n    ''catid'' => ''3'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''3'',\n    ''catname'' => ''联系方式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''contactus'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/contactus/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''联系方式\\'',\n  \\''meta_keywords\\'' => \\''联系方式\\'',\n  \\''meta_description\\'' => \\''联系方式\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''2'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''lianxifangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  4 => \n  array (\n    ''catid'' => ''4'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''4'',\n    ''catname'' => ''版权声明'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''copyright'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=4'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''版权声明\\'',\n  \\''meta_keywords\\'' => \\''版权声明\\'',\n  \\''meta_description\\'' => \\''版权声明\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''3'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''banquanshengming'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  5 => \n  array (\n    ''catid'' => ''5'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''1'',\n    ''arrparentid'' => ''0,1'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''5'',\n    ''catname'' => ''招聘信息'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''about/'',\n    ''catdir'' => ''hr'',\n    ''url'' => ''http://www.htmlmoban.net/html/about/hr/'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''1\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''1\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''4'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zhaopinxinxi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''1'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''1'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  6 => \n  array (\n    ''catid'' => ''6'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''6'',\n    ''catname'' => ''网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''wangyemoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6'',\n    ''items'' => ''16'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''6'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyemoban'',\n    ''usable_type'' => '',54,'',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  8 => \n  array (\n    ''catid'' => ''8'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''8'',\n    ''catname'' => ''后台模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''houtaimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=8'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''8'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''houtaimoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  9 => \n  array (\n    ''catid'' => ''9'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''12'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''9'',\n    ''catname'' => ''手机网页模板'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''shoujimoban'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=9'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list\\'',\n  \\''show_template\\'' => \\''show\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''9'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shoujiwangyemoban'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  11 => \n  array (\n    ''catid'' => ''11'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''13'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''11'',\n    ''catname'' => ''酷站欣赏'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''kuzhan'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=11'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category\\'',\n  \\''list_template\\'' => \\''list_cool\\'',\n  \\''show_template\\'' => \\''show_cool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''11'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''kuzhanxinshang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  15 => \n  array (\n    ''catid'' => ''15'',\n    ''siteid'' => ''1'',\n    ''type'' => ''1'',\n    ''modelid'' => ''0'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''15'',\n    ''catname'' => ''前端神器'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''tool'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=15'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''ishtml\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''page_template\\'' => \\''page_tool\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n)'',\n    ''listorder'' => ''15'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qianduanshenqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => NULL,\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => NULL,\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => '''',\n    ''workflowid'' => NULL,\n    ''isdomain'' => ''0'',\n  ),\n  16 => \n  array (\n    ''catid'' => ''16'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42'',\n    ''catname'' => ''网页特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''texiao'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=16'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''16'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangyetexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  17 => \n  array (\n    ''catid'' => ''17'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''17,18,19,20,21,22,23,24,25,26,27,28,29'',\n    ''catname'' => ''jquery特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/'',\n    ''catdir'' => ''jquery'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=17'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''17'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jquerytexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  18 => \n  array (\n    ''catid'' => ''18'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''18'',\n    ''catname'' => ''焦点图'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''jiaodiantu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=18'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''18'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''jiaodiantu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  19 => \n  array (\n    ''catid'' => ''19'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''19'',\n    ''catname'' => ''全屏广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''quanping'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=19'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''19'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''quanpingguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  20 => \n  array (\n    ''catid'' => ''20'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''20'',\n    ''catname'' => ''对联广告'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''duilian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=20'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''20'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''duilianguanggao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  21 => \n  array (\n    ''catid'' => ''21'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''21'',\n    ''catname'' => ''在线客服'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''zaixiankefu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=21'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''21'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''zaixiankefu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  22 => \n  array (\n    ''catid'' => ''22'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''22'',\n    ''catname'' => ''相册代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xiangce'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=22'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''22'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xiangcedaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  23 => \n  array (\n    ''catid'' => ''23'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''23'',\n    ''catname'' => ''菜单导航'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''daohang'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=23'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''23'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''caidandaohang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  24 => \n  array (\n    ''catid'' => ''24'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''24'',\n    ''catname'' => ''TAB标签'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tab'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=24'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''24'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tabbiaoqian'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  25 => \n  array (\n    ''catid'' => ''25'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''25'',\n    ''catname'' => ''悬浮漂浮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''xuanfu'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=25'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''25'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''xuanfupiaofu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  26 => \n  array (\n    ''catid'' => ''26'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''26'',\n    ''catname'' => ''视频播放'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''shipin'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=26'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''26'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shipinbofang'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  27 => \n  array (\n    ''catid'' => ''27'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''27'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''tupian'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=27'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''27'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  28 => \n  array (\n    ''catid'' => ''28'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''28'',\n    ''catname'' => ''翻牌书角'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''fanpai'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=28'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''28'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''fanpaishujiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  29 => \n  array (\n    ''catid'' => ''29'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''17'',\n    ''arrparentid'' => ''0,16,17'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''29'',\n    ''catname'' => ''其他代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/jquery/'',\n    ''catdir'' => ''other'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=29'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''29'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitadaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  30 => \n  array (\n    ''catid'' => ''30'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''16'',\n    ''arrparentid'' => ''0,16'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''30,31,32,33,34,35,36,37,38,39,40,41,42'',\n    ''catname'' => ''特效代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/'',\n    ''catdir'' => ''txcode'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=30'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''30'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''texiaodaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  31 => \n  array (\n    ''catid'' => ''31'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''31'',\n    ''catname'' => ''导航菜单'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''nav'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=31'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''31'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''daohangcaidan'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  32 => \n  array (\n    ''catid'' => ''32'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''32'',\n    ''catname'' => ''表单按钮'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''frombutton'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=32'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''32'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaodananniu'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  33 => \n  array (\n    ''catid'' => ''33'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''33'',\n    ''catname'' => ''文字特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''fonttx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=33'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''33'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wenzitexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  34 => \n  array (\n    ''catid'' => ''34'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''34'',\n    ''catname'' => ''表格图层'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''tableimg'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=34'',\n    ''items'' => ''1'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''34'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''biaogetuceng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  35 => \n  array (\n    ''catid'' => ''35'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''35'',\n    ''catname'' => ''图片特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''imgtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=35'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''35'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''tupiantexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  36 => \n  array (\n    ''catid'' => ''36'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''36'',\n    ''catname'' => ''时间日期'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''timedate'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=36'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''36'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''shijianriqi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  37 => \n  array (\n    ''catid'' => ''37'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''37'',\n    ''catname'' => ''滚动代码'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''scroll'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=37'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''37'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''gundongdaima'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  38 => \n  array (\n    ''catid'' => ''38'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''38'',\n    ''catname'' => ''窗口特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''windowtx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=38'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''38'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''chuangkoutexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  39 => \n  array (\n    ''catid'' => ''39'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''39'',\n    ''catname'' => ''颜色背景'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''color'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=39'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''39'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''yansebeijing'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  40 => \n  array (\n    ''catid'' => ''40'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''40'',\n    ''catname'' => ''网站常用'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''website'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=40'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''40'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wangzhanchangyong'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  41 => \n  array (\n    ''catid'' => ''41'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''41'',\n    ''catname'' => ''css样式'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''cssStyle'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=41'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_code\\'',\n  \\''list_template\\'' => \\''list_js\\'',\n  \\''show_template\\'' => \\''show_code\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''41'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''cssyangshi'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  42 => \n  array (\n    ''catid'' => ''42'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''14'',\n    ''parentid'' => ''30'',\n    ''arrparentid'' => ''0,16,30'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''42'',\n    ''catname'' => ''其他特效'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''texiao/txcode/'',\n    ''catdir'' => ''othertx'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=42'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (  \\''workflowid\\'' => \\''\\'',  \\''ishtml\\'' => \\''0\\'',  \\''content_ishtml\\'' => \\''0\\'',  \\''create_to_html_root\\'' => \\''0\\'',  \\''template_list\\'' => \\''default\\'',  \\''category_template\\'' => \\''category_code\\'',  \\''list_template\\'' => \\''list_js\\'',  \\''show_template\\'' => \\''show_code\\'',  \\''meta_title\\'' => \\''\\'',  \\''meta_keywords\\'' => \\''\\'',  \\''meta_description\\'' => \\''\\'',  \\''presentpoint\\'' => \\''1\\'',  \\''defaultchargepoint\\'' => \\''0\\'',  \\''paytype\\'' => \\''0\\'',  \\''repeatchargedays\\'' => \\''1\\'',  \\''category_ruleid\\'' => \\''6\\'',  \\''show_ruleid\\'' => \\''16\\'',)'',\n    ''listorder'' => ''42'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''qitatexiao'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  43 => \n  array (\n    ''catid'' => ''43'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''0'',\n    ''arrparentid'' => ''0'',\n    ''child'' => ''1'',\n    ''arrchildid'' => ''43,44,45,46,47,48,49'',\n    ''catname'' => ''文章教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => '''',\n    ''catdir'' => ''article'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=43'',\n    ''items'' => ''0'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''43'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wenzhangjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  44 => \n  array (\n    ''catid'' => ''44'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''44'',\n    ''catname'' => ''wordpress教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''wordpress'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=44'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''44'',\n    ''ismenu'' => ''1'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''wordpressjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  45 => \n  array (\n    ''catid'' => ''45'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''45'',\n    ''catname'' => ''discuz教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''discuz'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=45'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''45'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''discuzjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  46 => \n  array (\n    ''catid'' => ''46'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''46'',\n    ''catname'' => ''phpwind教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''phpwind'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=46'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''46'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''phpwindjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  47 => \n  array (\n    ''catid'' => ''47'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''47'',\n    ''catname'' => ''phpcms教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''phpcms'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=47'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''47'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''phpcmsjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  48 => \n  array (\n    ''catid'' => ''48'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''48'',\n    ''catname'' => ''ecshop教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''ecshop'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=48'',\n    ''items'' => ''3'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''48'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''ecshopjiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n  49 => \n  array (\n    ''catid'' => ''49'',\n    ''siteid'' => ''1'',\n    ''type'' => ''0'',\n    ''modelid'' => ''1'',\n    ''parentid'' => ''43'',\n    ''arrparentid'' => ''0,43'',\n    ''child'' => ''0'',\n    ''arrchildid'' => ''49'',\n    ''catname'' => ''php168教程'',\n    ''style'' => '''',\n    ''image'' => '''',\n    ''description'' => '''',\n    ''parentdir'' => ''article/'',\n    ''catdir'' => ''php168'',\n    ''url'' => ''http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=49'',\n    ''items'' => ''2'',\n    ''hits'' => ''0'',\n    ''setting'' => ''array (\n  \\''workflowid\\'' => \\''\\'',\n  \\''ishtml\\'' => \\''0\\'',\n  \\''content_ishtml\\'' => \\''0\\'',\n  \\''create_to_html_root\\'' => \\''0\\'',\n  \\''template_list\\'' => \\''default\\'',\n  \\''category_template\\'' => \\''category_article\\'',\n  \\''list_template\\'' => \\''list_article\\'',\n  \\''show_template\\'' => \\''show_article\\'',\n  \\''meta_title\\'' => \\''\\'',\n  \\''meta_keywords\\'' => \\''\\'',\n  \\''meta_description\\'' => \\''\\'',\n  \\''presentpoint\\'' => \\''1\\'',\n  \\''defaultchargepoint\\'' => \\''0\\'',\n  \\''paytype\\'' => \\''0\\'',\n  \\''repeatchargedays\\'' => \\''1\\'',\n  \\''category_ruleid\\'' => \\''6\\'',\n  \\''show_ruleid\\'' => \\''16\\'',\n)'',\n    ''listorder'' => ''49'',\n    ''ismenu'' => ''0'',\n    ''sethtml'' => ''0'',\n    ''letter'' => ''php168jiaocheng'',\n    ''usable_type'' => '''',\n    ''create_to_html_root'' => ''0'',\n    ''ishtml'' => ''0'',\n    ''content_ishtml'' => ''0'',\n    ''category_ruleid'' => ''6'',\n    ''show_ruleid'' => ''16'',\n    ''workflowid'' => '''',\n    ''isdomain'' => ''0'',\n  ),\n);\n?>');
 INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 ('sitelist.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''siteid'' => ''1'',\n    ''name'' => ''默认站点'',\n    ''dirname'' => '''',\n    ''domain'' => ''http://www.htmlmoban.net/'',\n    ''site_title'' => ''PHPCMS演示站'',\n    ''keywords'' => ''PHPCMS演示站'',\n    ''description'' => ''PHPCMS演示站'',\n    ''release_point'' => '''',\n    ''default_style'' => ''default'',\n    ''template'' => ''default'',\n    ''setting'' => ''array (\n  \\''upload_maxsize\\'' => \\''20480\\'',\n  \\''upload_allowext\\'' => \\''jpg|jpeg|gif|bmp|png|doc|docx|xls|xlsx|ppt|pptx|pdf|txt|rar|zip|swf\\'',\n  \\''watermark_enable\\'' => \\''1\\'',\n  \\''watermark_minwidth\\'' => \\''300\\'',\n  \\''watermark_minheight\\'' => \\''300\\'',\n  \\''watermark_img\\'' => \\''statics/images/water//mark.png\\'',\n  \\''watermark_pct\\'' => \\''85\\'',\n  \\''watermark_quality\\'' => \\''80\\'',\n  \\''watermark_pos\\'' => \\''9\\'',\n)'',\n    ''uuid'' => ''740a7e10-29d8-11e4-bfd7-74d4356524b7'',\n    ''url'' => ''http://www.htmlmoban.net/'',\n  ),\n);\n?>'),
 ('downservers.cache.php', 'caches_commons/caches_data/', '<?php\nreturn NULL;\n?>'),
@@ -398,7 +450,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 ('member_model.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  10 => \n  array (\n    ''modelid'' => ''10'',\n    ''siteid'' => ''1'',\n    ''name'' => ''普通会员'',\n    ''description'' => ''普通会员'',\n    ''tablename'' => ''member_detail'',\n    ''setting'' => '''',\n    ''addtime'' => ''0'',\n    ''items'' => ''0'',\n    ''enablesearch'' => ''1'',\n    ''disabled'' => ''0'',\n    ''default_style'' => '''',\n    ''category_template'' => '''',\n    ''list_template'' => '''',\n    ''show_template'' => '''',\n    ''js_template'' => '''',\n    ''admin_list_template'' => '''',\n    ''member_add_template'' => '''',\n    ''member_list_template'' => '''',\n    ''sort'' => ''0'',\n    ''type'' => ''2'',\n  ),\n);\n?>'),
 ('special.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
 ('common.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  ''admin_email'' => ''phpcms@phpcms.cn'',\n  ''adminaccessip'' => ''0'',\n  ''maxloginfailedtimes'' => ''8'',\n  ''maxiplockedtime'' => ''15'',\n  ''minrefreshtime'' => ''2'',\n  ''mail_type'' => ''1'',\n  ''mail_server'' => ''smtp.qq.com'',\n  ''mail_port'' => ''25'',\n  ''mail_user'' => ''phpcms.cn@foxmail.com'',\n  ''mail_auth'' => ''1'',\n  ''mail_from'' => ''phpcms.cn@foxmail.com'',\n  ''mail_password'' => '''',\n  ''errorlog_size'' => ''20'',\n);\n?>'),
-('category_items_1.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  44 => ''3'',\n  43 => ''0'',\n  45 => ''2'',\n  46 => ''3'',\n  47 => ''3'',\n  48 => ''3'',\n  49 => ''2'',\n);\n?>'),
+('category_items_1.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  44 => ''5'',\n  43 => ''0'',\n  45 => ''5'',\n  46 => ''5'',\n  47 => ''3'',\n  48 => ''3'',\n  49 => ''2'',\n);\n?>'),
 ('category_items_2.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
 ('category_items_3.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
 ('category_items_11.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
@@ -418,7 +470,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_category` (
-`catid` smallint(5) unsigned NOT NULL,
+  `catid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `module` varchar(15) NOT NULL,
   `type` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -441,8 +493,11 @@ CREATE TABLE IF NOT EXISTS `mb_category` (
   `ismenu` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `sethtml` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `letter` varchar(30) NOT NULL,
-  `usable_type` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  `usable_type` varchar(255) NOT NULL,
+  PRIMARY KEY (`catid`),
+  KEY `module` (`module`,`parentid`,`listorder`,`catid`),
+  KEY `siteid` (`siteid`,`type`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
 -- 转存表中的数据 `mb_category`
@@ -486,13 +541,13 @@ INSERT INTO `mb_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `pare
 (40, 1, 'content', 0, 14, 30, '0,16,30', 0, '40', '网站常用', '', '', '', 'texiao/txcode/', 'website', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=40', 0, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_code'',\n  ''list_template'' => ''list_js'',\n  ''show_template'' => ''show_code'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 40, 1, 0, 'wangzhanchangyong', ''),
 (41, 1, 'content', 0, 14, 30, '0,16,30', 0, '41', 'css样式', '', '', '', 'texiao/txcode/', 'cssStyle', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=41', 0, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_code'',\n  ''list_template'' => ''list_js'',\n  ''show_template'' => ''show_code'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 41, 1, 0, 'cssyangshi', ''),
 (42, 1, 'content', 0, 14, 30, '0,16,30', 0, '42', '其他特效', '', '', '', 'texiao/txcode/', 'othertx', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=42', 0, 0, 'array (  ''workflowid'' => '''',  ''ishtml'' => ''0'',  ''content_ishtml'' => ''0'',  ''create_to_html_root'' => ''0'',  ''template_list'' => ''default'',  ''category_template'' => ''category_code'',  ''list_template'' => ''list_js'',  ''show_template'' => ''show_code'',  ''meta_title'' => '''',  ''meta_keywords'' => '''',  ''meta_description'' => '''',  ''presentpoint'' => ''1'',  ''defaultchargepoint'' => ''0'',  ''paytype'' => ''0'',  ''repeatchargedays'' => ''1'',  ''category_ruleid'' => ''6'',  ''show_ruleid'' => ''16'',)', 42, 1, 0, 'qitatexiao', ''),
-(44, 1, 'content', 0, 1, 43, '0,43', 0, '44', 'wordpress教程', '', '', '', 'article/', 'wordpress', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=44', 3, 0, 'array (  ''workflowid'' => '''',  ''ishtml'' => ''0'',  ''content_ishtml'' => ''0'',  ''create_to_html_root'' => ''0'',  ''template_list'' => ''default'',  ''category_template'' => ''category'',  ''list_template'' => ''list_article'',  ''show_template'' => ''show_article'',  ''meta_title'' => '''',  ''meta_keywords'' => '''',  ''meta_description'' => '''',  ''presentpoint'' => ''1'',  ''defaultchargepoint'' => ''0'',  ''paytype'' => ''0'',  ''repeatchargedays'' => ''1'',  ''category_ruleid'' => ''6'',  ''show_ruleid'' => ''16'',)', 44, 0, 0, 'wordpressjiaocheng', ''),
-(43, 1, 'content', 0, 1, 0, '0', 1, '43,44,45,46,47,48,49', '文章教程', '', '', '', '', 'article', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=43', 0, 0, 'array (  ''workflowid'' => '''',  ''ishtml'' => ''0'',  ''content_ishtml'' => ''0'',  ''create_to_html_root'' => ''0'',  ''template_list'' => ''default'',  ''category_template'' => ''list_article'',  ''list_template'' => ''list_article'',  ''show_template'' => ''show_article'',  ''meta_title'' => '''',  ''meta_keywords'' => '''',  ''meta_description'' => '''',  ''presentpoint'' => ''1'',  ''defaultchargepoint'' => ''0'',  ''paytype'' => ''0'',  ''repeatchargedays'' => ''1'',  ''category_ruleid'' => ''6'',  ''show_ruleid'' => ''16'',)', 43, 1, 0, 'wenzhangjiaocheng', ''),
-(45, 1, 'content', 0, 1, 43, '0,43', 0, '45', 'discuz教程', '', '', '', 'article/', 'discuz', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=45', 2, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 45, 0, 0, 'discuzjiaocheng', ''),
-(46, 1, 'content', 0, 1, 43, '0,43', 0, '46', 'phpwind教程', '', '', '', 'article/', 'phpwind', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=46', 3, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 46, 0, 0, 'phpwindjiaocheng', ''),
-(47, 1, 'content', 0, 1, 43, '0,43', 0, '47', 'phpcms教程', '', '', '', 'article/', 'phpcms', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=47', 3, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 47, 0, 0, 'phpcmsjiaocheng', ''),
-(48, 1, 'content', 0, 1, 43, '0,43', 0, '48', 'ecshop教程', '', '', '', 'article/', 'ecshop', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=48', 3, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 48, 0, 0, 'ecshopjiaocheng', ''),
-(49, 1, 'content', 0, 1, 43, '0,43', 0, '49', 'php168教程', '', '', '', 'article/', 'php168', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=49', 2, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 49, 0, 0, 'php168jiaocheng', '');
+(44, 1, 'content', 0, 1, 43, '0,43', 0, '44', 'wordpress教程', '', '', '', 'article/', 'wordpress', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=44', 5, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 44, 1, 0, 'wordpressjiaocheng', ''),
+(43, 1, 'content', 0, 1, 0, '0', 1, '43,44,45,46,47,48,49', '文章教程', '', '', '', '', 'article', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=43', 0, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 43, 1, 0, 'wenzhangjiaocheng', ''),
+(45, 1, 'content', 0, 1, 43, '0,43', 0, '45', 'discuz教程', '', '', '', 'article/', 'discuz', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=45', 5, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 45, 0, 0, 'discuzjiaocheng', ''),
+(46, 1, 'content', 0, 1, 43, '0,43', 0, '46', 'phpwind教程', '', '', '', 'article/', 'phpwind', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=46', 5, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 46, 0, 0, 'phpwindjiaocheng', ''),
+(47, 1, 'content', 0, 1, 43, '0,43', 0, '47', 'phpcms教程', '', '', '', 'article/', 'phpcms', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=47', 3, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 47, 0, 0, 'phpcmsjiaocheng', ''),
+(48, 1, 'content', 0, 1, 43, '0,43', 0, '48', 'ecshop教程', '', '', '', 'article/', 'ecshop', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=48', 3, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 48, 0, 0, 'ecshopjiaocheng', ''),
+(49, 1, 'content', 0, 1, 43, '0,43', 0, '49', 'php168教程', '', '', '', 'article/', 'php168', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=49', 2, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_article'',\n  ''list_template'' => ''list_article'',\n  ''show_template'' => ''show_article'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 49, 0, 0, 'php168jiaocheng', '');
 
 -- --------------------------------------------------------
 
@@ -505,7 +560,9 @@ CREATE TABLE IF NOT EXISTS `mb_category_priv` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `roleid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `action` char(30) NOT NULL
+  `action` char(30) NOT NULL,
+  KEY `catid` (`catid`,`roleid`,`is_admin`,`action`),
+  KEY `siteid` (`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -515,14 +572,17 @@ CREATE TABLE IF NOT EXISTS `mb_category_priv` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_content` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` mediumint(5) unsigned NOT NULL DEFAULT '0',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `url` char(255) NOT NULL,
   `title` char(100) NOT NULL,
-  `data` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `data` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `nodeid` (`nodeid`,`siteid`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -532,7 +592,8 @@ CREATE TABLE IF NOT EXISTS `mb_collection_content` (
 
 CREATE TABLE IF NOT EXISTS `mb_collection_history` (
   `md5` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`md5`,`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -542,7 +603,7 @@ CREATE TABLE IF NOT EXISTS `mb_collection_history` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_node` (
-`nodeid` smallint(6) unsigned NOT NULL,
+  `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `lastdate` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -575,8 +636,10 @@ CREATE TABLE IF NOT EXISTS `mb_collection_node` (
   `down_attachment` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `watermark` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `coll_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `customize_config` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `customize_config` text NOT NULL,
+  PRIMARY KEY (`nodeid`),
+  KEY `siteid` (`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -585,13 +648,16 @@ CREATE TABLE IF NOT EXISTS `mb_collection_node` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_collection_program` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
   `modelid` mediumint(6) unsigned NOT NULL DEFAULT '0',
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
-  `config` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `config` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`),
+  KEY `nodeid` (`nodeid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -610,7 +676,10 @@ CREATE TABLE IF NOT EXISTS `mb_comment` (
   `neutral` mediumint(8) unsigned DEFAULT '0',
   `display_type` tinyint(1) DEFAULT '0',
   `tableid` mediumint(8) unsigned DEFAULT '0',
-  `lastupdate` int(10) unsigned DEFAULT '0'
+  `lastupdate` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`commentid`),
+  KEY `lastupdate` (`lastupdate`),
+  KEY `siteid` (`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -630,11 +699,14 @@ INSERT INTO `mb_comment` (`commentid`, `siteid`, `title`, `url`, `total`, `squar
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_check` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `comment_data_id` int(10) DEFAULT '0' COMMENT '论评ID号',
   `siteid` smallint(5) NOT NULL DEFAULT '0' COMMENT '站点ID',
-  `tableid` mediumint(8) DEFAULT '0' COMMENT '数据存储表ID'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `tableid` mediumint(8) DEFAULT '0' COMMENT '数据存储表ID',
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`),
+  KEY `comment_data_id` (`comment_data_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -643,7 +715,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment_check` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
-`id` int(10) unsigned NOT NULL COMMENT '评论ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',
   `commentid` char(30) NOT NULL DEFAULT '' COMMENT '评论ID号',
   `siteid` smallint(5) NOT NULL DEFAULT '0' COMMENT '站点ID',
   `userid` int(10) unsigned DEFAULT '0' COMMENT '用户ID',
@@ -654,8 +726,13 @@ CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
   `content` text COMMENT '评论内容',
   `direction` tinyint(1) DEFAULT '0' COMMENT '评论方向{0:无方向,1:正文,2:反方,3:中立}',
   `support` mediumint(8) unsigned DEFAULT '0' COMMENT '支持数',
-  `reply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为回复'
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `reply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为回复',
+  PRIMARY KEY (`id`),
+  KEY `commentid` (`commentid`),
+  KEY `direction` (`direction`),
+  KEY `siteid` (`siteid`),
+  KEY `support` (`support`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- 转存表中的数据 `mb_comment_data_1`
@@ -684,7 +761,8 @@ CREATE TABLE IF NOT EXISTS `mb_comment_setting` (
   `check` tinyint(1) DEFAULT '0' COMMENT '是否需要审核',
   `code` tinyint(1) DEFAULT '0' COMMENT '是否开启验证码',
   `add_point` tinyint(3) unsigned DEFAULT '0' COMMENT '添加的积分数',
-  `del_point` tinyint(3) unsigned DEFAULT '0' COMMENT '扣除的积分数'
+  `del_point` tinyint(3) unsigned DEFAULT '0' COMMENT '扣除的积分数',
+  PRIMARY KEY (`siteid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -701,10 +779,11 @@ INSERT INTO `mb_comment_setting` (`siteid`, `guest`, `check`, `code`, `add_point
 --
 
 CREATE TABLE IF NOT EXISTS `mb_comment_table` (
-`tableid` mediumint(8) NOT NULL COMMENT '表ID号',
+  `tableid` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '表ID号',
   `total` int(10) unsigned DEFAULT '0' COMMENT '数据总量',
-  `creat_at` int(10) DEFAULT '0' COMMENT '创建时间'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `creat_at` int(10) DEFAULT '0' COMMENT '创建时间',
+  PRIMARY KEY (`tableid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_comment_table`
@@ -726,7 +805,10 @@ CREATE TABLE IF NOT EXISTS `mb_content_check` (
   `title` char(80) NOT NULL,
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0'
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  KEY `username` (`username`),
+  KEY `checkid` (`checkid`),
+  KEY `status` (`status`,`inputtime`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -736,7 +818,7 @@ CREATE TABLE IF NOT EXISTS `mb_content_check` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_cool` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -752,8 +834,12 @@ CREATE TABLE IF NOT EXISTS `mb_cool` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_cool`
@@ -785,7 +871,8 @@ CREATE TABLE IF NOT EXISTS `mb_cool_data` (
   `tag` varchar(255) NOT NULL DEFAULT '',
   `area` varchar(255) NOT NULL DEFAULT '',
   `class` varchar(255) NOT NULL DEFAULT '',
-  `scan_url` varchar(100) NOT NULL DEFAULT ''
+  `scan_url` varchar(100) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -803,13 +890,14 @@ INSERT INTO `mb_cool_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagi
 --
 
 CREATE TABLE IF NOT EXISTS `mb_copyfrom` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sitename` varchar(30) NOT NULL,
   `siteurl` varchar(100) NOT NULL,
   `thumb` varchar(100) NOT NULL,
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -818,7 +906,7 @@ CREATE TABLE IF NOT EXISTS `mb_copyfrom` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_datacall` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` char(40) DEFAULT NULL,
   `dis_type` tinyint(1) unsigned DEFAULT '0',
   `type` tinyint(1) DEFAULT '0',
@@ -827,8 +915,10 @@ CREATE TABLE IF NOT EXISTS `mb_datacall` (
   `data` text,
   `template` text,
   `cache` mediumint(8) DEFAULT NULL,
-  `num` smallint(6) unsigned DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `num` smallint(6) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -837,7 +927,7 @@ CREATE TABLE IF NOT EXISTS `mb_datacall` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_dbsource` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL,
   `host` varchar(20) NOT NULL,
@@ -846,8 +936,10 @@ CREATE TABLE IF NOT EXISTS `mb_dbsource` (
   `password` varchar(50) NOT NULL,
   `dbname` varchar(50) NOT NULL,
   `dbtablepre` varchar(30) NOT NULL,
-  `charset` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `charset` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -856,7 +948,7 @@ CREATE TABLE IF NOT EXISTS `mb_dbsource` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_download` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -879,8 +971,12 @@ CREATE TABLE IF NOT EXISTS `mb_download` (
   `classtype` varchar(20) NOT NULL DEFAULT '',
   `version` varchar(20) NOT NULL DEFAULT '',
   `filesize` varchar(10) NOT NULL DEFAULT 'Unkown',
-  `stars` varchar(20) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `stars` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -900,7 +996,8 @@ CREATE TABLE IF NOT EXISTS `mb_download_data` (
   `relation` varchar(255) NOT NULL DEFAULT '',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `downfiles` mediumtext NOT NULL,
-  `downfile` varchar(255) NOT NULL DEFAULT ''
+  `downfile` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -910,12 +1007,13 @@ CREATE TABLE IF NOT EXISTS `mb_download_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_downservers` (
-`id` mediumint(8) NOT NULL,
+  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `sitename` varchar(100) DEFAULT NULL,
   `siteurl` varchar(255) DEFAULT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -924,10 +1022,12 @@ CREATE TABLE IF NOT EXISTS `mb_downservers` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_extend_setting` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `key` char(30) NOT NULL,
-  `data` mediumtext
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `data` mediumtext,
+  PRIMARY KEY (`id`),
+  KEY `key` (`key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -936,12 +1036,14 @@ CREATE TABLE IF NOT EXISTS `mb_extend_setting` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_favorite` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `title` char(100) NOT NULL,
   `url` char(100) NOT NULL,
-  `adddate` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `adddate` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -957,7 +1059,8 @@ CREATE TABLE IF NOT EXISTS `mb_hits` (
   `dayviews` int(10) unsigned NOT NULL DEFAULT '0',
   `weekviews` int(10) unsigned NOT NULL DEFAULT '0',
   `monthviews` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`hitsid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -965,7 +1068,7 @@ CREATE TABLE IF NOT EXISTS `mb_hits` (
 --
 
 INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`, `weekviews`, `monthviews`, `updatetime`) VALUES
-('c-12-29', 6, 72, 15, 2, 17, 17, 1437087884),
+('c-12-29', 6, 73, 2, 1, 18, 18, 1437201195),
 ('c-2-1', 7, 3, 0, 3, 3, 3, 1423969282),
 ('c-12-30', 6, 15, 0, 12, 12, 12, 1436454301),
 ('c-3-1', 10, 2, 0, 1, 1, 1, 1434614000),
@@ -987,19 +1090,19 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 ('c-13-1', 11, 1, 0, 1, 1, 1, 1435648494),
 ('c-14-1', 18, 5, 1, 1, 2, 5, 1436865513),
 ('c-14-2', 18, 44, 5, 3, 8, 44, 1436881166),
-('c-12-44', 8, 3, 0, 3, 3, 3, 1436706190),
-('c-12-45', 8, 1, 0, 1, 1, 1, 1436743874),
+('c-12-44', 8, 5, 0, 2, 2, 5, 1437201175),
+('c-12-45', 8, 2, 0, 1, 2, 2, 1437201183),
 ('c-12-46', 9, 1, 0, 1, 1, 1, 1436706414),
 ('c-12-47', 9, 2, 0, 2, 2, 2, 1436706552),
 ('c-12-48', 9, 1, 0, 1, 1, 1, 1436706649),
 ('c-13-2', 11, 0, 0, 0, 0, 0, 1436860735),
-('c-14-3', 34, 14, 0, 14, 14, 14, 1436866380),
-('c-14-4', 22, 0, 0, 0, 0, 0, 1436882622),
+('c-14-3', 34, 15, 0, 1, 15, 15, 1437197054),
+('c-14-4', 22, 1, 0, 1, 1, 1, 1437201134),
 ('c-14-5', 27, 0, 0, 0, 0, 0, 1436882689),
 ('c-14-6', 27, 0, 0, 0, 0, 0, 1436882786),
 ('c-14-7', 29, 1, 0, 1, 1, 1, 1436916331),
 ('c-14-8', 27, 1, 0, 1, 1, 1, 1436882952),
-('c-12-49', 6, 11, 3, 8, 11, 11, 1437087655),
+('c-12-49', 6, 13, 8, 2, 13, 13, 1437201260),
 ('c-1-1', 44, 3, 0, 3, 3, 3, 1437142487),
 ('c-1-2', 44, 2, 0, 2, 2, 2, 1437142480),
 ('c-1-3', 44, 4, 0, 4, 4, 4, 1437142870),
@@ -1011,11 +1114,18 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 ('c-1-9', 47, 0, 0, 0, 0, 0, 1437172725),
 ('c-1-10', 47, 0, 0, 0, 0, 0, 1437172770),
 ('c-1-11', 47, 0, 0, 0, 0, 0, 1437172829),
-('c-1-12', 48, 0, 0, 0, 0, 0, 1437172871),
+('c-1-12', 48, 1, 0, 1, 1, 1, 1437197034),
 ('c-1-13', 48, 0, 0, 0, 0, 0, 1437172908),
-('c-1-14', 48, 0, 0, 0, 0, 0, 1437172945),
-('c-1-15', 49, 0, 0, 0, 0, 0, 1437172985),
-('c-1-16', 49, 4, 0, 4, 4, 4, 1437175182);
+('c-1-14', 48, 2, 0, 2, 2, 2, 1437211854),
+('c-1-15', 49, 1, 0, 1, 1, 1, 1437197018),
+('c-1-16', 49, 15, 0, 15, 15, 15, 1437197028),
+('c-1-17', 44, 0, 0, 0, 0, 0, 1437212116),
+('c-1-18', 44, 0, 0, 0, 0, 0, 1437212163),
+('c-1-19', 45, 0, 0, 0, 0, 0, 1437212226),
+('c-1-20', 45, 0, 0, 0, 0, 0, 1437212252),
+('c-1-21', 45, 0, 0, 0, 0, 0, 1437212279),
+('c-1-22', 46, 0, 0, 0, 0, 0, 1437212475),
+('c-1-23', 46, 0, 0, 0, 0, 0, 1437212519);
 
 -- --------------------------------------------------------
 
@@ -1024,10 +1134,11 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 --
 
 CREATE TABLE IF NOT EXISTS `mb_ipbanned` (
-`ipbannedid` smallint(5) NOT NULL,
+  `ipbannedid` smallint(5) NOT NULL AUTO_INCREMENT,
   `ip` char(15) NOT NULL,
-  `expires` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `expires` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ipbannedid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1036,10 +1147,11 @@ CREATE TABLE IF NOT EXISTS `mb_ipbanned` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keylink` (
-`keylinkid` smallint(5) unsigned NOT NULL,
+  `keylinkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `word` char(40) NOT NULL,
-  `url` char(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `url` char(100) NOT NULL,
+  PRIMARY KEY (`keylinkid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1048,13 +1160,15 @@ CREATE TABLE IF NOT EXISTS `mb_keylink` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keyword` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `keyword` char(100) NOT NULL,
   `pinyin` char(100) NOT NULL,
   `videonum` int(11) NOT NULL DEFAULT '0',
-  `searchnums` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
+  `searchnums` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `keyword` (`keyword`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=101 ;
 
 --
 -- 转存表中的数据 `mb_keyword`
@@ -1068,7 +1182,7 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (5, 1, '阿打算打', 'adasuanda', 1, 0),
 (6, 1, '阿达的', 'adade', 7, 0),
 (7, 1, '啊盛大的', 'ashengdade', 1, 0),
-(8, 1, '网站', 'wangzhan', 12, 0),
+(8, 1, '网站', 'wangzhan', 13, 0),
 (9, 1, '模板', 'moban', 27, 0),
 (10, 1, '蓝色', 'lanse', 7, 0),
 (11, 1, '企业', 'qiye', 7, 0),
@@ -1129,7 +1243,7 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (66, 1, '空白', 'kongbai', 1, 0),
 (67, 1, '乱码', 'luanma', 1, 0),
 (68, 1, '帖子', 'tiezi', 1, 0),
-(69, 1, '教程', 'jiaocheng', 3, 0),
+(69, 1, '教程', 'jiaocheng', 4, 0),
 (70, 1, '护身符', 'hushenfu', 1, 0),
 (71, 1, '道具', 'daoju', 1, 0),
 (72, 1, '用户组', 'yonghuzu', 1, 0),
@@ -1147,9 +1261,20 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (84, 1, '管理员', 'guanliyuan', 1, 0),
 (85, 1, '套件', 'taojian', 1, 0),
 (86, 1, '密码', 'mima', 1, 0),
-(87, 1, '数据库', 'shujuku', 2, 0),
+(87, 1, '数据库', 'shujuku', 3, 0),
 (88, 1, '常见', 'changjian', 1, 0),
-(89, 1, '办法', 'banfa', 1, 0);
+(89, 1, '办法', 'banfa', 1, 0),
+(90, 1, '实用技巧', 'shiyongjiqiao', 1, 0),
+(91, 1, '插件', 'chajian', 2, 0),
+(92, 1, '机制', 'jizhi', 1, 0),
+(93, 1, '缓存', 'huancun', 1, 0),
+(94, 1, '错误', 'cuowu', 1, 0),
+(95, 1, '平台', 'pingtai', 1, 0),
+(96, 1, '账号', 'zhanghao', 1, 0),
+(97, 1, '站长', 'zhanchang', 1, 0),
+(98, 1, '进化论', 'jinhualun', 1, 0),
+(99, 1, '视觉', 'shijue', 1, 0),
+(100, 1, '系统', 'xitong', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1158,11 +1283,13 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 --
 
 CREATE TABLE IF NOT EXISTS `mb_keyword_data` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tagid` int(10) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `contentid` char(30) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
+  `contentid` char(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tagid` (`tagid`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=183 ;
 
 --
 -- 转存表中的数据 `mb_keyword_data`
@@ -1335,7 +1462,22 @@ INSERT INTO `mb_keyword_data` (`id`, `tagid`, `siteid`, `contentid`) VALUES
 (164, 87, 1, '15-1'),
 (165, 88, 1, '16-1'),
 (166, 89, 1, '16-1'),
-(167, 87, 1, '16-1');
+(167, 87, 1, '16-1'),
+(168, 90, 1, '17-1'),
+(169, 91, 1, '17-1'),
+(170, 91, 1, '18-1'),
+(171, 87, 1, '18-1'),
+(172, 8, 1, '18-1'),
+(173, 92, 1, '19-1'),
+(174, 93, 1, '20-1'),
+(175, 94, 1, '20-1'),
+(176, 95, 1, '21-1'),
+(177, 69, 1, '22-1'),
+(178, 96, 1, '22-1'),
+(179, 97, 1, '22-1'),
+(180, 98, 1, '23-1'),
+(181, 99, 1, '23-1'),
+(182, 100, 1, '23-1');
 
 -- --------------------------------------------------------
 
@@ -1344,7 +1486,7 @@ INSERT INTO `mb_keyword_data` (`id`, `tagid`, `siteid`, `contentid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_link` (
-`linkid` smallint(5) unsigned NOT NULL,
+  `linkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `linktype` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1356,8 +1498,10 @@ CREATE TABLE IF NOT EXISTS `mb_link` (
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `elite` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `passed` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `addtime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `addtime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`linkid`),
+  KEY `typeid` (`typeid`,`passed`,`listorder`,`linkid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_link`
@@ -1374,7 +1518,7 @@ INSERT INTO `mb_link` (`linkid`, `siteid`, `typeid`, `linktype`, `name`, `url`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_linkage` (
-`linkageid` smallint(5) unsigned NOT NULL,
+  `linkageid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `style` varchar(35) NOT NULL,
   `parentid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -1384,8 +1528,10 @@ CREATE TABLE IF NOT EXISTS `mb_linkage` (
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `description` varchar(255) DEFAULT NULL,
   `setting` varchar(255) DEFAULT NULL,
-  `siteid` smallint(5) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3360 DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`linkageid`,`keyid`),
+  KEY `parentid` (`parentid`,`listorder`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3360 ;
 
 --
 -- 转存表中的数据 `mb_linkage`
@@ -4687,7 +4833,7 @@ INSERT INTO `mb_linkage` (`linkageid`, `name`, `style`, `parentid`, `child`, `ar
 --
 
 CREATE TABLE IF NOT EXISTS `mb_log` (
-`logid` int(10) unsigned NOT NULL,
+  `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `field` varchar(15) NOT NULL,
   `value` int(10) unsigned NOT NULL DEFAULT '0',
   `module` varchar(15) NOT NULL,
@@ -4698,8 +4844,11 @@ CREATE TABLE IF NOT EXISTS `mb_log` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `username` varchar(20) NOT NULL,
   `ip` varchar(15) NOT NULL,
-  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM AUTO_INCREMENT=803 DEFAULT CHARSET=utf8;
+  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`logid`),
+  KEY `module` (`module`,`file`,`action`),
+  KEY `username` (`username`,`action`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=827 ;
 
 --
 -- 转存表中的数据 `mb_log`
@@ -5508,7 +5657,32 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 (799, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 06:42:38'),
 (800, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 06:43:05'),
 (801, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 06:43:59'),
-(802, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 06:44:26');
+(802, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 06:44:26'),
+(803, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-18 14:28:14'),
+(804, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-07-18 14:28:24'),
+(805, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:28:32'),
+(806, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:29:58'),
+(807, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:30:09'),
+(808, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:30:15'),
+(809, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:30:21'),
+(810, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:30:25'),
+(811, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:31:07'),
+(812, '', 0, 'admin', '', 'category', '?m=admin&c=category&a=edit', '', 2, 'admin2', '127.0.0.1', '2015-07-18 14:31:10'),
+(813, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:34:41'),
+(814, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:35:16'),
+(815, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:35:32'),
+(816, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:36:03'),
+(817, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:36:40'),
+(818, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:37:06'),
+(819, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:37:18'),
+(820, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:37:32');
+INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES
+(821, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:37:47'),
+(822, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:37:59'),
+(823, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:40:29'),
+(824, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:41:15'),
+(825, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:41:29'),
+(826, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-07-18 17:41:59');
 
 -- --------------------------------------------------------
 
@@ -5517,7 +5691,7 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member` (
-`userid` mediumint(8) unsigned NOT NULL,
+  `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `phpssouid` mediumint(8) unsigned NOT NULL,
   `username` char(20) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
@@ -5541,8 +5715,12 @@ CREATE TABLE IF NOT EXISTS `mb_member` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '1',
   `connectid` char(40) NOT NULL DEFAULT '',
   `from` char(10) NOT NULL DEFAULT '',
-  `mobile` char(11) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `mobile` char(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`(20)),
+  KEY `phpssouid` (`phpssouid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_member`
@@ -5559,7 +5737,8 @@ INSERT INTO `mb_member` (`userid`, `phpssouid`, `username`, `password`, `encrypt
 
 CREATE TABLE IF NOT EXISTS `mb_member_detail` (
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `birthday` date DEFAULT NULL
+  `birthday` date DEFAULT NULL,
+  UNIQUE KEY `userid` (`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -5576,7 +5755,7 @@ INSERT INTO `mb_member_detail` (`userid`, `birthday`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_group` (
-`groupid` tinyint(3) unsigned NOT NULL,
+  `groupid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(15) NOT NULL,
   `issystem` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `starnum` tinyint(2) unsigned NOT NULL,
@@ -5597,8 +5776,11 @@ CREATE TABLE IF NOT EXISTS `mb_member_group` (
   `usernamecolor` char(7) NOT NULL,
   `description` char(100) NOT NULL,
   `sort` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`groupid`),
+  KEY `disabled` (`disabled`),
+  KEY `listorder` (`sort`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `mb_member_group`
@@ -5620,7 +5802,7 @@ INSERT INTO `mb_member_group` (`groupid`, `name`, `issystem`, `starnum`, `point`
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_menu` (
-`id` smallint(6) unsigned NOT NULL,
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(40) NOT NULL DEFAULT '',
   `parentid` smallint(6) NOT NULL DEFAULT '0',
   `m` char(20) NOT NULL DEFAULT '',
@@ -5630,8 +5812,12 @@ CREATE TABLE IF NOT EXISTS `mb_member_menu` (
   `listorder` smallint(6) unsigned NOT NULL DEFAULT '0',
   `display` enum('1','0') NOT NULL DEFAULT '1',
   `isurl` enum('1','0') NOT NULL DEFAULT '0',
-  `url` char(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `url` char(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `listorder` (`listorder`),
+  KEY `parentid` (`parentid`),
+  KEY `module` (`m`,`c`,`a`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `mb_member_menu`
@@ -5649,7 +5835,7 @@ INSERT INTO `mb_member_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_verify` (
-`userid` mediumint(8) unsigned NOT NULL,
+  `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `username` char(20) NOT NULL,
   `password` char(32) NOT NULL,
   `encrypt` char(6) NOT NULL,
@@ -5664,8 +5850,11 @@ CREATE TABLE IF NOT EXISTS `mb_member_verify` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `siteid` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `message` char(100) DEFAULT NULL,
-  `mobile` char(11) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `mobile` char(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`(20))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -5674,7 +5863,8 @@ CREATE TABLE IF NOT EXISTS `mb_member_verify` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_member_vip` (
-  `userid` mediumint(8) unsigned NOT NULL DEFAULT '0'
+  `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  UNIQUE KEY `userid` (`userid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5684,7 +5874,7 @@ CREATE TABLE IF NOT EXISTS `mb_member_vip` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_menu` (
-`id` smallint(6) unsigned NOT NULL,
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(40) NOT NULL DEFAULT '',
   `parentid` smallint(6) NOT NULL DEFAULT '0',
   `m` char(20) NOT NULL DEFAULT '',
@@ -5697,8 +5887,12 @@ CREATE TABLE IF NOT EXISTS `mb_menu` (
   `project2` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `project3` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `project4` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `project5` tinyint(1) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=1562 DEFAULT CHARSET=utf8;
+  `project5` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `listorder` (`listorder`),
+  KEY `parentid` (`parentid`),
+  KEY `module` (`m`,`c`,`a`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1562 ;
 
 --
 -- 转存表中的数据 `mb_menu`
@@ -6033,7 +6227,7 @@ INSERT INTO `mb_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listord
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message` (
-`messageid` int(10) unsigned NOT NULL,
+  `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `send_from_id` char(30) NOT NULL DEFAULT '0',
   `send_to_id` char(30) NOT NULL DEFAULT '0',
   `folder` enum('all','inbox','outbox') NOT NULL,
@@ -6042,8 +6236,12 @@ CREATE TABLE IF NOT EXISTS `mb_message` (
   `subject` char(80) DEFAULT NULL,
   `content` text NOT NULL,
   `replyid` int(10) unsigned NOT NULL DEFAULT '0',
-  `del_type` tinyint(1) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `del_type` tinyint(1) unsigned DEFAULT '0',
+  PRIMARY KEY (`messageid`),
+  KEY `msgtoid` (`send_to_id`,`folder`),
+  KEY `replyid` (`replyid`),
+  KEY `folder` (`send_from_id`,`folder`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6052,10 +6250,12 @@ CREATE TABLE IF NOT EXISTS `mb_message` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message_data` (
-`id` int(4) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `userid` mediumint(8) NOT NULL,
-  `group_message_id` int(5) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `group_message_id` int(5) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `message` (`userid`,`group_message_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6064,14 +6264,15 @@ CREATE TABLE IF NOT EXISTS `mb_message_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_message_group` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `groupid` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '用户组id',
   `subject` char(80) DEFAULT NULL,
   `content` text NOT NULL COMMENT '内容',
   `inputtime` int(10) unsigned DEFAULT '0',
-  `status` tinyint(2) unsigned DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `status` tinyint(2) unsigned DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6080,7 +6281,7 @@ CREATE TABLE IF NOT EXISTS `mb_message_group` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_moban` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -6096,8 +6297,12 @@ CREATE TABLE IF NOT EXISTS `mb_moban` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
 -- 转存表中的数据 `mb_moban`
@@ -6147,7 +6352,8 @@ CREATE TABLE IF NOT EXISTS `mb_moban_data` (
   `tag` varchar(255) NOT NULL DEFAULT '',
   `photo` mediumtext NOT NULL,
   `down_url` mediumtext NOT NULL,
-  `demo_url` varchar(255) NOT NULL DEFAULT ''
+  `demo_url` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6184,7 +6390,7 @@ INSERT INTO `mb_moban_data` (`id`, `content`, `readpoint`, `groupids_view`, `pag
 --
 
 CREATE TABLE IF NOT EXISTS `mb_model` (
-`modelid` smallint(5) unsigned NOT NULL,
+  `modelid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` char(30) NOT NULL,
   `description` char(100) NOT NULL,
@@ -6203,8 +6409,10 @@ CREATE TABLE IF NOT EXISTS `mb_model` (
   `member_add_template` varchar(30) NOT NULL,
   `member_list_template` varchar(30) NOT NULL,
   `sort` tinyint(3) NOT NULL,
-  `type` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `type` tinyint(1) NOT NULL,
+  PRIMARY KEY (`modelid`),
+  KEY `type` (`type`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- 转存表中的数据 `mb_model`
@@ -6227,7 +6435,7 @@ INSERT INTO `mb_model` (`modelid`, `siteid`, `name`, `description`, `tablename`,
 --
 
 CREATE TABLE IF NOT EXISTS `mb_model_field` (
-`fieldid` mediumint(8) unsigned NOT NULL,
+  `fieldid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `field` varchar(20) NOT NULL,
@@ -6253,8 +6461,11 @@ CREATE TABLE IF NOT EXISTS `mb_model_field` (
   `isposition` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `listorder` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isomnipotent` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
+  `isomnipotent` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`fieldid`),
+  KEY `modelid` (`modelid`,`disabled`),
+  KEY `field` (`field`,`modelid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=184 ;
 
 --
 -- 转存表中的数据 `mb_model_field`
@@ -6457,7 +6668,8 @@ CREATE TABLE IF NOT EXISTS `mb_module` (
   `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `installdate` date NOT NULL DEFAULT '0000-00-00',
-  `updatedate` date NOT NULL DEFAULT '0000-00-00'
+  `updatedate` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`module`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6497,7 +6709,7 @@ INSERT INTO `mb_module` (`module`, `name`, `url`, `iscore`, `version`, `descript
 --
 
 CREATE TABLE IF NOT EXISTS `mb_mood` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目id',
   `siteid` mediumint(6) unsigned NOT NULL DEFAULT '0' COMMENT '站点ID',
   `contentid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
@@ -6512,8 +6724,12 @@ CREATE TABLE IF NOT EXISTS `mb_mood` (
   `n8` int(10) unsigned NOT NULL DEFAULT '0',
   `n9` int(10) unsigned NOT NULL DEFAULT '0',
   `n10` int(10) unsigned NOT NULL DEFAULT '0',
-  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `lastupdate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后更新时间',
+  PRIMARY KEY (`id`),
+  KEY `total` (`total`),
+  KEY `lastupdate` (`lastupdate`),
+  KEY `catid` (`catid`,`siteid`,`contentid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6522,7 +6738,7 @@ CREATE TABLE IF NOT EXISTS `mb_mood` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_news` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` varchar(80) NOT NULL DEFAULT '',
@@ -6538,8 +6754,12 @@ CREATE TABLE IF NOT EXISTS `mb_news` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- 转存表中的数据 `mb_news`
@@ -6561,7 +6781,14 @@ INSERT INTO `mb_news` (`id`, `catid`, `typeid`, `title`, `style`, `thumb`, `keyw
 (13, 48, 0, 'ECSHOP按属性货号搜索', '', '', '属性', 'ECSHOP前台可按商品名称关键字、商品货号关键字等搜索商品，但不能按属性货号搜索。属性货号是ECSHOP属性库存的唯一识别号，建立属性库存后   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=48&id=13', 0, 99, 1, 0, 'admin2', 1437172883, 1437172908),
 (14, 48, 0, '让ecshop管理员登录后台同时支持邮箱与用户名', '', 'http://www.htmlmoban.net/uploadfile/2015/0718/20150718064226827.gif', '后台 用户名 管理员', 'ecshop管理员邮箱的唯一作用是用来找回密码，默认只能使用用户名(不区分大小写)和密码登录，在验证用户名和密码之前，对提交的表单域进行判   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=48&id=14', 0, 99, 1, 0, 'admin2', 1437172920, 1437172945),
 (15, 49, 0, 'php168如何在PHP套件中修改数据库密码', '', 'http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_4f89cb867ec6b22.jpg', '套件 密码 数据库', '一 、如何在套件中创建数据库及使用phpmyadminA、任何一个网站都需要一个数据库用户名、密码及数据库，这样网站才能运行。B、phpmyadmin是   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=49&id=15', 0, 99, 1, 0, 'admin2', 1437172958, 1437172985),
-(16, 49, 0, 'PHP168 常见数据库连接出错解决办法', '', '', '常见 办法 数据库', '希望大家通过本帖可自主的处理日常见到的数据库问题。第一种：数据库连接出错:INSERT INTO `p8_article_db` (`aid`) VALUES (&amp; 39;685   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=49&id=16', 0, 99, 1, 0, 'admin2', 1437173039, 1437173066);
+(16, 49, 0, 'PHP168 常见数据库连接出错解决办法', '', '', '常见 办法 数据库', '希望大家通过本帖可自主的处理日常见到的数据库问题。第一种：数据库连接出错:INSERT INTO `p8_article_db` (`aid`) VALUES (&amp; 39;685   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=49&id=16', 0, 99, 1, 0, 'admin2', 1437173039, 1437173066),
+(17, 44, 0, '无需插件的WordPress实用技巧15条(上)', '', '', '实用技巧 插件', 'WordPress的强大之处在于，可以使用插件方便地扩展网站的功能。不过有时候，我们需要修改或添加的功能，仅仅几行代码就可以做到。今天，主   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=44&id=17', 0, 99, 1, 0, 'admin2', 1437212081, 1437212116),
+(18, 44, 0, '如何重置WordPress数据库，重置wordpress网站插件', '', 'http://ztmao.com/wp-content/uploads/2015/06/wordpress-database-reset.png', '插件 数据库 网站', '总有WordPress新手在主题猫的QQ用户群里询问这样的问题：怎么清空WordPress网站数据啊？怎么把wordpress网站恢复到最初状态？比较简单粗暴   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=44&id=18', 0, 99, 1, 0, 'admin2', 1437212132, 1437212163),
+(19, 45, 0, 'Discuz! X的CSS加载机制', '', '', '机制', '首先，每个页面都会加载以下两个css，data cache style_1_common css和data cache style_1_forum_index css。先讲讲这两个文件名的命名规则   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=45&id=19', 0, 99, 1, 0, 'admin2', 1437212200, 1437212226),
+(20, 45, 0, 'Discuz! X更新缓存，错误提示', '', '', '缓存 错误', '后台工具 更新缓存提示下面的错误信息：UCenter info: MySQL Query ErrorSQL:SELECT * FROM [Table]notelist WHERE closed=&amp; 39;   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=45&id=20', 0, 99, 1, 0, 'admin2', 1437212238, 1437212252),
+(21, 45, 0, 'Discuz! X云平台访问慢怎么解决？', '', '', '平台', '登陆ftp，编辑source function function_cloudaddons php这个文件。找到下面相同的代码define(&amp; 39;CLOUDADDONS_WEBSITE_URL&amp; 39;, &amp; 39;h   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=45&id=21', 0, 99, 1, 0, 'admin2', 1437212267, 1437212279),
+(22, 46, 0, 'phpwind教程：账号通即将升级 站长操作教程', '', 'http://www.htmlmoban.net/uploadfile/2015/0718/20150718054115480.jpg', '教程 账号 站长', '由于新浪开放平台将停止对OAuth1 0授权方式的支持，phpwind将于8月21号对账号通进行升级，升级之前需要站长完成一些必要的操作，具体操作如   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=46&id=22', 0, 99, 1, 0, 'admin2', 1437212429, 1437212475),
+(23, 46, 0, 'phpwind9.0系统的视觉进化论', '', 'http://www.htmlmoban.net/uploadfile/2015/0718/20150718054159869.jpg', '进化论 视觉 系统', '近日phpwind内部做了一次关于产品视觉方面的主题分享。会上phpwind主视觉设计师王杰同学分享了他在视觉设计中的心得和观念。小编也有幸被邀   ', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=46&id=23', 0, 99, 1, 0, 'admin2', 1437212489, 1437212519);
 
 -- --------------------------------------------------------
 
@@ -6581,7 +6808,8 @@ CREATE TABLE IF NOT EXISTS `mb_news_data` (
   `relation` varchar(255) NOT NULL DEFAULT '',
   `voteid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `copyfrom` varchar(100) NOT NULL DEFAULT ''
+  `copyfrom` varchar(100) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6611,6 +6839,15 @@ INSERT INTO `mb_news_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagi
 (15, '<span style="word-wrap: break-word; font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px; color: rgb(0, 0, 255);"><b style="word-wrap: break-word;">一 、如何在套件中创建数据库及使用phpmyadmin</b></span><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">A、任何一个网站都需要一个数据库用户名、密码及数据库，这样网站才能运行。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">B、phpmyadmin是一个专门管理和操作&ldquo;mysql软件&rdquo;的第三方软件，用来创建数据库和管理数据用户。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">C、装好PHP168 V6.5版PHP环境套件后，进入PHPmyadmin操作界面</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="word-wrap: break-word; font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px; color: rgb(255, 0, 0);"><font size="2" style="word-wrap: break-word;"><b style="word-wrap: break-word;">如何修改MYSQL软件超管用户&ldquo;root&rdquo;密码，以保障网站安全，步骤如下：</b></font></span><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<font size="2" style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><b style="word-wrap: break-word;">1、进入PHPmyadmin操作界面，在浏览器输入</b></span></font><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word;" />\r\n<font size="2" style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif;"><img border="0" src="http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_4f89cb867ec6b22.jpg" style="word-wrap: break-word; max-width: 850px;" /></font><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><font size="2" style="word-wrap: break-word;">2、登陆phpMyAdmin后，进入详细界面</font></span></b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">A、此界面为phpmyadmin详细界面。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">B、点击&ldquo;权限&rdquo;按钮，进入下一步操作界面。本页面其他操作无需处理。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<img border="0" src="http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_ddf44c79379cc21.jpg" style="word-wrap: break-word; max-width: 850px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" /><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><font size="2" style="word-wrap: break-word;">3、为超管&ldquo;root&rdquo;设置权限，点击&ldquo;权限图标&rdquo;设置，如下图</font></span></b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">A、上一步点击进入到此界面。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">B、点击下图箭头指向的具体用户权限操作按钮，进入下一个页面。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<img border="0" src="http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_91e667487d47a11.jpg" style="word-wrap: break-word; max-width: 850px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" /><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><font size="2" style="word-wrap: break-word;">4、为超管&ldquo;root&rdquo;修改密码，如下图所示</font></span></b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">A、上一步点击进入此界面&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">B、对root进行密码修改。正式建站后，务必要修改root密码，否则默认账号和密码很容易被猜到，遭别人破坏数据库。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<img border="0" src="http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_3b34185fcbc1265.jpg" style="word-wrap: break-word; max-width: 850px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" /><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><font size="2" style="word-wrap: break-word;">5、点击&ldquo;执行&rdquo;进入下一步操作界面</font></span></b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<img border="0" src="http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_d8213743388222a.jpg" style="word-wrap: break-word; max-width: 850px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" /><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><font size="2" style="word-wrap: break-word;">6、进入重新登陆phpmyadmin软件界面</font></span></b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">A、假设我们将&ldquo;root&rdquo;密码修改为123456，则登陆的时候密码处填写该新密码。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;"><span style="word-wrap: break-word; color: rgb(0, 0, 255);"><font size="2" style="word-wrap: break-word;"><img border="0" src="http://bbs.qibosoft.com/attachment123456br666vh00/Day_100715/10308_159123_5aa1a9d3d961a1f.jpg" style="word-wrap: break-word; max-width: 850px;" /></font></span></b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp; &nbsp;</span>', 0, '', 0, 10000, '', 0, '', 0, 1, '|0');
 INSERT INTO `mb_news_data` (`id`, `content`, `readpoint`, `groupids_view`, `paginationtype`, `maxcharperpage`, `template`, `paytype`, `relation`, `voteid`, `allow_comment`, `copyfrom`) VALUES
 (16, '<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">希望大家通过本帖可自主的处理日常见到的数据库问题。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第一种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:INSERT INTO `p8_article_db` (`aid`) VALUES (&#39;68536&#39;)&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Duplicate entry &#39;68536&#39; for key &#39;PRIMARY&#39;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1062&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">DELETE FROM p8_article_db WHERE aid&gt;68536&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">-------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第二种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:SELECT A.*,R.* FROM p8_article A LEFT JOIN p8_reply R ON A.aid=R.aid WHERE A.aid=65 ORDER BY R.rid ASC LIMIT 0,1&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Can&#39;t create/write to file &#39;C:\\WINDOWS\\TEMP\\#sql_658_0.MYD&#39; (Errcode: 17)&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">在my.ini中[mysqld]里面添加一行&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">tmpdir=&quot;c:/mysql/temp/&quot; 或将#sql_658_0.MYD删除后再重启Mysql服务&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">-------------------------------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第三种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数 据库连接出错:SELECT R.*,A.* FROM p8_article A LEFT JOIN p8_reply R ON A.aid=R.aid WHERE A.aid=608 ORDER BY R.topic DESC,R.orderid ASC LIMIT 0,1&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Got error 28 from storage engine&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1030&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">清空在my.ini中tmpdir=&quot;c:/mysql/temp/&quot;目录下的文件，或者修改tmpdir参数指向具有足够空间目录。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">------------------------------------------------------------------------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第四种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:SELECT * FROM p8_article WHERE fid=&#39;2&#39; ORDER BY list DESC LIMIT 8&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Got error 127 from table handler&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1030&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">REPAIR TABLE `p8_article `&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">-----------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第五种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数 据库连接出错:SELECT R.*,A.* FROM p8_article A LEFT JOIN p8_reply R ON A.aid=R.aid WHERE A.aid=687 ORDER BY R.topic DESC,R.orderid ASC LIMIT 0,1&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Unknown column &#39;R.orderid&#39; in &#39;order clause&#39;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1054&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">ALTER TABLE `p8_reply` ADD `orderid` MEDIUMINT( 8 ) NOT NULL ;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">--------------------------------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第六种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错: SELECT * FROM p8_label WHERE lid=&#39;1&#39;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Table &#39;zyp.p8_label&#39; doesn&#39;t exist&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1146&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">CREATE TABLE IF NOT EXISTS `p8_label` (&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`lid` int(10) NOT NULL AUTO_INCREMENT,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`name` varchar(100) NOT NULL DEFAULT &#39;&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`ch` smallint(4) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`chtype` tinyint(2) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`tag` varchar(50) NOT NULL DEFAULT &#39;&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`type` varchar(30) NOT NULL DEFAULT &#39;&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`typesystem` tinyint(1) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`code` text NOT NULL,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`divcode` text,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`hide` tinyint(1) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`js_time` int(10) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`uid` mediumint(7) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`username` varchar(30) NOT NULL DEFAULT &#39;&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`posttime` int(10) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`pagetype` tinyint(3) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`module` mediumint(6) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`fid` mediumint(7) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`if_js` tinyint(1) NOT NULL DEFAULT &#39;0&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">`style` varchar(40) NOT NULL DEFAULT &#39;&#39;,&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">PRIMARY KEY (`lid`),&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">KEY `ch` (`ch`,`pagetype`,`module`,`fid`,`chtype`),&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">KEY `tag` (`tag`)&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">) ENGINE=MyISAM DEFAULT CHARSET=gbk AUTO_INCREMENT=1 ;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">-------------------------------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第七种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数 据库连接出错:insert into p8_group(usr,groupid,grouptitle,sex,ip,ipfrom,time,where_name,hide,where_id,where_fid,onl_id,sid,url,windows) values (&#39;&#39;,&#39;&#39;,&#39;管理员 &#39;,&#39;&#39;,&#39;10.0.0.39&#39;,&#39;Unknow&#39;,&#39;1143167041&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;8FWKel5RHLEWStmRoesvu35BSYW6K1uH&#39;,&#39;http://10.0.0.39/02/index.php&#39;,&#39;|&#39;)&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Incorrect integer value: &#39;&#39; for column &#39;groupid&#39; at row 1&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1366&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">ALTER TABLE `p8_group` CHANGE `groupid` `groupid` INT( 4 ) NOT NULL AUTO_INCREMENT&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">-------------------------------------------------------------------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第八种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:SELECT M.username AS username,M.password AS password,M.salt,D.* FROM `dz`.cdb_uc_members M LEFT JOIN p8_memberdata D ON M.uid=D.uid WHERE M.username=&#39;燃灯&#39;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">SELECT command denied to user &#39;aipin&#39;@&#39;localhost&#39; for table &#39;cdb_uc_members&#39;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1142&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">比如mysql用户名是root:在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">REVOKE ALL PRIVILEGES ON * . * FROM&#39;aipin&#39;@&#39;localhost&#39;;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">GRANT ALL PRIVILEGES ON * . * TO&#39;aipin&#39;@&#39;localhost&#39;WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">---------------------------------------------------------------------------------------------------------</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第九种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:SELECT * FROM p8_article WHERE fid=&#39;32&#39; AND yz=1 ORDER BY list DESC LIMIT 8&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Incorrect key file for table &#39;.\\sq_biyangwang\\p8_article.MYI&#39;; try to repair it&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">126&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">REPAIR TABLE `p8_article `&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">--------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第十种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:SELECT COUNT(id) AS Guestbook FROM p8_guestbook&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Can&#39;t find file: &#39;./kp122799/p8_guestbook.frm&#39; (errno: 13)&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1017&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">或许是权限问题，如mysql用户名是root:在数据库运行这段SQL:&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">REVOKE ALL PRIVILEGES ON * . * FROM &#39;root&#39;@&#39;127.0.0.1&#39;;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">GRANT ALL PRIVILEGES ON * . * TO &#39;root&#39;@&#39;127.0.0.1&#39; WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">或重新启动mysql，再不行尝试对其数据表进行修复。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">---------------------------------------------------------------------------&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<b style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">第十一种：</b><span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">数据库连接出错:SELECT COUNT(uid) AS Member FROM p8_members&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">Table &#39;./xianxinbing/p8_members&#39; was created with a different version of MySQL and cannot be read&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">1033&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">解决办法：&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">升级你的Mysql或者修复优化全部相关的数据表。&nbsp;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">PS:&nbsp;&nbsp;学着灵活套用以上出错提示的解决办法即可</span>', 0, '', 0, 10000, '', 0, '', 0, 1, '|0');
+INSERT INTO `mb_news_data` (`id`, `content`, `readpoint`, `groupids_view`, `paginationtype`, `maxcharperpage`, `template`, `paytype`, `relation`, `voteid`, `allow_comment`, `copyfrom`) VALUES
+(17, '<a style="color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto; word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress">WordPress</a><span style="color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">的强大之处在于，可以使用插件方便地扩展网站的功能。不过有时候，我们需要修改或添加的功能，仅仅几行代码就可以做到。今天，主题猫就给你们介绍15条非常实用的</span><a style="color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto; word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress技巧">WordPress技巧</a><span style="color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">，并且都不需任何</span><a style="color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto; word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress插件">WordPress插件</a><span style="color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">。</span>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">在WordPress官方插件目录，大约有近4万个免费的WordPress插件，可以扩展WordPress功能。此外，还有许多无法统计数量的收费插件。通过这些插件，基本上可以满足网站的绝大部分需求。</p>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">不过有时候我们所需要的一些功能，不需要插件就同样可以做到。下面，我们就给大家介绍一些非常实用的WordPress技巧，秘诀，窍门，无需安装任何WordPress插件。</p>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">本文篇幅较长，分为上下两篇发布。本文为上篇，下篇将于一周内发布：</p>\r\n<ol style="word-wrap: break-word; margin: 0px; padding-right: 0px; padding-left: 0px; widows: auto; box-sizing: border-box; list-style: none outside none; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px; box-sizing: border-box;">无需插件的WordPress实用技巧15条(上)&nbsp;（本文）</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px; box-sizing: border-box;">无需插件的WordPress实用技巧15条(下) （即将发布）</li>\r\n</ol>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">WordPress代码微调：管理员和管理后台（控制台，仪表盘）</h3>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">1. 修改WordPress网站登录界面中的Logo（标志）</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">先来介绍一个跟网站品牌推广有关的技巧：如果你打算修改自己网站（或者你客户的网站）登录界面中的WordPress Logo，下面这段代码正好适合你。使用很简单，只要将以下代码复制到你所用网站主题的 funcitons.php 文件中，或者放在自己网站专用的插件里，就可以了：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<div class="bar" style="word-wrap: break-word; box-sizing: border-box; padding: 2px;">&nbsp;</div>\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);"><span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">function</span>&nbsp;my_custom_login_logo()&nbsp;{</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="func" style="word-wrap: break-word; box-sizing: border-box; color: black;">echo</span>&nbsp;&#39;&amp;lt;style&nbsp;type=&amp;quot;text/css&amp;quot;&amp;gt;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h1&nbsp;a&nbsp;{&nbsp;background-image:url(&#39;.get_bloginfo(&#39;template_directory&#39;).&#39;/images/custom-login-logo.png)&nbsp;!important;&nbsp;}</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;&amp;lt;/style&amp;gt;&#39;;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">}</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">add_action(&#39;login_head&#39;,&nbsp;&#39;my_custom_login_logo&#39;);</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">然后做好自己的Logo，命名为 custom-login-logo.png ，上传到所用主题目录内 images 文件夹内。这段代码我们介绍过，还介绍过<a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="修改wordpress后台logo指向的网址">如何修改默认Logo对应的网址</a>。</p>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">2. 修改WordPress管理后台（仪表盘）的Logo</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">想要<a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress主题">WordPress网站</a>跟自己的业务联系更紧密，感觉更亲切一点？换掉WordPress管理后台（控制台，仪表盘）内左上角的默认WordPress Logo吧。许多插件可以做到这点，不过以下代码也可以直接实现这一功能。同样，将以下代码复制到主题的&nbsp;funcitons.php&nbsp;文件内，或者放在主题专用插件里：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<div class="bar" style="word-wrap: break-word; box-sizing: border-box; padding: 2px;">&nbsp;</div>\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);"><span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">function</span>&nbsp;custom_admin_logo()&nbsp;{</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;<span class="func" style="word-wrap: break-word; box-sizing: border-box; color: black;">echo</span>&nbsp;&#39;&amp;lt;style&nbsp;type=&amp;quot;text/css&amp;quot;&amp;gt;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#header-logo&nbsp;{&nbsp;background-image:&nbsp;url(&#39;.get_bloginfo(&#39;template_directory&#39;).&#39;/images/admin_logo.png)&nbsp;!important;&nbsp;}</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;lt;/style&amp;gt;&#39;;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">}</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">add_action(&#39;admin_head&#39;,&nbsp;&#39;custom_admin_logo&#39;);</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">然后，你把想要使用在WP管理后台的Logo命名为 admin_logo.png，上传到所用主题目录内 images 文件夹内。</p>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">3. 关闭WordPress登陆框的提示功能</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">确保WordPress网站的安全，至关重要，我们曾经撰写多篇文章介绍如何加强网站的安全。 我们介绍的这条技巧，只是其中很简单的一步，不过也很有用。默认清空下，当你要输入账户信息登录WordPress后台的时候，如果你输入信息有 误，WordPress会详细告诉你错误信息：用户名不存在，或者密码错误等。这条技巧就是关闭这样的提示，来加强WordPress网站的安全性。</p>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">要禁用WordPress的登录错误提示信息，你需要复制以下代码到主题的 funcitons.php 文件内，或者网站专用插件内：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<div class="bar" style="word-wrap: break-word; box-sizing: border-box; padding: 2px;">&nbsp;</div>\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);"><span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">function</span>&nbsp;no_wordpress_errors(){</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;<span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">return</span>&nbsp;&#39;GET&nbsp;OFF&nbsp;MY&nbsp;LAWN&nbsp;!!&nbsp;RIGHT&nbsp;NOW&nbsp;!!&#39;;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">}</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">add_filter(&nbsp;&#39;login_errors&#39;,&nbsp;&#39;no_wordpress_errors&#39;&nbsp;);</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">这样，WordPress不再输出有效的提示信息，可以降低网站被入侵的可能性。</p>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">4. 将WordPress登录状态保持更长时间</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">如果你是使用WiFi或者其他无线网络，或者使用公共计算机上网的时候，登录任何一个网站之后，一定要记得及时退出。不过，如果你在家里或者公司， 使用自己的电脑，过一会就被WordPress踢出去，需要重新登录的话，那也挺烦人的。这时候，你可以试试这条技巧，延长WordPress登录状态的 保持时间。同样，将代码复制到 funcitons.php&nbsp;文件内，或者放在网站专用插件中：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<div class="bar" style="word-wrap: break-word; box-sizing: border-box; padding: 2px;">&nbsp;</div>\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">add_filter(&nbsp;&#39;auth_cookie_expiration&#39;,&nbsp;&#39;stay_logged_in_for_1_year&#39;&nbsp;);</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;"><span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">function</span>&nbsp;stay_logged_in_for_1_year(&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$expire</span>&nbsp;)&nbsp;{</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">&nbsp;&nbsp;<span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">return</span>&nbsp;31556926;&nbsp;<span class="comment" style="word-wrap: break-word; box-sizing: border-box; color: green;">//&nbsp;1&nbsp;year&nbsp;in&nbsp;seconds</span></li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">}</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">默认情况下，如果你登录WordPress后台的时候选中了&rdquo;记住我&rdquo;（Remember Me）选项，WordPress将保持登录状态2周。上面的代码里，我们将其设置为1年。</p>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">5. 将WordPress工具条中的&ldquo;您好&rdquo;替换为&ldquo;登录为&hellip;&rdquo;</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">如果你觉得WordPress顶部菜单工具条中，默认的&ldquo;您好&rdquo;不太适合正式场合，或者你想换一条欢迎词，请将以下代码复制到 functions.php 文件内，或者放在网站专用插件中：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<div class="bar" style="word-wrap: break-word; box-sizing: border-box; padding: 2px;">&nbsp;</div>\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);"><span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">function</span>&nbsp;replace_howdy(&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$wp_admin_bar</span>&nbsp;)&nbsp;{</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$my_account</span>=<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$wp_admin_bar</span>-&amp;gt;get_node(&#39;my-account&#39;);</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">&nbsp;&nbsp;&nbsp;&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$newtitle</span>&nbsp;=&nbsp;<span class="func" style="word-wrap: break-word; box-sizing: border-box; color: black;">str_replace</span>(&nbsp;&#39;Howdy,&#39;,&nbsp;&#39;Logged&nbsp;in&nbsp;<span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">as</span>&#39;,&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$my_account</span>-&amp;gt;title&nbsp;);</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$wp_admin_bar</span>-&amp;gt;add_node(&nbsp;<span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">array</span>(</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;id&#39;&nbsp;=&amp;gt;&nbsp;&#39;my-account&#39;,</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;title&#39;&nbsp;=&amp;gt;&nbsp;<span class="vars" style="word-wrap: break-word; box-sizing: border-box; color: rgb(221, 0, 0);">$newtitle</span>,</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;);</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">}</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">add_filter(&nbsp;&#39;admin_bar_menu&#39;,&nbsp;&#39;replace_howdy&#39;,25&nbsp;);</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">在上面代码的第3行中，$newtitle参数中可以自己设置想要的欢迎词。如果这里要使用中文，请记得将该文件保存为 UTF8 no BOM 格式。</p>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">6. 修改WordPress管理后台页脚的文字</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">品牌推广就是要传递信息并保持一致。因此，如果你给客户创建一个网站，你希望自己所做的一些能让客户感到高兴，并对他们非常重要。因此，除了更换掉登录页面和管理后台左上角的Logo，还可以在管理后台的页脚部分添加客户的口号（企业的价值观，愿景等）或者其他有意思的文字。</p>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">酷！将以下代码放到 funcitons.php 文件内，或者网站专用插件内：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<div class="bar" style="word-wrap: break-word; box-sizing: border-box; padding: 2px;">&nbsp;</div>\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);"><span class="keyword" style="word-wrap: break-word; box-sizing: border-box; color: blue;">function</span>&nbsp;remove_footer_admin&nbsp;()&nbsp;{</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;&nbsp;<span class="func" style="word-wrap: break-word; box-sizing: border-box; color: black;">echo</span>&nbsp;&amp;quot;Your&nbsp;own&nbsp;text&amp;quot;;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">}</li>\r\n<li style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px;">&nbsp;</li>\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">add_filter(&#39;admin_footer_text&#39;,&nbsp;&#39;remove_footer_admin&#39;);</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">现在，你可以在这里添加一些能给人留下深刻印象的文字，或者引用一些励志、有内涵的文字了，放在echo那行的双引号内就可以了。</p>\r\n<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; widows: auto; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">7. 给小工具（挂件）添加短代码</h3>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">短代码（shorcode，也有人译作&ldquo;短码&rdquo;，&ldquo;简码&rdquo;等）超级有用，因为它们只需要一对方括号，就可以取代原本非常长的代码片段。默认情况 下，WordPress Widget（挂件，小工具）是不支持短代码的，只能讲短代码当做普通文字处理。不过，你只要将以下代码复制到所用主题的 functions.php 文件里，或者网站专用插件内，就可以在小工具内使用短代码了：</p>\r\n<div class="dp-highlighter" style="word-wrap: break-word; widows: auto; box-sizing: border-box; font-family: ''Courier New'', Courier, mono; border: 1px solid rgb(209, 215, 220); width: 824.65625px; overflow: auto; word-break: break-all; margin: 14px 0px; color: rgb(66, 68, 81); line-height: 28px; background-color: rgb(250, 250, 250);">\r\n<ol class="dp-c" start="1" style="word-wrap: break-word; margin: 0px 0px 1px 38px; padding: 2px; box-sizing: border-box; list-style: none outside none; color: rgb(43, 145, 175);">\r\n<li class="alt" style="word-wrap: break-word; margin: 0px; padding: 0px 0px 0px 10px; box-sizing: border-box; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(209, 215, 220); line-height: 18px; background-color: rgb(242, 242, 242);">define(&#39;widget_text&#39;,&nbsp;&#39;do_shortcode&#39;);</li>\r\n</ol>\r\n</div>\r\n<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; widows: auto; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px;">这样，你就可以在Widget（挂件，小工具）内使用短代码了。</p>\r\n', 0, '', 0, 10000, '', 0, '', 0, 1, '|0'),
+(18, '<table cellpadding="0" cellspacing="0" class="vwtb" style="word-wrap: break-word; empty-cells: show; border-collapse: collapse; table-layout: fixed; width: 850px; height: 300px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n<tbody style="word-wrap: break-word;">\r\n	<tr style="word-wrap: break-word;">\r\n	<td id="article_content" style="word-wrap: break-word; vertical-align: top;">\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">总有<a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress">WordPress</a>新手在主题猫的QQ用户群里询问这样的问题：怎么清空WordPress网站数据啊？怎么把wordpress网站恢复到最初状态？比较简单粗暴的解决办法是，清空数据库，重新安装。但今天主题猫要给你们推荐一个更简单的办法。</p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">即便是熟练使用WordPrss的高手，也会有这样的需求：比如有时候需要测试新<a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress主题">wordpress主题</a>或插件，要删除wordpress网站的所有内容；或者想要清空网站内容、重新做一个新博客等。</p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">之前遇到这种问题，我们都会删除已有的安装（主要是清空或者删除数据库等）；然后重新安装WordPress。不过这样还是有点麻烦，尤其是对于不熟悉数据库操作的用户。现在，主题猫给你们介绍一个wordpress插件，让你轻松重置WordPress网站。</p>\r\n	<h3 style="word-wrap: break-word; margin: 10px 0px 10px 5px; padding: 5px 0px 5px 10px; font-size: 18px; box-sizing: border-box; font-weight: normal; font-family: ''Trebuchet MS'', 微软雅黑, ''Microsoft Yahei'', Tahoma, Helvetica, Arial, SimSun, sans-serif; line-height: 1.1; color: rgb(98, 99, 98); border-left-width: 5px; border-left-style: solid; border-left-color: rgb(38, 38, 40); widows: auto; background-image: none; background-attachment: scroll; background-color: rgb(243, 242, 242); background-position: 0% 0%; background-repeat: repeat;">WordPress Database Reset插件</h3>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">WordPress Database Reset， 意思是&ldquo;WordPress数据库重置&rdquo;，是一个来自WordPress官方插件目录的免费插件，可以将WordPress数据库恢复到默认状态。由于 WordPress网站的各种设置都存储在数据库中，因此，这也意味着将擦除网站所有内容，网站将恢复到初始安装的状态。</p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">这个<a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="wordpress插件">wordpress插件</a>很好用，安装并启用插件之后，在管理后台侧边栏的管理选项里，找到【工具（Tools）】-》【数据库重置（Database Reset）】。</p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;"><a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;"><img alt="wordpress-database-reset" class="aligncenter size-full wp-image-1152" height="413" src="http://ztmao.com/wp-content/uploads/2015/06/wordpress-database-reset.png" style="word-wrap: break-word; border: 0px; max-width: 850px; box-sizing: border-box; vertical-align: middle; height: auto;" width="561" /></a></p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">在这里，你可以选择清空单个的数据表（table），比如删除所有评论、删除所有页面等；也可以选择清空所有表。</p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">下一步，输入插件生成的字符串，本例中是s42Uz，然后点击【Reset Database（重置数据库）】按钮。然后，插件将会恢复到<a style="word-wrap: break-word; box-sizing: border-box; background-color: transparent;" target="_blank" title="View all posts in WordPress初始设置">WordPress初始设置</a>，并将你带回到管理后台首页。</p>\r\n	<p style="word-wrap: break-word; margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; color: rgb(66, 68, 81); font-family: ''Microsoft Yahei'', ''Hiragino Sans GB'', ''WenQuanYi Micro Hei'', sans-serif, arial; font-size: 15px; line-height: 28px; widows: auto;">该插件不会删除或者改动你的文件，比如你上传的图片。它只删除自定义的选项和内容，包括页面，文章和评论等等。不过，如果你要重置的是重要网站，为了防止出错，请务必先做好备份。</p>\r\n	</td>\r\n	</tr>\r\n</tbody>\r\n</table>\r\n<br />\r\n', 0, '', 0, 10000, '', 0, '', 0, 1, '|0');
+INSERT INTO `mb_news_data` (`id`, `content`, `readpoint`, `groupids_view`, `paginationtype`, `maxcharperpage`, `template`, `paytype`, `relation`, `voteid`, `allow_comment`, `copyfrom`) VALUES
+(19, '<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">首先，每个页面都会加载以下两个css，data/cache/style_1_common.css和data/cache/style_1_forum_index.css。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">先讲讲这两个文件名的命名规则：第一个是整站通用的css，所以命名为common.css，然后前面的代号是你使用了哪套风格，所以style_1_common.css表示是第一套风格的共用的css；第二个是表示forum的index页面风格，也就是论坛的首页风格。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">下面讲一下那两个css是如何生成的。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">首先，那两个css是程序生成的css缓存，所以你要改css的话，不能直接改那两个文件，否则一更新缓存，之前的改动就无效了。大家可以看到template对应的每套模板中，就拿自带的default模板举例吧，default模板中，带有一个common的文件夹，里面有css文件，common.css对应的就是生成缓存的style_1_common.css文件，style_1_forum_index.css对应的是module.css。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">common.css没有什么特别之处，里面也有css的说明，跟普通的css差不多。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">大家打开module.css，可以看到有这样的说明，</span>\r\n<div class="blockcode" style="word-wrap: break-word; overflow: hidden; margin: 10px 0px; padding: 10px 0px 5px 10px; color: rgb(102, 102, 102); font-size: 14px; widows: auto; zoom: 1; border: 1px solid rgb(204, 204, 204); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px; background: url(http://bbs.verydz.com/static/image/common/codebg.gif) 0px 0px repeat-y rgb(247, 247, 247);">\r\n<div id="code_TK3" style="word-wrap: break-word;">\r\n<ol style="word-wrap: break-word; margin: 0px 0px 0px 10px !important; padding-right: 0px !important; padding-left: 0px !important;">\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">/** group::index **/</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;/* 群组 index 模块使用的CSS */</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">/** end **/</li>\r\n</ol>\r\n</div>\r\n<span style="word-wrap: break-word; margin-left: 43px; font-size: 12px; cursor: pointer; color: rgb(51, 102, 153) !important;">复制代码</span></div>\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">/** group::index **/开始到/** end **/结束，说明是group频道的index模块使用的CSS，也就是群组频道对应的首页模板将使用的CSS。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">再举个例子，/** misc::invite,group,forum::viewthread **/开始到/** end **/结束，说明是misc频道的invite模块、group频道的全部模块和forum频道的viewthread模块使用的CSS。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">ok，下面的大家可以参照这个学习一下，包括你想扩展他，都可以直接在里面直接添加就可以。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">下面讲讲缓存css是如何生成的，common.css比较简单，就是直接读取，然后生成到data/cache目录下。每个频道模块独立的css，会先将module.css在data/cache下生成一个对应的风格id下的缓存的css，然后当你访问某个频道时，会生成对应频道下的css，此时，刚才介绍的那些标识就起作用了。程序会根据/** group::index **/和/** end **/这种标识，拆分出哪些频道、哪些模块该需要哪些css。</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">程序部分就不介绍了，程序的代码主要在source/class/class_template.php文件处理，有兴趣的同学可以深入研究一下。</span>', 0, '', 0, 10000, '', 0, '', 0, 1, '|0'),
+(20, '<table cellpadding="0" cellspacing="0" class="vwtb" style="word-wrap: break-word; empty-cells: show; border-collapse: collapse; table-layout: fixed; width: 850px; height: 300px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n<tbody style="word-wrap: break-word;">\r\n	<tr style="word-wrap: break-word;">\r\n	<td id="article_content" style="word-wrap: break-word; vertical-align: top;">\r\n	<table cellpadding="0" cellspacing="0" style="word-wrap: break-word; empty-cells: show; border-collapse: collapse; table-layout: fixed; width: 797px; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; font-size: 12px; line-height: 18px; widows: auto;">\r\n	<tbody style="word-wrap: break-word;">\r\n		<tr style="word-wrap: break-word;">\r\n		<td class="t_f" id="postmessage_3806" style="word-wrap: break-word; font-size: 14px;">后台&nbsp;&nbsp;工具 更新缓存提示下面的错误信息：<br style="word-wrap: break-word;" />\r\n		UCenter info: MySQL Query Error<br style="word-wrap: break-word;" />\r\n		SQL:SELECT * FROM [Table]notelist WHERE closed=&#39;0&#39; AND app1&lt;&#39;1&#39; AND app1&gt;&#39;-5&#39; LIMIT 1<br style="word-wrap: break-word;" />\r\n		Error:<br style="word-wrap: break-word;" />\r\n		Errno:0<br style="word-wrap: break-word;" />\r\n		<br style="word-wrap: break-word;" />\r\n		可以在站长&nbsp;&nbsp;ucenter设置&nbsp;&nbsp;UCenter 连接方式:接口方式<br style="word-wrap: break-word;" />\r\n		在更新缓存就不会报错了。</td>\r\n		</tr>\r\n	</tbody>\r\n	</table>\r\n	</td>\r\n	</tr>\r\n</tbody>\r\n</table>\r\n<br />\r\n', 0, '', 0, 10000, '', 0, '', 0, 1, '|0'),
+(21, '<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">登陆ftp，编辑source/function/function_cloudaddons.php这个文件。找到下面相同的代码</span>\r\n<div class="blockcode" style="word-wrap: break-word; overflow: hidden; margin: 10px 0px; padding: 10px 0px 5px 10px; color: rgb(102, 102, 102); font-size: 14px; widows: auto; zoom: 1; border: 1px solid rgb(204, 204, 204); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px; background: url(http://bbs.verydz.com/static/image/common/codebg.gif) 0px 0px repeat-y rgb(247, 247, 247);">\r\n<div id="code_HQn" style="word-wrap: break-word;">\r\n<ol style="word-wrap: break-word; margin: 0px 0px 0px 10px !important; padding-right: 0px !important; padding-left: 0px !important;">\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_WEBSITE_URL&#39;, &#39;http://addon.discuz.com&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_DOWNLOAD_URL&#39;, &#39;http://addon.discuz.com/index.php&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_DOWNLOAD_IP&#39;, &#39;&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_CHECK_URL&#39;, &#39;http://addon1.discuz.com&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_CHECK_IP&#39;, &#39;&#39;);</li>\r\n</ol>\r\n</div>\r\n<span style="word-wrap: break-word; margin-left: 43px; font-size: 12px; cursor: pointer; color: rgb(51, 102, 153) !important;">复制代码</span></div>\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">通过ping addon.discuz.com 会得到一个ip 例如 140.207.69.30 修改上边的代码为:</span><br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<div class="blockcode" style="word-wrap: break-word; overflow: hidden; margin: 10px 0px; padding: 10px 0px 5px 10px; color: rgb(102, 102, 102); font-size: 14px; widows: auto; zoom: 1; border: 1px solid rgb(204, 204, 204); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px; background: url(http://bbs.verydz.com/static/image/common/codebg.gif) 0px 0px repeat-y rgb(247, 247, 247);">\r\n<div id="code_BFm" style="word-wrap: break-word;">\r\n<ol style="word-wrap: break-word; margin: 0px 0px 0px 10px !important; padding-right: 0px !important; padding-left: 0px !important;">\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_WEBSITE_URL&#39;, &#39;http://addon.discuz.com&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_DOWNLOAD_URL&#39;, &#39;http://addon.discuz.com/index.php&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_DOWNLOAD_IP&#39;, &#39;140.207.69.30&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_CHECK_URL&#39;, &#39;http://addon1.discuz.com&#39;);</li>\r\n<li style="word-wrap: break-word; margin: 0px 0px 0px 2em; padding: 0px 0px 0px 10px; list-style-type: decimal-leading-zero; font-family: Monaco, Consolas, ''Lucida Console'', ''Courier New'', serif; font-size: 12px; line-height: 1.8em;">define(&#39;CLOUDADDONS_CHECK_IP&#39;, &#39;140.207.69.30&#39;);</li>\r\n</ol>\r\n</div>\r\n<span style="word-wrap: break-word; margin-left: 43px; font-size: 12px; cursor: pointer; color: rgb(51, 102, 153) !important;">复制代码</span></div>\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<br style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;" />\r\n<span style="word-wrap: break-word; font-size: 14px; widows: auto; color: rgb(68, 68, 68); font-family: Tahoma, ''Microsoft Yahei'', Simsun; line-height: 21px;">保存之后就可以了</span>', 0, '', 0, 10000, '', 0, '', 0, 1, '|0'),
+(22, '<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">由于新浪开放平台将停止对OAuth1.0授权方式的支持，phpwind将于8月21号对账号通进行升级，升级之前需要站长完成一些必要的操作，具体操作如下：</span>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　1、登录open.weibo.com ;</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　2、点击如下图中红色框部分的链接地址：</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="Phpwind 账号通即将升级 站长操作教程 三联教程" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054115480.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="550" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　3、点击如下图中红色框部分的连接地址：</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054115653.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="191" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　4、选择网站列表中你要升级的网站，点击如下图中红色部分连接进入网站：</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054115639.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="550" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　5、验证网站域名所有权</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　a.当网站处于如下状态时，点击&ldquo;立即验证&rdquo;</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054115240.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="550" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　b.当网站处于如下状态时，点击&ldquo;前往验证&rdquo;</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054116321.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="550" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　6、验证网站域名权限(此为关键步骤)：</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　a.在如下图中填写网站域名：</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054116280.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="442" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　b.根据新浪提示的方式完成域名所有权验证</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　7、进入域名所有权验证成功页面，如下图：</p>\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054116114.jpg" style="word-wrap: break-word; max-width: 850px; display: inline;" width="550" /></center>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　到此页面后，如果应用本身就是上线状态，升级就算是成功了，无需再提交&ldquo;审核&rdquo;，如再提交审核会导致应用再次进入审核流程，导致账号通不可用</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　8、更新账号通的AppKey和AppSecret：</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　登录站点后台,应用(主导航),应用中心(侧边栏主导航),账号通 ,新浪微博,点击&ldquo;修改&rdquo;按钮,修改网站的AppKey和AppSecret</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　9、将如下压缩包解压后得到的sinaweibo.php文件放入论坛根目录</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　　sinaweibo.zip</p>\r\n<p style="word-wrap: break-word; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　10、升级步骤完成，请等待账号通平台升级...</p>\r\n', 0, '', 0, 10000, '', 0, '', 0, 1, '|0'),
+(23, '<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">近日phpwind内部做了一次关于产品视觉方面的主题分享。会上phpwind主视觉设计师王杰同学分享了他在视觉设计中的心得和观念。小编也有幸被邀请旁听分享，在分享会过后本小版还不失时机的即兴采访了王杰同学。</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" height="907" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054159869.jpg" style="word-wrap: break-word; max-width: 850px;" width="680" /></center>\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　霸气的分享主题：phpwind视觉进化论</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：王杰您好，您是从什么时候开始负责phpwind产品的视觉设计的?在每个版本的主视觉设计过程中你的设计理念又是怎样的?</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰：从09年夏天我入职phpwind开始负责phpwind产品的视觉体验设计，很自豪的告诉大家从phpwind7.5到即将上线的phpwind9.0一直都是我负责主持视觉设计方面的工作。在7.5的主视觉设计过程中我比较注重的是对phpwind的设计传统和思想的一种延续。我首先想到的是让人一看到这个主视觉就知道这是一个论坛的程序，就知道这是phpwind从6系列到7系列的一个传承。而在接下来的8.7版本中我开始加入了更多自己的设计思想,比如一些基于&ldquo;极简主义&rdquo;线条、色块以及图标设计。至于9.0则是&ldquo;极简主义&rdquo;设计思想的一次彻底&ldquo;绽放&rdquo;，抱歉我比较喜欢用一些有画面感的字眼。你明白&ldquo;绽放&rdquo;的含义吧?</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" height="329" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054159463.png" style="word-wrap: break-word; max-width: 850px;" width="536" /></center>\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　以稳定著称的7.5版本主视觉设计图 朴实大气经典传承</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" height="354" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054200271.png" style="word-wrap: break-word; max-width: 850px;" width="474" /></center>\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　以高效快捷著称的8.7版本主视觉设计图 清爽简单</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" height="370" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054200550.png" style="word-wrap: break-word; max-width: 850px;" width="422" /></center>\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小清新的phpwind9.0 在王杰的描述中这是一个充满设计感的版本</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：在上一个问题里您多次提及 &ldquo;极简主义&rdquo;请问在phpwind9.0的视觉设计中&ldquo;极简主义&rdquo;主要体现在哪些地方?</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰：布局，色彩，导航，图标，按钮，模块，留白，交互。&ldquo;极简主义&rdquo;存在于phpwind9.0的每一个像素。用最朴素的言语来描述&ldquo;极简主义&rdquo;在9.0的体现的话那就是：坚持让用户更加快速容易的使用PW产品为原则，设计理念尽量做简单更符合一般人的上网习惯。</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" height="336" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054200103.png" style="word-wrap: break-word; max-width: 850px;" width="574" /></center>\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　简单明快的pw9.0主色调</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：呃，其实我还有一个很重要的问题：什么是&ldquo;极简主义&rdquo;</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰：极简主义是一种设计风格，感官上简约整洁，品味和思想上更为优雅。为了避免你接下来问我什么叫做&ldquo;整洁&rdquo;和&ldquo;优雅&rdquo;我可以给你举一个你现在肉眼能看到的例子&mdash;&mdash;我手里的macbook pro的外观看起来是不是给你一种比你手中的thinkpad x201i更加&ldquo;高端&rdquo;的感觉?记住这种感觉，这就叫做整洁和优雅。</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<center style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">\r\n	<img alt="" border="1" height="907" src="http://www.htmlmoban.net/uploadfile/2015/0718/20150718054201765.jpg" style="word-wrap: break-word; max-width: 850px;" width="680" /></center>\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰同学在用赫本的容颜让我们感受什么叫做优雅</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：很多参与过我们的体验和测试的网友和站长觉得phpwind9.0&ldquo;外观&rdquo;看起来变化很大担心实际使用的时候不适应，您怎么看待这个问题?</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰：一个产品习惯是需要过程的，但好的产品使用过后在视觉和体验上的改进优化用户会渐渐体会到，而且我们也会针对大部分用户的意见和建议去做出判断和反馈，请大家放心。关于站长关心的不适应问题我觉得我们可以拿一些网站给他们做分析，告诉站长们这样设计好在哪里，为什么我们要这么做，这样做会帮他们解决什么。要让地方站跟上互联网的发展和趋势，带动地方站更好的发展。另外做为一位设计我可以很自信的告诉你：好看的东西最最终是一定会胜过不好看的东西的。不信的话你可以看看诺基亚和苹果的故事。</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：您觉得最能体现您设计思想和风格的是哪一个版本?</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰：下一个版本。</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：&hellip;&hellip;(内心OS：这个回答屌爆了)</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：最后一个也是广大网友最关注的问题phpwind9.0上线的时间是?</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　王杰：其实phpwind9.0这个版本号暗示了一些东西，我不能和你说得太细。呵呵。</span><br style="word-wrap: break-word; color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;" />\r\n<span style="color: rgb(0, 0, 0); font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 25.2000007629395px;">　　小版：凸 =。= 凸 呵呵是什么意思啊?你还以为你是女神啊?!!!</span>', 0, '', 0, 10000, '', 0, '', 0, 1, '|0');
 
 -- --------------------------------------------------------
 
@@ -6625,7 +6862,8 @@ CREATE TABLE IF NOT EXISTS `mb_page` (
   `keywords` varchar(40) NOT NULL,
   `content` text NOT NULL,
   `template` varchar(30) NOT NULL,
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  KEY `catid` (`catid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6635,7 +6873,7 @@ CREATE TABLE IF NOT EXISTS `mb_page` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_account` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `trade_sn` char(50) NOT NULL,
   `userid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
@@ -6654,8 +6892,12 @@ CREATE TABLE IF NOT EXISTS `mb_pay_account` (
   `type` tinyint(3) NOT NULL DEFAULT '1',
   `ip` char(15) NOT NULL DEFAULT '0.0.0.0',
   `status` enum('succ','failed','error','progress','timeout','cancel','waitting','unpay') NOT NULL DEFAULT 'unpay',
-  `adminnote` char(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `adminnote` char(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`),
+  KEY `userid` (`userid`),
+  KEY `trade_sn` (`trade_sn`,`money`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_pay_account`
@@ -6672,7 +6914,7 @@ INSERT INTO `mb_pay_account` (`id`, `trade_sn`, `userid`, `username`, `contactna
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_payment` (
-`pay_id` tinyint(3) unsigned NOT NULL,
+  `pay_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(120) NOT NULL,
   `pay_name` varchar(120) NOT NULL,
   `pay_code` varchar(20) NOT NULL,
@@ -6686,8 +6928,10 @@ CREATE TABLE IF NOT EXISTS `mb_pay_payment` (
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `author` varchar(100) NOT NULL,
   `website` varchar(100) NOT NULL,
-  `version` varchar(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `version` varchar(20) NOT NULL,
+  PRIMARY KEY (`pay_id`),
+  KEY `pay_code` (`pay_code`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `mb_pay_payment`
@@ -6704,7 +6948,7 @@ INSERT INTO `mb_pay_payment` (`pay_id`, `name`, `pay_name`, `pay_code`, `pay_des
 --
 
 CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `creat_at` int(10) unsigned NOT NULL DEFAULT '0',
   `userid` int(10) unsigned NOT NULL DEFAULT '0',
   `username` varchar(20) NOT NULL,
@@ -6713,8 +6957,13 @@ CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
   `value` int(5) NOT NULL,
   `op_userid` int(10) unsigned NOT NULL DEFAULT '0',
   `op_username` char(20) NOT NULL,
-  `msg` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `msg` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`),
+  KEY `creat_at` (`creat_at`),
+  KEY `logo` (`logo`),
+  KEY `userid` (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6723,7 +6972,7 @@ CREATE TABLE IF NOT EXISTS `mb_pay_spend` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_picture` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -6739,8 +6988,12 @@ CREATE TABLE IF NOT EXISTS `mb_picture` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -6762,7 +7015,8 @@ CREATE TABLE IF NOT EXISTS `mb_picture_data` (
   `copyfrom` varchar(255) NOT NULL DEFAULT '',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `style` varchar(255) NOT NULL DEFAULT '',
-  `tag` varchar(255) NOT NULL DEFAULT ''
+  `tag` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6772,7 +7026,7 @@ CREATE TABLE IF NOT EXISTS `mb_picture_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_position` (
-`posid` smallint(5) unsigned NOT NULL,
+  `posid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `modelid` smallint(5) unsigned DEFAULT '0',
   `catid` smallint(5) unsigned DEFAULT '0',
   `name` char(30) NOT NULL DEFAULT '',
@@ -6780,8 +7034,9 @@ CREATE TABLE IF NOT EXISTS `mb_position` (
   `extention` char(100) DEFAULT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `thumb` varchar(150) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `thumb` varchar(150) NOT NULL DEFAULT '',
+  PRIMARY KEY (`posid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `mb_position`
@@ -6820,7 +7075,9 @@ CREATE TABLE IF NOT EXISTS `mb_position_data` (
   `listorder` mediumint(8) DEFAULT '0',
   `expiration` int(10) NOT NULL,
   `extention` char(30) DEFAULT NULL,
-  `synedit` tinyint(1) DEFAULT '0'
+  `synedit` tinyint(1) DEFAULT '0',
+  KEY `posid` (`posid`),
+  KEY `listorder` (`listorder`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -6844,7 +7101,7 @@ INSERT INTO `mb_position_data` (`id`, `catid`, `posid`, `module`, `modelid`, `th
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(40) NOT NULL,
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6856,8 +7113,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster` (
   `hits` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `clicks` smallint(5) unsigned NOT NULL DEFAULT '0',
   `listorder` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `spaceid` (`spaceid`,`siteid`,`disabled`,`listorder`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `mb_poster`
@@ -6890,7 +7149,7 @@ INSERT INTO `mb_poster` (`id`, `siteid`, `name`, `spaceid`, `type`, `setting`, `
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6899,8 +7158,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
   `ip` char(15) NOT NULL,
   `referer` char(120) NOT NULL,
   `clicktime` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`,`type`,`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6909,7 +7170,7 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201408` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `spaceid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -6918,8 +7179,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
   `ip` char(15) NOT NULL,
   `referer` char(120) NOT NULL,
   `clicktime` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`,`type`,`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6928,7 +7191,7 @@ CREATE TABLE IF NOT EXISTS `mb_poster_201502` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_poster_space` (
-`spaceid` smallint(5) unsigned NOT NULL,
+  `spaceid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` char(50) NOT NULL,
   `type` char(30) NOT NULL,
@@ -6938,8 +7201,10 @@ CREATE TABLE IF NOT EXISTS `mb_poster_space` (
   `setting` char(100) NOT NULL,
   `description` char(100) NOT NULL,
   `items` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`spaceid`),
+  KEY `disabled` (`disabled`,`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- 转存表中的数据 `mb_poster_space`
@@ -6966,7 +7231,7 @@ INSERT INTO `mb_poster_space` (`spaceid`, `siteid`, `name`, `type`, `path`, `wid
 --
 
 CREATE TABLE IF NOT EXISTS `mb_queue` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `type` char(5) DEFAULT NULL,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `path` varchar(100) DEFAULT NULL,
@@ -6974,8 +7239,11 @@ CREATE TABLE IF NOT EXISTS `mb_queue` (
   `status2` tinyint(1) DEFAULT '0',
   `status3` tinyint(1) DEFAULT '0',
   `status4` tinyint(1) DEFAULT '0',
-  `times` int(10) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `times` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `siteid` (`siteid`),
+  KEY `times` (`times`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -6984,7 +7252,7 @@ CREATE TABLE IF NOT EXISTS `mb_queue` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_release_point` (
-`id` mediumint(8) NOT NULL,
+  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
   `host` varchar(100) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
@@ -6992,8 +7260,9 @@ CREATE TABLE IF NOT EXISTS `mb_release_point` (
   `port` varchar(10) DEFAULT '21',
   `pasv` tinyint(1) DEFAULT '0',
   `ssl` tinyint(1) DEFAULT '0',
-  `path` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `path` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7002,13 +7271,17 @@ CREATE TABLE IF NOT EXISTS `mb_release_point` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_search` (
-`searchid` int(10) unsigned NOT NULL,
+  `searchid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `adddate` int(10) unsigned NOT NULL,
   `data` text NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+  `siteid` smallint(5) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`searchid`),
+  KEY `typeid` (`typeid`,`id`),
+  KEY `siteid` (`siteid`),
+  FULLTEXT KEY `data` (`data`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
 
 --
 -- 转存表中的数据 `mb_search`
@@ -7065,7 +7338,14 @@ INSERT INTO `mb_search` (`searchid`, `typeid`, `id`, `adddate`, `data`, `siteid`
 (76, 1, 13, 1437172883, 'ECSHOP按属性货号搜索 属性 属性 商品 搜索 关键字 查询 修改 宋体 添加 库存 总数 名称 不能 唯一 建立 识别 前台 获得 符合条件的 连接 语句 如何 介绍 存在 开发 下面 变量 编辑', 1),
 (77, 1, 14, 1437172920, '让ecshop管理员登录后台同时支持邮箱与用户名 后台 用户名 管理员 宋体 用户 邮箱 密码 登录 管理员 进行 后台 找回 用来 默认 只能 作用 唯一 同时 支持 使用 区分 转换 验证 大小 之前 提交 查找 系统 从而 判断 如果 输入 对应 查询 添加 下面 代码 如下 结果 实现 方法 编辑', 1),
 (78, 1, 15, 1437172958, 'php168如何在PHP套件中修改数据库密码 套件 密码 数据库 宋体 密码 数据库 界面 进入 操作 修改 点击 一个 网站 用户 软件 权限 登陆 如何在 创建 如下 设置 这样 任何 页面 详细 按钮 才能 运行 需要 管理 使用 指向 建站 否则 默认 必要 正式 账号 进行 具体 别人 我们 假设 时候 填写 重新 破坏 执行 容易 输入 环境 浏览器 保障 安全 步骤 数据 无需 处理 如何 图标 其他 专门 用来 第三方', 1),
-(79, 1, 16, 1437173039, 'PHP168 常见数据库连接出错解决办法 常见 办法 数据库 宋体 数据库 办法 连接 解决 运行 常见 问题 或者 用户 目录 处理 通过 自主 希望 大家 修复 第一 比如 灵活 的数据 相关 全部 提示 以上 即可 第八 优化 十一 重新启动 不行 数据 进行 或许 权限 尝试 升级 修改 文件 参数 指向 具有 服务 第三 足够 空间 第五 删除 第二 里面 添加 一行 管理员', 1);
+(79, 1, 16, 1437173039, 'PHP168 常见数据库连接出错解决办法 常见 办法 数据库 宋体 数据库 办法 连接 解决 运行 常见 问题 或者 用户 目录 处理 通过 自主 希望 大家 修复 第一 比如 灵活 的数据 相关 全部 提示 以上 即可 第八 优化 十一 重新启动 不行 数据 进行 或许 权限 尝试 升级 修改 文件 参数 指向 具有 服务 第三 足够 空间 第五 删除 第二 里面 添加 一行 管理员', 1),
+(80, 1, 17, 1437212081, '无需插件的WordPress实用技巧15条(上) 实用技巧 插件 插件 代码 网站 可以 或者 登录 使用 后台 主题 文件 修改 如果 功能 我们 以下 管理 需要 不过 专用 技巧 介绍 自己 复制 默认 工具 信息 文字 添加 放在 一些 客户 提示 做到 所用 无需 非常 保持 的安全 本文 任何 发布 时候 错误 状态 目录 同样 这样 想要 有时候 一个 扩展 仪表 欢迎 您好 设置 情况 这里 因此 然后 如何 命名 文件夹 网址 关闭 时间 其他 记得 就是 加强 有用 输入 上传 许多 在于 强大 界面 实用 今天 适合 下面 简单 方便 仅仅 只要 中文 你们 并且 保存 官方 上面 参数 顶部 记住 选项 无法 统计 面的 还有 菜单 正式 场合 觉得 此外 免费 大约 传递 有人 超级 因为 印象 深刻 引用 励志 内涵 它们 对方 处理 普通 只能 取代 原本 片段 支持 留下 现在 高兴 感到 他们 重要 除了 希望 创建 格式 一致 更换 页面 放到 口号 部分 企业 价值观 延长 实现 直接 即将 登陆 只是 上下 其中 分为 篇文章 撰写 确保 将于 至关重要 曾经 这点 做好 正好 打算 有关 标志 感觉 紧密 亲切 一点 联系 业务 指向 对应 管理员 篇幅 账户 上网 计算机 之后 一定 收费 公共 无线网络 基本上 满足 这些 通过 及时 退出 试试 数量 这时候 重新 公司 家里 电脑 一会 出去 的可能性 大家 密码 需求 存在 用户 窍门 安装 详细 告诉 秘诀 输出 不再 有效 降低 入侵 大部分', 1),
+(81, 1, 18, 1437212132, '如何重置WordPress数据库，重置wordpress网站插件 插件 数据库 网站 网站 插件 数据库 删除 主题 安装 恢复到 所有 怎么 状态 内容 一个 这样 或者 重新 管理 初始 简单 设置 可以 然后 问题 用户 比如 评论 页面 数据 后台 你们 不过 选项 选择 办法 新手 询问 最初 比较 工具 找到 备份 做好 这个 默认 由于 免费 目录 来自 官方 各种 存储 启用 之后 因此 意味着 文章 回到 按钮 包括 定义 不会 文件 上传 首页 图片 点击 这里 防止 单个 的数据 输入 生成 字符串 等等 如果 为了 重要 主要 推荐 便是 熟练 今天 解决 使用 测试 想要 博客 需要 有时候 高手 需求 宋体 之前 遇到 意思 有点 麻烦 尤其 还是 如何 这种 我们 有的 对于 熟悉 轻松 介绍 操作 现在', 1),
+(82, 1, 19, 1437212200, 'Discuz! X的CSS加载机制 机制 频道 两个 模块 生成 对应 文件 可以 风格 使用 程序 说明 直接 模板 命名 哪些 大家 里面 首先 页面 每个 一个 所以 然后 结束 开始 代码 看到 如何 面的 也就是 表示 下面 首页 规则 就是 标识 以下 介绍了 部分 这种 需要 处理 深入 研究 复制 同学 兴趣 根据 主要 比较 介绍 添加 扩展 包括 简单 读取 独立的 访问 此时 目录 刚才 那些 作用 某个 全部 学习 这个 参照 例子 举例 无效 带有 特别 没有 文件夹 之前 更新 代号 通用 第一 否则 不能 论坛 第二 普通 差不多 这样 打开', 1),
+(83, 1, 20, 1437212238, 'Discuz! X更新缓存，错误提示 缓存 错误 更新 错误 提示 方式 后台 工具 信息 面的 可以 连接 接口 不会 设置 站长 宋体', 1),
+(84, 1, 21, 1437212267, 'Discuz! X云平台访问慢怎么解决？ 平台 代码 复制 下面 相同 文件 这个 登陆 平台 编辑 找到 修改 例如 保存 可以 之后 一个 怎么 解决 访问 通过 得到', 1),
+(85, 1, 22, 1437212429, 'phpwind教程：账号通即将升级 站长操作教程 教程 账号 站长 宋体 升级 如下 网站 账号 验证 点击 域名 站长 新浪 操作 应用 完成 所有权 红色 平台 进入 审核 教程 部分 状态 步骤 导致 提交 导航 连接 修改 处于 成功 页面 即将 进行 之前 将于 支持 登录 需要 一些 具体 的操作 必要 授权 方式 开放 停止 地址 由于 更新 流程 不可 再次 文件 等待 得到 无需 站点 微博 按钮 中心 论坛 目录 压缩 后台 放入 立即 选择 链接 三联 前往 如果 本身 就是 上线 的方式 提示 关键 权限 填写 根据 算是', 1),
+(86, 1, 23, 1437212489, 'phpwind9.0系统的视觉进化论 进化论 视觉 系统 宋体 一个 视觉 版本 主义 分享 设计 我们 问题 这个 一些 同学 优雅 产品 可以 告诉 东西 体验 地方 过程 简单 觉得 负责 使用 用户 叫做 站长 这是 一次 主题 关于 开始 体现 更加 呵呵 过后 图标 内部 系列 接下来 观念 的发展 现在 会上 心得 描述 适应 这样 知道 方面 他们 产品的 网友 其实 起来 上线 近日 大家 风格 思想 比较 看到 感觉 时候 系统 习惯 变化 例子 怎么 女神 外观 需要 手里 担心 很大 看待 实际 观看 高端 在用 这种 手中 记住 测试 参与 是不是 感受 判断 自信 做为 好看 广大 最终 另外 关注 带动 更好 暗示 时间 一定 苹果 故事 内心 回答 诺基亚 不好 看看 最后 趋势 互联网 建议 意见 做出 反馈 放心 大部分 针对 优化 渐渐 体会 而且 关心 网站 意思 解决 不能 以为 这么 分析 哪里 为什么 改进 请问 加入 更多 自己 比如 程序 论坛 传统 延续 首先 想到 基于 明白 含义 画面 喜欢 以及 至于 彻底 注重 工作 采访 邀请 您好 是从 即将 一直 主持 面的 自豪 每个 又是 怎样 夏天 稳定 原则 尽量 符合 一般 就是 坚持 快速 容易 上网 简约 品味 更为 为了 重要 还有 言语 清新 充满 提及 快捷 大气 经典 高效 主要 哪些 交互 存在 像素 模块 按钮 布局 色彩 导航 避免', 1);
 
 -- --------------------------------------------------------
 
@@ -7077,7 +7357,10 @@ CREATE TABLE IF NOT EXISTS `mb_search_keyword` (
   `keyword` char(20) NOT NULL,
   `pinyin` char(20) NOT NULL,
   `searchnums` int(10) unsigned NOT NULL,
-  `data` char(20) NOT NULL
+  `data` char(20) NOT NULL,
+  UNIQUE KEY `keyword` (`keyword`),
+  UNIQUE KEY `pinyin` (`pinyin`),
+  FULLTEXT KEY `data` (`data`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7096,7 +7379,9 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
   `m` char(20) NOT NULL,
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
-  `data` char(255) NOT NULL
+  `data` char(255) NOT NULL,
+  PRIMARY KEY (`sessionid`),
+  KEY `lastvisit` (`lastvisit`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 --
@@ -7104,7 +7389,7 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
 --
 
 INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `groupid`, `m`, `c`, `a`, `data`) VALUES
-('tls52dio6040i1hf0ldf4pp1j3', 0, '127.0.0.1', 1437175178, 0, 0, 'admin', 'index', 'public_session_life', '');
+('8o3mnor68k4cie1lvtmapunat6', 2, '127.0.0.1', 1437213248, 1, 0, 'content', 'create_html', 'public_index', 'code|s:4:"grwt";userid|s:1:"2";roleid|s:1:"1";pc_hash|s:6:"lGNYhC";lock_screen|i:0;');
 
 -- --------------------------------------------------------
 
@@ -7113,7 +7398,7 @@ INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `g
 --
 
 CREATE TABLE IF NOT EXISTS `mb_site` (
-`siteid` smallint(5) unsigned NOT NULL,
+  `siteid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(30) DEFAULT '',
   `dirname` char(255) DEFAULT '',
   `domain` char(255) DEFAULT '',
@@ -7124,8 +7409,9 @@ CREATE TABLE IF NOT EXISTS `mb_site` (
   `default_style` char(50) DEFAULT NULL,
   `template` text,
   `setting` mediumtext,
-  `uuid` char(40) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `uuid` char(40) DEFAULT '',
+  PRIMARY KEY (`siteid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_site`
@@ -7141,7 +7427,7 @@ INSERT INTO `mb_site` (`siteid`, `name`, `dirname`, `domain`, `site_title`, `key
 --
 
 CREATE TABLE IF NOT EXISTS `mb_special` (
-`id` smallint(5) unsigned NOT NULL,
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `aid` int(10) unsigned NOT NULL DEFAULT '0',
   `title` char(60) NOT NULL,
@@ -7166,8 +7452,10 @@ CREATE TABLE IF NOT EXISTS `mb_special` (
   `listorder` smallint(5) unsigned NOT NULL,
   `elite` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isvideo` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `isvideo` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `disabled` (`disabled`,`siteid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7176,7 +7464,7 @@ CREATE TABLE IF NOT EXISTS `mb_special` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_special_content` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `specialid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `title` char(80) NOT NULL,
   `style` char(24) NOT NULL,
@@ -7194,8 +7482,11 @@ CREATE TABLE IF NOT EXISTS `mb_special_content` (
   `searchid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `isdata` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `videoid` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `videoid` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `specialid` (`specialid`,`typeid`,`isdata`),
+  KEY `typeid` (`typeid`,`isdata`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7210,7 +7501,8 @@ CREATE TABLE IF NOT EXISTS `mb_special_c_data` (
   `paginationtype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `maxcharperpage` mediumint(6) unsigned NOT NULL DEFAULT '0',
   `style` char(20) NOT NULL,
-  `show_template` varchar(30) NOT NULL
+  `show_template` varchar(30) NOT NULL,
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7221,7 +7513,8 @@ CREATE TABLE IF NOT EXISTS `mb_special_c_data` (
 
 CREATE TABLE IF NOT EXISTS `mb_sphinx_counter` (
   `counter_id` int(11) unsigned NOT NULL,
-  `max_doc_id` int(11) unsigned NOT NULL
+  `max_doc_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`counter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7231,14 +7524,16 @@ CREATE TABLE IF NOT EXISTS `mb_sphinx_counter` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_admin` (
-`id` smallint(6) NOT NULL,
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `username` char(20) NOT NULL,
   `password` char(32) NOT NULL,
   `encrypt` char(6) DEFAULT NULL,
   `issuper` tinyint(1) DEFAULT '0',
   `lastlogin` int(10) DEFAULT NULL,
-  `ip` char(15) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `ip` char(15) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_admin`
@@ -7254,7 +7549,7 @@ INSERT INTO `mb_sso_admin` (`id`, `username`, `password`, `encrypt`, `issuper`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_applications` (
-`appid` smallint(6) unsigned NOT NULL,
+  `appid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `type` char(16) NOT NULL DEFAULT '',
   `name` char(20) NOT NULL DEFAULT '',
   `url` char(255) NOT NULL DEFAULT '',
@@ -7262,8 +7557,10 @@ CREATE TABLE IF NOT EXISTS `mb_sso_applications` (
   `ip` char(15) NOT NULL DEFAULT '',
   `apifilename` char(30) NOT NULL DEFAULT 'phpsso.php',
   `charset` char(8) NOT NULL DEFAULT '',
-  `synlogin` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `synlogin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`appid`),
+  KEY `synlogin` (`synlogin`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_applications`
@@ -7279,7 +7576,7 @@ INSERT INTO `mb_sso_applications` (`appid`, `type`, `name`, `url`, `authkey`, `i
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_members` (
-`uid` int(10) unsigned NOT NULL,
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` char(20) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
   `random` char(8) NOT NULL DEFAULT '',
@@ -7291,8 +7588,12 @@ CREATE TABLE IF NOT EXISTS `mb_sso_members` (
   `appname` char(15) NOT NULL,
   `type` enum('app','connect') DEFAULT NULL,
   `avatar` tinyint(1) NOT NULL DEFAULT '0',
-  `ucuserid` mediumint(8) unsigned DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `ucuserid` mediumint(8) unsigned DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`),
+  KEY `ucuserid` (`ucuserid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_members`
@@ -7308,14 +7609,17 @@ INSERT INTO `mb_sso_members` (`uid`, `username`, `password`, `random`, `email`, 
 --
 
 CREATE TABLE IF NOT EXISTS `mb_sso_messagequeue` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `operation` char(32) NOT NULL,
   `succeed` tinyint(1) NOT NULL DEFAULT '0',
   `totalnum` smallint(6) unsigned NOT NULL DEFAULT '0',
   `noticedata` mediumtext NOT NULL,
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
-  `appstatus` mediumtext
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `appstatus` mediumtext,
+  PRIMARY KEY (`id`),
+  KEY `dateline` (`dateline`),
+  KEY `succeed` (`succeed`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 转存表中的数据 `mb_sso_messagequeue`
@@ -7340,7 +7644,9 @@ CREATE TABLE IF NOT EXISTS `mb_sso_session` (
   `m` char(20) NOT NULL,
   `c` char(20) NOT NULL,
   `a` char(20) NOT NULL,
-  `data` char(255) NOT NULL
+  `data` char(255) NOT NULL,
+  PRIMARY KEY (`sessionid`),
+  KEY `lastvisit` (`lastvisit`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7351,7 +7657,8 @@ CREATE TABLE IF NOT EXISTS `mb_sso_session` (
 
 CREATE TABLE IF NOT EXISTS `mb_sso_settings` (
   `name` varchar(32) NOT NULL DEFAULT '',
-  `data` text NOT NULL
+  `data` text NOT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -7372,7 +7679,7 @@ INSERT INTO `mb_sso_settings` (`name`, `data`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mb_tag` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `tag` text NOT NULL,
   `name` char(40) NOT NULL,
@@ -7383,8 +7690,9 @@ CREATE TABLE IF NOT EXISTS `mb_tag` (
   `page` char(15) NOT NULL,
   `return` char(20) NOT NULL,
   `cache` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `num` smallint(5) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `num` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7393,13 +7701,15 @@ CREATE TABLE IF NOT EXISTS `mb_tag` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_template_bak` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `creat_at` int(10) unsigned DEFAULT '0',
   `fileid` char(50) DEFAULT NULL,
   `userid` mediumint(8) DEFAULT NULL,
   `username` char(20) DEFAULT NULL,
-  `template` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `template` text,
+  PRIMARY KEY (`id`),
+  KEY `fileid` (`fileid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7412,7 +7722,8 @@ CREATE TABLE IF NOT EXISTS `mb_times` (
   `ip` char(15) NOT NULL,
   `logintime` int(10) unsigned NOT NULL DEFAULT '0',
   `isadmin` tinyint(1) NOT NULL DEFAULT '0',
-  `times` tinyint(1) unsigned NOT NULL DEFAULT '0'
+  `times` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`username`,`isadmin`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7422,7 +7733,7 @@ CREATE TABLE IF NOT EXISTS `mb_times` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_tx` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -7438,8 +7749,12 @@ CREATE TABLE IF NOT EXISTS `mb_tx` (
   `islink` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `username` char(20) NOT NULL,
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
-  `updatetime` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `mb_tx`
@@ -7471,7 +7786,8 @@ CREATE TABLE IF NOT EXISTS `mb_tx_data` (
   `template` varchar(30) NOT NULL,
   `paytype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `relation` varchar(255) NOT NULL DEFAULT ''
+  `relation` varchar(255) NOT NULL DEFAULT '',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -7495,7 +7811,7 @@ INSERT INTO `mb_tx_data` (`id`, `content`, `readpoint`, `groupids_view`, `pagina
 --
 
 CREATE TABLE IF NOT EXISTS `mb_type` (
-`typeid` smallint(5) unsigned NOT NULL,
+  `typeid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `module` char(15) NOT NULL,
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
@@ -7505,8 +7821,10 @@ CREATE TABLE IF NOT EXISTS `mb_type` (
   `url` char(100) NOT NULL,
   `template` char(30) NOT NULL,
   `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `description` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`typeid`),
+  KEY `module` (`module`,`parentid`,`siteid`,`listorder`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
 
 --
 -- 转存表中的数据 `mb_type`
@@ -7528,13 +7846,14 @@ INSERT INTO `mb_type` (`typeid`, `siteid`, `module`, `modelid`, `name`, `parenti
 --
 
 CREATE TABLE IF NOT EXISTS `mb_urlrule` (
-`urlruleid` smallint(5) unsigned NOT NULL,
+  `urlruleid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `module` varchar(15) NOT NULL,
   `file` varchar(20) NOT NULL,
   `ishtml` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `urlrule` varchar(255) NOT NULL,
-  `example` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+  `example` varchar(255) NOT NULL,
+  PRIMARY KEY (`urlruleid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- 转存表中的数据 `mb_urlrule`
@@ -7557,7 +7876,7 @@ INSERT INTO `mb_urlrule` (`urlruleid`, `module`, `file`, `ishtml`, `urlrule`, `e
 --
 
 CREATE TABLE IF NOT EXISTS `mb_video` (
-`id` mediumint(8) unsigned NOT NULL,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `catid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `typeid` smallint(5) unsigned NOT NULL,
   `title` char(80) NOT NULL DEFAULT '',
@@ -7575,8 +7894,12 @@ CREATE TABLE IF NOT EXISTS `mb_video` (
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
   `updatetime` int(10) unsigned NOT NULL DEFAULT '0',
   `vision` varchar(255) NOT NULL DEFAULT '',
-  `video_category` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `video_category` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`,`listorder`,`id`),
+  KEY `listorder` (`catid`,`status`,`listorder`,`id`),
+  KEY `catid` (`catid`,`status`,`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7588,7 +7911,8 @@ CREATE TABLE IF NOT EXISTS `mb_video_content` (
   `contentid` int(10) unsigned NOT NULL DEFAULT '0',
   `modelid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `videoid` int(10) unsigned NOT NULL DEFAULT '0',
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0'
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
+  KEY `videoid` (`videoid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7608,7 +7932,8 @@ CREATE TABLE IF NOT EXISTS `mb_video_data` (
   `paytype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `allow_comment` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `relation` varchar(255) NOT NULL DEFAULT '',
-  `video` tinyint(3) unsigned NOT NULL DEFAULT '0'
+  `video` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7618,7 +7943,7 @@ CREATE TABLE IF NOT EXISTS `mb_video_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_video_store` (
-`videoid` int(10) unsigned NOT NULL,
+  `videoid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` char(60) NOT NULL,
   `vid` char(40) NOT NULL,
   `keywords` char(40) NOT NULL,
@@ -7631,8 +7956,10 @@ CREATE TABLE IF NOT EXISTS `mb_video_store` (
   `size` char(20) NOT NULL,
   `timelen` mediumint(9) NOT NULL DEFAULT '0',
   `userupload` tinyint(1) NOT NULL DEFAULT '0',
-  `channelid` tinyint(3) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `channelid` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`videoid`),
+  KEY `videoid` (`videoid`,`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7647,7 +7974,10 @@ CREATE TABLE IF NOT EXISTS `mb_vote_data` (
   `time` int(10) unsigned NOT NULL DEFAULT '0',
   `ip` char(15) NOT NULL,
   `data` text NOT NULL,
-  `userinfo` text NOT NULL
+  `userinfo` text NOT NULL,
+  KEY `subjectid` (`subjectid`),
+  KEY `userid` (`userid`),
+  KEY `ip` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7657,13 +7987,15 @@ CREATE TABLE IF NOT EXISTS `mb_vote_data` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_vote_option` (
-`optionid` mediumint(8) unsigned NOT NULL,
+  `optionid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `subjectid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `option` varchar(255) NOT NULL,
   `image` varchar(100) DEFAULT NULL,
-  `listorder` tinyint(2) unsigned DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `listorder` tinyint(2) unsigned DEFAULT '0',
+  PRIMARY KEY (`optionid`),
+  KEY `subjectid` (`subjectid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7672,7 +8004,7 @@ CREATE TABLE IF NOT EXISTS `mb_vote_option` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
-`subjectid` mediumint(8) unsigned NOT NULL,
+  `subjectid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned DEFAULT '0',
   `subject` char(255) NOT NULL,
   `ismultiple` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -7691,8 +8023,12 @@ CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
   `minval` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `allowview` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `optionnumber` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `votenumber` mediumint(8) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `votenumber` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`subjectid`),
+  KEY `enabled` (`enabled`),
+  KEY `fromdate` (`fromdate`,`todate`),
+  KEY `todate` (`todate`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -7701,14 +8037,15 @@ CREATE TABLE IF NOT EXISTS `mb_vote_subject` (
 --
 
 CREATE TABLE IF NOT EXISTS `mb_workflow` (
-`workflowid` smallint(5) unsigned NOT NULL,
+  `workflowid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   `steps` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `workname` varchar(20) NOT NULL,
   `description` varchar(255) NOT NULL,
   `setting` text NOT NULL,
-  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`workflowid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `mb_workflow`
@@ -7720,992 +8057,6 @@ INSERT INTO `mb_workflow` (`workflowid`, `siteid`, `steps`, `workname`, `descrip
 (3, 1, 3, '三级审核', '审核三次', '', 0),
 (4, 1, 4, '四级审核', '四级审核', '', 0);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `mb_admin`
---
-ALTER TABLE `mb_admin`
- ADD PRIMARY KEY (`userid`), ADD KEY `username` (`username`);
-
---
--- Indexes for table `mb_admin_panel`
---
-ALTER TABLE `mb_admin_panel`
- ADD UNIQUE KEY `userid` (`menuid`,`userid`);
-
---
--- Indexes for table `mb_admin_role`
---
-ALTER TABLE `mb_admin_role`
- ADD PRIMARY KEY (`roleid`), ADD KEY `listorder` (`listorder`), ADD KEY `disabled` (`disabled`);
-
---
--- Indexes for table `mb_admin_role_priv`
---
-ALTER TABLE `mb_admin_role_priv`
- ADD KEY `roleid` (`roleid`,`m`,`c`,`a`,`siteid`);
-
---
--- Indexes for table `mb_announce`
---
-ALTER TABLE `mb_announce`
- ADD PRIMARY KEY (`aid`), ADD KEY `siteid` (`siteid`,`passed`,`endtime`);
-
---
--- Indexes for table `mb_attachment`
---
-ALTER TABLE `mb_attachment`
- ADD PRIMARY KEY (`aid`), ADD KEY `authcode` (`authcode`);
-
---
--- Indexes for table `mb_attachment_index`
---
-ALTER TABLE `mb_attachment_index`
- ADD KEY `keyid` (`keyid`), ADD KEY `aid` (`aid`);
-
---
--- Indexes for table `mb_badword`
---
-ALTER TABLE `mb_badword`
- ADD PRIMARY KEY (`badid`), ADD UNIQUE KEY `badword` (`badword`), ADD KEY `usetimes` (`replaceword`,`listorder`), ADD KEY `hits` (`listorder`);
-
---
--- Indexes for table `mb_block`
---
-ALTER TABLE `mb_block`
- ADD PRIMARY KEY (`id`), ADD KEY `pos` (`pos`), ADD KEY `type` (`type`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_block_history`
---
-ALTER TABLE `mb_block_history`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_block_priv`
---
-ALTER TABLE `mb_block_priv`
- ADD PRIMARY KEY (`id`), ADD KEY `blockid` (`blockid`), ADD KEY `roleid` (`roleid`,`siteid`);
-
---
--- Indexes for table `mb_cache`
---
-ALTER TABLE `mb_cache`
- ADD PRIMARY KEY (`filename`,`path`);
-
---
--- Indexes for table `mb_category`
---
-ALTER TABLE `mb_category`
- ADD PRIMARY KEY (`catid`), ADD KEY `module` (`module`,`parentid`,`listorder`,`catid`), ADD KEY `siteid` (`siteid`,`type`);
-
---
--- Indexes for table `mb_category_priv`
---
-ALTER TABLE `mb_category_priv`
- ADD KEY `catid` (`catid`,`roleid`,`is_admin`,`action`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_collection_content`
---
-ALTER TABLE `mb_collection_content`
- ADD PRIMARY KEY (`id`), ADD KEY `nodeid` (`nodeid`,`siteid`), ADD KEY `status` (`status`);
-
---
--- Indexes for table `mb_collection_history`
---
-ALTER TABLE `mb_collection_history`
- ADD PRIMARY KEY (`md5`,`siteid`);
-
---
--- Indexes for table `mb_collection_node`
---
-ALTER TABLE `mb_collection_node`
- ADD PRIMARY KEY (`nodeid`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_collection_program`
---
-ALTER TABLE `mb_collection_program`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `nodeid` (`nodeid`);
-
---
--- Indexes for table `mb_comment`
---
-ALTER TABLE `mb_comment`
- ADD PRIMARY KEY (`commentid`), ADD KEY `lastupdate` (`lastupdate`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_comment_check`
---
-ALTER TABLE `mb_comment_check`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `comment_data_id` (`comment_data_id`);
-
---
--- Indexes for table `mb_comment_data_1`
---
-ALTER TABLE `mb_comment_data_1`
- ADD PRIMARY KEY (`id`), ADD KEY `commentid` (`commentid`), ADD KEY `direction` (`direction`), ADD KEY `siteid` (`siteid`), ADD KEY `support` (`support`);
-
---
--- Indexes for table `mb_comment_setting`
---
-ALTER TABLE `mb_comment_setting`
- ADD PRIMARY KEY (`siteid`);
-
---
--- Indexes for table `mb_comment_table`
---
-ALTER TABLE `mb_comment_table`
- ADD PRIMARY KEY (`tableid`);
-
---
--- Indexes for table `mb_content_check`
---
-ALTER TABLE `mb_content_check`
- ADD KEY `username` (`username`), ADD KEY `checkid` (`checkid`), ADD KEY `status` (`status`,`inputtime`);
-
---
--- Indexes for table `mb_cool`
---
-ALTER TABLE `mb_cool`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_cool_data`
---
-ALTER TABLE `mb_cool_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_copyfrom`
---
-ALTER TABLE `mb_copyfrom`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_datacall`
---
-ALTER TABLE `mb_datacall`
- ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`);
-
---
--- Indexes for table `mb_dbsource`
---
-ALTER TABLE `mb_dbsource`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`);
-
---
--- Indexes for table `mb_download`
---
-ALTER TABLE `mb_download`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_download_data`
---
-ALTER TABLE `mb_download_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_downservers`
---
-ALTER TABLE `mb_downservers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_extend_setting`
---
-ALTER TABLE `mb_extend_setting`
- ADD PRIMARY KEY (`id`), ADD KEY `key` (`key`);
-
---
--- Indexes for table `mb_favorite`
---
-ALTER TABLE `mb_favorite`
- ADD PRIMARY KEY (`id`), ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_hits`
---
-ALTER TABLE `mb_hits`
- ADD PRIMARY KEY (`hitsid`);
-
---
--- Indexes for table `mb_ipbanned`
---
-ALTER TABLE `mb_ipbanned`
- ADD PRIMARY KEY (`ipbannedid`);
-
---
--- Indexes for table `mb_keylink`
---
-ALTER TABLE `mb_keylink`
- ADD PRIMARY KEY (`keylinkid`);
-
---
--- Indexes for table `mb_keyword`
---
-ALTER TABLE `mb_keyword`
- ADD PRIMARY KEY (`id`), ADD KEY `keyword` (`keyword`,`siteid`);
-
---
--- Indexes for table `mb_keyword_data`
---
-ALTER TABLE `mb_keyword_data`
- ADD PRIMARY KEY (`id`), ADD KEY `tagid` (`tagid`,`siteid`);
-
---
--- Indexes for table `mb_link`
---
-ALTER TABLE `mb_link`
- ADD PRIMARY KEY (`linkid`), ADD KEY `typeid` (`typeid`,`passed`,`listorder`,`linkid`);
-
---
--- Indexes for table `mb_linkage`
---
-ALTER TABLE `mb_linkage`
- ADD PRIMARY KEY (`linkageid`,`keyid`), ADD KEY `parentid` (`parentid`,`listorder`);
-
---
--- Indexes for table `mb_log`
---
-ALTER TABLE `mb_log`
- ADD PRIMARY KEY (`logid`), ADD KEY `module` (`module`,`file`,`action`), ADD KEY `username` (`username`,`action`);
-
---
--- Indexes for table `mb_member`
---
-ALTER TABLE `mb_member`
- ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`(20)), ADD KEY `phpssouid` (`phpssouid`);
-
---
--- Indexes for table `mb_member_detail`
---
-ALTER TABLE `mb_member_detail`
- ADD UNIQUE KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_member_group`
---
-ALTER TABLE `mb_member_group`
- ADD PRIMARY KEY (`groupid`), ADD KEY `disabled` (`disabled`), ADD KEY `listorder` (`sort`);
-
---
--- Indexes for table `mb_member_menu`
---
-ALTER TABLE `mb_member_menu`
- ADD PRIMARY KEY (`id`), ADD KEY `listorder` (`listorder`), ADD KEY `parentid` (`parentid`), ADD KEY `module` (`m`,`c`,`a`);
-
---
--- Indexes for table `mb_member_verify`
---
-ALTER TABLE `mb_member_verify`
- ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`(20));
-
---
--- Indexes for table `mb_member_vip`
---
-ALTER TABLE `mb_member_vip`
- ADD UNIQUE KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_menu`
---
-ALTER TABLE `mb_menu`
- ADD PRIMARY KEY (`id`), ADD KEY `listorder` (`listorder`), ADD KEY `parentid` (`parentid`), ADD KEY `module` (`m`,`c`,`a`);
-
---
--- Indexes for table `mb_message`
---
-ALTER TABLE `mb_message`
- ADD PRIMARY KEY (`messageid`), ADD KEY `msgtoid` (`send_to_id`,`folder`), ADD KEY `replyid` (`replyid`), ADD KEY `folder` (`send_from_id`,`folder`);
-
---
--- Indexes for table `mb_message_data`
---
-ALTER TABLE `mb_message_data`
- ADD PRIMARY KEY (`id`), ADD KEY `message` (`userid`,`group_message_id`);
-
---
--- Indexes for table `mb_message_group`
---
-ALTER TABLE `mb_message_group`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_moban`
---
-ALTER TABLE `mb_moban`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_moban_data`
---
-ALTER TABLE `mb_moban_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_model`
---
-ALTER TABLE `mb_model`
- ADD PRIMARY KEY (`modelid`), ADD KEY `type` (`type`,`siteid`);
-
---
--- Indexes for table `mb_model_field`
---
-ALTER TABLE `mb_model_field`
- ADD PRIMARY KEY (`fieldid`), ADD KEY `modelid` (`modelid`,`disabled`), ADD KEY `field` (`field`,`modelid`);
-
---
--- Indexes for table `mb_module`
---
-ALTER TABLE `mb_module`
- ADD PRIMARY KEY (`module`);
-
---
--- Indexes for table `mb_mood`
---
-ALTER TABLE `mb_mood`
- ADD PRIMARY KEY (`id`), ADD KEY `total` (`total`), ADD KEY `lastupdate` (`lastupdate`), ADD KEY `catid` (`catid`,`siteid`,`contentid`);
-
---
--- Indexes for table `mb_news`
---
-ALTER TABLE `mb_news`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_news_data`
---
-ALTER TABLE `mb_news_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_page`
---
-ALTER TABLE `mb_page`
- ADD KEY `catid` (`catid`);
-
---
--- Indexes for table `mb_pay_account`
---
-ALTER TABLE `mb_pay_account`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`), ADD KEY `userid` (`userid`), ADD KEY `trade_sn` (`trade_sn`,`money`,`status`,`id`);
-
---
--- Indexes for table `mb_pay_payment`
---
-ALTER TABLE `mb_pay_payment`
- ADD PRIMARY KEY (`pay_id`), ADD KEY `pay_code` (`pay_code`);
-
---
--- Indexes for table `mb_pay_spend`
---
-ALTER TABLE `mb_pay_spend`
- ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`), ADD KEY `creat_at` (`creat_at`), ADD KEY `logo` (`logo`), ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `mb_picture`
---
-ALTER TABLE `mb_picture`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_picture_data`
---
-ALTER TABLE `mb_picture_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_position`
---
-ALTER TABLE `mb_position`
- ADD PRIMARY KEY (`posid`);
-
---
--- Indexes for table `mb_position_data`
---
-ALTER TABLE `mb_position_data`
- ADD KEY `posid` (`posid`), ADD KEY `listorder` (`listorder`);
-
---
--- Indexes for table `mb_poster`
---
-ALTER TABLE `mb_poster`
- ADD PRIMARY KEY (`id`), ADD KEY `spaceid` (`spaceid`,`siteid`,`disabled`,`listorder`);
-
---
--- Indexes for table `mb_poster_201408`
---
-ALTER TABLE `mb_poster_201408`
- ADD PRIMARY KEY (`id`), ADD KEY `pid` (`pid`,`type`,`ip`);
-
---
--- Indexes for table `mb_poster_201502`
---
-ALTER TABLE `mb_poster_201502`
- ADD PRIMARY KEY (`id`), ADD KEY `pid` (`pid`,`type`,`ip`);
-
---
--- Indexes for table `mb_poster_space`
---
-ALTER TABLE `mb_poster_space`
- ADD PRIMARY KEY (`spaceid`), ADD KEY `disabled` (`disabled`,`siteid`);
-
---
--- Indexes for table `mb_queue`
---
-ALTER TABLE `mb_queue`
- ADD PRIMARY KEY (`id`), ADD KEY `siteid` (`siteid`), ADD KEY `times` (`times`);
-
---
--- Indexes for table `mb_release_point`
---
-ALTER TABLE `mb_release_point`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_search`
---
-ALTER TABLE `mb_search`
- ADD PRIMARY KEY (`searchid`), ADD KEY `typeid` (`typeid`,`id`), ADD KEY `siteid` (`siteid`), ADD FULLTEXT KEY `data` (`data`);
-
---
--- Indexes for table `mb_search_keyword`
---
-ALTER TABLE `mb_search_keyword`
- ADD UNIQUE KEY `keyword` (`keyword`), ADD UNIQUE KEY `pinyin` (`pinyin`), ADD FULLTEXT KEY `data` (`data`);
-
---
--- Indexes for table `mb_session`
---
-ALTER TABLE `mb_session`
- ADD PRIMARY KEY (`sessionid`), ADD KEY `lastvisit` (`lastvisit`);
-
---
--- Indexes for table `mb_site`
---
-ALTER TABLE `mb_site`
- ADD PRIMARY KEY (`siteid`);
-
---
--- Indexes for table `mb_special`
---
-ALTER TABLE `mb_special`
- ADD PRIMARY KEY (`id`), ADD KEY `disabled` (`disabled`,`siteid`);
-
---
--- Indexes for table `mb_special_content`
---
-ALTER TABLE `mb_special_content`
- ADD PRIMARY KEY (`id`), ADD KEY `specialid` (`specialid`,`typeid`,`isdata`), ADD KEY `typeid` (`typeid`,`isdata`);
-
---
--- Indexes for table `mb_special_c_data`
---
-ALTER TABLE `mb_special_c_data`
- ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `mb_sphinx_counter`
---
-ALTER TABLE `mb_sphinx_counter`
- ADD PRIMARY KEY (`counter_id`);
-
---
--- Indexes for table `mb_sso_admin`
---
-ALTER TABLE `mb_sso_admin`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `mb_sso_applications`
---
-ALTER TABLE `mb_sso_applications`
- ADD PRIMARY KEY (`appid`), ADD KEY `synlogin` (`synlogin`);
-
---
--- Indexes for table `mb_sso_members`
---
-ALTER TABLE `mb_sso_members`
- ADD PRIMARY KEY (`uid`), ADD UNIQUE KEY `username` (`username`), ADD KEY `email` (`email`), ADD KEY `ucuserid` (`ucuserid`);
-
---
--- Indexes for table `mb_sso_messagequeue`
---
-ALTER TABLE `mb_sso_messagequeue`
- ADD PRIMARY KEY (`id`), ADD KEY `dateline` (`dateline`), ADD KEY `succeed` (`succeed`,`id`);
-
---
--- Indexes for table `mb_sso_session`
---
-ALTER TABLE `mb_sso_session`
- ADD PRIMARY KEY (`sessionid`), ADD KEY `lastvisit` (`lastvisit`);
-
---
--- Indexes for table `mb_sso_settings`
---
-ALTER TABLE `mb_sso_settings`
- ADD PRIMARY KEY (`name`);
-
---
--- Indexes for table `mb_tag`
---
-ALTER TABLE `mb_tag`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mb_template_bak`
---
-ALTER TABLE `mb_template_bak`
- ADD PRIMARY KEY (`id`), ADD KEY `fileid` (`fileid`);
-
---
--- Indexes for table `mb_times`
---
-ALTER TABLE `mb_times`
- ADD PRIMARY KEY (`username`,`isadmin`);
-
---
--- Indexes for table `mb_tx`
---
-ALTER TABLE `mb_tx`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_tx_data`
---
-ALTER TABLE `mb_tx_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_type`
---
-ALTER TABLE `mb_type`
- ADD PRIMARY KEY (`typeid`), ADD KEY `module` (`module`,`parentid`,`siteid`,`listorder`);
-
---
--- Indexes for table `mb_urlrule`
---
-ALTER TABLE `mb_urlrule`
- ADD PRIMARY KEY (`urlruleid`);
-
---
--- Indexes for table `mb_video`
---
-ALTER TABLE `mb_video`
- ADD PRIMARY KEY (`id`), ADD KEY `status` (`status`,`listorder`,`id`), ADD KEY `listorder` (`catid`,`status`,`listorder`,`id`), ADD KEY `catid` (`catid`,`status`,`id`);
-
---
--- Indexes for table `mb_video_content`
---
-ALTER TABLE `mb_video_content`
- ADD KEY `videoid` (`videoid`);
-
---
--- Indexes for table `mb_video_data`
---
-ALTER TABLE `mb_video_data`
- ADD KEY `id` (`id`);
-
---
--- Indexes for table `mb_video_store`
---
-ALTER TABLE `mb_video_store`
- ADD PRIMARY KEY (`videoid`), ADD KEY `videoid` (`videoid`,`status`);
-
---
--- Indexes for table `mb_vote_data`
---
-ALTER TABLE `mb_vote_data`
- ADD KEY `subjectid` (`subjectid`), ADD KEY `userid` (`userid`), ADD KEY `ip` (`ip`);
-
---
--- Indexes for table `mb_vote_option`
---
-ALTER TABLE `mb_vote_option`
- ADD PRIMARY KEY (`optionid`), ADD KEY `subjectid` (`subjectid`);
-
---
--- Indexes for table `mb_vote_subject`
---
-ALTER TABLE `mb_vote_subject`
- ADD PRIMARY KEY (`subjectid`), ADD KEY `enabled` (`enabled`), ADD KEY `fromdate` (`fromdate`,`todate`), ADD KEY `todate` (`todate`);
-
---
--- Indexes for table `mb_workflow`
---
-ALTER TABLE `mb_workflow`
- ADD PRIMARY KEY (`workflowid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `mb_admin`
---
-ALTER TABLE `mb_admin`
-MODIFY `userid` mediumint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_admin_role`
---
-ALTER TABLE `mb_admin_role`
-MODIFY `roleid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `mb_announce`
---
-ALTER TABLE `mb_announce`
-MODIFY `aid` smallint(4) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_attachment`
---
-ALTER TABLE `mb_attachment`
-MODIFY `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
---
--- AUTO_INCREMENT for table `mb_badword`
---
-ALTER TABLE `mb_badword`
-MODIFY `badid` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_block`
---
-ALTER TABLE `mb_block`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_block_history`
---
-ALTER TABLE `mb_block_history`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_block_priv`
---
-ALTER TABLE `mb_block_priv`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_category`
---
-ALTER TABLE `mb_category`
-MODIFY `catid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
---
--- AUTO_INCREMENT for table `mb_collection_content`
---
-ALTER TABLE `mb_collection_content`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_collection_node`
---
-ALTER TABLE `mb_collection_node`
-MODIFY `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_collection_program`
---
-ALTER TABLE `mb_collection_program`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_comment_check`
---
-ALTER TABLE `mb_comment_check`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_comment_data_1`
---
-ALTER TABLE `mb_comment_data_1`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `mb_comment_table`
---
-ALTER TABLE `mb_comment_table`
-MODIFY `tableid` mediumint(8) NOT NULL AUTO_INCREMENT COMMENT '表ID号',AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_cool`
---
-ALTER TABLE `mb_cool`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_copyfrom`
---
-ALTER TABLE `mb_copyfrom`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_datacall`
---
-ALTER TABLE `mb_datacall`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_dbsource`
---
-ALTER TABLE `mb_dbsource`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_download`
---
-ALTER TABLE `mb_download`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_downservers`
---
-ALTER TABLE `mb_downservers`
-MODIFY `id` mediumint(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_extend_setting`
---
-ALTER TABLE `mb_extend_setting`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_favorite`
---
-ALTER TABLE `mb_favorite`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_ipbanned`
---
-ALTER TABLE `mb_ipbanned`
-MODIFY `ipbannedid` smallint(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_keylink`
---
-ALTER TABLE `mb_keylink`
-MODIFY `keylinkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_keyword`
---
-ALTER TABLE `mb_keyword`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
---
--- AUTO_INCREMENT for table `mb_keyword_data`
---
-ALTER TABLE `mb_keyword_data`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=168;
---
--- AUTO_INCREMENT for table `mb_link`
---
-ALTER TABLE `mb_link`
-MODIFY `linkid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_linkage`
---
-ALTER TABLE `mb_linkage`
-MODIFY `linkageid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3360;
---
--- AUTO_INCREMENT for table `mb_log`
---
-ALTER TABLE `mb_log`
-MODIFY `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=803;
---
--- AUTO_INCREMENT for table `mb_member`
---
-ALTER TABLE `mb_member`
-MODIFY `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_member_group`
---
-ALTER TABLE `mb_member_group`
-MODIFY `groupid` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `mb_member_menu`
---
-ALTER TABLE `mb_member_menu`
-MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `mb_member_verify`
---
-ALTER TABLE `mb_member_verify`
-MODIFY `userid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_menu`
---
-ALTER TABLE `mb_menu`
-MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1562;
---
--- AUTO_INCREMENT for table `mb_message`
---
-ALTER TABLE `mb_message`
-MODIFY `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_message_data`
---
-ALTER TABLE `mb_message_data`
-MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_message_group`
---
-ALTER TABLE `mb_message_group`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_moban`
---
-ALTER TABLE `mb_moban`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
---
--- AUTO_INCREMENT for table `mb_model`
---
-ALTER TABLE `mb_model`
-MODIFY `modelid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `mb_model_field`
---
-ALTER TABLE `mb_model_field`
-MODIFY `fieldid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=184;
---
--- AUTO_INCREMENT for table `mb_mood`
---
-ALTER TABLE `mb_mood`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_news`
---
-ALTER TABLE `mb_news`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT for table `mb_pay_account`
---
-ALTER TABLE `mb_pay_account`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_pay_payment`
---
-ALTER TABLE `mb_pay_payment`
-MODIFY `pay_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `mb_pay_spend`
---
-ALTER TABLE `mb_pay_spend`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_picture`
---
-ALTER TABLE `mb_picture`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `mb_position`
---
-ALTER TABLE `mb_position`
-MODIFY `posid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `mb_poster`
---
-ALTER TABLE `mb_poster`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `mb_poster_201408`
---
-ALTER TABLE `mb_poster_201408`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_poster_201502`
---
-ALTER TABLE `mb_poster_201502`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_poster_space`
---
-ALTER TABLE `mb_poster_space`
-MODIFY `spaceid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `mb_queue`
---
-ALTER TABLE `mb_queue`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_release_point`
---
-ALTER TABLE `mb_release_point`
-MODIFY `id` mediumint(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_search`
---
-ALTER TABLE `mb_search`
-MODIFY `searchid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=80;
---
--- AUTO_INCREMENT for table `mb_site`
---
-ALTER TABLE `mb_site`
-MODIFY `siteid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_special`
---
-ALTER TABLE `mb_special`
-MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_special_content`
---
-ALTER TABLE `mb_special_content`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_sso_admin`
---
-ALTER TABLE `mb_sso_admin`
-MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_sso_applications`
---
-ALTER TABLE `mb_sso_applications`
-MODIFY `appid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_sso_members`
---
-ALTER TABLE `mb_sso_members`
-MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_sso_messagequeue`
---
-ALTER TABLE `mb_sso_messagequeue`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `mb_tag`
---
-ALTER TABLE `mb_tag`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_template_bak`
---
-ALTER TABLE `mb_template_bak`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_tx`
---
-ALTER TABLE `mb_tx`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `mb_type`
---
-ALTER TABLE `mb_type`
-MODIFY `typeid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
---
--- AUTO_INCREMENT for table `mb_urlrule`
---
-ALTER TABLE `mb_urlrule`
-MODIFY `urlruleid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT for table `mb_video`
---
-ALTER TABLE `mb_video`
-MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_video_store`
---
-ALTER TABLE `mb_video_store`
-MODIFY `videoid` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_vote_option`
---
-ALTER TABLE `mb_vote_option`
-MODIFY `optionid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_vote_subject`
---
-ALTER TABLE `mb_vote_subject`
-MODIFY `subjectid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `mb_workflow`
---
-ALTER TABLE `mb_workflow`
-MODIFY `workflowid` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
