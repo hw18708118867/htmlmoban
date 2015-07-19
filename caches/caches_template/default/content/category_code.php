@@ -292,8 +292,8 @@
                     <div class="block move-span" id="portal_block_197">
                         <div class="dxb_bc" id="portal_block_197_content">
                             <div class="portal_block_summary">
-                                HTML5特效
-                                <a href="" target="_blank" class="immore">
+                                建站教程
+                                <a href="index.php?m=content&c=index&a=lists&catid=43" target="_blank" class="immore">
                                     更多
                                 </a>
                             </div>
@@ -314,121 +314,35 @@
                     <div class="block move-span" id="portal_block_200">
                         <div class="dxb_bc" id="portal_block_200_content">
                             <div class="module cl xld">
+                                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=34df84ed45a37750e6879939d49f8289&action=lists&catid=46&num=4&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'46','order'=>'id DESC','moreinfo'=>'1','limit'=>'4',));}?>
                                 <ul class="m_Box2">
+                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
                                     <li>
-                                        <a title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href=""
-                                           rel="nofollow">
-                                            <img width="156" height="96" class="wp-post-image"
-                                                 alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取"
-                                                 src="<?php echo IMG_PATH;?>nopic_small.gif">
+                                        <a title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>" rel="nofollow">
+                                            <img width="156" height="96" class="wp-post-image" alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>">
                                         </a>
-
                                         <p>
-                                            <a target="_blank" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href="">
-                                                从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
+                                            <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
+                                                <?php echo $v['title'];?>
                                             </a>
                                         </p>
                                     </li>
-                                    <li>
-                                        <a title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href=""
-                                           rel="nofollow">
-                                            <img width="156" height="96" class="wp-post-image"
-                                                 alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取"
-                                                 src="<?php echo IMG_PATH;?>nopic_small.gif">
-                                        </a>
-
-                                        <p>
-                                            <a target="_blank" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" href="">
-                                                从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <a title="给wordpress评论处添加实用工具" href=""
-                                           rel="nofollow">
-                                            <img width="156" height="96" class="wp-post-image" alt="给wordpress评论处添加实用工具"
-                                                 src="<?php echo IMG_PATH;?>nopic_small.gif">
-                                        </a>
-
-                                        <p>
-                                            <a target="_blank" title="给wordpress评论处添加实用工具" href="">
-                                                给wordpress评论处添加实用工具
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <a title="wordpress评论字数限制" href=""
-                                           rel="nofollow">
-                                            <img width="156" height="96" class="wp-post-image" alt="wordpress评论字数限制"
-                                                 src="<?php echo IMG_PATH;?>nopic_small.gif">
-                                        </a>
-
-                                        <p>
-                                            <a target="_blank" title="wordpress评论字数限制" href="">
-                                                wordpress评论字数限制
-                                            </a>
-                                        </p>
-                                    </li>
-
+                                    <?php $n++;}unset($n); ?>
                                 </ul>
+                                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+                                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=d81f2d355885f4293bc323d62a44c40a&action=lists&catid=47&num=12&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'47','order'=>'id DESC','moreinfo'=>'1','limit'=>'12',));}?>
                                 <ul class="m_Box3">
+                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
                                     <li>
-                                        <a target="_blank" title="wordpress文章分页" href="">
-                                            wordpress文章分页
+                                        <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
+                                            <?php echo $v['title'];?>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress主题 仪表盘 添加站外文章列表" href="">
-                                            wordpress主题 仪表盘 添加站外文章列表
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress 获取文章内所有图片" href="">
-                                            wordpress 获取文章内所有图片
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress分页的极简实现" href="">
-                                            wordpress分页的极简实现
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress相关文章的优化机智和自定义设置" href="">
-                                            wordpress相关文章的优化机智和自定义设置
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="万网主机 使用 wordpress 无法发送邮件的问题" href="">
-                                            万网主机 使用 wordpress 无法发送邮件的问题
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wordpress"
-                                           href="">
-                                            wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wo
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress教程：面包屑导航（更细版本）" href="">
-                                            wordpress教程：面包屑导航（更细版本）
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方法"
-                                           href="">
-                                            WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="wordpress 当前页面的子页面 获取" href="">
-                                            wordpress 当前页面的子页面 获取
-                                        </a>
-                                    </li>
+                                    <?php $n++;}unset($n); ?>
                                     <div class="clear">
                                     </div>
                                 </ul>
-
-
+                                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
                             </div>
                         </div>
                     </div>
@@ -438,158 +352,78 @@
         <!--[/diy]-->
     </ul>
 </div>
-<div class="imitem-r">
-    <div class="imhead">
-        <!--[diy=xinyun_bbs_004_13]-->
-        <div class="area" id="xinyun_bbs_004_13">
-            <div class="frame move-span cl frame-1" id="frameR8ONtx">
-                <div class="column frame-1-c" id="frameR8ONtx_left">
-                    <div class="move-span temp" id="frameR8ONtx_left_temp">
-                    </div>
-                    <div class="block move-span" id="portal_block_198">
-                        <div class="dxb_bc" id="portal_block_198_content">
-                            <div class="portal_block_summary">
-                                建站教程
+    <div class="imitem-r">
+        <div class="imhead">
+            <!--[diy=xinyun_bbs_004_13]-->
+            <div class="area" id="xinyun_bbs_004_13">
+                <div class="frame move-span cl frame-1" id="frameR8ONtx">
+                    <div class="column frame-1-c" id="frameR8ONtx_left">
+                        <div class="move-span temp" id="frameR8ONtx_left_temp">
+                        </div>
+                        <div class="block move-span" id="portal_block_198">
+                            <div class="dxb_bc" id="portal_block_198_content">
+                                <div class="portal_block_summary">
+                                    建站教程
+                                    <a href="index.php?m=content&c=index&a=lists&catid=43" target="_blank" class="immore">
+                                        更多
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--[/diy]-->
         </div>
-        <!--[/diy]-->
+        <ul style="margin-left:10px">
+            <!--[diy=xinyun_bbs_004_12]-->
+            <div id="xinyun_bbs_004_12" class="area">
+                <div id="frameN6jBqk" class="frame move-span cl frame-1">
+                    <div id="frameN6jBqk_left" class="column frame-1-c">
+                        <div id="frameN6jBqk_left_temp" class="move-span temp">
+                        </div>
+                        <div id="portal_block_200" class="block move-span">
+                            <div id="portal_block_200_content" class="dxb_bc">
+                                <div class="module cl xld">
+                                    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=a98c4adf8c48af52d0d36c9058af0ea2&action=lists&catid=44&num=4&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'44','order'=>'id DESC','moreinfo'=>'1','limit'=>'4',));}?>
+                                    <ul class="m_Box2">
+                                        <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                        <li>
+                                            <a title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>" rel="nofollow">
+                                                <img width="156" height="96" class="wp-post-image" alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>">
+                                            </a>
+                                            <p>
+                                                <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
+                                                    <?php echo $v['title'];?>
+                                                </a>
+                                            </p>
+                                        </li>
+                                        <?php $n++;}unset($n); ?>
+                                    </ul>
+                                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+                                    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=0dbba9f860baf108fb6e0eb10950c242&action=lists&catid=45&num=12&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'45','order'=>'id DESC','moreinfo'=>'1','limit'=>'12',));}?>
+                                    <ul class="m_Box3">
+                                        <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                        <li>
+                                            <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
+                                                <?php echo $v['title'];?>
+                                            </a>
+                                        </li>
+                                        <?php $n++;}unset($n); ?>
+                                        <div class="clear">
+                                        </div>
+                                    </ul>
+                                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--[/diy]-->
+        </ul>
+
     </div>
-    <ul style="margin-left:10px">
-        <!--[diy=xinyun_bbs_004_12]-->
-        <div id="xinyun_bbs_004_12" class="area">
-            <div id="frameN6jBqk" class="frame move-span cl frame-1">
-                <div id="frameN6jBqk_left" class="column frame-1-c">
-                    <div id="frameN6jBqk_left_temp" class="move-span temp">
-                    </div>
-                    <div id="portal_block_200" class="block move-span">
-                        <div id="portal_block_200_content" class="dxb_bc">
-                            <div class="module cl xld">
-                                <ul class="m_Box2">
-                                    <li>
-                                        <a rel="nofollow" href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取">
-                                            <img width="156" height="96"
-                                                 src="http://www.htmlmoban.net/statics/images/nopic_small.gif"
-                                                 alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" class="wp-post-image">
-                                        </a>
-
-                                        <p>
-                                            <a href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" target="_blank">
-                                                从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <a rel="nofollow" href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取">
-                                            <img width="156" height="96"
-                                                 src="http://www.htmlmoban.net/statics/images/nopic_small.gif"
-                                                 alt="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" class="wp-post-image">
-                                        </a>
-
-                                        <p>
-                                            <a href="" title="从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓取" target="_blank">
-                                                从SEO角度出发，我们应该禁止搜索引擎对网站分页的抓
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <a rel="nofollow" href="" title="给wordpress评论处添加实用工具">
-                                            <img width="156" height="96"
-                                                 src="http://www.htmlmoban.net/statics/images/nopic_small.gif"
-                                                 alt="给wordpress评论处添加实用工具" class="wp-post-image">
-                                        </a>
-
-                                        <p>
-                                            <a href="" title="给wordpress评论处添加实用工具" target="_blank">
-                                                给wordpress评论处添加实用工具
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <a rel="nofollow" href="" title="wordpress评论字数限制">
-                                            <img width="156" height="96"
-                                                 src="http://www.htmlmoban.net/statics/images/nopic_small.gif"
-                                                 alt="wordpress评论字数限制" class="wp-post-image">
-                                        </a>
-
-                                        <p>
-                                            <a href="" title="wordpress评论字数限制" target="_blank">
-                                                wordpress评论字数限制
-                                            </a>
-                                        </p>
-                                    </li>
-
-                                </ul>
-                                <ul class="m_Box3">
-                                    <li>
-                                        <a href="" title="wordpress文章分页" target="_blank">
-                                            wordpress文章分页
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress主题 仪表盘 添加站外文章列表" target="_blank">
-                                            wordpress主题 仪表盘 添加站外文章列表
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress 获取文章内所有图片" target="_blank">
-                                            wordpress 获取文章内所有图片
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress分页的极简实现" target="_blank">
-                                            wordpress分页的极简实现
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress相关文章的优化机智和自定义设置" target="_blank">
-                                            wordpress相关文章的优化机智和自定义设置
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="万网主机 使用 wordpress 无法发送邮件的问题" target="_blank">
-                                            万网主机 使用 wordpress 无法发送邮件的问题
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wordpress" target="_blank">
-                                            wordpress 激活主题后 自动创建页面或者文章 让用户更快的熟悉wo
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress教程：面包屑导航（更细版本）" target="_blank">
-                                            wordpress教程：面包屑导航（更细版本）
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方法"
-                                           target="_blank">
-                                            WordPress 教程：WordPress 4.2后 头部多出的Emoji表情的处理方
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" title="wordpress 当前页面的子页面 获取" target="_blank">
-                                            wordpress 当前页面的子页面 获取
-                                        </a>
-                                    </li>
-                                    <div class="clear">
-                                    </div>
-                                </ul>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--[/diy]-->
-    </ul>
-
-</div>
 
 
 </div>

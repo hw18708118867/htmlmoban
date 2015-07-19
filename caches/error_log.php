@@ -6539,3 +6539,96 @@
 <?php exit;?>07-18 17:37:59 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>07-18 17:41:15 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>07-18 17:41:59 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>07-19 22:21:36 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:21:36 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-19 22:21:36 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-19 22:21:36 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-19 22:21:48 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:21:48 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | caches\caches_model\caches_data\content_output.class.php | 42
+<?php exit;?>07-19 22:21:48 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | caches\caches_model\caches_data\content_output.class.php | 71
+<?php exit;?>07-19 22:21:49 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:13 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:19 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:23 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:24 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:26 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:27 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:22:31 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:23:14 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:23:14 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-19 22:23:14 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-19 22:23:14 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-19 22:23:16 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:23:20 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:23:28 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:23:30 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-19 22:23:33 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:46:13 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:46:16 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:46:19 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:47:13 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:47:13 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 06:47:13 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 06:47:13 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 06:47:19 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:53:06 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:53:06 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 06:53:06 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 06:53:06 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 06:53:42 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:53:59 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:54:05 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:57:06 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:57:06 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 06:57:06 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 06:57:06 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 06:57:17 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:57:48 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:57:48 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 06:57:48 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 06:57:48 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 06:57:52 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:58:30 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:58:47 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:58:47 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 06:58:47 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 06:58:47 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 06:58:49 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:58:51 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:59:30 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 06:59:30 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 06:59:30 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 06:59:30 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 07:00:14 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:00:14 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 07:00:14 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 07:00:14 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 07:01:34 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:01:40 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:04:11 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 07:04:11 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 07:04:11 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 07:05:08 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:05:08 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 07:05:08 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 07:05:08 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 07:06:04 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:04 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 07:06:04 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 07:06:04 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 07:06:07 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:09 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:10 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:12 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:35 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:35 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:43 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:43 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 07:06:43 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 07:06:43 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 07:06:47 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:06:49 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:07:01 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-20 07:07:01 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
+<?php exit;?>07-20 07:07:01 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
+<?php exit;?>07-20 07:07:01 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
