@@ -35,7 +35,7 @@
     <div class="OfcardLogo"><a href="/"><img src="<?php echo IMG_PATH;?>logo.png" /></a></div>
     <div class="searchBar">
       <div class="searchVInput">
-        <form target="_blank" id="fo" name="formsearch" method="post" action="/plus/search.php">
+        <form target="_blank" id="fo" name="formsearch" method="post" action="/index.php?m=search&c=index&a=init">
           <a href="javascript:document.getElementById('fo').submit()">搜索</a>
           <div>
             <input type="text" autocomplete="off" name="q" id="cardname" class="cardnameV">

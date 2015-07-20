@@ -6632,3 +6632,5 @@
 <?php exit;?>07-20 07:07:01 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 91
 <?php exit;?>07-20 07:07:01 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 93
 <?php exit;?>07-20 07:07:01 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | phpcms\libs\classes\template_cache.class.php | 94
+<?php exit;?>07-20 17:17:36 | 2 | fsockopen() [<a href='function.fsockopen'>function.fsockopen</a>]: php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>07-20 17:17:36 | 2 | fsockopen() [<a href='function.fsockopen'>function.fsockopen</a>]: unable to connect to juhe.gcvideo.cn:80 (php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 ) | phpcms\libs\classes\http.class.php | 84
