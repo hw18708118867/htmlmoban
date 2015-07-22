@@ -27,8 +27,8 @@ class index {
             if(trim($_POST['q'])=='') {
                 header('Location: '.APP_PATH.'index.php?m=search');exit;
             }
-            $typeid = emptyempty($_POST['typeid']) ? 0 : intval($_POST['typeid']);
-            $time = emptyempty($_POST['time']) || !in_array($_POST['time'],array('all','day','month','year','week')) ? 'all' : trim($_POST['time']);
+            $typeid = empty($_POST['typeid']) ? 0 : intval($_POST['typeid']);
+            $time = empty($_POST['time']) || !in_array($_POST['time'],array('all','day','month','year','week')) ? 'all' : trim($_POST['time']);
             $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
             $pagesize = 10;
             $q = safe_replace(trim($_POST['q']));
@@ -70,24 +70,24 @@ class index {
                 $res = $sphinx->search($q, array($siteid), array($typeid), array($search_time, SYS_TIME), $offset, $pagesize, '@weight desc');
                 $totalnums = $res['total'];
                 //如果结果不为空
-                if(!emptyempty($res['matches'])) {
+                if(!empty($res['matches'])) {
                     $result = $res['matches'];
                 }
             } else {
 
                 $sql = "`siteid`= '$siteid' $sql_tid $sql_time AND `data` like '%$q%'";
 
-
                 $result = $this->db->listinfo($sql, 'searchid DESC', $page, 10);
+                //$result = $this->db->listinfo($sql, 'adddate ASC', $page, 10);
             }
 
             //如果结果不为空
-            if(!emptyempty($result) || !emptyempty($commend['id'])) {
+            if(!empty($result) || !empty($commend['id'])) {
                 foreach($result as $_v) {
                     if($_v['typeid']) $sids[$_v['typeid']][] = $_v['id'];
                 }
 
-                if(!emptyempty($commend['id'])) {
+                if(!empty($commend['id'])) {
                     if($commend['typeid']) $sids[$commend['typeid']][] = $commend['id'];
                 }
                 $model_type_cache = getcache('type_model_'.$siteid,'search');
@@ -108,12 +108,12 @@ class index {
                         /**
                          * 如果表名为空，则为黄页模型
                          */
-                        if(emptyempty($this->content_db->model_tablename)) {
+                        if(empty($this->content_db->model_tablename)) {
                             $this->content_db = pc_base::load_model('yp_content_model');
                             $this->content_db->set_model($modelid);
 
                         }
-                        $datas = $this->content_db->select($where, '*');
+                        $datas = $this->content_db->select($where, '*', '', 'inputtime DESC');
                     }
                     $data = array_merge($data,$datas);
                 }
@@ -121,7 +121,7 @@ class index {
                 $totalnums = $this->db->number;
 
                 //如果分词结果为空
-                if(!emptyempty($segment_q)) {
+                if(!empty($segment_q)) {
                     $replace = explode(' ', $segment_q);
                     foreach($replace as $replace_arr_v) {
                         $replace_arr[] =  ''.$replace_arr_v.'';
