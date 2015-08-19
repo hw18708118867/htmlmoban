@@ -9,11 +9,7 @@
 				     <h2>按模板行业分类</h2>
                      <p class="pbutton sort clearfix">
                          <?php $n=1;if(is_array(get_tag_list())) foreach(get_tag_list() AS $tag) { ?>
-                         <?php if($key == $tag) { ?>
-                         <a class="select" title="<?php echo $tag;?>" href="<?php echo search_tag($catid,$tag,$color);?>"><?php echo $tag;?></a>
-                         <?php } else { ?>
                          <a title="<?php echo $tag;?>" href="<?php echo search_tag($catid,$tag,$color);?>"><?php echo $tag;?></a>
-                         <?php } ?>
                          <?php $n++;}unset($n); ?>
 					 </p>
 						 <h2>按模板颜色</h2>

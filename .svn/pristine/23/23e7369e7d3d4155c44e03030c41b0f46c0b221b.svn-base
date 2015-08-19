@@ -9,11 +9,7 @@
 				     <h2>按模板行业分类</h2>
                      <p class="pbutton sort clearfix">
                          {loop get_tag_list() $tag}
-                         {if $key == $tag}
-                         <a class="select" title="{$tag}" href="{search_tag($catid,$tag,$color)}">{$tag}</a>
-                         {else}
                          <a title="{$tag}" href="{search_tag($catid,$tag,$color)}">{$tag}</a>
-                         {/if}
                          {/loop}
 					 </p>
 						 <h2>按模板颜色</h2>

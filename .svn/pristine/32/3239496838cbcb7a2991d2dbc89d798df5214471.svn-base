@@ -1,0 +1,154 @@
+{template "content","header"}
+<link type="text/css" rel="stylesheet" href="{CSS_PATH}code.css">
+
+
+<div class="constr Main2 fix">
+
+    <div class="m_T1nl">
+					<span>
+						<div style="float: left;">
+                            当前位置：
+                        </div>
+
+						<a href="{siteurl($siteid)}">首页</a>
+
+						&gt;
+
+						{catpos($catid)}
+						{$title}
+					</span>
+    </div>
+
+
+</div>
+
+
+<div class="constr Main2 fix">
+
+
+    <div id="l1">
+        <div class="nav-left">
+            <dl>
+                <dt>常用工具<a href="/" target="_blank">&#8250;&#8250;</a></dt>
+                <dd><a href="/htmljs/" target="_blank">HTML/JS互转工具</a></dd>
+                <dd><a href="/daxiaoxie/" target="_blank">字母大小写转换工具</a></dd>
+                <dd><a href="/cssformat/" target="_blank">CSS代码格式化工具</a></dd>
+                <dd><a href="/jsformat/" target="_blank">JS/HTML格式化工具</a></dd>
+                <dd><a href="/fantizizhuanhuanqi/" target="_blank">繁体字转换器</a></dd>
+                <dd><a href="/huoxingwenzhuanhuanqi/" target="_blank">火星文转换器</a></dd>
+                <dd><a href="/software/tuxiang/6552.html" target="_blank">Color Cop取色软件</a></dd>
+                <dd><a href="/software/shiyong/6017.html" target="_blank">CSS样式图片下载助手</a></dd>
+                <dd><a href="/pinyin/" target="_blank">汉字转拼音工具</a></dd>
+            </dl>
+        </div>
+
+
+    </div>
+    <!-- /l1 -->
+
+    <div id="m">
+
+        <div class="slogan">
+            <span class="js"></span>
+
+            <div class="text">化繁为简，我们帮助您更好的运用代码。给你的代码都是选之又选，模板达人拒绝滥竽充数！<br/><a
+                    href="http://baike.baidu.com/view/2160733.htm" target="_blank">什么是JS代码？</a> 　<a
+                    href="http://baike.baidu.com/view/1020297.htm" target="_blank">什么是jquery？</a> 　<a
+                    href="http://baike.baidu.com/view/951383.htm" target="_blank">什么是HTML5？</a>
+            </div>
+        </div>
+        <div class="list-pngjs clearfix">
+            <dl>
+                {pc:content action="lists" catid="$catid" num="18" order="id DESC" page="$page"}
+                {loop $data $v}
+                <dd>
+                    <a href="{$v[url]}" target="_blank">
+                        <img alt="{$v[title]}" src="{$v[thumb]}"/>{$v[title]}
+                    </a>
+                    <span>{get_catname($v[catid])}</span>
+                </dd>
+                {/loop}
+                {/pc}
+            </dl>
+        </div>
+
+        <!--
+        <div class="dede_pages">
+             {$page}
+        </div>
+        -->
+
+
+    </div>
+    <!-- /m -->
+
+    <div id="r">
+
+        <div class="nav-sub">
+            <dl>
+                <dt class="jx"><span>广告代码</span>
+                <div></div>
+                <a href="/index.php?m=content&c=index&a=lists&catid=17">全部››</a></dt>
+                {pc:content action="category" catid="17" num="25" siteid="$siteid" order="listorder ASC"}
+                {loop $data $cat}
+                <dd><a href="{$cat[url]}">{$cat[catname]}</a></dd>
+                {/loop}
+                {/pc}
+            </dl>
+        </div>
+
+        <div class="nav-sub">
+            <dl>
+                <dt class="tx"><span>特效代码</span>
+                <div></div>
+                <a href="/index.php?m=content&c=index&a=lists&catid=30">全部››</a></dt>
+                {pc:content action="category" catid="30" num="25" siteid="$siteid" order="listorder ASC"}
+                {loop $data $cat}
+                <dd><a href="{$cat[url]}">{$cat[catname]}</a></dd>
+                {/loop}
+                {/pc}
+            </dl>
+        </div>
+
+        <div class="h">
+            {php $hits_tx = hits_moban('weekviews',$catid,14,5)}
+            <dl>
+                <dt>猜你也喜欢看这些 ······</dt>
+                {loop $hits_tx $v}
+                <dd>
+                    <a href="{$v[url]}">
+                        <p><img src="{$v[thumb]}" class="f" width="100px" height="50px"/></p>
+                        {$v[title]}
+                        <span class="l">{get_catname($v[catid])}</span>
+                        <span class="t">{date('Y-m-d',$v[inputtime])}</span>
+                    </a>
+                </dd>
+                {/loop}
+            </dl>
+        </div>
+
+        <div class="h">
+            <dl>
+                {php $data = get_tx_list(30,10,1);}
+                <dt>这些是最新的...</dt>
+                {loop $data $v}
+                <dd>
+                    <a href="{$v[url]}">
+                        <p><img src="{$v[thumb]}" class="f" height="50px" width="100px"/></p>
+                        {$v[title]}<span class="l">{get_catname($v[catid])}</span>
+                        <span class="t">{date('Y-m-d',$v[inputtime])}</span>
+                    </a>
+                </dd>
+                {/loop}
+            </dl>
+        </div>
+
+
+    </div>
+    <!-- /r -->
+
+
+</div>
+
+
+{template "content","footer"}

@@ -620,49 +620,49 @@
         <h2>按模板行业分类</h2>
 
         <p class="pbutton sort clearfix">
-                        <a title="企业模板" href="index.php?m=content&c=tags&a=init&catid=6&key=企业模板&color=&mid=12&area=&class=">企业模板</a>
-                        <a title="商务模板" href="index.php?m=content&c=tags&a=init&catid=6&key=商务模板&color=&mid=12&area=&class=">商务模板</a>
-                        <a title="博客模板" href="index.php?m=content&c=tags&a=init&catid=6&key=博客模板&color=&mid=12&area=&class=">博客模板</a>
-                        <a title="HTML5模板" href="index.php?m=content&c=tags&a=init&catid=6&key=HTML5模板&color=&mid=12&area=&class=">HTML5模板</a>
-                        <a title="CSS3模板" href="index.php?m=content&c=tags&a=init&catid=6&key=CSS3模板&color=&mid=12&area=&class=">CSS3模板</a>
-                        <a title="金融模板" href="index.php?m=content&c=tags&a=init&catid=6&key=金融模板&color=&mid=12&area=&class=">金融模板</a>
-                        <a title="科技模板" href="index.php?m=content&c=tags&a=init&catid=6&key=科技模板&color=&mid=12&area=&class=">科技模板</a>
-                        <a title="电脑模板" href="index.php?m=content&c=tags&a=init&catid=6&key=电脑模板&color=&mid=12&area=&class=">电脑模板</a>
-                        <a title="珠宝首饰模板" href="index.php?m=content&c=tags&a=init&catid=6&key=珠宝首饰模板&color=&mid=12&area=&class=">珠宝首饰模板</a>
-                        <a title="摄影模板" href="index.php?m=content&c=tags&a=init&catid=6&key=摄影模板&color=&mid=12&area=&class=">摄影模板</a>
-                        <a title="相册模板" href="index.php?m=content&c=tags&a=init&catid=6&key=相册模板&color=&mid=12&area=&class=">相册模板</a>
-                        <a title="婚嫁模板" href="index.php?m=content&c=tags&a=init&catid=6&key=婚嫁模板&color=&mid=12&area=&class=">婚嫁模板</a>
-                        <a title="商城模板" href="index.php?m=content&c=tags&a=init&catid=6&key=商城模板&color=&mid=12&area=&class=">商城模板</a>
-                        <a title="餐饮模板" href="index.php?m=content&c=tags&a=init&catid=6&key=餐饮模板&color=&mid=12&area=&class=">餐饮模板</a>
-                        <a title="酒店模板" href="index.php?m=content&c=tags&a=init&catid=6&key=酒店模板&color=&mid=12&area=&class=">酒店模板</a>
-                        <a title="旅游模板" href="index.php?m=content&c=tags&a=init&catid=6&key=旅游模板&color=&mid=12&area=&class=">旅游模板</a>
-                        <a title="体育模板" href="index.php?m=content&c=tags&a=init&catid=6&key=体育模板&color=&mid=12&area=&class=">体育模板</a>
-                        <a title="交友模板" href="index.php?m=content&c=tags&a=init&catid=6&key=交友模板&color=&mid=12&area=&class=">交友模板</a>
-                        <a title="美容模板" href="index.php?m=content&c=tags&a=init&catid=6&key=美容模板&color=&mid=12&area=&class=">美容模板</a>
-                        <a title="会所模板" href="index.php?m=content&c=tags&a=init&catid=6&key=会所模板&color=&mid=12&area=&class=">会所模板</a>
-                        <a title="医疗模板" href="index.php?m=content&c=tags&a=init&catid=6&key=医疗模板&color=&mid=12&area=&class=">医疗模板</a>
-                        <a title="美容模板" href="index.php?m=content&c=tags&a=init&catid=6&key=美容模板&color=&mid=12&area=&class=">美容模板</a>
-                        <a title="宠物模板" href="index.php?m=content&c=tags&a=init&catid=6&key=宠物模板&color=&mid=12&area=&class=">宠物模板</a>
-                        <a title="汽车模板" href="index.php?m=content&c=tags&a=init&catid=6&key=汽车模板&color=&mid=12&area=&class=">汽车模板</a>
-                        <a title="建筑模板" href="index.php?m=content&c=tags&a=init&catid=6&key=建筑模板&color=&mid=12&area=&class=">建筑模板</a>
-                        <a title="学校模板" href="index.php?m=content&c=tags&a=init&catid=6&key=学校模板&color=&mid=12&area=&class=">学校模板</a>
-                        <a title="咖啡模板" href="index.php?m=content&c=tags&a=init&catid=6&key=咖啡模板&color=&mid=12&area=&class=">咖啡模板</a>
-                        <a title="简历模板" href="index.php?m=content&c=tags&a=init&catid=6&key=简历模板&color=&mid=12&area=&class=">简历模板</a>
+                        <a title="企业模板" href="index.php?m=content&c=tags&a=init&catid=&key=企业模板&color=&mid=12&area=&class=">企业模板</a>
+                        <a title="商务模板" href="index.php?m=content&c=tags&a=init&catid=&key=商务模板&color=&mid=12&area=&class=">商务模板</a>
+                        <a title="博客模板" href="index.php?m=content&c=tags&a=init&catid=&key=博客模板&color=&mid=12&area=&class=">博客模板</a>
+                        <a title="HTML5模板" href="index.php?m=content&c=tags&a=init&catid=&key=HTML5模板&color=&mid=12&area=&class=">HTML5模板</a>
+                        <a title="CSS3模板" href="index.php?m=content&c=tags&a=init&catid=&key=CSS3模板&color=&mid=12&area=&class=">CSS3模板</a>
+                        <a title="金融模板" href="index.php?m=content&c=tags&a=init&catid=&key=金融模板&color=&mid=12&area=&class=">金融模板</a>
+                        <a title="科技模板" href="index.php?m=content&c=tags&a=init&catid=&key=科技模板&color=&mid=12&area=&class=">科技模板</a>
+                        <a title="电脑模板" href="index.php?m=content&c=tags&a=init&catid=&key=电脑模板&color=&mid=12&area=&class=">电脑模板</a>
+                        <a title="珠宝首饰模板" href="index.php?m=content&c=tags&a=init&catid=&key=珠宝首饰模板&color=&mid=12&area=&class=">珠宝首饰模板</a>
+                        <a title="摄影模板" href="index.php?m=content&c=tags&a=init&catid=&key=摄影模板&color=&mid=12&area=&class=">摄影模板</a>
+                        <a title="相册模板" href="index.php?m=content&c=tags&a=init&catid=&key=相册模板&color=&mid=12&area=&class=">相册模板</a>
+                        <a title="婚嫁模板" href="index.php?m=content&c=tags&a=init&catid=&key=婚嫁模板&color=&mid=12&area=&class=">婚嫁模板</a>
+                        <a title="商城模板" href="index.php?m=content&c=tags&a=init&catid=&key=商城模板&color=&mid=12&area=&class=">商城模板</a>
+                        <a title="餐饮模板" href="index.php?m=content&c=tags&a=init&catid=&key=餐饮模板&color=&mid=12&area=&class=">餐饮模板</a>
+                        <a title="酒店模板" href="index.php?m=content&c=tags&a=init&catid=&key=酒店模板&color=&mid=12&area=&class=">酒店模板</a>
+                        <a title="旅游模板" href="index.php?m=content&c=tags&a=init&catid=&key=旅游模板&color=&mid=12&area=&class=">旅游模板</a>
+                        <a title="体育模板" href="index.php?m=content&c=tags&a=init&catid=&key=体育模板&color=&mid=12&area=&class=">体育模板</a>
+                        <a title="交友模板" href="index.php?m=content&c=tags&a=init&catid=&key=交友模板&color=&mid=12&area=&class=">交友模板</a>
+                        <a title="美容模板" href="index.php?m=content&c=tags&a=init&catid=&key=美容模板&color=&mid=12&area=&class=">美容模板</a>
+                        <a title="会所模板" href="index.php?m=content&c=tags&a=init&catid=&key=会所模板&color=&mid=12&area=&class=">会所模板</a>
+                        <a title="医疗模板" href="index.php?m=content&c=tags&a=init&catid=&key=医疗模板&color=&mid=12&area=&class=">医疗模板</a>
+                        <a title="美容模板" href="index.php?m=content&c=tags&a=init&catid=&key=美容模板&color=&mid=12&area=&class=">美容模板</a>
+                        <a title="宠物模板" href="index.php?m=content&c=tags&a=init&catid=&key=宠物模板&color=&mid=12&area=&class=">宠物模板</a>
+                        <a title="汽车模板" href="index.php?m=content&c=tags&a=init&catid=&key=汽车模板&color=&mid=12&area=&class=">汽车模板</a>
+                        <a title="建筑模板" href="index.php?m=content&c=tags&a=init&catid=&key=建筑模板&color=&mid=12&area=&class=">建筑模板</a>
+                        <a title="学校模板" href="index.php?m=content&c=tags&a=init&catid=&key=学校模板&color=&mid=12&area=&class=">学校模板</a>
+                        <a title="咖啡模板" href="index.php?m=content&c=tags&a=init&catid=&key=咖啡模板&color=&mid=12&area=&class=">咖啡模板</a>
+                        <a title="简历模板" href="index.php?m=content&c=tags&a=init&catid=&key=简历模板&color=&mid=12&area=&class=">简历模板</a>
                     </p>
 
         <h2>按模板颜色</h2>
 
         <p class="pbutton color clearfix">
-            <a class="c1" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=红色&mid=12&area=&class=">红色</a>
-            <a class="c2" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=橙色&mid=12&area=&class=">橙色</a>
-            <a class="c3" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=黄色&mid=12&area=&class=">黄色</a>
-            <a class="c4" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=绿色&mid=12&area=&class=">绿色</a>
-            <a class="c5" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=蓝色&mid=12&area=&class=">蓝色</a>
-            <a class="c6" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=灰色&mid=12&area=&class=">灰色</a>
-            <a class="c7" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=黑色&mid=12&area=&class=">黑色</a>
-            <a class="c8" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=紫色&mid=12&area=&class=">紫色</a>
-            <a class="c9" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=棕色&mid=12&area=&class=">棕色</a>
-            <a class="c10" href="index.php?m=content&c=tags&a=init&catid=6&key=&color=彩色&mid=12&area=&class=">彩色</a>
+            <a class="c1" href="index.php?m=content&c=tags&a=init&catid=&key=&color=红色&mid=12&area=&class=">红色</a>
+            <a class="c2" href="index.php?m=content&c=tags&a=init&catid=&key=&color=橙色&mid=12&area=&class=">橙色</a>
+            <a class="c3" href="index.php?m=content&c=tags&a=init&catid=&key=&color=黄色&mid=12&area=&class=">黄色</a>
+            <a class="c4" href="index.php?m=content&c=tags&a=init&catid=&key=&color=绿色&mid=12&area=&class=">绿色</a>
+            <a class="c5" href="index.php?m=content&c=tags&a=init&catid=&key=&color=蓝色&mid=12&area=&class=">蓝色</a>
+            <a class="c6" href="index.php?m=content&c=tags&a=init&catid=&key=&color=灰色&mid=12&area=&class=">灰色</a>
+            <a class="c7" href="index.php?m=content&c=tags&a=init&catid=&key=&color=黑色&mid=12&area=&class=">黑色</a>
+            <a class="c8" href="index.php?m=content&c=tags&a=init&catid=&key=&color=紫色&mid=12&area=&class=">紫色</a>
+            <a class="c9" href="index.php?m=content&c=tags&a=init&catid=&key=&color=棕色&mid=12&area=&class=">棕色</a>
+            <a class="c10" href="index.php?m=content&c=tags&a=init&catid=&key=&color=彩色&mid=12&area=&class=">彩色</a>
         </p>
     </div>
 </div>
@@ -694,7 +694,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        13                    </li>
+                        0                    </li>
 
                 </ul>
             </div>
@@ -731,7 +731,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        14                    </li>
+                        13                    </li>
 
                 </ul>
             </div>

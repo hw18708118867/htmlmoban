@@ -1,4 +1,4 @@
-<?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><?php include template("content","header"); ?>
+{template "content","header"}
 
 
 <div class="constr Main2 fix">
@@ -168,28 +168,29 @@
 
 </div>
 
-<!--<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=132335f99fcf4a0ddd78b4f4e1cd12b9&action=position&posid=1&order=listorder+DESC&thumb=1&num=5\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'position')) {$data = $content_tag->position(array('posid'=>'1','order'=>'listorder DESC','thumb'=>'1','limit'=>'5',));}?>-->
-<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=47be4b449f8cebe53e973775963faded&sql=SELECT+setting+FROM+mb_poster+WHERE+spaceid+%3D+11+AND+type%3D%27images%27+AND+disabled%3D0+ORDER+BY+listorder+ASC&num=4\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT setting FROM mb_poster WHERE spaceid = 11 AND type='images' AND disabled=0 ORDER BY listorder ASC LIMIT 4");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$data = $a;unset($a);?>
+<!--{pc:content action="position" posid="1" order="listorder DESC" thumb="1" num="5"}-->
+{pc:get sql="SELECT setting FROM mb_poster WHERE spaceid = 11 AND type='images' AND disabled=0 ORDER BY listorder ASC"
+num="4"}
 <div id="demoContent">
     <div id="inbanad">
         <ul id="inbanimg">
-            <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+            {loop $data $v}
             <?php $focus = string2array($v[setting]);?>
             <li>
-                <a rel="nofollow" href="<?php echo $focus['1']['linkurl'];?>" title="<?php echo $focus['1']['alt'];?>" target="_blank">
-                    <img alt="<?php echo $focus['1']['alt'];?>" src="<?php echo $focus['1']['imageurl'];?>" width="695" height="250"/>
+                <a rel="nofollow" href="{$focus[1][linkurl]}" title="{$focus[1][alt]}" target="_blank">
+                    <img alt="{$focus[1][alt]}" src="{$focus[1][imageurl]}" width="695" height="250"/>
                 </a>
             </li>
-            <?php $n++;}unset($n); ?>
+            {/loop}
         </ul>
         <ul id="inbannum">
-            <?php $i = 1?>
-            <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+            {php $i = 1}
+            {loop $data $v}
             <li
-            <?php echo ($i == 1) ? 'class="hover"' : ''?>>
-            <?php echo $i++?>
+            {php echo ($i == 1) ? 'class="hover"' : ''}>
+            {php echo $i++}
             </li>
-            <?php $n++;}unset($n); ?>
+            {/loop}
         </ul>
     </div>
     <script type="text/javascript">
@@ -323,52 +324,52 @@
         <h2>按模板行业分类</h2>
 
         <p class="pbutton sort clearfix">
-            <?php $n=1;if(is_array(get_tag_list())) foreach(get_tag_list() AS $tag) { ?>
-            <a title="<?php echo $tag;?>" href="<?php echo search_tag(6,$tag);?>"><?php echo $tag;?></a>
-            <?php $n++;}unset($n); ?>
+            {loop get_tag_list() $tag}
+            <a title="{$tag}" href="{search_tag('',$tag)}">{$tag}</a>
+            {/loop}
         </p>
 
         <h2>按模板颜色</h2>
 
         <p class="pbutton color clearfix">
-            <a class="c1" href="<?php echo search_tag(6,'','红色');?>">红色</a>
-            <a class="c2" href="<?php echo search_tag(6,'','橙色');?>">橙色</a>
-            <a class="c3" href="<?php echo search_tag(6,'','黄色');?>">黄色</a>
-            <a class="c4" href="<?php echo search_tag(6,'','绿色');?>">绿色</a>
-            <a class="c5" href="<?php echo search_tag(6,'','蓝色');?>">蓝色</a>
-            <a class="c6" href="<?php echo search_tag(6,'','灰色');?>">灰色</a>
-            <a class="c7" href="<?php echo search_tag(6,'','黑色');?>">黑色</a>
-            <a class="c8" href="<?php echo search_tag(6,'','紫色');?>">紫色</a>
-            <a class="c9" href="<?php echo search_tag(6,'','棕色');?>">棕色</a>
-            <a class="c10" href="<?php echo search_tag(6,'','彩色');?>">彩色</a>
+            <a class="c1" href="{search_tag('','','红色')}">红色</a>
+            <a class="c2" href="{search_tag('','','橙色')}">橙色</a>
+            <a class="c3" href="{search_tag('','','黄色')}">黄色</a>
+            <a class="c4" href="{search_tag('','','绿色')}">绿色</a>
+            <a class="c5" href="{search_tag('','','蓝色')}">蓝色</a>
+            <a class="c6" href="{search_tag('','','灰色')}">灰色</a>
+            <a class="c7" href="{search_tag('','','黑色')}">黑色</a>
+            <a class="c8" href="{search_tag('','','紫色')}">紫色</a>
+            <a class="c9" href="{search_tag('','','棕色')}">棕色</a>
+            <a class="c10" href="{search_tag('','','彩色')}">彩色</a>
         </p>
     </div>
 </div>
 <div class="cell inline_box fix tj m_Grid1">
 
     <?php $i=1;?>
-    <?php $n=1;if(is_array(get_moban_list())) foreach(get_moban_list() AS $r) { ?>
-    <?php if($i%3 != 0) { ?>
+    {loop get_moban_list() $r}
+    {if $i%3 != 0}
     <div class="post-home">
-        <?php } else { ?>
+        {else}
         <div class="post-home last">
-            <?php } ?>
+            {/if}
             <div class="post-thumbnail">
-                <a target="_blank" href="<?php echo $r['url'];?>" class="inimg">
-                    <img width="285" height="185" alt="<?php echo $r['title'];?>" src="<?php echo $r['thumb'];?>"></a>
+                <a target="_blank" href="{$r[url]}" class="inimg">
+                    <img width="285" height="185" alt="{$r[title]}" src="{$r[thumb]}"></a>
 
                 <div style="display: none;" class="img_title">
-                    <a target="_blank" title="<?php echo $r['title'];?>" href="<?php echo $r['url'];?>">
-                        <?php echo $r['description'];?>
+                    <a target="_blank" title="{$r[title]}" href="{$r[url]}">
+                        {$r[description]}
                     </a></div>
             </div>
             <!--end .post-thumbnail -->
             <div class="post-info">
                 <ul class="title">
-                    <a target="_blank" title="<?php echo $r['title'];?>" href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a></ul>
+                    <a target="_blank" title="{$r[title]}" href="{$r[url]}">{$r[title]}</a></ul>
                 <ul class="others">
                     <li class="in_category">
-                        <?php echo date('Y-m-d',$r[inputtime]);?>
+                        {date('Y-m-d',$r[inputtime])}
                     </li>
                     <li class="likes">
                                 <span class="wpfp-span">
@@ -380,7 +381,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        <?php echo get_hits(12,$r[id]);?>
+                        {get_hits(12,$r[id])}
                     </li>
 
                 </ul>
@@ -388,12 +389,12 @@
             <div class="citemqt citemfoot">
                 <div class="citemzl">
                     <a rel="nofollow" href="#" class="citemfimg">
-                        <img width="24" height="24" src="<?php echo IMG_PATH;?>list_icon.jpg"><?php echo do_str($r[tag]);?></a>
+                        <img width="24" height="24" src="{IMG_PATH}list_icon.jpg">{do_str($r[tag])}</a>
                 </div>
             </div>
         </div>
         <?php $i++;?>
-        <?php $n++;}unset($n); ?>
+        {/loop}
     </div>
 
     <div class="clear">
@@ -450,7 +451,7 @@
     </div>
     <div class="AD_1080_1">
         <a target="_blank" rel="nofollow" href="javascript:;">
-            <img src="<?php echo IMG_PATH;?>adin1080.jpg" width="1200" alt="wordpress主题推荐">
+            <img src="{IMG_PATH}adin1080.jpg" width="1200" alt="wordpress主题推荐">
         </a>
     </div>
 </div>
@@ -489,35 +490,35 @@
                     <div class="block move-span" id="portal_block_200">
                         <div class="dxb_bc" id="portal_block_200_content">
                             <div class="module cl xld">
-                                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=34df84ed45a37750e6879939d49f8289&action=lists&catid=46&num=4&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'46','order'=>'id DESC','moreinfo'=>'1','limit'=>'4',));}?>
+                                {pc:content action="lists" catid="46" num="4" order="id DESC" moreinfo="1"}
                                 <ul class="m_Box2">
-                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                    {loop $data $v}
                                     <li>
-                                        <a title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>" rel="nofollow">
-                                            <img width="156" height="96" class="wp-post-image" alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>">
+                                        <a title="{$v[title]}" href="{$v[url]}" rel="nofollow">
+                                            <img width="156" height="96" class="wp-post-image" alt="{$v[title]}" src="{$v[thumb]}">
                                         </a>
                                         <p>
-                                            <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
-                                                <?php echo $v['title'];?>
+                                            <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+                                                {$v[title]}
                                             </a>
                                         </p>
                                     </li>
-                                    <?php $n++;}unset($n); ?>
+                                    {/loop}
                                 </ul>
-                                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-                                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=d81f2d355885f4293bc323d62a44c40a&action=lists&catid=47&num=12&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'47','order'=>'id DESC','moreinfo'=>'1','limit'=>'12',));}?>
+                                {/pc}
+                                {pc:content action="lists" catid="47" num="12" order="id DESC" moreinfo="1"}
                                 <ul class="m_Box3">
-                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                    {loop $data $v}
                                     <li>
-                                        <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
-                                            <?php echo $v['title'];?>
+                                        <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+                                            {$v[title]}
                                         </a>
                                     </li>
-                                    <?php $n++;}unset($n); ?>
+                                    {/loop}
                                     <div class="clear">
                                     </div>
                                 </ul>
-                                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+                                {/pc}
                             </div>
                         </div>
                     </div>
@@ -560,35 +561,35 @@
                     <div id="portal_block_200" class="block move-span">
                         <div id="portal_block_200_content" class="dxb_bc">
                             <div class="module cl xld">
-                                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=a98c4adf8c48af52d0d36c9058af0ea2&action=lists&catid=44&num=4&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'44','order'=>'id DESC','moreinfo'=>'1','limit'=>'4',));}?>
+                                {pc:content action="lists" catid="44" num="4" order="id DESC" moreinfo="1"}
                                 <ul class="m_Box2">
-                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                    {loop $data $v}
                                     <li>
-                                        <a title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>" rel="nofollow">
-                                            <img width="156" height="96" class="wp-post-image" alt="<?php echo $v['title'];?>" src="<?php echo $v['thumb'];?>">
+                                        <a title="{$v[title]}" href="{$v[url]}" rel="nofollow">
+                                            <img width="156" height="96" class="wp-post-image" alt="{$v[title]}" src="{$v[thumb]}">
                                         </a>
                                         <p>
-                                            <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
-                                                <?php echo $v['title'];?>
+                                            <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+                                                {$v[title]}
                                             </a>
                                         </p>
                                     </li>
-                                    <?php $n++;}unset($n); ?>
+                                    {/loop}
                                 </ul>
-                                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-                                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=0dbba9f860baf108fb6e0eb10950c242&action=lists&catid=45&num=12&order=id+DESC&moreinfo=1\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'45','order'=>'id DESC','moreinfo'=>'1','limit'=>'12',));}?>
+                                {/pc}
+                                {pc:content action="lists" catid="45" num="12" order="id DESC" moreinfo="1"}
                                 <ul class="m_Box3">
-                                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                                    {loop $data $v}
                                     <li>
-                                        <a target="_blank" title="<?php echo $v['title'];?>" href="<?php echo $v['url'];?>">
-                                            <?php echo $v['title'];?>
+                                        <a target="_blank" title="{$v[title]}" href="{$v[url]}">
+                                            {$v[title]}
                                         </a>
                                     </li>
-                                    <?php $n++;}unset($n); ?>
+                                    {/loop}
                                     <div class="clear">
                                     </div>
                                 </ul>
-                                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+                                {/pc}
                             </div>
                         </div>
                     </div>
@@ -718,4 +719,4 @@
 </div>
 </div>
 
-<?php include template("content","footer"); ?>
+{template "content","footer"}
