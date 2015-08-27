@@ -232,7 +232,7 @@ return array (
     'parentdir' => '',
     'catdir' => 'wangyemoban',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6',
-    'items' => '17',
+    'items' => '18',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

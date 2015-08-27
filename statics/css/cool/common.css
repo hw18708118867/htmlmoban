@@ -930,6 +930,14 @@ body { color: #666; background:#f6f6f6; font-family:'Microsoft Yahei','Arail'; f
   margin-top:5px;
   float:left;
 }
+.word a:hover{
+    font-weight: 600;
+    color: red;
+}
+.word .select{
+    font-weight: 600;
+    color: red;
+}
 
 .nav-mo {
   float: left;

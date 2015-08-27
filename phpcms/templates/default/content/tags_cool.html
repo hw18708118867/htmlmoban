@@ -69,26 +69,38 @@
                 <a title="棕色" href="{search_tag($catid,$key,'棕色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509505195.jpg"></a>
                 <a title="彩色" href="{search_tag($catid,$key,'彩色',13,$area,$class)}"><img border="0" style="padding-top:4px;" src="{IMG_PATH}icon/2013022509510222.jpg"></a>
             </div>
-            <div class="paixu">
+            <div class="paixu word">
                 <h1>按行业：</h1>
                 <a class="red" href="{search_tag($catid,'',$color,13,$area,$class)}">全部</a>
                 {loop get_tag_list(180) $tag}
+                {if $key == $tag}
+                <a class="select" href="{search_tag($catid,$tag,$color,13,$area,$class)}">{$tag}</a>
+                {else}
                 <a href="{search_tag($catid,$tag,$color,13,$area,$class)}">{$tag}</a>
+                {/if}
                 {/loop}
             </div>
 
-            <div class="paixu">
+            <div class="paixu word">
                 <h1>按地区：</h1>
                 <a class="red" href="{search_tag($catid,$key,$color,13,'',$class)}">全部</a>
                 {loop get_tag_list(181) $tag}
+                {if $area == $tag}
+                <a class="select" href="{search_tag($catid,$key,$color,13,$tag,$class)}">{$tag}酷站</a>
+                {else}
                 <a href="{search_tag($catid,$key,$color,13,$tag,$class)}">{$tag}酷站</a>
+                {/if}
                 {/loop}
             </div>
-            <div class="paixu">
+            <div class="paixu word">
                 <h1>按类别：</h1>
                 <a class="red" href="{search_tag($catid,$key,$color,13,$area,'')}">全部</a>
                 {loop get_tag_list(182) $tag}
+                {if $class == $tag}
+                <a class="select" href="{search_tag($catid,$key,$color,13,$area,$tag)}">{$tag}酷站</a>
+                {else}
                 <a href="{search_tag($catid,$key,$color,13,$area,$tag)}">{$tag}酷站</a>
+                {/if}
                 {/loop}
             </div>
 

@@ -200,10 +200,14 @@
     <div class="nr_show">
 
         <p class="pns mbm bugbot" style=" height:48px; line-height:48px;">
+            <?php $n=1;if(is_array($down_url)) foreach($down_url AS $r) { ?>
+            <?php echo $r;?>
+
+            <?php $n++;}unset($n); ?>
             <a target="_blank" class="orangebot"
-               href="<?php echo APP_PATH;?>index.php?m=content&c=readpoint&allow_visitor=<?php echo $allow_visitor;?>" rel="nofollow">代码演示</a>
+               href="<?php echo $demo_url;?>" rel="nofollow">代码演示</a>
             &nbsp;
-            <a href="javascript:;" onclick="window.open('/demo.php?url=<?php echo $demo_url;?>')" class="greenbot" rel="nofollow">代码下载</a>
+            <!--<a href="javascript:;" onclick="window.open('/demo.php?url=<?php echo $demo_url;?>')" class="greenbot" rel="nofollow">代码下载</a>-->
         </p>
     </div>
     <div class="clear">
@@ -211,43 +215,11 @@
 </div>
 <div class="m_T11">
 </div>
-
+<!--
 <div class="m_Box17">
-    <p>
-                        <span>
-                            注意事项：
-                        </span>
-    </p>
-
-    <p>
-        <label>
-            因为主题是虚拟商品，具有可复制性，可传播性，版权原因，一旦授予，不可退款。
-        </label>
-    </p>
-
-    <p>
-        1.大家在使用wordpress主题的时候请尊重主题作者的劳动成果和版权标识！
-    </p>
-
-    <p>
-        2.本站主要以分享主题为主,销售和定制主题为辅,也相当于是做一件授人玫瑰,手留余香的事；请各位尊重我们！
-    </p>
-
-    <p>
-        3.免费wordpress主题在使用中遇到的问题大家可以去
-        <a style="color: #419900;" target="_blank" href="javascript:;">
-            站长交流中心
-        </a>
-        进行交流或者加群：153526824 请求大家的帮助！
-    </p>
-
-    <p>
-        4.请WP小白们注意，不是任何主题一安装后就可以展现出完美效果的，是需要设置/修改的（特别是国外主题，设置相当复杂），不要因为自己的不会用而怪罪、埋怨到主题作者/本站头上！
-    </p>
-
     <div class="clear">
     </div>
-</div>
+</div>-->
 <?php $relation_tx = get_relation_moban('', $id, $catid, 14)?>
 <?php if(count($relation_tx)>0) { ?>
 <div class="m_Boxxg">

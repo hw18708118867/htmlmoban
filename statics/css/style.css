@@ -3112,7 +3112,7 @@ a.aimg:hover em {
   margin-bottom: 16px;
   margin-left: 2px;
 }
-.pbutton a:hover{text-decoration:none;text-shadow:0 1px 0 rgba(0, 0, 0, 0.22);background-color:#3081d9;border-color:#4ba6e5;color:#fff}
+.pbutton a:hover{text-decoration:none;text-shadow:0 1px 0 rgba(0, 0, 0, 0.22);background-color:#3081d9;border-color:#4ba6e5;color:#fff;}
 .pbutton .select{text-decoration:none;text-shadow:0 1px 0 rgba(0, 0, 0, 0.22);background-color:#3081d9;border-color:#4ba6e5;color:#fff}
 .pbutton
 a{display:inline-block;overflow:hidden;width:66px;height:30px;line-height:30px;font-size:12px;text-align:center;color:#555;font-family:"microsoft yahei";font-weight:100;word-wrap:break-word;white-space:nowrap;float:left;margin:9px
@@ -3182,7 +3182,8 @@ solid #000}.side-group .color .c8{background:#b459d4;border:1px
 solid #a14ac0}.side-group .color .c9{background:#74480d;border:1px
 solid #663f0a}.side-group .color .c10{background:#7b76b7;border:1px
 solid #716caf}
-
+.side-group .color a:hover{border: 2px solid #009FF9; font-size: 18px;}
+.side-group .color .select{border: 2px solid #009FF9; font-size: 18px;}
 .bugbot {
 	margin:8px 0px;
 }

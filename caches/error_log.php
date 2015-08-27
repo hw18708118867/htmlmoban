@@ -6636,3 +6636,5 @@
 <?php exit;?>07-20 17:17:36 | 2 | fsockopen() [<a href='function.fsockopen'>function.fsockopen</a>]: unable to connect to juhe.gcvideo.cn:80 (php_network_getaddresses: getaddrinfo failed: 不知道这样的主机。 ) | phpcms\libs\classes\http.class.php | 84
 <?php exit;?>07-21 16:37:13 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>07-21 16:37:42 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>08-22 13:22:43 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>08-22 13:24:33 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70

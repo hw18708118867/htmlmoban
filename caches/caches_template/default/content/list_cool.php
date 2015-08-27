@@ -1,7 +1,7 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><!doctype html>
 <html lang="zh-cn">
 <head>
-    <title> dpcool店铺酷 电商设计灵感酷，电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏 </title>
+    <title> 酷站欣赏 </title>
     <meta charset="utf-8"/>
     <meta name="description" content="电商设计灵感酷 "/>
     <meta name="keywords" content="电商设计，电商交流，电商设计师，店铺设计，淘宝店装修，店铺欣赏电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏、"/>
@@ -26,7 +26,7 @@
 <div id="wrap">
     <div id="header">
         <div class="header_con">
-            <div id="logo"><a title="" href="javascript:;"></a></div>
+                <div id="logo"><a title="" href="javascript:;"></a></div>
             <div class="nav">
                 <ul>
                     <li><a href="/">首页</a></li>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div id="article">
-            <div class="paixu">
+            <div class="paixu color">
                 <h1>按颜色：</h1>
                 <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
                 <a title="红色" href="<?php echo search_tag($catid,'','红色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509484077.jpg"></a>
@@ -69,7 +69,7 @@
                 <a title="棕色" href="<?php echo search_tag($catid,'','棕色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509505195.jpg"></a>
                 <a title="彩色" href="<?php echo search_tag($catid,'','彩色',13);?>"><img border="0" style="padding-top:4px;" src="<?php echo IMG_PATH;?>icon/2013022509510222.jpg"></a>
             </div>
-            <div class="paixu">
+            <div class="paixu word">
                 <h1>按行业：</h1>
                 <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
                 <?php $n=1;if(is_array(get_tag_list(180))) foreach(get_tag_list(180) AS $tag) { ?>
@@ -77,14 +77,14 @@
                 <?php $n++;}unset($n); ?>
             </div>
 
-            <div class="paixu">
+            <div class="paixu word">
                 <h1>按地区：</h1>
                 <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
                 <?php $n=1;if(is_array(get_tag_list(181))) foreach(get_tag_list(181) AS $tag) { ?>
                 <a href="<?php echo search_tag($catid,'','',13,$tag);?>"><?php echo $tag;?>酷站</a>
                 <?php $n++;}unset($n); ?>
             </div>
-            <div class="paixu">
+            <div class="paixu word">
                 <h1>按类别：</h1>
                 <a class="red" href="<?php echo search_tag($catid,'','',13);?>">全部</a>
                 <?php $n=1;if(is_array(get_tag_list(182))) foreach(get_tag_list(182) AS $tag) { ?>
