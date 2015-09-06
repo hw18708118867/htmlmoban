@@ -22,13 +22,29 @@
 			 
 			</script>
 			<![endif]-->
+        <script type="text/javascript">
+            function AddFavorite(sURL, sTitle) {
+                sURL = encodeURI(sURL);
+                try {
+                    window.external.addFavorite(sURL, sTitle);
+                } catch (e) {
+                    try {
+                        window.sidebar.addPanel(sTitle, sURL, "");
+                    } catch (e) {
+                        alert("加入收藏失败,请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+                    }
+                }
+            }
+        </script>
     </head>
     
     <body class="zzt2014" screen_capture_injected="true">
 <div class="header">
 
 
-<div class="Topbox"><div class="Top"><span>国内WP交流群: / 付费指导技术群：<a title="收藏爱找主题方便以后访问！" rel="nofollow" onclick="addBookmark();" href="javascript:void(0);">收藏我们</a></span>模板达人（www.htmlmoban.net），专注于分享国内免费的模板下载！</div></div>
+<div class="Topbox"><div class="Top"><span>国内WP交流群: / 付费指导技术群：
+    <a title="收藏爱找主题方便以后访问！" rel="nofollow" onclick="AddFavorite('www.htmlmoban.net','模板达人');" href="javascript:void(0);">收藏我们</a>
+</span>模板达人（www.htmlmoban.net），专注于分享国内免费的模板下载！</div></div>
 
 
   <div class="topM sline fix">
@@ -328,7 +344,7 @@
     </dl>
     <dl class="navM2">
         <dd>
-            <h2><a href="#">图片设计素材</a></h2>
+            <!--<h2><a href="#">图片设计素材</a></h2>
 
             <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
                                                                                           href="">菜单导航</a><a
@@ -352,7 +368,7 @@
                 <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
                 <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
                 <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-            </ul>
+            </ul>-->
         </dd>
         <dt>图片设计素材</dt>
     </dl>
@@ -447,7 +463,7 @@
     </dl>
     <dl class="navM5">
         <dd>
-            <h2><a href="#">插件模块、工具</a></h2>
+            <!--<h2><a href="#">插件模块、工具</a></h2>
 
             <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
                                                                                           href="">菜单导航</a><a
@@ -471,9 +487,7 @@
                 <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
                 <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
                 <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-
-
-            </ul>
+            </ul>-->
         </dd>
         <dt>插件模块、工具</dt>
     </dl>
@@ -567,7 +581,6 @@
         $(".tab-content > div").eq($('.tab-title span').index(this)).show().siblings().hide()
     });
 </script>
-
 
 <div class="sidebar-tab FR">
     <div class="post-home-r clearfix" id="index_tool">
@@ -725,7 +738,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        29                    </li>
+                        30                    </li>
 
                 </ul>
             </div>
@@ -762,7 +775,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        15                    </li>
+                        19                    </li>
 
                 </ul>
             </div>
@@ -799,7 +812,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        15                    </li>
+                        17                    </li>
 
                 </ul>
             </div>
@@ -836,7 +849,7 @@
                         <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
                            href="javascript:;" title="">8</a></li>
                     <li class="views">
-                        29                    </li>
+                        31                    </li>
 
                 </ul>
             </div>
@@ -1466,7 +1479,11 @@
 <div class="main-info">
     <dl>
         <dt>找了那么久，是否找到合适的主题了？</dt>
-        <dd>不妨把你的想法跟我们说说看呢？<a target="_blank" class="showbox" href="" rel="nofollow">联系我们</a></dd>
+        <dd>不妨把你的想法跟我们说说看呢？
+            <a target="_blank" class="showbox" href="http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes">
+                联系我们
+            </a>
+        </dd>
     </dl>
 </div>
 </div>
@@ -1482,7 +1499,7 @@
             <ul class="dmenu" id="menu-ifanr-footer-1">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5741"
                 id="menu-item-5741">
-                    <a href="/theme-customization" target="_blank">
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes">
                         主题定制
                     </a>
                 </li>

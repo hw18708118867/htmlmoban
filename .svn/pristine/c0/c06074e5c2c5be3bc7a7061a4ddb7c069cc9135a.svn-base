@@ -1,0 +1,375 @@
+{template "content","header"}
+
+
+<div class="Main2 constr  fix">
+<div class="m_T1nl">
+					<span>
+						<div style="float: left;">
+                            当前位置：
+                        </div>
+
+						<a href="{siteurl($siteid)}">首页</a>
+						&gt;
+						{catpos($catid)}
+						{$title}
+					</span>
+</div>
+
+
+<div class="m_Right1 FR" style="margin-left:10px">
+    <div class="n_Grid4">
+
+
+        <div class="nav-sub">
+            <dl>
+                <dt class="jx"><span>广告代码</span>
+                <div></div>
+                <a href="/index.php?m=content&c=index&a=lists&catid=17">全部››</a></dt>
+                {pc:content action="category" catid="17" num="25" siteid="$siteid" order="listorder ASC"}
+                {loop $data $cat}
+                <dd><a href="{$cat[url]}">{$cat[catname]}</a></dd>
+                {/loop}
+                {/pc}
+            </dl>
+        </div>
+
+        <div class="nav-sub">
+            <dl>
+                <dt class="tx"><span>特效代码</span>
+                <div></div>
+                <a href="/index.php?m=content&c=index&a=lists&catid=30">全部››</a></dt>
+                {pc:content action="category" catid="30" num="25" siteid="$siteid" order="listorder ASC"}
+                {loop $data $cat}
+                <dd><a href="{$cat[url]}">{$cat[catname]}</a></dd>
+                {/loop}
+                {/pc}
+            </dl>
+        </div>
+
+
+    </div>
+    <!--
+    <div class="AD_300">
+        <a href="javascript:;" rel="nofollow" target="_blank">
+            <img src="./images/3hhost.jpg" width="300" height="250" alt="wordpress主题站推荐">
+        </a>
+    </div>
+    -->
+    {php $hits_moban = hits_moban('weekviews',$catid)}
+    {if count($hits_moban) >0}
+    <div class="m_Grid4">
+        <div class="m_T9">
+            随机主题展示
+        </div>
+        <ul class="m_Box9">
+            {loop $hits_moban $m}
+            <li>
+                <div class="txt">
+                    <p class="p5">
+                        主题简介:
+                        <br>
+                        <a href="{$m['url']}" target="_blank">
+                            　　{do_sub_str($m['description'])}
+                        </a>
+                    </p>
+
+                    <p class="p6">
+                        分类：
+                        <a href="{$m['url']}" title="{do_str($m['tag'])}" rel="category tag">
+                            {do_str($m['tag'])}
+                        </a>
+                    </p>
+                </div>
+                <a href="{$m['url']}" title="{$m['title']}">
+                    <img src="{$m['thumb']}"
+                         alt="{$m['title']}" class="thumbnail"/>
+                </a>
+
+                <p class="p4">
+                    <a href="{$m['url']}" title="{$m['title']}" target="_blank">
+                        {$m['title']}
+                    </a>
+                </p>
+            </li>
+            {/loop}
+            <div class="clear">
+            </div>
+        </ul>
+    </div>
+    {/if}
+
+
+    <div class="n_h">
+    {php $hits_tx = hits_moban('weekviews',$catid,14,5)}
+        <dl>
+            <dt>猜你也喜欢看这些 ······</dt>
+            {loop $hits_tx $v}
+            <dd>
+                <a href="{$v[url]}">
+                    <p><img src="{$v[thumb]}" class="f" width="100px" height="50px"/></p>
+                    {$v[title]}
+                    <span class="l">{get_catname($v[catid])}</span>
+                    <span class="t">{date('Y-m-d',$v[inputtime])}</span>
+                </a>
+            </dd>
+            {/loop}
+        </dl>
+    </div>
+
+
+</div>
+<div class="cell main_l">
+
+<div class="main_l_box">
+<div class="m_T10">
+    <h2>
+        {$title}
+    </h2>
+</div>
+<div class="m_Box11">
+    <div class="m_Boxss">
+                        <span class="loopzz">
+                            {$username}
+                        </span>
+                        <span class="loopsj">
+                            {$inputtime}
+                        </span>
+                        <span class="loopck">
+                           <span id="hits"></span>
+                        </span>
+                        <span class="loopgjc">
+                            关键词：
+
+							{loop $keywords $keyword}
+                            <a href="javascript:;" rel="tag">
+                                {$keyword}
+                            </a>
+							{/loop}
+                        </span>
+                        <span class="loopfl">
+						    
+						    {php $cattype = array_filter(explode(',',$rs['tag']))}
+							{loop $cattype $ct}
+                            <a href="{search_tag($ct)}" title="{$ct}下载" rel="category tag">
+                                {$ct}
+                            </a>
+
+							{/loop}
+                        </span>
+
+        <div class="clear">
+        </div>
+    </div>
+</div>
+
+<div class="m_T11">
+</div>
+
+
+<div class="">
+    <div class="bbda ptm act fix" style="border:0">
+        <div class="cl">
+            <div class="spvimg">
+                <a href="javascript:;"><img src="{$thumb}"
+                                            onclick="zoom(this, 'data/attachment/forum/201310/12/160242yos7ttafvv6zmftk.png')"
+                                            width="270" _width="270" height="180" alt="{$title}"/></a>
+            </div>
+
+            <div class="spi fix">
+                <h4 class="wx mbm bbda">{$title}</h4>
+            </div>
+
+        </div>
+        <div class="fix mtw"></div>
+    </div>
+</div>
+
+<div class="m_Grid5">
+
+
+    <h3>
+        程序源码
+    </h3>
+
+    <div class="clear">
+    </div>
+</div>
+
+
+<div class="m_Box16">
+    <div class="nr_show">
+
+        <p class="pns mbm bugbot" style=" height:48px; line-height:48px;">
+            {loop $down_url $r}
+            {$r}
+
+            {/loop}
+            <a target="_blank" class="orangebot"
+               href="{$demo_url}" rel="nofollow">代码演示</a>
+            &nbsp;
+            <!--<a href="javascript:;" onclick="window.open('/demo.php?url={$demo_url}')" class="greenbot" rel="nofollow">代码下载</a>-->
+        </p>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+<div class="m_T11">
+</div>
+<!--
+<div class="m_Box17">
+    <div class="clear">
+    </div>
+</div>-->
+{php $relation_tx = get_relation_moban('', $id, $catid, 14)}
+{if count($relation_tx)>0}
+<div class="m_Boxxg">
+    <div class="m_Boxxgb">
+        类似的特效还有：
+    </div>
+    <ul id="tags_related">
+        {loop $relation_tx $tx}
+        <li>
+            <a href="{$tx['url']}" title="{$tx['title']}">
+                <img src="{$tx['thumb']}"
+                     alt="{$tx['title']}" class="thumbnail" />
+            </a>
+            <a href="{$tx['url']}" rel="bookmark" title="{$tx['keywords']}">
+                {do_sub_str($tx['title'],10)}
+            </a>
+        </li>
+        {/loop}
+    </ul>
+    <div class="clear">
+    </div>
+</div>
+{/if}
+
+{php $data = comment_list($page, $catid, $id)}
+<div class="m_Box19">
+    <div class="comment-amount">
+        <a href="javascript:;" class="comment_num" title="">
+            共有{$data['total']}条评论
+        </a>
+    </div>
+    <div id="comments">
+        <ul class="commentlist">
+            {loop $data['commentDatas'] $comment}
+            <li class="comment even thread-even depth-1" id="li-comment-">
+                <div id="comment-1744" class="comment-body">
+                    <div class="author">
+                        <img alt='' src='{IMG_PATH}tx.jpg' class='avatar avatar-38 photo' height='38' width='38' />
+                    </div>
+                    <div class="comment-meta">
+                        <div style="float:left;width:100%;">
+                                            <span class="name">
+                                                <a href='javascript:;' rel='external nofollow' class='url' target='_blank'>
+                                                    {$comment['username']}
+                                                </a>
+                                            </span>
+                                            <span class="time">
+                                                {date('Y-m-d H:i:s',$comment['creat_at'])}
+                                            </span>
+                        </div>
+                        <div class="text">
+                            <p>
+                                {$comment['content']}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/loop}
+            <li class="comment even thread-even depth-1" id="comment_add"></li>
+        </ul>
+        <div id="pages" class="text-c">{$data['commentPages']}</div>
+        <div id="respond">
+            <form action="#" method="post" id="commentform">
+                <input type="hidden" id="url" value="{php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']}" name="url"/>
+                <input type="hidden" id="title" value="{$title}" name="title"/>
+                <input type="hidden" id="direction" value="1" name="direction"/>
+                <div>
+                    <span>发布评论：</span>
+                    <div class="biaoqing">
+                        <script type="text/javascript">
+                            /* <![CDATA[ */
+                            function grin(tag) {
+                                var myField;
+                                tag = ' ' + tag + ' ';
+                                if (document.getElementById('comment') && document.getElementById('comment').type == 'textarea') {
+                                    myField = document.getElementById('comment');
+                                } else {
+                                    return false;
+                                }
+                                if (document.selection) {
+                                    myField.focus();
+                                    sel = document.selection.createRange();
+                                    sel.text = tag;
+                                    myField.focus();
+                                } else if (myField.selectionStart || myField.selectionStart == '0') {
+                                    var startPos = myField.selectionStart;
+                                    var endPos = myField.selectionEnd;
+                                    var cursorPos = endPos;
+                                    myField.value = myField.value.substring(0, startPos) + tag + myField.value.substring(endPos, myField.value.length);
+                                    cursorPos += tag.length;
+                                    myField.focus();
+                                    myField.selectionStart = cursorPos;
+                                    myField.selectionEnd = cursorPos;
+                                } else {
+                                    myField.value += tag;
+                                    myField.focus();
+                                }
+                            }
+                            /* ]]> */
+
+                        </script>
+                    </div>
+                    <textarea name="content" id="content" tabindex="4" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                </div>
+                <div>
+                    <!--<input name="submit" type="submit" id="submit" tabindex="5" value="发布"/>-->
+                    <input name="submit" type="button" id="submit" tabindex="5" value="发布" onclick="commit()"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="clear">
+</div>
+</div>
+<script type="text/javascript">
+    function commit(){
+        if($('#content').val() != ''){
+            $.ajax({
+                type: 'post',
+                url: '/index.php?m=comment&c=index&a=post&commentid=content_{$catid}-{$id}-1',
+                data: {title:$('#title').val(),direction:$('#direction').val(),url:$('#url').val(),content:$('#content').val()},
+                dataType: 'json',
+                success: function(data){
+                    if(data.status == 200){
+                        $('#comment_add').html(
+                                '<div id="comment-1744" class="comment-body"><div class="author">'+
+                                        "<img alt='' src='{IMG_PATH}tx.jpg' class='avatar avatar-38 photo' height='38' width='38' />"+
+                                        '</div>'+
+                                        '<div class="comment-meta"><div style="float:left;width:100%;">'+
+                                        '<span class="name">'+
+                                        "<a href='javascript:;' rel='external nofollow' class='url' target='_blank'>"+data.posTdata.username+'</a>'+
+                                        '</span>'+
+                                        '<span class="time">'+data.posTdata.postTime+'</span></div>'+
+                                        '<div class="text"><p>'+data.posTdata.content+'</p></div>'+
+                                        '</div></div>');
+                        $('#content').val('');
+                    }
+                    alert(data.msg);
+                }
+            });
+        }else
+            alert('请填写内容！');
+    }
+</script>
+
+
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+{template "content","footer"}

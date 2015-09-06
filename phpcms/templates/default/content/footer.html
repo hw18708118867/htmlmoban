@@ -9,7 +9,7 @@
             <ul class="dmenu" id="menu-ifanr-footer-1">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5741"
                 id="menu-item-5741">
-                    <a href="/theme-customization" target="_blank">
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes">
                         主题定制
                     </a>
                 </li>
