@@ -6643,3 +6643,11 @@
 <?php exit;?>08-28 11:32:19 | 2048 | Only variables should be passed by reference | phpcms\modules\member\index.php | 231
 <?php exit;?>08-28 11:33:06 | 2048 | Only variables should be passed by reference | phpcms\modules\member\index.php | 231
 <?php exit;?>08-28 11:33:41 | 2048 | Only variables should be passed by reference | phpcms\modules\member\index.php | 231
+<?php exit;?>09-07 17:20:33 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:23:05 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:27:32 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:30:23 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:31:07 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:32:03 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:33:04 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-07 17:34:11 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70

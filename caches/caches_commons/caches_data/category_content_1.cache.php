@@ -1940,7 +1940,7 @@ return array (
     'parentdir' => 'article/',
     'catdir' => 'discuz',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=45',
-    'items' => '5',
+    'items' => '6',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -2042,7 +2042,7 @@ return array (
     'parentdir' => 'article/',
     'catdir' => 'phpcms',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=47',
-    'items' => '3',
+    'items' => '10',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
