@@ -385,7 +385,7 @@ return array (
     'parentdir' => '',
     'catdir' => 'kuzhan',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=11',
-    'items' => '2',
+    'items' => '5',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -1940,7 +1940,7 @@ return array (
     'parentdir' => 'article/',
     'catdir' => 'discuz',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=45',
-    'items' => '6',
+    'items' => '10',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -2093,7 +2093,7 @@ return array (
     'parentdir' => 'article/',
     'catdir' => 'ecshop',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=48',
-    'items' => '3',
+    'items' => '4',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -2144,7 +2144,7 @@ return array (
     'parentdir' => 'article/',
     'catdir' => 'php168',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=49',
-    'items' => '2',
+    'items' => '10',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

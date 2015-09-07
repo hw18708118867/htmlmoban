@@ -7,39 +7,39 @@
 <div class="mainProNav">
     <dl class="navM1">
         <dd>
-            <h2><a href="/JS/">JS网页代码</a></h2>
-
-            <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
-                                                                                          href="">菜单导航</a><a
-                    target="_blank" href="">图片特效</a><a target="_blank" href="">表单按钮</a><a target="_blank"
-                                                                                          href="">广告特效</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
-
+            <h2><a href="/index.php?m=content&c=index&a=lists&catid=16">JS网页特效</a></h2>
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=cb6fb5e48ced0e789ac7a71d23c94cac&action=category&catid=30&num=8&siteid=1&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'30','siteid'=>'1','order'=>'listorder ASC','limit'=>'8',));}?>
+            <p>
+                <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
+                <a target="_blank" href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a>
+                <?php $n++;}unset($n); ?>
+                <a class="more" href="/index.php?m=content&c=index&a=lists&catid=16">查看更多...</a>
+            </p>
+            <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
             <div class="cl"></div>
             <h6><a href="javascript:;">热门搜索</a></h6>
-
-            <p><a target="_blank" href="">jQuery</a><a target="_blank" href="">Flash</a><a target="_blank"
-                                                                                           href="">焦点图</a><a
-                    target="_blank" href="">JS代码</a><a target="_blank" href="">特效</a><a target="_blank" href="">flash+xml</a><a
-                    target="_blank" href="">切换</a><a target="_blank" href="">图片切换</a><a target="_blank" href="">幻灯</a><a
-                    target="_blank" href="">JS广告代码</a><a target="_blank" href="">JS特效代码</a><a target="_blank" href="">站长图库</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
-
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=c3d4dc02808a28c5ff00f8dd5b07ef83&action=category&catid=17&num=25&siteid=1&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'17','siteid'=>'1','order'=>'listorder ASC','limit'=>'25',));}?>
+            <p>
+                <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
+                <a target="_blank" href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a>
+                <?php $n++;}unset($n); ?>
+                <a class="more" href="/index.php?m=content&c=index&a=lists&catid=16">查看更多...</a>
+            </p>
+            <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
             <div class="cl"></div>
             <h5>上面没找到，别漏了这些哦。</h5>
+            <?php $data = get_tx_list(30,2,1);?>
             <ul>
-                <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
-                <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
-                <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-
-
+                <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                <li><a target="_blank" href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+                <?php $n++;}unset($n); ?>
             </ul>
         </dd>
         <dt>JS网页代码</dt>
     </dl>
     <dl class="navM2">
         <dd>
-            <h2><a href="/JS/">JS网页代码</a></h2>
+            <!--<h2><a href="#">图片设计素材</a></h2>
 
             <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
                                                                                           href="">菜单导航</a><a
@@ -63,79 +63,78 @@
                 <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
                 <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
                 <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-
-
-            </ul>
+            </ul>-->
         </dd>
         <dt>图片设计素材</dt>
     </dl>
     <dl class="navM3">
         <dd>
-            <h2><a href="/JS/">JS网页代码</a></h2>
+            <h2><a href="/index.php?m=content&c=index&a=lists&catid=43">建站、设计教程</a></h2>
 
-            <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
-                                                                                          href="">菜单导航</a><a
-                    target="_blank" href="">图片特效</a><a target="_blank" href="">表单按钮</a><a target="_blank"
-                                                                                          href="">广告特效</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
+            <p>
+                <?php $n=1;if(is_array(get_child_category(43))) foreach(get_child_category(43) AS $v) { ?>
+                <a target="_blank" href="<?php echo $v['url'];?>"><?php echo $v['catname'];?></a>
+                <?php $n++;}unset($n); ?>
+                <a class="more" href="/index.php?m=content&c=index&a=lists&catid=43">查看更多...</a>
+            </p>
 
             <div class="cl"></div>
             <h6><a href="javascript:;">热门搜索</a></h6>
-
-            <p><a target="_blank" href="">jQuery</a><a target="_blank" href="">Flash</a><a target="_blank"
-                                                                                           href="">焦点图</a><a
-                    target="_blank" href="">JS代码</a><a target="_blank" href="">特效</a><a target="_blank" href="">flash+xml</a><a
-                    target="_blank" href="">切换</a><a target="_blank" href="">图片切换</a><a target="_blank" href="">幻灯</a><a
-                    target="_blank" href="">JS广告代码</a><a target="_blank" href="">JS特效代码</a><a target="_blank" href="">站长图库</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=c3d4dc02808a28c5ff00f8dd5b07ef83&action=category&catid=17&num=25&siteid=1&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'17','siteid'=>'1','order'=>'listorder ASC','limit'=>'25',));}?>
+            <p>
+                <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
+                <a target="_blank" href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a>
+                <?php $n++;}unset($n); ?>
+                <a class="more" href="/index.php?m=content&c=index&a=lists&catid=16">查看更多...</a>
+            </p>
+            <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 
             <div class="cl"></div>
             <h5>上面没找到，别漏了这些哦。</h5>
+            <?php $data = get_tx_list(30,2,1);?>
             <ul>
-                <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
-                <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
-                <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-
-
+                <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                <li><a target="_blank" href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+                <?php $n++;}unset($n); ?>
             </ul>
         </dd>
         <dt>建站、设计教程</dt>
     </dl>
     <dl class="navM4">
         <dd>
-            <h2><a href="/JS/">JS网页代码</a></h2>
+            <h2><a href="/index.php?m=content&c=index&a=lists&catid=11">酷站、设计欣赏</a></h2>
 
-            <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
-                                                                                          href="">菜单导航</a><a
-                    target="_blank" href="">图片特效</a><a target="_blank" href="">表单按钮</a><a target="_blank"
-                                                                                          href="">广告特效</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
+            <p>
+                <?php $n=1;if(is_array(get_tag_list(182))) foreach(get_tag_list(182) AS $tag) { ?>
+                <a target="_blank" href="<?php echo search_tag($catid,$tag,'',13);?>"><?php echo $tag;?>酷站</a>
+                <?php $n++;}unset($n); ?>
+                <a class="more" href="/index.php?m=content&c=index&a=lists&catid=11">查看更多...</a>
+            </p>
 
             <div class="cl"></div>
             <h6><a href="javascript:;">热门搜索</a></h6>
 
-            <p><a target="_blank" href="">jQuery</a><a target="_blank" href="">Flash</a><a target="_blank"
-                                                                                           href="">焦点图</a><a
-                    target="_blank" href="">JS代码</a><a target="_blank" href="">特效</a><a target="_blank" href="">flash+xml</a><a
-                    target="_blank" href="">切换</a><a target="_blank" href="">图片切换</a><a target="_blank" href="">幻灯</a><a
-                    target="_blank" href="">JS广告代码</a><a target="_blank" href="">JS特效代码</a><a target="_blank" href="">站长图库</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
+            <p>
+                <?php $n=1;if(is_array(get_tag_list(180))) foreach(get_tag_list(180) AS $tag) { ?>
+                <a target="_blank" href="<?php echo search_tag($catid,'','',13,'',$tag);?>"><?php echo $tag;?></a>
+                <?php $n++;}unset($n); ?>
+                <a class="more" href="/index.php?m=content&c=index&a=lists&catid=11">查看更多...</a>
+            </p>
 
             <div class="cl"></div>
             <h5>上面没找到，别漏了这些哦。</h5>
+            <?php $data = get_tx_list(30,2,1);?>
             <ul>
-                <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
-                <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
-                <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-
-
+                <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                <li><a target="_blank" href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+                <?php $n++;}unset($n); ?>
             </ul>
         </dd>
         <dt>酷站、设计欣赏</dt>
     </dl>
     <dl class="navM5">
         <dd>
-            <h2><a href="/JS/">JS网页代码</a></h2>
+            <!--<h2><a href="#">插件模块、工具</a></h2>
 
             <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
                                                                                           href="">菜单导航</a><a
@@ -151,7 +150,7 @@
                     target="_blank" href="">JS代码</a><a target="_blank" href="">特效</a><a target="_blank" href="">flash+xml</a><a
                     target="_blank" href="">切换</a><a target="_blank" href="">图片切换</a><a target="_blank" href="">幻灯</a><a
                     target="_blank" href="">JS广告代码</a><a target="_blank" href="">JS特效代码</a><a target="_blank" href="">站长图库</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
+                    class="more" href="#">查看更多...</a></p>
 
             <div class="cl"></div>
             <h5>上面没找到，别漏了这些哦。</h5>
@@ -159,9 +158,7 @@
                 <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
                 <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
                 <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-
-
-            </ul>
+            </ul>-->
         </dd>
         <dt>插件模块、工具</dt>
     </dl>
@@ -240,7 +237,6 @@
     });
 </script>
 
-
 <div class="sidebar-tab FR">
     <div class="post-home-r clearfix" id="index_tool">
         <h2 class="title"><!--[diy=xinyun_bbs_004_05]-->
@@ -250,7 +246,7 @@
                         <div class="move-span temp" id="frameMClj1m_left_temp"></div>
                         <div class="block move-span" id="portal_block_191">
                             <div class="dxb_bc" id="portal_block_191_content">
-                                <div class="portal_block_summary">按模板行业分类</div>
+                                <div class="portal_block_summary">热门板块</div>
                             </div>
                         </div>
                     </div>
@@ -267,35 +263,35 @@
                         <div class="block move-span" id="portal_block_192">
                             <div class="dxb_bc" id="portal_block_192_content">
                                 <div class="portal_block_summary">
-                                    <li><a href="http://www.sj5d.com/misc.php?mod=faq" class="ps2" target="_blank"></a>
+                                    <li><a href="#" class="ps2" target="_blank"></a>
 
                                         <p>新手入门</p></li>
-                                    <li><a rel="nofollow" href="http://moban.sj5d.com/charge.html" class="ai"
+                                    <li><a rel="nofollow" href="#" class="ai"
                                            target="_blank"></a>
 
                                         <p>模板充值</p></li>
                                     <li><a rel="nofollow"
-                                           href="http://www.sj5d.com/home.php?mod=spacecp&amp;ac=credit&amp;op=buy"
+                                           href="#"
                                            class="axure" target="_blank"></a>
 
                                         <p>兑换积分</p></li>
-                                    <li><a href="/topic-topsucai.html" class="mindmanage" target="_blank"></a>
+                                    <li><a href="#" class="mindmanage" target="_blank"></a>
 
                                         <p>热门素材</p></li>
                                     <li><a rel="nofollow"
-                                           href="http://wpa.qq.com/msgrd?v=3&amp;uin=349077570&amp;site=qq&amp;menu=yes"
+                                           href="#"
                                            class="cutAndSliceMe" target="_blank"></a>
 
                                         <p>客服中心</p></li>
                                     <li><a rel="nofollow"
-                                           href="http://www.sj5d.com/home.php?mod=spacecp&amp;ac=promotion"
+                                           href="#"
                                            class="markman" target="_blank"></a>
 
                                         <p>推广赚分</p></li>
-                                    <li><a href="/topic-fenxiangsucai.html" class="guideguide" target="_blank"></a>
+                                    <li><a href="#" class="guideguide" target="_blank"></a>
 
                                         <p>发布素材</p></li>
-                                    <li><a href="http://www.tengsheji.com" class="kuler" target="_blank"></a>
+                                    <li><a href="#" class="kuler" target="_blank"></a>
 
                                         <p>网站定制</p></li>
                                 </div>
@@ -400,60 +396,6 @@
     </div>
 </div>
 
-
-<div class="constr Main2">
-    <div class="m_T1">
-        <h3>
-            最新wordpress主题
-        </h3>
-                <span>
-                    <a rel="nofollow" target="_blank" href="javascript:;">
-                        欢迎投稿
-                    </a>
-                    /
-                    <a rel="nofollow" target="_blank" href="javascript:;">
-                        主题定制
-                    </a>
-                    /
-                    <a rel="nofollow" target="_blank" href="javascript:;">
-                        收费主题
-                    </a>
-                </span>
-    </div>
-
-
-    <DIV class="inline_box fix tj m_Grid1">
-
-        <SPAN class="box1 w300 inline_any mb15 ovh bgf5 bdc"><SPAN class="dib p15"><SPAN class="rel dib"><A class="aimg"
-                                                                                                            href="/meishi/1480/"
-                                                                                                            target=_blank><IMG
-                class=jsLazyImage src="http://www.cssmoban.com/UploadFiles/2014/2/2014071614243528914.jpg"
-                data-url="http://www.cssmoban.com/UploadFiles/2014/2/2014071614243528914.jpg"><em></em></A>  </SPAN><p
-                class="p1"><A class="mt5 db g6" href="/meishi/1480/" target=_blank><STRONG class=g3>水野水族餐厅
-            100元现金券</STRONG></A></p> <SPAN class="db fix g6 mt5 p2"><SPAN class=r>剩余5天以上</SPAN> <SPAN
-                class=l>110人已购买</SPAN></SPAN></SPAN></SPAN>
-
-</DIV>
-    <div class="page_navi">
-        <a href='javascript:;' class='current'>
-            1
-        </a>
-        <a href='javascript:;'>
-            2
-        </a>
-        <a href="javascript:;">
-            下一页
-        </a>
-        <a href='javascript:;' class='extend' title='跳转到最后一页'>
-            最后一页
-        </a>
-    </div>
-    <div class="AD_1080_1">
-        <a target="_blank" rel="nofollow" href="javascript:;">
-            <img src="<?php echo IMG_PATH;?>adin1080.jpg" width="1200" alt="wordpress主题推荐">
-        </a>
-    </div>
-</div>
 <div class="constr Main3">
 
 <div class="imitem-l">
@@ -713,7 +655,11 @@
 <div class="main-info">
     <dl>
         <dt>找了那么久，是否找到合适的主题了？</dt>
-        <dd>不妨把你的想法跟我们说说看呢？<a target="_blank" class="showbox" href="" rel="nofollow">联系我们</a></dd>
+        <dd>不妨把你的想法跟我们说说看呢？
+            <a target="_blank" class="showbox" href="http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes">
+                联系我们
+            </a>
+        </dd>
     </dl>
 </div>
 </div>
