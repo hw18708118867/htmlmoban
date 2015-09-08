@@ -246,4 +246,12 @@ function get_child_category($parentid, $modelid = 1){
     $cat_db->query($sql);
     return $cat_db->fetch_array();
 }
+
+/**
+ * @return string
+ * qq咨询路由
+ */
+function qq_url(){
+    return 'http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes';
+}
 ?>

@@ -1040,7 +1040,7 @@ return array (
     'parentdir' => 'texiao/jquery/',
     'catdir' => 'tupian',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=27',
-    'items' => '3',
+    'items' => '4',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery商城网站全屏多张图片滑动切换代码</title>
+<link rel="stylesheet" type="text/css" href="css/slide.css"/>
+</head>
+<body>
+
+<!-- 代码部分begin -->
+<div class="slides">
+	<div class="slideInner">
+		<a href="#" style="background: url(images/slide1.jpg) no-repeat;">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="images/slide1p1.png" /> </div>
+			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="images/slide1p2.png" /> </div>
+		</a>
+		<a href="#" style="background: url(images/slide2.jpg) no-repeat">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="images/slide2p1.png" /> </div>
+		</a>
+		<a href="#" class="slide3" style="background: url(images/slide3.jpg) no-repeat;">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="images/slide3p1.png" /> </div>
+			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="images/slide3p2.png" /> </div>
+			<div class="moveElem img3" rel="300,easeInOutExpo"> <img src="images/slide3p3.png" /> </div>
+		</a>
+		<a href="#" style="background: rgb(113, 209, 231);">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="images/slide1p1.png" /> </div>
+			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="images/slide1p2.png" /> </div>
+		</a>
+		<a href="#" style="background: rgb(178, 44, 44);">
+			<div class="moveElem img1" rel="0,easeInOutExpo"> <img src="images/slide1p1.png" /> </div>
+			<div class="moveElem img2" rel="150,easeInOutExpo"> <img src="images/slide1p2.png" /> </div>
+		</a>
+	</div>
+	<div class="nav">
+		<a class="prev" href="javascript:;"></a>
+		<a class="next" href="javascript:;"></a>
+	</div>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/slide.js"></script>
+<script >
+$(document).ready(function() {
+	$(".slideInner").slide({
+		slideContainer: $('.slideInner a'),
+		effect: 'easeOutCirc',
+		autoRunTime: 5000,
+		slideSpeed: 1000,
+		nav: true,
+		autoRun: true,
+		prevBtn: $('a.prev'),
+		nextBtn: $('a.next')
+	})
+})
+</script>
+<!-- 代码部分end -->
+
+</body>
+</html>
