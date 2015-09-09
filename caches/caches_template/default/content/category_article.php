@@ -147,11 +147,6 @@ $("a.fancybox").fancybox();
                      </div>
                     
                 <!--</div>-->
-
-
-
-
-                   
             </div>
             <div class="cell main_l">
 			     <div class="main_l_box">

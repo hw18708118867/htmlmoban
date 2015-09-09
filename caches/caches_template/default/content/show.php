@@ -266,11 +266,13 @@ $("a.fancybox").fancybox();
                                         <a href="<?php echo $demo_url;?>" class="greenbot" rel="nofollow">演示网站</a>
                                         <?php } ?>
 										 &nbsp; 
-										<a href="/home.php?mod=spacecp&amp;ac=credit&amp;op=buy" class="bluebot" rel="nofollow" target="_blank">充值积分</a>
+										<a href="#" class="bluebot" rel="nofollow" target="_blank">充值积分</a>
 									   
 							</p>
 								   
-									<p class="cl" ><font class="xg1">提示：付款后即可直接在线下载资源</font>&nbsp; &nbsp;<a href="/article-16-1.html" class="c4095CE" target="_blank" rel="nofollow">如何购买资源？</a> &nbsp; <a href="/article-9-1.html" class="c4095CE" target="_blank" rel="nofollow">如何充值积分？</a></p>
+									<p class="cl" ><font class="xg1">提示：付款后即可直接在线下载资源</font>&nbsp; &nbsp;
+                                        <a href="#" class="c4095CE" target="_blank" rel="nofollow">如何购买资源？</a> &nbsp;
+                                        <a href="#" class="c4095CE" target="_blank" rel="nofollow">如何充值积分？</a></p>
 
 							</div>
 							</div>
@@ -316,13 +318,18 @@ $("a.fancybox").fancybox();
 				
                 <div class="m_Box16">
                    <div class="nr_down">
-				   <?php $n=1;if(is_array($down_url)) foreach($down_url AS $r) { ?>
+				   <!--<?php $n=1;if(is_array($down_url)) foreach($down_url AS $r) { ?>
 	        	      <?php echo $r;?> 
 			         
-		        	<?php $n++;}unset($n); ?>
+		        	<?php $n++;}unset($n); ?>-->
+                       <a class="down_link" href="<?php echo $fileUrl;?>" title="下载高端产品模板模板" target="_blank">进入模板下载地址</a>
 					
 
-					<span>售价：<em><?php echo $readpoint;?></em>积分 <a href="/index/help.html" target="_blank">如何获得积分？</a><a href="/member/cz.php" target="_blank">[充值]</a><a title="收藏dedecms通信工程企业网站模板到会员收藏夹" href="javascript:sc(99600);">[收藏]</a><a href="javascript:bc('dedecms通信工程企业网站模板',window.location.href,99600);">[报错]</a><a title="返回织梦模板列表" href="http://www.mb5u.com/cmsmoban/dedecmsmoban/">[返回列表]</a></span>
+					<span>售价：<em><?php echo $readpoint;?></em>积分 <a href="#" target="_blank">如何获得积分？</a>
+                        <a href="#" target="_blank">[充值]</a>
+                        <a title="收藏模板到会员收藏夹" href="#">[收藏]</a>
+                        <a href="#">[报错]</a>
+                        <a title="返回列表" href="javascript:history.go(-1);">[返回列表]</a></span>
 					</div>
                     <div class="clear">
                     </div>

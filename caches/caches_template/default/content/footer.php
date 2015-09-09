@@ -9,19 +9,19 @@
             <ul class="dmenu" id="menu-ifanr-footer-1">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5741"
                 id="menu-item-5741">
-                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes">
+                    <a target="_blank" href="<?php echo qq_url();?>">
                         主题定制
                     </a>
                 </li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5742"
                 id="menu-item-5742">
-                    <a href="/tougao" target="_blank">
+                    <a href="<?php echo qq_url();?>" target="_blank">
                         主题投稿
                     </a>
                 </li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5743"
                 id="menu-item-5743">
-                    <a href="/adservice" target="_blank">
+                    <a href="<?php echo qq_url();?>" target="_blank">
                         广告服务
                     </a>
                 </li>
