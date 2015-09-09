@@ -64,7 +64,9 @@ class index {
 		//再次重新赋值，以数据库为准
 		$catid = $CATEGORYS[$r['catid']]['catid'];
 		$modelid = $CATEGORYS[$catid]['modelid'];
-		
+        //获取下载链接
+        $down = string2array($rs['down_url']);//字符串转换为数组
+        $fileUrl = isset($down[0]['fileurl']) ? $down[0]['fileurl'] : '#';
 		require_once CACHE_MODEL_PATH.'content_output.class.php';
 		$content_output = new content_output($modelid,$catid,$CATEGORYS);
 		$data = $content_output->get($rs);
