@@ -357,5 +357,12 @@ class index {
 			return '1';
 		}
 	 }
+
+    /**
+     * 广告页
+     */
+    public function ad(){
+        include template('content','ad');
+    }
 }
 ?>

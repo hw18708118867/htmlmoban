@@ -45,8 +45,6 @@
                 {/pc}
             </dl>
         </div>
-
-
     </div>
     <!--
     <div class="AD_300">
@@ -203,11 +201,22 @@
             <a target="_blank" class="orangebot"
                href="{$demo_url}" rel="nofollow">代码演示</a>
             &nbsp;
-            <a href="javascript:;" onclick="window.open('{$fileUrl}')" class="greenbot" rel="nofollow">代码下载</a>
+            <a href="javascript:;" onclick="ad()" class="greenbot" rel="nofollow">代码下载</a>
         </p>
     </div>
     <div class="clear">
     </div>
+    <script type="text/javascript">
+        var isFirst = false;
+        function ad(){
+            if(!isFirst){
+                isFirst = true;
+                window.open('http://www.htmlmoban.net/index.php?m=content&c=index&a=ad');
+            }else{
+                window.open('{$fileUrl}');
+            }
+        }
+    </script>
 </div>
 <div class="m_T11">
 </div>

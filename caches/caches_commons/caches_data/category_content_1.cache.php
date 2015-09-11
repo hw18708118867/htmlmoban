@@ -385,7 +385,7 @@ return array (
     'parentdir' => '',
     'catdir' => 'kuzhan',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=11',
-    'items' => '5',
+    'items' => '9',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -1448,7 +1448,7 @@ return array (
     'parentdir' => 'texiao/txcode/',
     'catdir' => 'imgtx',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=35',
-    'items' => '0',
+    'items' => '2',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -1499,7 +1499,7 @@ return array (
     'parentdir' => 'texiao/txcode/',
     'catdir' => 'timedate',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=36',
-    'items' => '0',
+    'items' => '1',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -1703,7 +1703,7 @@ return array (
     'parentdir' => 'texiao/txcode/',
     'catdir' => 'website',
     'url' => 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=40',
-    'items' => '0',
+    'items' => '2',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

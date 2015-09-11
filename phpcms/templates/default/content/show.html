@@ -322,7 +322,18 @@ $("a.fancybox").fancybox();
 	        	      {$r} 
 			         
 		        	{/loop}-->
-                       <a class="down_link" href="{$fileUrl}" title="下载高端产品模板模板" target="_blank">进入模板下载地址</a>
+                       <a class="down_link" href="javascript:ad()" title="下载高端产品模板模板" target="_blank">进入模板下载地址</a>
+                       <script type="text/javascript">
+                           var isFirst = false;
+                           function ad(){
+                               if(!isFirst){
+                                   isFirst = true;
+                                   window.open('http://www.htmlmoban.net/index.php?m=content&c=index&a=ad');
+                               }else{
+                                   window.open('{$fileUrl}');
+                               }
+                           }
+                       </script>
 					
 
 					<span>售价：<em>{$readpoint}</em>积分 <a href="#" target="_blank">如何获得积分？</a>

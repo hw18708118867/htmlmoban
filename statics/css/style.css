@@ -4045,6 +4045,7 @@ solid #a8cffe}.tags strong {
 .header .navigationBar tt.slideOpenNAV {height: 56px;}
 .header .navigationBar .mainMenuV {float:left;padding-left: 5px;}
 .header .navigationBar .mainMenuV a {float:left;font-weight:bold;margin: 0 2px; padding: 0 25px;height: 42px;line-height: 42px;font-size: 14px;color: #fff;* font-weight: bold;-moz-transition: background 0.2s ease-in-out; -webkit-transition: background 0.2s ease-in-out; -o-transition: background 0.2s ease-in-out; -ms-transition: background 0.2s ease-in-out; transition: background 0.2s ease-in-out;}
+.header .navigationBar .mainMenuV .select {color: #fff;background:#09f;}
 .header .navigationBar .mainMenuV a:hover {color: #fff;background:#09f;}
 .header .navigationBar .mainMenuV a:active {color: #ddd;background:#2d81c1;}
 

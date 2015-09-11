@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+#in-splash-frame, #in-bar-frame, #in-content-frame, #footer, #sp-title-frame, #sp-content-frame{
+	cursor:default;
+}
+
+input.ge-signup-input{
+	width:184px;
+	height:23px;
+	padding:7px 8px 0px 8px;
+}
+
+ul.sp-submenu{
+	margin-bottom:4px;
+}
+
+.sp-title-text, .bl-title-text{
+	margin-top:42px;
+}
+
+.bl-submenu li.heading{
+	width:292px;
+	height:28px;
+	padding:5px 0px 0px 17px;
+}
+
+.bl-submenu li.heading h3{
+	margin-top:10px;
+	padding:0px;
+}
+
+.sp-he-he-paginate-frame{
+	position:absolute;
+	right:0px;
+	top:-6px;
+}
+
+.sp-he-he-header-ie{
+	margin-bottom:0px;
+}
+
+.sp-pr-text{
+	padding-top:46px;
+}
+
+.sp-blue-bar{
+	height:35px;
+	padding-top:10px;
+}
+
+.sp-pr-assistance{
+	width:556px;
+	height:115px;
+	padding:20px 35px; 
+}
+
+.sp-pr-or-blue-bar{
+	padding-top:12px;
+	height:33px;
+}
+
+.sp-pr-or-su-item, .sp-pr-or-su-price{
+	line-height:27px;
+}
+
+.sp-pr-or-su-title{
+	padding-top:20px;
+}
+
+.jqTransformSelectWrapper ul {
+	overflow-y:scroll;
+}

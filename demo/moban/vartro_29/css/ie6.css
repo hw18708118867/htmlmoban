@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+
+input.ge-signup-input{
+	width:184px;
+	height:22px;
+	padding:8px 8px 0px 8px;
+}
+
+ul.sp-submenu{
+	margin-bottom:10px;
+}
+
+.sp-submenu li a, .bl-submenu li a{
+	display:inline-block;
+}
+
+.sp-title-text, .bl-title-text{
+	margin-top:42px;
+}
+
+.sp-title-btn{
+	width:300px;
+}
+
+ul.sp-title-btn-list{
+	width:300px;
+}
+
+.sp-content-splash{
+	margin-bottom:14px;
+}
+
+.bl-post-item li{
+	padding-bottom:16px;
+}
+
+.bl-submenu li.heading{
+	width:292px;
+	height:28px;
+	padding:5px 0px 0px 17px;
+}
+
+.bl-submenu li.heading h3{
+	margin-top:10px;
+	padding:0px;
+}
+
+#bl-content-frame{
+	z-index:1;
+}
+
+#bl-content{
+	z-index:1;
+}
+
+.bl-content-rh{
+	z-index:1;
+}
+
+.bl-post-main{
+	z-index:1;
+}
+
+.bl-usercomments{
+	z-index:1;
+}
+
+.bl-message{
+	z-index:1;
+}
+
+.bl-message-speech{
+	z-index:9;
+}
+
+.bl-post-social{
+	width:176px;
+}
+
+.sp-content-splash{
+	padding-bottom:30px;
+}
+
+.sp-he-he-paginate-frame{
+	position:absolute;
+	right:0px;
+	top:-6px;
+}
+
+.sp-he-he-header-ie{
+	margin-bottom:0px;
+}
+
+.sp-pr-text{
+	padding-top:46px;
+}
+
+.sp-blue-bar{
+	height:35px;
+	padding-top:10px;
+}
+
+.sp-pr-assistance{
+	width:556px;
+	height:115px;
+	padding:20px 35px; 
+}
+
+.sp-pr-or-blue-bar{
+	padding-top:12px;
+	height:33px;
+}
+
+#sp-pr-or-queue{
+	height:122px;
+	overflow:visible;
+}
+
+.sp-pr-or-uploadify-buttons{
+	width:214px;
+}
+
+.sp-pr-or-su-item, .sp-pr-or-su-price{
+	line-height:27px;
+}
+
+.sp-pr-or-su-title{
+	padding-top:20px;
+}
+
+.sp-pr-or-error{
+	margin-bottom:10px;
+}
