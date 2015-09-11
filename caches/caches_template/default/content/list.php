@@ -52,11 +52,12 @@
                             </li>
                             <li class="likes">
                                 <span class="wpfp-span">
-                                    <a class="wpfp-link wizylike_icon" href="home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=99666" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" title="0 人推荐" rel="nofollow">0</a>
+                                    <a class="wpfp-link wizylike_icon" href="#" onclick="showWindow(this.id, this.href, 'get', 0);" title="888 人推荐" rel="nofollow">888</a>
                                 </span>
                             </li>
                             <li class="comments">
-                                <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')" href="javascript:;" title="">8</a></li>
+                                <!--onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"-->
+                                <a href="javascript:;" title=""><?php echo get_comment($r[catid],$r[id]);?></a></li>
                             <li class="views">
                                 <?php echo get_hits(12,$r[id]);?>
                             </li>

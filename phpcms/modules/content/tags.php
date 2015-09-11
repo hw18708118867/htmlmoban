@@ -44,7 +44,7 @@ class tags {
 			if($total!=0) {
 				$sql .= $where;
 				$order = '';
-				$order = $_GET['orderby']=='a.id DESC' ? 'a.id DESC' : 'a.id ASC';
+				$order = $_GET['orderby']=='a.id DESC' ? 'a.id DESC' : 'a.id DESC';
 				$sql .= ' ORDER BY '.$order;
 				$sql .= " LIMIT $offset,$pagesize";
 				$this->db->query($sql);

@@ -234,6 +234,19 @@ function get_hits($modelid = 12, $id){
 }
 
 /**
+ * @param int $catid
+ * @param $id
+ * @return int
+ * 获取评论量
+ */
+function get_comment($catid = 6, $id){
+    $db = pc_base::load_model('comment_model');
+    $comment_id = 'content_'.$catid.'-'.$id.'-1';
+    $commentinfo = $db->get_one(array('commentid' => $comment_id));
+    return empty($commentinfo) ? 0 : $commentinfo['total'];
+}
+
+/**
  * @param $parentid
  * @param int $modelid
  * @return mixed

@@ -18,16 +18,56 @@
 					 </p>
 						 <h2>按模板颜色</h2>
                      <p   class="pbutton color clearfix">
+                         <?php if($color == '红色') { ?>
+                         <a class="c1 select" href="<?php echo search_tag($catid,$key,'红色');?>">红色</a>
+                         <?php } else { ?>
                          <a class="c1" href="<?php echo search_tag($catid,$key,'红色');?>">红色</a>
+                         <?php } ?>
+                         <?php if($color == '橙色') { ?>
+                         <a class="c2 select" href="<?php echo search_tag($catid,$key,'橙色');?>">橙色</a>
+                         <?php } else { ?>
                          <a class="c2" href="<?php echo search_tag($catid,$key,'橙色');?>">橙色</a>
+                         <?php } ?>
+                         <?php if($color == '黄色') { ?>
+                         <a class="c3 select" href="<?php echo search_tag($catid,$key,'黄色');?>">黄色</a>
+                         <?php } else { ?>
                          <a class="c3" href="<?php echo search_tag($catid,$key,'黄色');?>">黄色</a>
+                         <?php } ?>
+                         <?php if($color == '绿色') { ?>
+                         <a class="c4 select" href="<?php echo search_tag($catid,$key,'绿色');?>">绿色</a>
+                         <?php } else { ?>
                          <a class="c4" href="<?php echo search_tag($catid,$key,'绿色');?>">绿色</a>
+                         <?php } ?>
+                         <?php if($color == '蓝色') { ?>
+                         <a class="c5 select" href="<?php echo search_tag($catid,$key,'蓝色');?>">蓝色</a>
+                         <?php } else { ?>
                          <a class="c5" href="<?php echo search_tag($catid,$key,'蓝色');?>">蓝色</a>
+                         <?php } ?>
+                         <?php if($color == '灰色') { ?>
+                         <a class="c6 select" href="<?php echo search_tag($catid,$key,'灰色');?>">灰色</a>
+                         <?php } else { ?>
                          <a class="c6" href="<?php echo search_tag($catid,$key,'灰色');?>">灰色</a>
+                         <?php } ?>
+                         <?php if($color == '黑色') { ?>
+                         <a class="c7 select" href="<?php echo search_tag($catid,$key,'黑色');?>">黑色</a>
+                         <?php } else { ?>
                          <a class="c7" href="<?php echo search_tag($catid,$key,'黑色');?>">黑色</a>
+                         <?php } ?>
+                         <?php if($color == '紫色') { ?>
+                         <a class="c8 select" href="<?php echo search_tag($catid,$key,'紫色');?>">紫色</a>
+                         <?php } else { ?>
                          <a class="c8" href="<?php echo search_tag($catid,$key,'紫色');?>">紫色</a>
+                         <?php } ?>
+                         <?php if($color == '棕色') { ?>
+                         <a class="c9 select" href="<?php echo search_tag($catid,$key,'棕色');?>">棕色</a>
+                         <?php } else { ?>
                          <a class="c9" href="<?php echo search_tag($catid,$key,'棕色');?>">棕色</a>
+                         <?php } ?>
+                         <?php if($color == '彩色') { ?>
+                         <a class="c10 select" href="<?php echo search_tag($catid,$key,'彩色');?>">彩色</a>
+                         <?php } else { ?>
                          <a class="c10" href="<?php echo search_tag($catid,$key,'彩色');?>">彩色</a>
+                         <?php } ?>
 					</p>
                      
                 </div>
@@ -113,11 +153,12 @@
                                 </li>
                                 <li class="likes">
                                 <span class="wpfp-span">
-                                    <a class="wpfp-link wizylike_icon" href="home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=99666" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" title="0 人推荐" rel="nofollow">0</a></span></li>
+                                    <a class="wpfp-link wizylike_icon" href="#" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" title="888 人推荐" rel="nofollow">888</a></span></li>
                                 <li class="comments">
-                                    <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')" href="javascript:;" title="">8</a></li>
+                                    <a href="javascript:;" title=""><?php echo get_comment($r[catid],$r[id]);?></a></li>
                                 <li class="views">
-                                    587 </li>
+                                    <?php echo get_hits(12,$r[id]);?>
+                                </li>
 
                             </ul>
                         </div>

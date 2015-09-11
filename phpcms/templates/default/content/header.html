@@ -241,14 +241,21 @@
 </div>
 </tt>
      {pc:content action="category" catid="0" num="25" siteid="$siteid" order="listorder ASC"}
-      <div class="mainMenuV"> 
-	  <a href="/">首页</a>
+     {php $cat_id = isset($_GET['catid']) ? $_GET['catid'] : 0;}
+      <div class="mainMenuV">
+	  <a
+          {if $cat_id == 0}
+          class="select"
+          {/if}
+              href="/">首页</a>
 
 	     {loop $data $cat}
-	     
-               <a href="{$cat[url]}">
-                               {$cat[catname]}
-               </a>
+          <a
+          {if $cat_id == $cat['catid']}
+             class="select"
+          {/if}
+          href="{$cat[url]}">{$cat[catname]}</a>
+
 		 {/loop}
 	  
 	  

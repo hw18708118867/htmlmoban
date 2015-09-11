@@ -34,19 +34,19 @@
             <ul class="dmenu" id="menu-ifanr-footer-2">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5744"
                 id="menu-item-5744">
-                    <a href="/chat" target="_blank">
+                    <a href="#" target="_blank">
                         站长交流中心
                     </a>
                 </li>
                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5745"
                 id="menu-item-5745">
-                    <a href="/jcandcj" target="_blank">
+                    <a href="#" target="_blank">
                         WP教程
                     </a>
                 </li>
                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5746"
                 id="menu-item-5746">
-                    <a href="/wpchajian" target="_blank">
+                    <a href="#" target="_blank">
                         WP插件
                     </a>
                 </li>
@@ -58,39 +58,39 @@
             </div>
             <div id="xztag">
                 <a style="font-size: 16.217391304348pt;" title="116个话题" class="tag-link-44"
-                href="/tag/wordpress%e5%9b%bd%e4%ba%ba%e4%b8%bb%e9%a2%98">
+                href="#">
                     wordpress国人主题
                 </a>
                 <a style="font-size: 10.130434782609pt;" title="73个话题" class="tag-link-39"
-                href="/tag/wordpress%e4%b8%ad%e6%96%87%e6%a8%a1%e7%89%88">
+                href="#">
                     wordpress中文模版
                 </a>
-                <a style="font-size: 22pt;" title="181个话题" class="tag-link-11" href="/tag/wordpress%e4%b8%bb%e9%a2%98">
+                <a style="font-size: 22pt;" title="181个话题" class="tag-link-11" href="#">
                     wordpress主题
                 </a>
-                <a style="font-size: 15pt;" title="106个话题" class="tag-link-40" href="/tag/wordpress%e5%85%8d%e8%b4%b9%e4%b8%bb%e9%a2%98">
+                <a style="font-size: 15pt;" title="106个话题" class="tag-link-40" href="#">
                     wordpress免费主题
                 </a>
                 <a style="font-size: 9.8260869565217pt;" title="72个话题" class="tag-link-37"
-                href="/tag/wordpress%e4%b8%aa%e4%ba%ba%e4%b8%bb%e9%a2%98">
+                href="#">
                     wordpress个人主题
                 </a>
                 <a style="font-size: 15.608695652174pt;" title="111个话题" class="tag-link-50"
-                href="/tag/wordpress-cms%e6%a8%a1%e6%9d%bf">
+                href="#">
                     wordpress cms模板
                 </a>
-                <a style="font-size: 8pt;" title="62个话题" class="tag-link-42" href="/tag/wordpress%e4%b8%a4%e6%a0%8f%e4%b8%bb%e9%a2%98">
+                <a style="font-size: 8pt;" title="62个话题" class="tag-link-42" href="#">
                     wordpress两栏主题
                 </a>
                 <a style="font-size: 8.6086956521739pt;" title="65个话题" class="tag-link-17"
-                href="/tag/wordpress%e4%bc%81%e4%b8%9a%e4%b8%bb%e9%a2%98">
+                href="#">
                     wordpress企业主题
                 </a>
                 <a style="font-size: 16.521739130435pt;" title="120个话题" class="tag-link-29"
-                href="/tag/wordpress%e5%8d%9a%e5%ae%a2%e4%b8%bb%e9%a2%98">
+                href="#">
                     wordpress博客主题
                 </a>
-                <a style="font-size: 8pt;" title="62个话题" class="tag-link-56" href="/tag/wordpress%e6%b7%98%e5%ae%9d%e5%ae%a2%e4%b8%bb%e9%a2%98">
+                <a style="font-size: 8pt;" title="62个话题" class="tag-link-56" href="#">
                     wordpress淘宝客主题
                 </a>
             </div>
@@ -109,7 +109,7 @@
     <div class="f_Box5">
         &copy;www.htmlmoban.cn 2011-2014 All Rights Reserved. Theme Rev. 3.2beta |
         基于
-        <a title="WordPress建站程序" rel="nofollow" target="_blank" href="http://wordpress.org">
+        <a title="WordPress建站程序" rel="nofollow" target="_blank" href="#">
             WordPress
         </a>
         ,Theme by
