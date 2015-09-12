@@ -1,0 +1,199 @@
+@charset "utf-8";
+@media only screen and (max-width:640px),
+only screen and (max-device-width:640px)
+{
+    /*marc 新增 15-05-14*/
+    @font-face {
+        font-family: 'case';
+        src:url('../fonts/case/case-pop.eot');
+        src:url('../fonts/case/case-pop.eot') format('embedded-opentype'),
+        url('../fonts/case/case-pop.svg') format('svg'),
+        url('../fonts/case/case-pop.woff') format('woff'),
+        url('../fonts/case/case-pop.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    /*end marc 15-05-14*/
+
+
+    /*marc 新增 15-05-14*/
+    .posFix {display:none}
+    .hide {display:none;}
+
+    .posFix_phone { display: block;}
+    .font-case {
+        font-family: 'case';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .icon-pop02:before {
+        content: "\e600";
+    }
+
+    .icon-pop03:before {
+        content: "\e601";
+    }
+
+    .icon-pop04:before {
+        content: "\e602";
+    }
+
+    .icon-pop05:before {
+        content: "\e603";
+    }
+
+    .icon-pop06:before {
+        content: "\e604";
+    }
+
+    .icon-popbtn:before {
+        content: "\e605";
+    }
+
+    .posFix_phone_pop { width: 250px; height: 248px; background: rgba(0,0,0,0.85); border-radius:3px; position: fixed; top:50%; left: 50%; margin-top:-125px; margin-left:-124px; z-index: 889; -webkit-animation:popIn 0.5s 0s ease both;-moz-animation:popIn 0.5s 0s ease both;}
+
+    .posFix_phone_pop a { display: block; color: #fff; text-align: center; font-size: 12px; }
+    .posFix_phone_pop a i {display: block; width:48px; height: 48px; font-size:48px; position:absolute; top:3px; left:3px; color:rgba(255,255,255,0.9);}
+    .posFix_phone_pop .pop_01 {width: 66px; height: 66px; border-radius: 50%; background: #e33f4a; line-height: 66px; font-size: 14px; position: absolute; top:99px; left: 95px; z-index: 890; }
+    .posFix_phone_pop .plc {width:56px; height:20px; padding-top: 56px; line-height: 20px; }
+    .posFix_phone_pop .pop_02 {  position: absolute; top:15px; left: 102px; -webkit-animation:pop_02 0.4s 0.5s ease-out both;-moz-animation:pop_02 0.4s 0.6s ease-out both;}
+    .posFix_phone_pop .pop_03 {  position: absolute; top:59px; left: 188px; -webkit-animation:pop_02 0.4s 0.7s ease-out both;-moz-animation:pop_02 0.4s 0.8s ease-out both;}
+    .posFix_phone_pop .pop_04 {  position: absolute; top:59px; left: 18px; -webkit-animation:pop_02 0.4s 0.3s ease-out both;-moz-animation:pop_02 0.4s 0.4s ease-out both;}
+    .posFix_phone_pop .pop_05 {  position: absolute; top:164px; left: 47px; -webkit-animation:pop_02 0.4s 0.1s ease-out both;-moz-animation:pop_02 0.4s 0.2s ease-out both;}
+    .posFix_phone_pop .pop_06 {  position: absolute; top:164px; left: 161px; -webkit-animation:pop_02 0.4s 0.9s ease-out both;-moz-animation:pop_02 0.4s 1s ease-out both;}
+
+    .pfp_btn { position: fixed; right: 6px; bottom: 60px; width: 53px; height: 53px; border-radius:50%; background: rgba(0,0,0,0.1); z-index: 888; cursor: pointer;}
+    .pfp_btn_cont{ width: 36px; height: 36px; text-align:center;  margin-top:8px; margin-left:8px; background: #fff ; border-radius: 50%;}
+    .pfp_btn_cont i { font-size:24px;line-height:36px; }
+    /*end marc 15-05-14*/
+
+    .ai-nav-wrap {
+        height:48px;
+    }
+
+
+    .ai-logo {
+        font-family:'font-icons';
+        float:left;
+        height:48px;
+        line-height:48px;
+        font-size:32px;
+        color:#fff;
+    }
+
+    .ai-banner-wrap {
+        height:331px;
+    }
+    .ai-banner-img {
+        display:none;
+    }
+    .ai-banner-wrap {
+        height:378px;
+    }
+
+    .sidebtn {
+        height:48px;
+        line-height:48px;
+    }
+
+    .banner-font-big {font-size:36px; line-height:38px; }
+    .banner-font-small {font-size:14px; line-height:18px;}
+
+    .ai-banner-0 .ai-banner-font {
+        background-image: url(../images/index-image/noti-640.jpg);
+    }
+
+    .cartoon_animate
+    {
+        height: 378px;
+    }
+
+    .cartoon_animate .bottle-1
+    {
+        left: -20%;
+    }
+    .cartoon_animate .bottle-2
+    {
+        right: -20%;
+    }
+
+    @keyframes balloon {
+        from { transform: scale(0.25) translateY(0)}
+        to {  transform: scale(0.25) translateY(60px)}
+    }
+    @-webkit-keyframes balloon {
+        from { -webkit-transform: scale(0.25) translateY(0); transform: scale(0.25) translateY(0)}
+        to {  -webkit-transform: scale(0.25) translateY(60px);  transform: scale(0.25) translateY(60px)}
+    }
+    @keyframes balloon {
+        from { -webkit-transform: scale(0.25) translateY(0); transform: scale(0.25) translateY(0)}
+        to {  -webkit-transform: scale(0.25) translateY(60px);  transform: scale(0.25) translateY(60px)}
+    }
+    .balloon-text-wrap,
+    .text-1-wrap,
+    .text-2-wrap
+    {
+        display: none;
+    }
+    .cartoon_animate .balloon {
+        top: 40px;
+    }
+
+    .texts-less-640
+    {
+        display: block;
+        -webkit-transform: scale(0.55);
+        -ms-transform: scale(0.55);
+        transform: scale(0.55);
+        -webkit-transform-origin: right top;
+        -ms-transform-origin: right top;
+        transform-origin: right top;
+    }
+
+    .less640-text
+    {
+        width: 100px;
+        height: 20px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        background-position: 100% 0;
+    }
+
+    .less640-text.lt-1 {top: 20px; background-position: 0 23px; width: 330px; height: 66px;}
+    .less640-text.lt-2 {top: 106px;width: 213px;height: 58px;background-position: -42px 7px;}
+    .less640-text.lt-3 {top: 184px;width: 384px;height: 66px;}
+
+
+
+    .less640-text.lt-1 {background-image: url(../images/dgt/XTBwenzi01.png);}
+    .less640-text.lt-2 {background-image: url(../images/dgt/XTBwenzi02.png);}
+    .less640-text.lt-3 {background-image: url(../images/dgt/XTBwenzi03.png);}
+
+    /*marc 新增 15-05-14*/
+    @-webkit-keyframes popIn{
+        0%{opacity:0;-webkit-transform:scale(.3)}
+        50%{opacity:1;}
+        100%{-webkit-transform:scale(1)}
+    }
+    @-moz-keyframes popIn{
+        0%{opacity:0;-moz-transform:scale(.3)}
+        50%{opacity:1;}
+        100%{-moz-transform:scale(1)}
+    }
+    @-webkit-keyframes pop_02{
+        0%{opacity:0;top:99px; left: 95px; }
+        100%{opacity:1; }
+    }
+    @-moz-keyframes pop_02{
+        0%{opacity:0;top:99px; left: 95px; }
+        100%{opacity:1; }
+    }
+    /*end marc 15-05-14*/
+}

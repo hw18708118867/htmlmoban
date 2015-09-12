@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="oldie ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="oldie ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>UI设计_软件界面设计_APP应用开发_交互设计_上海艾艺-图表</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta name="author" content="" />
+    <meta name="Copyright" content="" />
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+	================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- IOS6全屏 Chrome高版本全屏
+	================================================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 让360双核浏览器用webkit内核渲染页面
+	================================================== -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas
+	================================================== -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSS
+	================================================== -->
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/magicwall.css" rel="stylesheet" type="text/css">
+    <link href="css/chartBanner.css" rel="stylesheet" type="text/css">
+    <link href="css/chartBanner_1280.css" rel="stylesheet" type="text/css">
+    <link href="css/chartBanner_1024.css" rel="stylesheet" type="text/css">
+    <link href="css/chartBanner_640.css" rel="stylesheet" type="text/css">
+    <link href="css/chartBanner_320.css" rel="stylesheet" type="text/css">
+    <link href="css/style_retina.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Android 主屏图标
+	================================================== -->
+    <link rel="icon" sizes="196x196" href="images/apple-touch-icon-152x152.png">
+    <!-- IOS 主屏图标
+	================================================== -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+
+
+    <!-- <link rel="apple-touch-startup-image" href="/startup-748x1024.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" >
+	<link rel="apple-touch-startup-image" href="/startup-768x1004.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" > -->
+    <!-- Javascript
+	================================================== -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jay.plugin.minsidebar.js"></script>
+    <script type="text/javascript" src="js/sly.min.js"></script>
+    <script src="js/jquery.carouFredSel.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/ai-js.js"></script>
+</head>
+<body>
+<div class="container">
+<!-- Everything started here -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?96324684db2d35909bd761fd96707aeb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<header class="ai-header">
+    <div class="ai-nav-wrap">
+        <div class="ai-nav">
+            <div class="ai-logo"></div>
+            <div class="ai-imlink">
+                <a target="_blank" href="http://weibo.com/adinnet" class="imweibo"></a><a href="#" class="imweixin"></a>
+            </div>
+            <div class="sidebtn"></div>
+            <div class="ai-nav-list">
+                <a href="index.html" class="ai-nav-listitem  ">首页</a>
+                <a href="index.html#index_serve" class="ai-nav-listitem cur">服务</a>
+                <a href="index.html#index_case" class="ai-nav-listitem ">案例</a>
+                <a href="index.html#index_flow" class="ai-nav-listitem" toelem="index_flow">流程</a>
+                <a href="index.html#index_about" class="ai-nav-listitem ">艾艺</a>
+                <a href="index.html#index_blog" class="ai-nav-listitem ">博客</a>
+                <a href="index.html#index_contact" class="ai-nav-listitem ">联系</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***********************************
+图表-Banner
+*********************************** -->
+<div class="ai-eachcont con-wite">
+<div class="chartTop_1">
+                <span class="chartimg01">
+                    <i class="imac"></i>
+                    <i class="imgLine"></i>
+                    <i class="imglinemarkL"></i>
+                    <i class="imglinemarkR"></i>
+                    <i class="chartPie"></i>
+                    <i class="chartcolumnar"></i>
+                    <i class="chart_01"></i>
+                    <i class="chart_02"></i>
+                    <i class="chart_03"></i>
+                    <i class="chart_04"></i>
+                    <i class="chart_05"></i>
+                    <i class="chart_06"></i>
+                    <i class="chart_07"></i>
+                    <i class="chart_08"></i>
+                    <em class="img01"></em>
+                </span>
+</div>
+<div class="chartTop_2">
+    <span class="chartup"></span>
+    <div class="chartimg02">
+        <p>
+            <img src="images/chartimg_01.gif" alt="" /></p>
+        <p>
+            <img src="images/chartimg_02.gif" alt="" /></p>
+        <p>
+            <img src="images/chartimg_03.gif" alt="" /></p>
+    </div>
+    <div class="ExcellentCase"><a href="/#index_case" class="ExcellentCaseText">优秀案例</a></div>
+</div>
+<div class="chartTop_3">
+    <h3 class="chart3Tit">
+        <img src="images/text_01.png" alt="图表数据概述" /></h3>
+    <div class="chart3Con">
+        <p>随着信息技术的发展，数据的指数级增长，冗杂的信息淹没了人们的视线，大大干扰了决策的精确性。</p>
+        <p>而将这些海量数据直观、形象的采用图表展示出来也越来越成为趋势。</p>
+        <p class="show">艾艺的数据展示方案为您提供了大量的展示图表，包括柱状图、折线图、饼图、雷达图和地图等，这些图表具有的动态的、交互的可视化体验得到公司广大用户的认可！</p>
+    </div>
+    <div class="chart3bottom">
+        <i class="img_a"></i>
+        <i class="img_b"></i>
+        <i class="img_c"></i>
+    </div>
+</div>
+<div class="chartTop_4">
+    <h3 class="chart4Tit">
+        <img src="images/text_02.png" alt="图表类型设计与开发" /></h3>
+    <div class="chart4Con">
+        <img src="images/chart4img.png" alt="" /><i class="imgfour"></i></div>
+    <div class="chartdesign">
+        <ul class="designlist org">
+            <li>
+                <div class="icon_01">
+                    <h4>柱形图</h4>
+                    <p>主要用于数据的统计与分析有2D和3D这2种展示效果</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_02">
+                    <h4>饼图</h4>
+                    <p>常用于统计学模块</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_03">
+                    <h4>面积图</h4>
+                    <p>面积图包括二维图、三维图</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_04">
+                    <h4>曲面图</h4>
+                    <p>类别和数据系列都是数值</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_05">
+                    <h4>气泡图</h4>
+                    <p>是财务分析报表的一种</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="designlist gray">
+            <li>
+                <div class="icon_06">
+                    <h4>折线图</h4>
+                    <p>非常适用于显示在相等时间间隔下数据的趋势</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_07">
+                    <h4>条形图</h4>
+                    <p>轴标签过长显示的数值是持续型的</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_08">
+                    <h4>股价图</h4>
+                    <p>股价图经常用来显示股价的波动</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_09">
+                    <h4>圆环图</h4>
+                    <p>像饼图一样，圆环图显示各个部分与整体之间的关系</p>
+                </div>
+            </li>
+            <li>
+                <div class="icon_10">
+                    <h4>雷达图</h4>
+                    <p>是财务分析报表的一种</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="chartTop_5">
+    <h3 class="chart5Tit">
+        <img src="images/text_03.png" alt="优势" /></h3>
+    <div class="chart5Con">
+        <p>艾艺数据展示基于第三方Chart库进行快速快发，不光能够实现简单的图表展示，对于复杂的图表也能够进行实现。<br />
+            每种类型的图表都有动画效果，并且看上去非常生动。</p>
+    </div>
+    <div class="chart5bottom clearfix">
+        <ul class="chartList">
+            <li>
+                <img src="images/chart6img_01.png" alt="" />
+                <div>
+                    <h4>
+                        <img src="images/sup_text_01.png" alt="简单、灵活" /></h4>
+                    <p>Chart.js不依赖任何外部工具库，<br />
+                        轻量级（压缩之后仅有4.5k），并且提供了加载外部参数的方法</p>
+                </div>
+            </li>
+            <li class="plr">
+                <img src="images/chart6img_02.png" alt="" />
+                <div>
+                    <h4>
+                        <img src="images/sup_text_02.png" alt="基于HTML5" /></h4>
+                    <p>Chart.js基于HTML5 canvas技术，<br />
+                        支持所有现代浏览器，并且针对IE7/8提供了降级替代方案。</p>
+                </div>
+            </li>
+            <li>
+                <img src="images/chart6img_03.png" alt="" />
+                <div>
+                    <h4>
+                        <img src="images/sup_text_03.png" alt="多种图表类型" /></h4>
+                    <p>js帮你用不同的方式让你的数据变得可视化。每种类型的图表都有动画效果，并且看上去非常棒，即便是在retina屏幕上。</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="chartTop_6">
+    <div class="chart6Tit">
+        <img src="images/text_04.png" alt="解决方案" /></div>
+    <div class="chart6Con">
+        <ul class="chart-Navpage nav_tabwps_1">
+            <li class="curActive">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="chartNavFrame">
+            <div class="chartlistitem show">
+                <div class="chartlistimg">
+                    <img src="images/chartbanner_01.jpg" alt="" /></div>
+                <h4 class="banntit">数据展示系统解决方案</h4>
+                <p class="bannertext">提供从图形展示、数据对接、设备支持到维护的数据展示一体化解决方案擅长以丰富专业的图形展示方法、友好的界面来清晰进行直观地数据展示。</p>
+                <p class="bannerTag"><span>金融</span><span>医疗卫生</span><span>企业运营管理</span></p>
+            </div>
+            <div class="chartlistitem">
+                <div class="chartlistimg">
+                    <img src="images/chartbanner_02.jpg" alt="" /></div>
+                <h4 class="banntit">监控预警系统解决方案</h4>
+                <p class="bannertext">通过用户界面实时展现监控和预警信息，反应设备及流程运行状况。系统采用地图、图片、视频、动画等多媒体的形式进行信息展示，图形并茂。</p>
+                <p class="bannerTag"><span>消防逃生</span><span>机房监控</span><span>工业安全监控</span><span>卫生疾控</span></p>
+            </div>
+            <div class="chartlistitem">
+                <div class="chartlistimg">
+                    <img src="images/chartbanner_03.jpg" alt="" /></div>
+                <h4 class="banntit">能效测评系统测解决方案</h4>
+                <p class="bannertext">通过用户界面将不同能效的测评对象的数据，按照不同维度进行对比，反映出不同评测对象的能源消耗量及其用能系统效率等性能指标，并进行检测、计算,并给出其所处水平。</p>
+                <p class="bannerTag"><span>能源</span><span>电力</span><span>电器</span><span>建筑</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="chartTop_7 columnT">
+</div>
+<div class="posFix">
+    <div class="page_shift">
+        <ul>
+            <li class="cur"><a href="chart.html" class="shiftOne">大数据<i>数据可视化</i></a></li>
+            <li><a href="mobile.html" class="shiftTwo">移动APP<i>H5、Android、IOS</i></a></li>
+            <li><a href="3d.html" class="shiftThree">3D互联网<i>虚拟展示</i></a></li>
+            <li><a href="digital_class.html" class="shiftFour">互动课件<i>情景动画课程开发</i></a></li>
+            <li><a href="us.html" class="shiftFive">创意<i>团队介绍</i></a></li>
+            <li class="Gohome"><a href="/">返回首页<i>HOME</i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--marc 新增 15-05-14-->
+<div class="posFix_phone">
+    <div class="posFix_phone_pop hide">
+        <a href="/" class="pop_01">首页</a>
+        <a href="/chart.html" class="pop_02 plc"><i class="font-case icon-pop02"></i>大数据</a>
+        <a href="/mobile.html" class="pop_03 plc"><i class="font-case icon-pop03"></i>移动APP</a>
+        <a href="/3d.html" class="pop_04 plc"><i class="font-case icon-pop04"></i>3D互联网</a>
+        <a href="/digital_class.html" class="pop_05 plc"><i class="font-case icon-pop05"></i>互动课件</a>
+        <a href="/about/us.html" class="pop_06 plc"><i class="font-case icon-pop06"></i>创意</a>
+    </div>
+
+    <div class="pfp_btn">
+        <div class="pfp_btn_cont">
+            <i class="font-case icon-popbtn"></i>
+        </div>
+    </div>
+</div>
+<!--end posFix_phone-->
+<!--end marc 15-05-14-->
+</div>
+
+<footer class="ai-footer">
+    <div class="mid_wrap friend-links">
+        <div class="mid_block">
+            <a href="index.html" target="_blank" class="flks">UI设计</a>
+            <a href="http://WWW.BJTCWL.COM" target="_blank" class="flks">天成网络</a>
+            <a href="http://wz.68design.net/list2.html?c=002&t=&p=2" target="_blank" class="flks">设计名站</a>
+            <a href="mobile.html" target="_blank" class="flks">手持端开发</a>
+            <a href="http://www.tt-d.com" target="_blank" class="flks">深圳商标设计</a>
+            <a href="http://www.uimaker.com/" target="_blank" class="flks">UI制造者</a>
+            <a href="http://www.uisheji.com" target="_blank" class="flks">UI设计网</a>
+            <a href="http://www.pssheji.com/" target="_blank" class="flks">设计教程</a>
+            <a href="http://www.boxui.com/" target="_blank" class="flks">盒子UI</a>
+            <a href="http://www.chinaui.com/" target="_blank" class="flks">优艾网</a>
+            <a href="http://68hanchen.com/" target="_blank" class="flks">杭州网站建设</a>
+        </div>
+    </div>
+
+    <div class="mid_wrap copyright">
+        <div class="mid_block">
+            <h2><i>专业的人机交互策划、</i><i>高端UI设计、</i><i>移动应用开发公司</i></h2>
+            <h3>沪ICP备05026071号<i> © 2006-2014 ADinNET.cn All rights reserved.</i></h3>
+        </div>
+    </div>
+</footer>
+
+<div style="display:none"> <script src="http://s9.cnzz.com/stat.php?id=3831197&web_id=3831197" language="JavaScript"></script></div>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2436135-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</div>
+<script type="text/javascript">
+    (function ($) {
+        $.fn.rs_simpleTabs = function (options) {
+            var opt = $.extend({
+                tabElem: "",		//切换标签的子元素
+                tabCurrent: "cur",		//切换标签的Current状态
+                tabCont: "",		//切换的元素内容父级
+                tabContLayer: "",		//切换的元素内容层
+                tabContLayerShow: "show",	//切换的元素Current状态
+                tabCloseBtn: ".tabClosed",
+                afclick: null		//回调函数接口
+            }, options);
+            return this.each(function () {
+                var _this = $(this);
+                var _tabElem = _this.children(opt.tabElem);
+                var _tabCont = $(opt.tabCont);
+                var _tabContLayer = _tabCont.children(opt.tabContLayer);
+                _this.on("click", opt.tabElem, function (e) {
+                    e.stopPropagation();
+                    var _this = $(this);
+                    var _index = _this.index();
+                    var _thiscur = _tabElem.filter("." + opt.tabCurrent);
+                    if (_thiscur[0] == _this[0]) { return; } else {
+                        _thiscur.removeClass(opt.tabCurrent);
+                        _this.addClass(opt.tabCurrent);
+                        _tabContLayer
+                                .filter("." + opt.tabContLayerShow)
+                                .removeClass(opt.tabContLayerShow)
+                                .end()
+                                .eq(_index).addClass(opt.tabContLayerShow);
+                        if (opt.afclick) { opt.afclick(_index); }
+                    }
+                }).on("click", opt.tabCloseBtn, function (e) {
+                    e.stopPropagation();
+                    if (_this.children(opt.tabElem).length == 1) {
+                        return;
+                    }
+                    var _thisx = $(this);
+                    var _paret = _thisx.parent();
+                    var _pIndex = _paret.index();
+                    _paret.remove();
+                    _tabContLayer.eq(_pIndex).remove();
+                    _tabContLayer = _tabCont.children(opt.tabContLayer);
+                    if (_this.children(opt.tabCurrent).length < 1) {
+
+                        _this.children(opt.tabElem).eq(0).trigger("click");
+                    }
+
+                });
+            });
+        }
+    })(jQuery);
+
+    //DOM ready
+    $(function () {
+        $(".nav_tabwps_1").rs_simpleTabs({
+            tabElem: "li",	//切换标签的子元素
+            tabCurrent: "curActive",				//切换标签的Current状态
+            tabCont: ".chartNavFrame",		//切换的元素内容父级
+            tabContLayer: ".chartlistitem",		//切换的元素内容层
+            tabContLayerShow: "show",			//切换的元素Current状态
+            afclick: null				//回调函数接口
+        });
+        /*------marc 新增 15-05-14------*/
+        //phone pop 弹窗
+        $(".pfp_btn").click(function () {
+            $(".posFix_phone_pop").toggleClass("hide");
+        })
+        /*------end marc 15-05-14------*/
+    });
+</script>
+</body>
+</html>

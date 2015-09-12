@@ -67,10 +67,10 @@
 
 
 	       <div id="header_user">	
-				<a class="login_list" href="plugin.php?id=sina_login:index&amp;operation=init"><i class="i_wb">weibo</i></a>	
-				<a class="login_list" href="connect.php?mod=login&amp;op=init&amp;referer=forum.php&amp;statfrom=login"><i class="i_qq">QQ</i></a>
-				<span><a class="btn-register" href="member.php?mod=register">注册</a>	</span>	
-				<span><a class="nousername" onclick="javascript:lsSubmit();" href="javascript:;">登录</a></span>
+				<a class="login_list" href="#"><i class="i_wb">weibo</i></a>
+				<a class="login_list" href="#"><i class="i_qq">QQ</i></a>
+				<span><a class="btn-register" href="#">注册</a>	</span>
+				<span><a class="nousername" href="javascript:;">登陆</a></span>
 			</div>
   </div>
   <div class="navigationBar">

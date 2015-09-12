@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@import "style_1280.css";
+
+@media only screen and (max-width:1280px),
+only screen and (max-device-width:1280px)
+{
+    .chartTop_1{height:575px;}
+    .chartTop_1 span{padding-top:95px;}
+    .chartimg01 img{width:1165px;height:440px;}
+
+    .chartimg02{padding-top:40px;}
+    .chartimg02 img{height:67px;}
+    .chartTop_2{height:159px;}
+    .ExcellentCase{padding-top:8px;}
+    .ExcellentCaseText{line-height:28px;padding:0 26px;}
+
+    .chartTop_3{height:617px;}
+    .chart3Tit img{width:258px;height:84px;}
+    .chart3Con{padding-top:57px;}
+    .chart3Con p{line-height:30px;}
+
+    .chartTop_4{height:880px;}
+    .chart4Tit{height:160px;}
+    .chart4Tit img{padding-top:36px;height:88px;}
+    .chart4Con img{height:512px;padding-top:110px;}
+
+    .chartTop_5{height:680px;background:url(../images/chart5img@2x.png);background-size:1280px 680px;}
+    .chart5Tit{padding-top:44px;height:83px;}
+    .chart5Tit img{height:83px;}
+    .chart5Con{padding-top:16px;}
+    .chart5Con p{line-height:30px;color:#fff;font-size:14px;}
+    .chartList{height:353px;background-size:873px 1px;}
+    .chartList li{height:353px;}
+    .chartList li img{width:152px;height:227px;}
+    .chartList li p{padding:11px 0;}
+    .plr{padding:0 60px 0 80px;}
+
+    .chart6Tit{padding:68px 0 55px;height:84px;}
+    .chart6Tit img{height:84px;}
+
+}

@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="oldie ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="oldie ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <!-- Basic Page Needs
+	================================================== -->
+    <meta charset="utf-8">
+    <title>UI设计_软件界面设计_APP应用开发_交互设计_上海艾艺-数字课件</title>
+    <meta name="keywords" content="UI设计, 软件界面设计,html5开发,移动端UI设计,IOS开发,Android（安卓）开发,用户体验,交互设计,多媒体互动展示,数据展示,数据监控平台,数字课件" />
+    <meta name="description" content="上海艾艺（ADinnet）成立于2006年，高端的移动应用和开发公司，专注于UI设计和APP应用与研究，将视觉和功能整合，提供美观、易用、实用的互联网产品。" />
+    <meta name="title" content="上海艾艺信息技术有限公司" />
+    <meta name="author" content="CSS HTML:jay;Design:lucy;JS ASP_NET_Dev:johnny;AdinNET.cn;艾艺信息on2015-4" />
+    <meta name="Copyright" content="上海艾艺信息技术有限公司，2014" />
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+	================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- IOS6全屏 Chrome高版本全屏
+	================================================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 让360双核浏览器用webkit内核渲染页面
+	================================================== -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas
+	================================================== -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSS
+	================================================== -->
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/magicwall.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.gridster.css" rel="stylesheet" type="text/css">
+    <link href="css/class.css" rel="stylesheet" type="text/css">
+    <link href="css/class_1280.css" rel="stylesheet" type="text/css">
+    <link href="css/class_1024.css" rel="stylesheet" type="text/css">
+    <link href="css/class_640.css" rel="stylesheet" type="text/css">
+    <link href="css/class_320.css" rel="stylesheet" type="text/css">
+    <link href="css/style_retina.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper.min.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Android 主屏图标
+	================================================== -->
+    <link rel="icon" sizes="196x196" href="images/apple-touch-icon-152x152.png">
+    <!-- IOS 主屏图标
+	================================================== -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+    <!-- <link rel="apple-touch-startup-image" href="/startup-748x1024.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" >
+	<link rel="apple-touch-startup-image" href="/startup-768x1004.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" > -->
+    <!-- Javascript
+	================================================== -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jay.plugin.minsidebar.js"></script>
+    <script type="text/javascript" src="js/jquery.carouFredSel.js"></script>
+    <script type="text/javascript" src="js/class.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/sly.min.js"></script>
+    <script src="js/jquery.carouFredSel.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/ai-js.js"></script>
+
+</head>
+<body>
+<div class="container">
+<!-- Everything started here -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?96324684db2d35909bd761fd96707aeb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<header class="ai-header">
+    <div class="ai-nav-wrap">
+        <div class="ai-nav">
+            <div class="ai-logo"></div>
+            <div class="ai-imlink">
+                <a target="_blank" href="http://weibo.com/adinnet" class="imweibo"></a><a href="#" class="imweixin"></a>
+            </div>
+            <div class="sidebtn"></div>
+            <div class="ai-nav-list">
+                <a href="index.html" class="ai-nav-listitem  ">首页</a>
+                <a href="index.html#index_serve" class="ai-nav-listitem cur">服务</a>
+                <a href="index.html#index_case" class="ai-nav-listitem ">案例</a>
+                <a href="index.html#index_flow" class="ai-nav-listitem" toelem="index_flow">流程</a>
+                <a href="index.html#index_about" class="ai-nav-listitem ">艾艺</a>
+                <a href="index.html#index_blog" class="ai-nav-listitem ">博客</a>
+                <a href="index.html#index_contact" class="ai-nav-listitem ">联系</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***********************************
+图表-Banner
+*********************************** -->
+<div class="ai-eachcont con-wite pb50">
+<div class="class-lay_1 class_banner">
+    <div class="classbanner-text">
+        <span class="classbanner-tex1"></span>
+        <span class="classbanner-tex2"></span>
+        <span class="classbanner-tex3"></span>
+    </div>
+</div>
+<div class="class-lay_2">
+    <div class="classlay_Title"><span><i class="classlay_Titlecon"></i></span></div>
+    <p class="classlay2_con">
+        结合动画技术所呈现出来的数字化教育形式是教育面向未来的方式和工具，它可以让受众更积极地参与学习，<br>
+        针对不同类型的受众可以设计制作出多样的风格形式。艾艺数字动画技术团队为多家国际知名企业个性化定制高质量的企业文化、<br>
+        行为规则、文明宣讲等培训课件动画，更为各大教育机构、平台制作了大量的教学、教育课件动画。
+    </p>
+    <p class="classlay2_cons">结合动画技术所呈现出来的数字化教育形式是教育面向未来的方式和工具，它可以让受众更积极地参与学习，针对不同类型的受众可以设计制作出多样的风格形式。艾艺数字动画技术团队为多家国际知名企业个性化定制高质量的企业文化、<br>
+        行为规则、文明宣讲等培训课件动画，更为各大教育机构、平台制作了大量的教学、教育课件动画。</p>
+    <div class="playform_sly">
+        <ul>
+            <li>
+                <div class="carousel-item">
+                    <div class="itemgreen">
+                        <p>儿童情景式互动课件</p>
+                        <i>Children Scene<br>
+                            interactive courseware</i>
+                    </div>
+                </div>
+                <div class="carousel-content">
+                    <div class="greenbg">
+                        <span class="greencontent"></span>
+                        <h4>儿童情景式互动课件</h4>
+                        <i>Children Scene
+                            <br>
+                            interactive courseware</i>
+                        <em class="borderline"></em>
+                        <p>遵循低幼儿童的认知规律及心理，参照儿童心理学及教育专家的建议，所有的故事情节设计与美术风格设计都是以益智启蒙为主线，以培养儿童人文素养为主调的互动型课件定制。</p>
+                    </div>
+                </div>
+            </li>
+            <li class="mlr45">
+                <div class="carousel-item">
+                    <div class="itemred">
+                        <p>游戏化教育应用</p>
+                        <i>Game of educational<br>
+                            applications</i>
+                    </div>
+                </div>
+                <div class="carousel-content">
+                    <div class="redbg">
+                        <span class="redcontent"></span>
+                        <h4>游戏化教育应用</h4>
+                        <i>Game of educational<br>
+                            applications</i>
+                        <em class="borderline"></em>
+                        <p>游戏是一种强大的学习工具，当与其他探索性、动手性活动，以及老师或者家长作为教练、而非讲师的持续指导相结合时，数字化游戏在教育方面尤其是儿童教育领域，设计开发出辅助性的、基于游戏化的学习应用，让有需求的孩子成为独立学习者。</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="carousel-item">
+                    <div class="itemblue">
+                        <p>K12在线教育课程</p>
+                        <i>K12 online<br>
+                            education courses</i>
+                    </div>
+                </div>
+                <div class="carousel-content">
+                    <div class="bluebg">
+                        <span class="bluecontent"></span>
+                        <h4>K12在线教育课程</h4>
+                        <i>K12 online<br>
+                            education courses</i>
+                        <em class="borderline"></em>
+                        <p>K12一直被认为是极其具有潜力的市场，与互联网的其他颠覆一样，K12在线教育消除信息的壁垒，实现最佳教育资源的共享，惠及更广大的人群，使之能够享受平等的教育，从而改变世界</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+
+        </div>
+        <div class="swiper-slide">
+
+        </div>
+        <div class="swiper-slide">
+
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="inner-content01">
+                    <span class="greencon"></span>
+                    <h4>儿童情景式互动课件</h4>
+                    <i>Children Scene interactive courseware</i>
+                    <em class="btmline"></em>
+                    <p>遵循低幼儿童的认知规律及心理，参照儿童心理学及教育专家的建议，所有的故事情节设计与美术风格设计都是以益智启蒙为主线，以培养儿童人文素养为主调的互动型课件定制。</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner-content02">
+                    <span class="redcon"></span>
+                    <h4>游戏化教育应用</h4>
+                    <i>Game of educational applications</i>
+                    <em class="btmline"></em>
+                    <p>游戏是一种强大的学习工具，当与其他探索性、动手性活动，以及老师或者家长作为教练、而非讲师的持续指导相结合时，数字化游戏在教育方面尤其是儿童教育领域，设计开发出辅助性的、基于游戏化的学习应用，让有需求的孩子成为独立学习者。</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner-content03">
+                    <span class="bluecon"></span>
+                    <h4>K12在线教育课程</h4>
+                    <i>K12 online education courses</i>
+                    <em class="btmline"></em>
+                    <p>K12一直被认为是极其具有潜力的市场，与互联网的其他颠覆一样，K12在线教育消除信息的壁垒，实现最佳教育资源的共享，惠及更广大的人群，使之能够享受平等的教育，从而改变世界</p>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<div class="class-lay_3">
+    <div class="case_con">
+        <div class="case_infor">
+            <div class="c_inforTitle">
+                <img src="images/class_title2.png" alt=""></div>
+            <div class="c_inforL">
+                <div class="c_inforLcon">
+                    <h3>《至慧数学王国》</h3>
+                    <p>少儿教育领域首个情景式互动课件</p>
+                </div>
+            </div>
+            <div class="c_inforR">
+                <div class="c_inforRcon">
+                                <span class="fl-l"><i>OCT</i><br>
+                                    <b>2013</b></span>
+                                <span class="fl-r"><i>SEP</i><br>
+                                    <b>2014</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="class-lay_4">
+    <div class="customer_pro">
+        <div class="cus_Title">
+            <img src="images/class_title4.png" alt=""></div>
+        <div class="customer_infor">
+            <h3>精锐国际教育集团是国际著名投资集团下属的大型外资教育连锁机构，</h3>
+            <span>Elite International Education Group is a large chain of foreign educational institutions internationally renowned Investment Group, a subsidiary of</span>
+            <p>
+                是由哈佛大学及北京大学教育专家创立，以中小学生个性化教育为核心，集教育培训，产品研发，咨询服务为一体的综合性教育集团，<br>
+                目前已与美国哈佛大学、耶鲁大学、北京大学等国内外名校启动了一系列合作项目。<br>
+                至慧学堂是精锐教育旗下品牌，致力于少儿数学思维的培养，专为3-12岁孩子设计。创新的“IDT™多元趣味教学体系” ，<br>
+                采用“哈佛案例教学法”，小班授课，强调主动学习及课堂互动，迅速提升孩子的学习兴趣和拓展数学思维能力。<br>
+                至慧学堂通过国际化、趣味化及专业化的数学思维培养，成就孩子幸福成功的未来。
+            </p>
+        </div>
+        <div class="start_up"><a href="javascript:void(0)" class="blueupbg"></a></div>
+    </div>
+</div>
+<div class="class-lay_5">
+    <div class="customer_pro">
+        <div class="cus_Title">
+            <img src="images/class_title5.png" alt=""></div>
+        <p class="cus_conment">
+            3—8岁逐级训练思维设置，创设500个连贯的故事情景，让孩子置身于探索的旅程之中，在互动中思考和学习。<br>
+            共整体完成5个年级的500课主题课件故事策划、动画制作、游戏开发、配音合成、技术开发等。
+        </p>
+        <div id="wrapper">
+            <div id="carousel">
+                <ul class="class_conment">
+                    <li>
+                        <div class="class_infors">
+                            <div class="courseware redbg">
+                                <img src="images/classimg01.png">
+                                <h3>01/</h3>
+                                <h4>统一连贯的故事情景设计<br>
+                                    <i>探索数学王国，学习停不住</i></h4>
+                                <p>Unified coherent story scenarios designed to explore the realm of mathematics, learning can not stop</p>
+                            </div>
+                            <img src="images/classimg1.png" class="classimg1">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="class_infors">
+                            <div class="courseware redbg">
+                                <img src="images/classimg02.png">
+                                <h3>02/</h3>
+                                <h4>统一连贯的故事情景设计<br>
+                                    <i>探索数学王国</i></h4>
+                                <p>Unified coherent story scenarios designed to explore the realm of mathematics, learning can not stop</p>
+                            </div>
+                            <img src="images/classimg2.png" class="classimg1">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="class_infors">
+                            <div class="courseware redbg">
+                                <img src="images/classimg03.png">
+                                <h3>03/</h3>
+                                <h4>统一连贯的故事情景<br>
+                                    <i>探索科学王国，学习停不住</i></h4>
+                                <p>Unified coherent story scenarios designed to explore the realm of mathematics, learning can not stop</p>
+                            </div>
+                            <img src="images/classimg3.png" class="classimg1">
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <a id="prev" class="prev" href="javascript:void(0)"></a>
+                <a id="next" class="next" href="javascript:void(0)"></a>
+            </div>
+        </div>
+        <div class="redstart_up"><a href="javascript:void(0)" class="reddownbg"></a></div>
+    </div>
+</div>
+</div>
+
+<div class="chartTop_7 columnT">
+</div>
+<div class="posFix">
+    <div class="page_shift">
+        <ul>
+            <li><a href="chart.html" class="shiftOne">大数据<i>数据可视化</i></a></li>
+            <li><a href="mobile.html" class="shiftTwo">移动APP<i>H5、Android、IOS</i></a></li>
+            <li><a href="3d.html" class="shiftThree">3D互联网<i>虚拟展示</i></a></li>
+            <li class="cur"><a href="digital_class.html" class="shiftFour">互动课件<i>情景动画课程开发</i></a></li>
+            <li><a href="us.html" class="shiftFive">创意<i>团队介绍</i></a></li>
+            <li class="Gohome"><a href="index.html">返回首页<i>HOME</i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--marc 新增 15-05-14-->
+<div class="posFix_phone">
+    <div class="posFix_phone_pop hide">
+        <a href="index.html" class="pop_01">首页</a>
+        <a href="chart.html" class="pop_02 plc"><i class="font-case icon-pop02"></i>大数据</a>
+        <a href="mobile.html" class="pop_03 plc"><i class="font-case icon-pop03"></i>移动APP</a>
+        <a href="3d.html" class="pop_04 plc"><i class="font-case icon-pop04"></i>3D互联网</a>
+        <a href="digital_class.html" class="pop_05 plc"><i class="font-case icon-pop05"></i>互动课件</a>
+        <a href="us.html" class="pop_06 plc"><i class="font-case icon-pop06"></i>创意</a>
+    </div>
+
+    <div class="pfp_btn">
+        <div class="pfp_btn_cont">
+            <i class="font-case icon-popbtn"></i>
+        </div>
+    </div>
+</div>
+<!--end posFix_phone-->
+<!--end marc 15-05-14-->
+
+
+<footer class="ai-footer">
+    <div class="mid_wrap friend-links">
+        <div class="mid_block">
+            <a href="index.html" target="_blank" class="flks">UI设计</a>
+            <a href="http://WWW.BJTCWL.COM" target="_blank" class="flks">天成网络</a>
+            <a href="http://wz.68design.net/list2.html?c=002&t=&p=2" target="_blank" class="flks">设计名站</a>
+            <a href="mobile.html" target="_blank" class="flks">手持端开发</a>
+            <a href="http://www.tt-d.com" target="_blank" class="flks">深圳商标设计</a>
+            <a href="http://www.uimaker.comindex.html" target="_blank" class="flks">UI制造者</a>
+            <a href="http://www.uisheji.com" target="_blank" class="flks">UI设计网</a>
+            <a href="http://www.pssheji.comindex.html" target="_blank" class="flks">设计教程</a>
+            <a href="http://www.boxui.comindex.html" target="_blank" class="flks">盒子UI</a>
+            <a href="http://www.chinaui.comindex.html" target="_blank" class="flks">优艾网</a>
+            <a href="http://68hanchen.comindex.html" target="_blank" class="flks">杭州网站建设</a>
+        </div>
+    </div>
+
+    <div class="mid_wrap copyright">
+        <div class="mid_block">
+            <h2><i>专业的人机交互策划、</i><i>高端UI设计、</i><i>移动应用开发公司</i></h2>
+            <h3>沪ICP备05026071号<i> © 2006-2014 ADinNET.cn All rights reserved.</i></h3>
+        </div>
+    </div>
+</footer>
+
+<div style="display:none"> <script src="http://s9.cnzz.com/stat.php?id=3831197&web_id=3831197" language="JavaScript"></script></div>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2436135-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</div>
+<script type="text/javascript">
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop: true,//开启循环
+    });
+    $(function () {
+        /*------marc 新增 15-05-14------*/
+        //phone pop 弹窗
+        $(".pfp_btn").click(function () {
+            $(".posFix_phone_pop").toggleClass("hide");
+        })
+        /*------end marc 15-05-14------*/
+    });
+</script>
+</body>
+</html>

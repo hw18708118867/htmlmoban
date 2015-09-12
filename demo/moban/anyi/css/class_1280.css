@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+@import "style_1280.css";
+
+@media only screen and (max-width:1280px),
+only screen and (max-device-width:1280px)
+{
+    .classlay2_cons,
+    .swiper-container{ display:none;}
+
+}

@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+@media only screen and (max-width:1280px),
+only screen and (max-device-width:1280px)
+{
+    .case-gallery-wrap {
+        height:600px;
+    }
+    .count-item { margin-left:3%; }
+
+    .ai-banner-0 .ai-banner-font {
+        background-image: url(../images/index-image/noti-1280-672.jpg);
+    }
+
+
+    @keyframes fishmove {
+        0% {  transform: scale(0.75) translateX(0)}
+        25% { transform: scale(0.75) translateX(200px)}
+        50% { transform: scale(0.75) translateX(400px)}
+        75% { transform: scale(0.75) translateX(600px)}
+        100% {transform: scale(0.75) translateX(800px)}
+    }
+    @-webkit-keyframes fishmove {
+        0% {  -webkit-transform: scale(0.75) translateX(0);  transform: scale(0.75) translateX(0)}
+        25% { -webkit-transform: scale(0.75) translateX(200px); transform: scale(0.75) translateX(200px)}
+        50% { -webkit-transform: scale(0.75) translateX(400px); transform: scale(0.75) translateX(400px)}
+        75% { -webkit-transform: scale(0.75) translateX(600px); transform: scale(0.75) translateX(600px)}
+        100% {-webkit-transform: scale(0.75) translateX(800px);transform: scale(0.75) translateX(800px)}
+    }
+    @keyframes fishmove {
+        0% {  -webkit-transform: scale(0.75) translateX(0);  transform: scale(0.75) translateX(0)}
+        25% { -webkit-transform: scale(0.75) translateX(200px); transform: scale(0.75) translateX(200px)}
+        50% { -webkit-transform: scale(0.75) translateX(400px); transform: scale(0.75) translateX(400px)}
+        75% { -webkit-transform: scale(0.75) translateX(600px); transform: scale(0.75) translateX(600px)}
+        100% {-webkit-transform: scale(0.75) translateX(800px);transform: scale(0.75) translateX(800px)}
+    }
+
+
+    @keyframes boat_1 {
+        from { transform: scale(0.75) rotate(-10deg)}
+        to {  transform: scale(0.75) rotate(10deg)}
+    }
+
+
+    @-webkit-keyframes boat_1 {
+        from { -webkit-transform: scale(0.75) rotate(-10deg); transform: scale(0.75) rotate(-10deg)}
+        to {  -webkit-transform: scale(0.75) rotate(10deg);  transform: scale(0.75) rotate(10deg)}
+    }
+    @keyframes boat_1 {
+        from { -webkit-transform: scale(0.75) rotate(-10deg); transform: scale(0.75) rotate(-10deg)}
+        to {  -webkit-transform: scale(0.75) rotate(10deg);  transform: scale(0.75) rotate(10deg)}
+    }
+    .cartoon_animate .boat
+    {
+        bottom: 20px;
+        margin-left: -447px;
+    }
+    .cartoon_animate .fish_wrap
+    {
+        bottom: 40px;
+    }
+
+    .cartoon_animate .wave
+    {
+        -webkit-transform: scale(0.75);
+        -ms-transform: scale(0.75);
+        transform: scale(0.75);
+        -webkit-transform-origin: center bottom;
+        -ms-transform-origin: center bottom;
+        transform-origin: center bottom;
+    }
+
+
+
+    @keyframes balloon {
+        from { transform: scale(0.75) translateY(0)}
+        to {  transform: scale(0.75) translateY(60px)}
+    }
+
+    @-webkit-keyframes balloon {
+        from { -webkit-transform: scale(0.75) translateY(0); transform: scale(0.75) translateY(0)}
+        to {  -webkit-transform: scale(0.75) translateY(60px);  transform: scale(0.75) translateY(60px)}
+    }
+    @keyframes balloon {
+        from { -webkit-transform: scale(0.75) translateY(0); transform: scale(0.75) translateY(0)}
+        to {  -webkit-transform: scale(0.75) translateY(60px);  transform: scale(0.75) translateY(60px)}
+    }
+
+    .cartoon_animate .balloon
+    {
+        top: 120px;
+        margin-left: 80px;
+    }
+
+}

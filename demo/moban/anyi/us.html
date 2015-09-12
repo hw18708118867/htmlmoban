@@ -1,0 +1,948 @@
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="oldie ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="oldie ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>UI设计_软件界面设计_APP应用开发_交互设计_上海艾艺-艾艺</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta name="author" content="" />
+    <meta name="Copyright" content="" />
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+    ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- IOS6全屏 Chrome高版本全屏
+    ================================================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 让360双核浏览器用webkit内核渲染页面
+    ================================================== -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSS
+    ================================================== -->
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/magicwall.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.gridster.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="css/case.css" rel="stylesheet" type="text/css">
+    <link href="css/case_1280.css" rel="stylesheet" type="text/css">
+    <link href="css/case_1024.css" rel="stylesheet" type="text/css">
+    <link href="css/case_640.css" rel="stylesheet" type="text/css">
+    <link href="css/case_320.css" rel="stylesheet" type="text/css">
+    <link href="css/style_retina.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" >
+    <!-- Android 主屏图标
+    ================================================== -->
+    <link rel="icon" sizes="196x196" href="images/apple-touch-icon-152x152.png">
+    <!-- IOS 主屏图标
+    ================================================== -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+
+
+    <!-- <link rel="apple-touch-startup-image" href="/startup-748x1024.jpg"
+    media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" >
+    <link rel="apple-touch-startup-image" href="/startup-768x1004.jpg"
+    media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" > -->
+    <!-- Javascript
+    ================================================== -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jay.plugin.minsidebar.js"></script>
+
+</head>
+<body>
+<div class="container">
+<!-- Everything started here -->
+<header class="ai-header">
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?96324684db2d35909bd761fd96707aeb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <header class="ai-header">
+        <div class="ai-nav-wrap">
+            <div class="ai-nav">
+                <div class="ai-logo"></div>
+                <div class="ai-imlink">
+                    <a target="_blank" href="http://weibo.com/adinnet" class="imweibo"></a><a href="#" class="imweixin"></a>
+                </div>
+                <div class="sidebtn"></div>
+                <div class="ai-nav-list">
+                    <a href="index.html" class="ai-nav-listitem  ">首页</a>
+                    <a href="index.html#index_serve" class="ai-nav-listitem ">服务</a>
+                    <a href="index.html#index_case" class="ai-nav-listitem ">案例</a>
+                    <a href="index.html#index_flow" class="ai-nav-listitem" toelem="index_flow">流程</a>
+                    <a href="index.html#index_about" class="ai-nav-listitem cur">艾艺</a>
+                    <a href="index.html#index_blog" class="ai-nav-listitem ">博客</a>
+                    <a href="index.html#index_contact" class="ai-nav-listitem ">联系</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="ai-banner-wrap ai-pagebanner-about">
+
+        <div class="pagebanner-about-pic" style="display:">
+            <span class="aboutbanner-pic img1"></span>
+            <span class="aboutbanner-pic img2"></span>
+            <span class="aboutbanner-pic img3"></span>
+            <span class="aboutbanner-pic img4"></span>
+        </div>
+        <!-- <img lowsrc="images-banner-2000.jpg" src="images-banner-2000.jpg" alt="" class="ai-banner-img ai-banner2000">
+        <img lowsrc="images-banner-1280.jpg" src="images-banner-1280.jpg" alt="" class="ai-banner-img ai-banner1280">
+        <img lowsrc="images-banner-1024.jpg" src="images-banner-1024.jpg" alt="" class="ai-banner-img ai-banner1024"> -->
+
+    </div>
+</header>
+<!-- ***********************************
+艾艺
+*********************************** -->
+<div class="ai-eachcont con-wite">
+<div class="pad-tb-35 ai-about-info">
+    <h3></h3>
+    <div class="ab1280">
+                    <span class="fs-14">上海艾艺信息技术有限公司（ADinnet）简称艾艺，成立于2006年，<br/>
+    是一家以软件产品用户体验设计、UI视觉动画和移动应用开发服务为主的专业公司。</span>
+        <br/> 多年来凭借在互联网领域丰富经验和卓越的视觉表现，众多的产品和项目策划执行，赢得了众多国内外企业的推崇与赞赏。艾艺团队擅长将艺术和技术完美对接，真正做到美观、实用、易用，通过几年的发展，
+        <br/> 艾艺已经建立了一个80人左右的从UE策划、UI设计、动画原画设计、前端开发及移动应用开发和系统开发、
+        <br/> 测试一整套移动应用设计开发的服务团队，随着管理体系和服务流程的不断完善，艾艺将不断壮大自己的队伍，用心去耕耘大量优秀的创意和产品，在行业中树立良好口碑，做有影响力和有社会责任感的知名品牌。
+    </div>
+    <div class="ab640">
+                    <span class="fs-14">上海艾艺信息技术有限公司（ADinnet）简称艾艺，成立于2006年，
+    是一家以软件产品用户体验设计、<br/>UI视觉动画和移动应用开发服务为主的专业公司。</span> 多年来凭借在互联网领域丰富经验和卓越的视觉表现，众多的产品和项目策划执行，赢得了众多国内外企业的推崇与赞赏。艾艺团队擅长将艺术和技术完美对接，真正做到美观、实用、易用，通过几年的发展，
+        <br/> 艾艺已经建立了一个80人左右的从UE策划、UI设计、动画原画设计、前端开发及移动应用开发和系统开发、 测试一整套移动应用设计开发的服务团队，
+        <br/>随着管理体系和服务流程的不断完善，艾艺将不断壮大自己的队伍，用心去耕耘大量优秀的创意和产品，
+        <br/>在行业中树立良好口碑，
+        <br/>做有影响力和有社会责任感的知名品牌。
+    </div>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide ai-about-structure banbg1">
+            <div class="ai-aboutText2">
+                <i class="topX"></i>
+                <h2>携手打造国内顶尖的用户体验</h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="swiper-slide ai-about-structure banbg2">
+            <div class="ai-aboutText2">
+                <i class="topX"></i>
+                <h2>携手打造国内顶尖的用户体验</h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="swiper-slide ai-about-structure banbg3">
+            <div class="ai-aboutText2">
+                <i class="topX"></i>
+                <h2>携手打造国内顶尖的用户体验</h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="swiper-slide ai-about-structure banbg4">
+            <div class="ai-aboutText2">
+                <i class="topX"></i>
+                <h2>携手打造国内顶尖的用户体验</h2>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="pagination"></div>
+</div>
+<div class="ai-about-intro">
+    <div class="introAbout">
+        <div class="introCon">
+            <div class="introK">
+                <span class="iconItro introOne"></span>
+                <img src="images/text5.png" class="text5">
+                <img src="images/text05.png" class="text05">
+                <p>“激情点燃创意，品质改变生活”未来艾艺将携手客户 打造国内顶尖的用户体验公司。</p>
+            </div>
+            <div class="introK">
+                <span class="iconItro introTwo"></span>
+                <img src="images/text6.png" class="text6">
+                <img src="images/text06.png" class="text06">
+                <p>专注 创新 务实 用心 </p>
+            </div>
+            <div class="introK">
+                <span class="iconItro introThree"></span>
+                <img src="images/text7.png" class="text7">
+                <img src="images/text07.png" class="text07">
+                <p>“尊重是合作基础，诚信是立业之本，沟通是效率和品质的关键”</p>
+            </div>
+            <div class="introK">
+                <span class="iconItro introFour"></span>
+                <img src="images/text8.png" class="text8">
+                <img src="images/text08.png" class="text08">
+                <p>认同、参与、责任、分享</p>
+            </div>
+            <div class="introK">
+                <span class="iconItro introFive"></span>
+                <img src="images/text9.png" class="text9">
+                <img src="images/text09.png" class="text09">
+                <p>一分耕耘一份收获，解决困难让我们变得越来越成熟， 勿忘初心，放得始终。 </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="companyInfo">
+<ul class="comInfoTabTag nav_tabwps_2">
+    <li>
+        <b class="fl-l">01</b>
+        <div class="fl-l">
+            <h2>组织架构</h2>
+            <p>Organization</p>
+        </div>
+    </li>
+    <li class="cur">
+        <b class="fl-l">02</b>
+        <div class="fl-l">
+            <h2>团队活动</h2>
+            <p>Team Activities</p>
+        </div>
+    </li>
+    <li>
+        <b class="fl-l">03</b>
+        <div class="fl-l">
+            <h2>艾艺招聘</h2>
+            <p>Recruitment</p>
+        </div>
+    </li>
+</ul>
+<div class="comInfoBox">
+<div class="abouttem show">
+    <div class="Organization">
+        <img src="images/img.jpg">
+    </div>
+</div>
+<div class="abouttem show">
+    <div class="aboutCon">
+        <div class="swiper-container2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slider">
+                    <div class="Team_activities">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="194"><img src="images/pic-01.jpg"></td>
+                                <td rowspan="2"><img src="images/pic-03.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>设计部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>DEC</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-05.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/pic-02.jpg"></td>
+                                <td colspan="2"><img src="images/pic-06.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slider">
+                    <div class="Team_activities">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="194"><img src="images/pic-01.jpg"></td>
+                                <td rowspan="2"><img src="images/pic-03.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>动画部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>SEP</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-05.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/pic-02.jpg"></td>
+                                <td colspan="2"><img src="images/pic-06.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slider">
+                    <div class="Team_activities">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="194"><img src="images/pic-01.jpg"></td>
+                                <td rowspan="2"><img src="images/pic-03.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>技术部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>DEC</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-05.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/pic-02.jpg"></td>
+                                <td colspan="2"><img src="images/pic-06.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide  swiper-slider">
+                    <div class="Team_activities">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="194"><img src="images/pic-01.jpg"></td>
+                                <td rowspan="2"><img src="images/pic-03.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>商务部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>NOV</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-05.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/pic-02.jpg"></td>
+                                <td colspan="2"><img src="images/pic-06.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination2"></div>
+        </div>
+    </div>
+</div>
+<div class="abouttem show ssssaaaa">
+    <div class="Famous iecss3">
+        <div class="famousBg">
+            <div class="slider sliderAbout">
+                <a href="javascript:void(0)" class="sliderList cur"><span>01.</span>设计指导<p>Design Guidelines</p></a>
+                <a href="javascript:void(0)" class="sliderList"><span>02.</span>UE交互策划<p>UE interactive planning</p></a>
+                <a href="javascript:void(0)" class="sliderList"><span>03.</span>3d设计师<p>UE interactive planning</p></a>
+                <a href="javascript:void(0)" class="sliderList"><span>04.</span>资深网页设计<p>Design Guidelines</p></a>
+                <a href="javascript:void(0)" class="sliderList"><span>05.</span>资深平面设计<p>Design Guidelines</p></a>
+            </div>
+        </div>
+        <a class="prev tabIco01" href="javascript:void(0)"></a>
+        <a class="next tabIco02" href="javascript:void(0)"></a>
+        <div class="sliderK"></div>
+        <div class="sliderInfo">
+            <div class="FamousCon">
+                <h2>01.</h2>
+                <h3>设计指导<i>Design Guidelines</i></h3>
+                <strong>职位职责：</strong>
+                <p>1、负责产品功能、流程、形式和框架设计；
+                    <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                    <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                    <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                    <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                    <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                </p>
+
+                <strong>职位要求：</strong>
+                <p>1、良好的沟通能力和团队协作能力；
+                    <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                    <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                    <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                    <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                <a href="#"><img src="imagesIcon.png">
+                </a>
+            </div>
+            <div class="FamousCon">
+                <h2>02.</h2>
+                <h3>UE交互策划<i>UE interactive planning</i></h3>
+                <strong>职位职责：</strong>
+                <p>1、负责产品功能、流程、形式和框架设计；
+                    <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                    <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                    <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                    <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                    <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                </p>
+
+                <strong>职位要求：</strong>
+                <p>1、良好的沟通能力和团队协作能力；
+                    <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                    <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                    <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                    <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                <a href="#"><img src="imagesIcon.png">
+                </a>
+            </div>
+            <div class="FamousCon">
+                <h2>03.</h2>
+                <h3>UE交互策划<i>UE interactive planning</i></h3>
+                <strong>职位职责：</strong>
+                <p>1、负责产品功能、流程、形式和框架设计；
+                    <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                    <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                    <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                    <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                    <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                </p>
+
+                <strong>职位要求：</strong>
+                <p>1、良好的沟通能力和团队协作能力；
+                    <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                    <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                    <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                    <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                <a href="#"><img src="imagesIcon.png">
+                </a>
+            </div>
+            <div class="FamousCon">
+                <h2>04.</h2>
+                <h3>资深网页设计<i>UE interactive planning</i></h3>
+                <strong>职位职责：</strong>
+                <p>1、负责产品功能、流程、形式和框架设计；
+                    <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                    <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                    <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                    <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                    <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                </p>
+
+                <strong>职位要求：</strong>
+                <p>1、良好的沟通能力和团队协作能力；
+                    <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                    <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                    <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                    <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                <a href="#"><img src="imagesIcon.png">
+                </a>
+            </div>
+            <div class="FamousCon">
+                <h2>05.</h2>
+                <h3>资深平面设计<i>UE interactive planning</i></h3>
+                <strong>职位职责：</strong>
+                <p>1、负责产品功能、流程、形式和框架设计；
+                    <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                    <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                    <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                    <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                    <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                </p>
+
+                <strong>职位要求：</strong>
+                <p>1、良好的沟通能力和团队协作能力；
+                    <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                    <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                    <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                    <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                <a href="#"><img src="imagesIcon.png">
+                </a>
+            </div>
+        </div>
+        <div class="introduceAbt">
+            <p>一个以互联网创意和移动端技术开发的团队,<i>An innovative Internet and mobile terminal technology development team,</i>
+            </p>
+            <p>一个充满激情满怀的梦想的团队，<i>A passionate team full of dreams</i>
+            </p>
+            <p>一个以品质至上的高效执行团队，<i>An efficient implementation of quality-oriented team,</i>
+            </p>
+            <p>一个全心全意与品牌携手共进的服务团队。<i>A dedication to work together with the brand</i>
+            </p>
+            <h3>我们有足够大的舞台，我们也有懂得欣赏你的观众。</h3>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="companyInfoPhone">
+<div class="structureCon">
+    <div class="phonetitle"><img src="images/orgtitlecur.png" alt="" class="strswitchon hide"> <img src="images/orgtitle.png" alt="" class="strswitchoff"></div>
+    <div class="orgcon hide"><img src="images/orgimg02.png" alt=""></div>
+</div>
+<div class="teamactCon">
+    <div class="phonetitle"><img src="images/teamtitlecur.png" alt="" class="tactswitchon"> <img src="images/teamtitle.png" alt="" class="tactswitchoff hide"></div>
+    <div class="teamactinfor">
+        <div class="swiper-container3">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slideinfo">
+                    <div class="t_actinfo">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td rowspan="2" width="85"><img src="images/pic-07.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>设计部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>NOV</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-08.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><img src="images/pic-09.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfo">
+                    <div class="t_actinfo">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td rowspan="2" width="85"><img src="images/pic-07.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>前端部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>SEP</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-08.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><img src="images/pic-09.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfo">
+                    <div class="t_actinfo">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td rowspan="2" width="85"><img src="images/pic-07.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>技术部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>NOV</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-08.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><img src="images/pic-09.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfo">
+                    <div class="t_actinfo">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td rowspan="2" width="85"><img src="images/pic-07.jpg"></td>
+                                <td>
+                                    <div class="department">
+                                        <h2>前端部</h2>
+                                        <p>部门聚会活动</p>
+                                        <span><b>NOV</b><i>2014</i></span>
+                                    </div>
+                                </td>
+                                <td><img src="images/pic-08.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><img src="images/pic-09.jpg"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination3"></div>
+        </div>
+    </div>
+</div>
+<div class="recruitmentcon">
+    <div class="phonetitle"><img src="images/jobtitlecur.png" alt="" class="jobswitchon"> <img src="images/jobtitle.png" alt="" class="jobswitchoff hide"></div>
+    <div class="recruitinfor ssssaaaa">
+        <div class="swiper-container4">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slideinfor">
+                    <div class="FamousCon">
+                        <h2>01.</h2>
+                        <h3>设计指导<i>Design Guidelines</i></h3>
+                        <strong>职位职责：</strong>
+                        <p>1、负责产品功能、流程、形式和框架设计；
+                            <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                            <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                            <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                            <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                            <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                        </p>
+
+                        <strong>职位要求：</strong>
+                        <p>1、良好的沟通能力和团队协作能力；
+                            <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                            <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                            <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                            <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                        <a href="#"><img src="imagesIcon.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfor">
+                    <div class="FamousCon">
+                        <h2>02.</h2>
+                        <h3>UE交互策划<i>UE interactive planning</i></h3>
+                        <strong>职位职责：</strong>
+                        <p>1、负责产品功能、流程、形式和框架设计；
+                            <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                            <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                            <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                            <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                            <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                        </p>
+
+                        <strong>职位要求：</strong>
+                        <p>1、良好的沟通能力和团队协作能力；
+                            <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                            <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                            <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                            <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                        <a href="#"><img src="imagesIcon.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfor">
+                    <div class="FamousCon">
+                        <h2>03.</h2>
+                        <h3>UE交互策划<i>UE interactive planning</i></h3>
+                        <strong>职位职责：</strong>
+                        <p>1、负责产品功能、流程、形式和框架设计；
+                            <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                            <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                            <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                            <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                            <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                        </p>
+
+                        <strong>职位要求：</strong>
+                        <p>1、良好的沟通能力和团队协作能力；
+                            <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                            <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                            <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                            <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                        <a href="#"><img src="imagesIcon.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfor">
+                    <div class="FamousCon">
+                        <h2>04.</h2>
+                        <h3>资深网页设计<i>UE interactive planning</i></h3>
+                        <strong>职位职责：</strong>
+                        <p>1、负责产品功能、流程、形式和框架设计；
+                            <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                            <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                            <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                            <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                            <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                        </p>
+
+                        <strong>职位要求：</strong>
+                        <p>1、良好的沟通能力和团队协作能力；
+                            <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                            <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                            <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                            <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                        <a href="#"><img src="imagesIcon.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slideinfor">
+                    <div class="FamousCon">
+                        <h2>05.</h2>
+                        <h3>资深平面设计<i>UE interactive planning</i></h3>
+                        <strong>职位职责：</strong>
+                        <p>1、负责产品功能、流程、形式和框架设计；
+                            <br/> 2、思路清晰严谨，逻辑性强，能够独立分析和制定相关对外宣传的能力；
+                            <br/> 3、创意能力强、思维活跃，文案功底深厚，优秀的文字驾驭能力；
+                            <br/> 4、根据市场反馈、客户需求和发展需求，不断改进产品功能；
+                            <br/> 5、负责手机界面、车载、软件、网站、多媒体等产品的人机交互设计；
+                            <br/> 6、负责项目进度的管控，与项目组及客户方进行及时的反馈和交付。
+                        </p>
+
+                        <strong>职位要求：</strong>
+                        <p>1、良好的沟通能力和团队协作能力；
+                            <br/> 2、完成相关产品设计文案，指导完成产品的设计实现，产品进程控制；
+                            <br/> 3、产品开发协调，负责与设计人员和技术团队沟通进行开发协调；
+                            <br/> 4、参与测试，负责与协助产品上线以后的改进工作，引导用户熟悉使用产品；
+                            <br/> 5、熟悉Axure RP、Visio、MindManager、Balsamiq Mockups等一到二个工具。</p>
+                        <a href="#"><img src="imagesIcon.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination4"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="chartTop_7 columnT"></div>
+<div class="posFix">
+    <div class="page_shift">
+        <ul>
+            <li><a href="chart.html" class="shiftOne">大数据<i>数据可视化</i></a>
+            </li>
+            <li><a href="mobile.html" class="shiftTwo">移动APP<i>H5、Android、IOS</i></a>
+            </li>
+            <li><a href="3d.html" class="shiftThree">3D互联网<i>虚拟展示</i></a>
+            </li>
+            <li><a href="digital_class.html" class="shiftFour">互动课件<i>情景动画课程开发</i></a>
+            </li>
+            <li class="cur"><a href="us.html" class="shiftFive">创意<i>团队介绍</i></a>
+            </li>
+            <li class="Gohome"><a href="./index.html">返回首页<i>HOME</i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--marc 新增 15-05-14-->
+<div class="posFix_phone">
+    <div class="posFix_phone_pop hide">
+        <a href="index.html" class="pop_01">首页</a>
+        <a href="chart.html" class="pop_02 plc"><i class="font-case icon-pop02"></i>大数据</a>
+        <a href="mobile.html" class="pop_03 plc"><i class="font-case icon-pop03"></i>移动APP</a>
+        <a href="3d.html" class="pop_04 plc"><i class="font-case icon-pop04"></i>3D互联网</a>
+        <a href="digital_class.html" class="pop_05 plc"><i class="font-case icon-pop05"></i>互动课件</a>
+        <a href="us.html" class="pop_06 plc"><i class="font-case icon-pop06"></i>创意</a>
+    </div>
+
+    <div class="pfp_btn">
+        <div class="pfp_btn_cont">
+            <i class="font-case icon-popbtn"></i>
+        </div>
+    </div>
+</div><!--end posFix_phone-->
+<!--end marc 15-05-14-->
+</div>
+
+<footer class="ai-footer">
+    <div class="mid_wrap friend-links">
+        <div class="mid_block">
+            <a href="/" target="_blank" class="flks">UI设计</a>
+            <a href="http://WWW.BJTCWL.COM" target="_blank" class="flks">天成网络</a>
+            <a href="http://wz.68design.net/list2.html?c=002&t=&p=2" target="_blank" class="flks">设计名站</a>
+            <a href="mobile.html" target="_blank" class="flks">手持端开发</a>
+            <a href="http://www.tt-d.com" target="_blank" class="flks">深圳商标设计</a>
+            <a href="http://www.uimaker.com/" target="_blank" class="flks">UI制造者</a>
+            <a href="http://www.uisheji.com" target="_blank" class="flks">UI设计网</a>
+            <a href="http://www.pssheji.com/" target="_blank" class="flks">设计教程</a>
+            <a href="http://www.boxui.com/" target="_blank" class="flks">盒子UI</a>
+            <a href="http://www.chinaui.com/" target="_blank" class="flks">优艾网</a>
+            <a href="http://68hanchen.com/" target="_blank" class="flks">杭州网站建设</a>
+        </div>
+    </div>
+
+    <div class="mid_wrap copyright">
+        <div class="mid_block">
+            <h2><i>专业的人机交互策划、</i><i>高端UI设计、</i><i>移动应用开发公司</i></h2>
+            <h3>沪ICP备05026071号<i> © 2006-2014 ADinNET.cn All rights reserved.</i></h3>
+        </div>
+    </div>
+</footer>
+
+<div style="display:none">
+    <script src="http://s9.cnzz.com/stat.php?id=3831197&web_id=3831197" language="JavaScript"></script>
+</div>
+<!--<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2436135-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>-->
+</div>
+<script src="js/jquery.gridster.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.carouFredSel.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/ai-js.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+<script type="text/javascript">
+    function phoneAlleffect() {
+        var timeId = null,
+                time = null,
+                $li = $(".gridster ul li"),
+                _img = 'img',
+                _imgAnimate = 'imgAnimate';
+        //照片出现
+        $li.hide(0).each(function (i) {
+            $(this).delay(100 * i).fadeIn(300 * i);
+        });
+        //每间隔1500
+        timeId = setInterval(staffPhoneeffect, 1500);
+        //鼠标交互效果
+        $li.mouseover(function () {
+            var $this = $(this);
+            clearInterval(timeId);
+            time = setTimeout(function () {
+                $this.find(_img).toggleClass(_imgAnimate);
+            }, 300);
+        });
+        $li.mouseout(function () {
+            clearTimeout(time);
+            timeId = setInterval(staffPhoneeffect, 1500);
+        });
+    }
+
+    function staffPhoneeffect() {
+        var i;
+        var $img = $(".gridster ul li").find('img'),
+                _imgAnimate = 'imgAnimate';
+
+        i = parseInt(21 * Math.random());
+        $img.eq(i).toggleClass(_imgAnimate);
+    }
+
+    function staffPhone() {
+        var x, y;
+        var $ul = $(".gridster ul");
+        x = $(window).width() / 7 - 1;
+        y = x * 0.7;
+
+        $ul.gridster({
+            widget_base_dimensions: [x, y],
+            widget_margins: [0.5, 0.5],
+            draggable: {
+                handle: ' '
+            }
+        });
+    }
+
+
+
+    ; (function ($) {
+        $.fn.rs_simpleTabs = function (options) {
+            var opt = $.extend({
+                tabElem: "", //切换标签的子元素
+                tabCurrent: "cur", //切换标签的Current状态
+                tabCont: "", //切换的元素内容父级
+                tabContLayer: "", //切换的元素内容层
+                tabContLayerShow: "show", //切换的元素Current状态
+                tabCloseBtn: ".tabClosed",
+                afclick: null //回调函数接口
+            }, options);
+            return this.each(function () {
+                var _this = $(this);
+                var _tabElem = _this.children(opt.tabElem);
+                var _tabCont = $(opt.tabCont);
+                var _tabContLayer = _tabCont.children(opt.tabContLayer);
+                _this.on("click", opt.tabElem, function (e) {
+                    e.stopPropagation();
+                    var _this = $(this);
+                    var _index = _this.index();
+                    var _thiscur = _tabElem.filter("." + opt.tabCurrent);
+                    if (_thiscur[0] == _this[0]) {
+                        return;
+                    } else {
+                        _thiscur.removeClass(opt.tabCurrent);
+                        _this.addClass(opt.tabCurrent);
+                        _tabContLayer
+                                .filter("." + opt.tabContLayerShow)
+                                .removeClass(opt.tabContLayerShow)
+                                .end()
+                                .eq(_index).addClass(opt.tabContLayerShow);
+                        if (opt.afclick) {
+                            opt.afclick(_index);
+                        }
+                    }
+                }).on("click", opt.tabCloseBtn, function (e) {
+                    e.stopPropagation();
+                    if (_this.children(opt.tabElem).length == 1) {
+                        return;
+                    }
+                    var _thisx = $(this);
+                    var _paret = _thisx.parent();
+                    var _pIndex = _paret.index();
+                    _paret.remove();
+                    _tabContLayer.eq(_pIndex).remove();
+                    _tabContLayer = _tabCont.children(opt.tabContLayer);
+                    if (_this.children(opt.tabCurrent).length < 1) {
+
+                        _this.children(opt.tabElem).eq(0).trigger("click");
+                    }
+
+                });
+            });
+        }
+    })(jQuery);
+
+    //DOM ready
+    $(function () {
+        staffPhone();
+        phoneAlleffect();
+
+
+        $('.introK').click(function () {
+            $(this).addClass('cur').siblings().removeClass('cur');
+        });
+
+
+        var mySwiper = new Swiper('.swiper-container', {
+            pagination: '.pagination',
+            paginationClickable: true,
+            freeMode: true,
+            direction: 'horizontal',
+            freeModeFluid: true
+        })
+
+
+        var swiper = new Swiper('.swiper-container2', {
+            pagination: '.swiper-pagination2',
+            paginationClickable: true,
+            direction: 'vertical'
+        });
+
+        $(".nav_tabwps_2").rs_simpleTabs({
+            tabElem: "li", //切换标签的子元素
+            tabCurrent: "cur", //切换标签的Current状态
+            tabCont: ".comInfoBox", //切换的元素内容父级
+            tabContLayer: ".abouttem", //切换的元素内容层
+            tabContLayerShow: "show", //切换的元素Current状态
+            afclick: null //回调函数接口
+        });
+
+        //hide others tab
+        //            console.log($('.comInfoBox .abouttem').eq(0))
+        $('.comInfoBox .abouttem').eq(1).addClass('show').siblings().removeClass('show');
+
+        /*------marc 新增 15-05-14------*/
+        //phone pop 弹窗
+        $(".pfp_btn").click(function(){
+            $(".posFix_phone_pop").toggleClass("hide");
+        })
+        /*------end marc 15-05-14------*/
+    });
+</script>
+
+
+</body>
+</html>
+

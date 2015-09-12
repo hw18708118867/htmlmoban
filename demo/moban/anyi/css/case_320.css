@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+@import "style_320.css";
+
+@media only screen and (max-width:460px),
+only screen and (max-device-width:460px)
+{
+    /*caselist.html*/
+    .component-caselist-content{height:auto;}
+    .component-caselist-text{position:static; width:100%; padding:30px 0;}
+    .component-caselist-img{width:100%; padding:30px 0;}
+    .component-caselist-img .pc-img{display:none;}
+    .component-caselist-img .pad-img{display:none;}
+    .component-caselist-img .phone-img{display:inline-block;}
+    .ai-caselist-pic{padding:0 20px;}
+    .component-caselist-back{display:none;}
+    .ai-caselist-img{width:280px; height:200px;}
+
+
+    .ai-pagetips{height:502px; padding:48px 2.5%; background:#06CEC6 url(../images/virtual-pic01-320.png) no-repeat center center;}
+    .ai-pagebanner-3D{height:270px;}
+
+    .virtualbanner-pic0, .virtualbanner-pic2, .virtualbanner-pic3, .virtualbanner-pic4,	.virtualbanner-pic5, .virtualbanner-pic6{display:none;}
+    .virtualbanner-ani{left:3%; width:94%; height:180px;}
+    .virtualbanner-pic1{top:-35px; left:-180px; width:780px; height:290px;}
+    .virtualbanner-text{top:-60px; left:0; width:100%; height:90px;}
+    .virtualbanner-tex2{font-size:32px; width:200px; left:105px;}
+    .virtualbanner-tex3{right:-20px;}
+
+    .ai-virtual-solution>p>span{width:96%;}
+    .dis-b-640{display:inline-block;}
+
+    .ai-virtual-feature{height:1125px; background-color:#2f2f2f;}
+    .ai-virtual-featurepic{width:100%; margin-top:30px; overflow:hidden;}
+    .ai-virtual-featuretext{width:85%; line-height:24px;}
+    .ai-virtual-featuretext.pos1{top:0px; left:15px; padding-left:25px;}
+    .ai-virtual-featuretext.pos2{top:75px; left:15px; padding-left:25px;}
+    .ai-virtual-featuretext.pos3{top:150px; left:15px; padding-left:25px;}
+    .ai-virtual-featuretext.pos4{top:655px; left:25px; padding-left:25px; right:0;}
+    .ai-virtual-featuretext.pos5{top:755px; left:25px; padding-left:25px; right:0;}
+    .ai-virtual-featuretext.pos6{top:870px; left:25px; padding-left:25px; right:0;}
+
+    .ai-contact-phone strong{font-size:22px;}
+
+    .ai-footer{display:none;}
+    .blackHome{font-size:18px;}
+    .chart-phone{font-size:22px;}
+    /* about */
+
+
+}

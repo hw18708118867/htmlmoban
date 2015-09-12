@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="oldie ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="oldie ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>UI设计_软件界面设计</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta name="author" content="" />
+    <meta name="Copyright" content="" />
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+	================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- IOS6全屏 Chrome高版本全屏
+	================================================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 让360双核浏览器用webkit内核渲染页面
+	================================================== -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas
+	================================================== -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSS
+	================================================== -->
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile_style.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile_1280.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile_1024.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile_640.css" rel="stylesheet" type="text/css">
+    <link href="css/mobile_320.css" rel="stylesheet" type="text/css">
+    <link href="css/style_retina.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Android 主屏图标
+	================================================== -->
+    <link rel="icon" sizes="196x196" href="images/apple-touch-icon-152x152.png">
+    <!-- IOS 主屏图标
+	================================================== -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+
+
+    <!-- <link rel="apple-touch-startup-image" href="/startup-748x1024.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" >
+	<link rel="apple-touch-startup-image" href="/startup-768x1004.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" > -->
+    <!-- Javascript
+	================================================== -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jay.plugin.minsidebar.js"></script>
+    <script type="text/javascript" src="js/sly.min.js"></script>
+    <script src="js/jquery.carouFredSel.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/ai-js.js"></script>
+</head>
+<body>
+<div class="container">
+<!-- Everything started here -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?96324684db2d35909bd761fd96707aeb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<header class="ai-header">
+    <div class="ai-nav-wrap">
+        <div class="ai-nav">
+            <div class="ai-logo"></div>
+            <div class="ai-imlink">
+                <a target="_blank" href="http://weibo.com/adinnet" class="imweibo"></a><a href="#" class="imweixin"></a>
+            </div>
+            <div class="sidebtn"></div>
+            <div class="ai-nav-list">
+                <a href="index.html" class="ai-nav-listitem  ">首页</a>
+                <a href="index.html#index_serve" class="ai-nav-listitem cur">服务</a>
+                <a href="index.html#index_case" class="ai-nav-listitem ">案例</a>
+                <a href="index.html#index_flow" class="ai-nav-listitem" toelem="index_flow">流程</a>
+                <a href="index.html#index_about" class="ai-nav-listitem ">艾艺</a>
+                <a href="index.html#index_blog" class="ai-nav-listitem ">博客</a>
+                <a href="index.html#index_contact" class="ai-nav-listitem ">联系</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***********************************
+图表-Banner
+*********************************** -->
+<div class="ai-eachcont con-wite">
+<div class="mobile-lay_1">
+    <h3 class="mobileText_1">
+        <img src="images/mobileText_1.png" alt="移动端开发" /></h3>
+    <h3 class="mobileText_02">
+        <img src="images/mobileText_1.png" alt="移动端开发" /></h3>
+    <h3 class="mobileText_03">
+        <img src="images/mobileText_002.png" alt="移动端开发" /></h3>
+    <p class="mobsubimg">
+        <img src="images/mobile_icon01.png" alt="" /></p>
+    <p class="mobsubimg02">
+        <img src="images/mobile_icon01.png" alt="" /></p>
+    <p class="mobsubimg03">
+        <img src="images/mobile_icon01.png" alt="" /></p>
+    <div class="mobileCon_1">
+        <p>用户使用移动互联网及移动终端的行为习惯逐渐形成，<br />
+            企业产品互联网化、渠道互联网化、营销互联网化、品牌互联网化的趋势也在推动企业级APP的发展。<br />
+            企业级APP开发需要结合自身特点以及用户需求，与企业自身业务紧密结合，并能够与企业的传统业务形成互联网化的互补。</p>
+    </div>
+    <div class="mobileCon_01">
+        <p>用户使用移动互联网及移动终端的行为习惯逐渐形成，<br>
+            企业产品互联网化、渠道互联网化、营销互联网化、品牌互联网化<br>
+            的趋势也在推动企业级APP的发展。<br>
+            企业级APP开发需要结合自身特点以及用户需求，与企业自身业务<br>
+            紧密结合，并能够与企业的传统业务形成互联网化的互补。</p>
+    </div>
+    <div class="mobileCon_02">
+        <p>企业级APP开发需要结合自身特点以及用户需求，与企业自身业务紧密结合，并能够与企业的传统业务形成互联网化的互补。</p>
+    </div>
+    <div class="mobileBottom_1">
+                    <span class="pc-mobileimg">
+                        <i class="imac"></i>
+                        <i class="imgLine"></i>
+                        <i class="mobileLineL"></i>
+                        <i class="mobileLineR"></i>
+                        <i class="chart_01"></i>
+                        <i class="chart_02"></i>
+                        <i class="chart_03"></i>
+                        <i class="chart_04"></i>
+                        <i class="chart_05"></i>
+                    </span>
+    </div>
+</div>
+<div class="mobile-lay_2">
+    <div class="mobileIndustriesFrame">
+        <div class="mobilelistindust show">
+            <h3 class="mobileText_2a">
+                <img src="images/mobileText_2a.png" alt="行业领域" /></h3>
+            <div class="mobileCon_2a">
+            </div>
+            <div class="mobileCon_2a02">
+            </div>
+            <div class="mobileBottom_2a">
+                <img src="images/mobile2_img01.png" alt="">
+            </div>
+            <div class="mobileBottom_2a02">
+                <img src="images/mobile2_img001.png" alt="">
+            </div>
+            <div class="mobileBottom_2a03">
+                <img src="images/mobile2_img002.png" alt="">
+            </div>
+        </div>
+        <div class="mobilelistindust">
+            <div class="mobileindusLay">
+                <div class="mobileLeft">
+                    <h3 class="mobileText_2b">
+                        <img src="images/mobileText_2b.png" alt="行业领域" /></h3>
+                    <div class="mobileSubimg">
+                        <img src="images/mobile2_img02.png" alt=""></div>
+                    <div class="mobileCon_2b">
+                        <p>
+                            360度立体式展现产品信息，提供基于用户了解产品细节信息、试用体验产品、运用产品于场景的全方位展示解决方案，让用户更全面更直观了解产品，帮助他们选择最合适的影音产品，创造更美好的生活。
+                    </div>
+                </div>
+                <div class="mobileRight">
+                    <img src="images/mobile2_img03.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobindustList">
+        <li class="curindut">行业领域<br />
+            <em>01</em></li>
+        <li>功能模块<br />
+            <em>02</em></li>
+    </div>
+</div>
+<div class="mobile-lay_7">
+    <h3 class="title02">
+        <img src="images/mobileText_2b.png" alt="功能模块"></h3>
+    <ul class="modular01">
+        <li>1:产品展示 &nbsp;&nbsp;在手机 </li>
+        <li>2:品牌宣传</li>
+        <li>3:LBS定位</li>
+        <li>4:电子期刊</li>
+        <li>5:实时沟通</li>
+        <li>6:数据展示</li>
+        <li>7:蓝牙控制</li>
+        <li>8:实用工具</li>
+        <li>9:移动支付</li>
+        <li>10:消息推送</li>
+        <li>11:360全景</li>
+        <li>12:面访问卷</li>
+    </ul>
+    <ul class="modular02">
+        <li>1:产品展示 &nbsp;&nbsp;在手机 </li>
+        <li>2:品牌宣传</li>
+        <li>3:LBS定位</li>
+        <li>4:电子期刊</li>
+        <li>5:实时沟通</li>
+        <li>6:数据展示</li>
+        <li>7:蓝牙控制</li>
+        <li>8:实用工具</li>
+        <li>9:移动支付</li>
+        <li>10:消息推送</li>
+        <li>11:360全景</li>
+        <li>12:面访问卷</li>
+    </ul>
+</div>
+<div class="mobile-lay_3">
+    <h3 class="mobileText_3">
+        <img src="images/mobileText_3.png" alt="开发观点" /></h3>
+    <div class="mobileCon_3">
+        <p>APP需要注重以移动互联网的思维构造流程，避免照搬传统业务模式;需要注重专而精，避免大而空，并结合移动互联网的特点，将个性化、社会化、场景化等融入其中</p>
+    </div>
+    <div class="mobileFrame">
+        <div class="mobframe bgwhite fl-l">
+            <h4 class="mobfrTit">框架型APP</h4>
+            <dl class="mobileFrameList">
+                <dd><em>1</em>每次打开APP，都要通过APP框架向云网站取UI及数据；</dd>
+                <dd><em>2</em>手机用户无法上网则无法访问APP应用中的数据。</dd>
+                <dd><em>3</em>框架型的APP无法调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）</dd>
+                <dd><em>4</em>框架型APP的访问速度受手机终端上网的限制，每次使用均会消耗一定的手机上网流量；</dd>
+                <dd><em>5</em>框架型APP应用的安装包小巧，只包含框架文件，而大量的UI元素、数据内容刚存放在云端；</dd>
+                <dd><em>6</em>APP用户每次都可以访问到实时的最新的云端数据；</dd>
+                <dd><em>7</em>APP用户无须频繁更新APP应用，与云端实现的是实时数据交互；</dd>
+            </dl>
+            <p class="mobileBottom_3L">适用企业：<em>电商、金融、资讯</em>类需经常更新内容的APP应用。</p>
+        </div>
+        <div class="mobframe bgwhite mobframe02 ">
+            <h4 class="mobfrTit">框架型APP</h4>
+            <dl class="mobileFrameList">
+                <dd><em>1</em>每次打开APP，都要通过APP框架向云网站取UI及数据；</dd>
+                <dd><em>2</em>手机用户无法上网则无法访问APP应用中的数据。</dd>
+                <dd><em>3</em>框架型的APP无法调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）</dd>
+                <dd><em>4</em>框架型APP的访问速度受手机终端上网的限制，每次使用均会消耗一定的手机上网流量；</dd>
+                <dd><em>5</em>框架型APP应用的安装包小巧，只包含框架文件，而大量的UI元素、数据内容刚存放在云端；</dd>
+                <dd><em>6</em>APP用户每次都可以访问到实时的最新的云端数据；</dd>
+                <dd><em>7</em>APP用户无须频繁更新APP应用，与云端实现的是实时数据交互；</dd>
+            </dl>
+            <p class="mobileBottom_3L">适用企业：<em>电商、金融、资讯</em>类需经常更新内容的APP应用。</p>
+        </div>
+        <div class="mobframe bgwhite mobframe03">
+            <h4 class="mobfrTit">框架型APP</h4>
+            <dl class="mobileFrameList">
+                <dd><em>1</em>每次打开APP，都要通过APP框架向云网站取UI及数据；</dd>
+                <dd><em>2</em>手机用户无法上网则无法访问APP应用中的数据。</dd>
+                <dd><em>3</em>框架型的APP无法调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）</dd>
+                <dd><em>4</em>框架型APP的访问速度受手机终端上网的限制，每次使用均会消耗一定的手机上网流量；</dd>
+                <dd><em>5</em>框架型APP应用的安装包小巧，只包含框架文件，而大量的UI元素、数据内容刚存放在云端；</dd>
+                <dd><em>6</em>APP用户每次都可以访问到实时的最新的云端数据；</dd>
+                <dd><em>7</em>APP用户无须频繁更新APP应用，与云端实现的是实时数据交互；</dd>
+            </dl>
+            <p class="mobileBottom_3L">适用企业：<em>电商、金融、资讯</em>类需经常更新内容的APP应用。</p>
+        </div>
+                    <span class="mobileadinnet03">
+                        <img src="images/mobile3_img001.png" alt="" /></span>
+        <div class="mobframe bgBlue fl-r">
+            <h4 class="mobfrTit">原生型APP</h4>
+            <dl class="mobileFrameList">
+                <dd><em>1</em>每次获取最新的APP功能，需要升级APP应用；</dd>
+                <dd><em>2</em>原生型APP应用的安装包相对较大，包含UI元素、数据内容、逻辑框架；</dd>
+                <dd><em>3</em>手机用户无法上网也可访问APP应用中以前下载的数据。</dd>
+                <dd><em>4</em>原生型的APP可以调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）蓝牙、重力感应等）</dd>
+                <dd><em>5</em>APP应用更新新功能，涉及到每次要向各个应用商店进行提交审核。</dd>
+            </dl>
+            <p class="mobileBottom_3L">适用企业：<em>面访、杂志、管理</em>无需经常更新类的APP应用。</p>
+        </div>
+        <div class="mobframe bgBlue mobframe002">
+            <h4 class="mobfrTit">原生型APP</h4>
+            <dl class="mobileFrameList">
+                <dd><em>1</em>每次获取最新的APP功能，需要升级APP应用；</dd>
+                <dd><em>2</em>原生型APP应用的安装包相对较大，包含UI元素、数据内容、逻辑框架；</dd>
+                <dd><em>3</em>手机用户无法上网也可访问APP应用中以前下载的数据。</dd>
+                <dd><em>4</em>原生型的APP可以调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）蓝牙、重力感应等）</dd>
+                <dd><em>5</em>APP应用更新新功能，涉及到每次要向各个应用商店进行提交审核。</dd>
+            </dl>
+            <p class="mobileBottom_3L">适用企业：<em>面访、杂志、管理</em>无需经常更新类的APP应用。</p>
+        </div>
+        <div class="mobframe bgBlue mobframe003">
+            <h4 class="mobfrTit">原生型APP</h4>
+            <dl class="mobileFrameList">
+                <dd><em>1</em>每次获取最新的APP功能，需要升级APP应用；</dd>
+                <dd><em>2</em>原生型APP应用的安装包相对较大，包含UI元素、数据内容、逻辑框架；</dd>
+                <dd><em>3</em>手机用户无法上网也可访问APP应用中以前下载的数据。</dd>
+                <dd><em>4</em>原生型的APP可以调用手机终端的硬件设备（语音、摄像头、短信、GPS、蓝牙、重力感应等）蓝牙、重力感应等）</dd>
+                <dd><em>5</em>APP应用更新新功能，涉及到每次要向各个应用商店进行提交审核。</dd>
+            </dl>
+            <p class="mobileBottom_3L">适用企业：<em>面访、杂志、管理</em>无需经常更新类的APP应用。</p>
+        </div>
+                    <span class="mobileadinnet">
+                        <img src="images/mobile3_img01.png" alt="" /></span>
+    </div>
+</div>
+<div class="mobile-lay_4">
+    <h3 class="mobileText_4">
+        <img src="images/mobileText_4.png" alt="使用技术" /></h3>
+    <div class="mobileCon_4">
+        <p>随着市场变化，企业业务的飞速发展和更新，大部分企业都会存在公司内部使用的软件系统由于年限已久，技术落后，功能单一以不能满足现有<br />
+            需求，安卓联航则根据企业需求提供相应的系统维护和升级。</p>
+    </div>
+    <div class="mobileBottom_4">
+        <img src="images/mobile4_img01.png" alt="">
+    </div>
+    <div class="mobileBottom_402">
+        <img src="images/mobile4_img001.png" alt="">
+    </div>
+</div>
+<div class="mobile-lay_5">
+    <h3 class="mobileText_5">
+        <img src="images/mobileText_5.png" alt="APP开发的标准流程" /></h3>
+    <h3 class="mobileText_502">
+        <img src="images/mobileText_005.png" alt="APP开发的标准流程" /></h3>
+    <div class="mobileCon_5">
+        <p></p>
+    </div>
+    <div class="mobileCon_502">
+        <p>
+            <img src="images/mobile5_img001.png"></p>
+    </div>
+    <div class="mobileCon_503">
+        <p>
+            <img src="images/mobile5_img002.png"></p>
+    </div>
+    <div class="mobileBottom_5">
+                    <span class="pc-mobileimg">
+                        <img src="images/mobile5_img01.png" alt=""></span>
+                    <span class="pad-mobileimg">
+                        <img src="images/mobile5_img01@2x.png" alt=""></span>
+    </div>
+</div>
+<div class="mobile-lay_6">
+    <div class="mobiletabwps">
+        <div class="set_up">
+            <img src="images/mobileText_6.png"></div>
+        <ul class="mobilelist">
+            <li><span class="mobile6_Icon01">联合登录</span></li>
+            <li><span class="mobile6_Icon02">数据对接</span></li>
+            <li><span class="mobile6_Icon03">负载均衡</span></li>
+            <li class="curmobile"><span class="mobile6_Icon04">安全措施</span></li>
+        </ul>
+    </div>
+    <div class="mobileNavFrame">
+        <div class="mobilelistitem">
+            <div class="mobileCon moblistIcon01">
+                <h3><span>联合登录</span></h3>
+                <p>联合登录通过开发平台授权，不必在线注册就可登录APP会员系统，极大的方便了用户操作。目前支持的联合登录类型有：新浪微博、微信登录、QQ账号登录和人人网账号登录。</p>
+                <em class="iconarrow"></em>
+            </div>
+
+        </div>
+        <div class="mobilelistitem">
+            <div class="mobileCon moblistIcon02">
+                <h3><span>数据对接</span></h3>
+                <p>通过程序接口进行数据交互，优点是方便灵活与可进行复杂的业务处理。双方协商数据对接方式和接口，出具开发文档，由双方人员在彼此系统内按接口要求编写程序，以实现数据对接。目前主流的对接方式为JSON和XML两种数据格式。</p>
+                <em class="iconarrow"></em>
+            </div>
+        </div>
+        <div class="mobilelistitem">
+            <div class="mobileCon moblistIcon03">
+                <h3><span>负载均衡</span></h3>
+                <p>APP所通信的服务器端，当服务器并发访问压力大的时候，就要采取负载均衡的方式来分担请求压力。均衡负载能够平均分配客户请求到服务器列阵，籍此提供快速获取重要数据，解决大量并发访问服务问题。这种群集技术可以用最少的投资获得接近于大型主机的性能。</p>
+                <em class="iconarrow"></em>
+            </div>
+        </div>
+        <div class="mobilelistitem show">
+            <div class="mobileCon moblistIcon04">
+                <h3><span>安全措施</span></h3>
+                <p>随着APP的普及使用，越来越多的用户将个人信息通过注册、记录，保存在APP中，如何保证APP的存储与传输的安全也变得越来越重要。存储时通过对敏感信息进行加密、存储采用密文保存，传输时进行加密与校验对请求身份与完整性进行验证。</p>
+                <em class="iconarrow"></em>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="chartTop_7 columnT">
+</div>
+<div class="posFix">
+    <div class="page_shift">
+        <ul>
+            <li><a href="chart.html" class="shiftOne">大数据<i>数据可视化</i></a></li>
+            <li class="cur"><a href="mobile.html" class="shiftTwo">移动APP<i>H5、Android、IOS</i></a></li>
+            <li><a href="3d.html" class="shiftThree">3D互联网<i>虚拟展示</i></a></li>
+            <li><a href="digital_class.html" class="shiftFour">互动课件<i>情景动画课程开发</i></a></li>
+            <li><a href="us.html" class="shiftFive">创意<i>团队介绍</i></a></li>
+            <li class="Gohome"><a href="/">返回首页<i>HOME</i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--marc 新增 15-05-14-->
+<div class="posFix_phone">
+    <div class="posFix_phone_pop hide">
+        <a href="index.html" class="pop_01">首页</a>
+        <a href="chart.html" class="pop_02 plc"><i class="font-case icon-pop02"></i>大数据</a>
+        <a href="mobile.html" class="pop_03 plc"><i class="font-case icon-pop03"></i>移动APP</a>
+        <a href="3d.html" class="pop_04 plc"><i class="font-case icon-pop04"></i>3D互联网</a>
+        <a href="digital_class.html" class="pop_05 plc"><i class="font-case icon-pop05"></i>互动课件</a>
+        <a href="us.html" class="pop_06 plc"><i class="font-case icon-pop06"></i>创意</a>
+    </div>
+
+    <div class="pfp_btn">
+        <div class="pfp_btn_cont">
+            <i class="font-case icon-popbtn"></i>
+        </div>
+    </div>
+</div>
+<!--end posFix_phone-->
+<!--end marc 15-05-14-->
+</div>
+
+
+<footer class="ai-footer">
+    <div class="mid_wrap friend-links">
+        <div class="mid_block">
+            <a href="index.html" target="_blank" class="flks">UI设计</a>
+            <a href="http://WWW.BJTCWL.COM" target="_blank" class="flks">天成网络</a>
+            <a href="http://wz.68design.net/list2.html?c=002&t=&p=2" target="_blank" class="flks">设计名站</a>
+            <a href="mobile.html" target="_blank" class="flks">手持端开发</a>
+            <a href="http://www.tt-d.com" target="_blank" class="flks">深圳商标设计</a>
+            <a href="http://www.uimaker.com/" target="_blank" class="flks">UI制造者</a>
+            <a href="http://www.uisheji.com" target="_blank" class="flks">UI设计网</a>
+            <a href="http://www.pssheji.com/" target="_blank" class="flks">设计教程</a>
+            <a href="http://www.boxui.com/" target="_blank" class="flks">盒子UI</a>
+            <a href="http://www.chinaui.com/" target="_blank" class="flks">优艾网</a>
+            <a href="http://68hanchen.com/" target="_blank" class="flks">杭州网站建设</a>
+        </div>
+    </div>
+
+    <div class="mid_wrap copyright">
+        <div class="mid_block">
+            <h2><i>专业的人机交互策划、</i><i>高端UI设计、</i><i>移动应用开发公司</i></h2>
+            <h3>沪ICP备05026071号<i> © 2006-2014 ADinNET.cn All rights reserved.</i></h3>
+        </div>
+    </div>
+</footer>
+
+<div style="display:none"> <script src="http://s9.cnzz.com/stat.php?id=3831197&web_id=3831197" language="JavaScript"></script></div>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2436135-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</div>
+<script type="text/javascript">
+    (function ($) {
+        $.fn.rs_simpleTabs = function (options) {
+            var opt = $.extend({
+                tabElem: "",		//切换标签的子元素
+                tabCurrent: "cur",		//切换标签的Current状态
+                tabCont: "",		//切换的元素内容父级
+                tabContLayer: "",		//切换的元素内容层
+                tabContLayerShow: "show",	//切换的元素Current状态
+                tabCloseBtn: ".tabClosed",
+                afclick: null		//回调函数接口
+            }, options);
+            return this.each(function () {
+                var _this = $(this);
+                var _tabElem = _this.children(opt.tabElem);
+                var _tabCont = $(opt.tabCont);
+                var _tabContLayer = _tabCont.children(opt.tabContLayer);
+                _this.on("click", opt.tabElem, function (e) {
+                    e.stopPropagation();
+                    var _this = $(this);
+                    var _index = _this.index();
+                    var _thiscur = _tabElem.filter("." + opt.tabCurrent);
+                    if (_thiscur[0] == _this[0]) { return; } else {
+                        _thiscur.removeClass(opt.tabCurrent);
+                        _this.addClass(opt.tabCurrent);
+                        _tabContLayer
+                                .filter("." + opt.tabContLayerShow)
+                                .removeClass(opt.tabContLayerShow)
+                                .end()
+                                .eq(_index).addClass(opt.tabContLayerShow);
+                        if (opt.afclick) { opt.afclick(_index); }
+                    }
+                }).on("click", opt.tabCloseBtn, function (e) {
+                    e.stopPropagation();
+                    if (_this.children(opt.tabElem).length == 1) {
+                        return;
+                    }
+                    var _thisx = $(this);
+                    var _paret = _thisx.parent();
+                    var _pIndex = _paret.index();
+                    _paret.remove();
+                    _tabContLayer.eq(_pIndex).remove();
+                    _tabContLayer = _tabCont.children(opt.tabContLayer);
+                    if (_this.children(opt.tabCurrent).length < 1) {
+
+                        _this.children(opt.tabElem).eq(0).trigger("click");
+                    }
+
+                });
+            });
+        }
+    })(jQuery);
+
+    //DOM ready
+    $(function () {
+        $('.mobilelist li:last').addClass('pr20');
+        $(".mobilelist").rs_simpleTabs({
+            tabElem: "li",	//切换标签的子元素
+            tabCurrent: "curmobile",				//切换标签的Current状态
+            tabCont: ".mobileNavFrame",		//切换的元素内容父级
+            tabContLayer: ".mobilelistitem",		//切换的元素内容层
+            tabContLayerShow: "show",			//切换的元素Current状态
+            afclick: null				//回调函数接口
+        });
+        $(".mobindustList").rs_simpleTabs({
+            tabElem: "li",	//切换标签的子元素
+            tabCurrent: "curindut",				//切换标签的Current状态
+            tabCont: ".mobileIndustriesFrame",		//切换的元素内容父级
+            tabContLayer: ".mobilelistindust",		//切换的元素内容层
+            tabContLayerShow: "show",			//切换的元素Current状态
+            afclick: null				//回调函数接口
+        });
+        /*------marc 新增 15-05-14------*/
+        //phone pop 弹窗
+        $(".pfp_btn").click(function () {
+            $(".posFix_phone_pop").toggleClass("hide");
+        })
+        /*------end marc 15-05-14------*/
+    });
+</script>
+</body>
+</html>

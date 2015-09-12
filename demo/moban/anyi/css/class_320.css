@@ -1,0 +1,284 @@
+@charset "utf-8";
+
+@import "style_320.css";
+
+@media only screen and (max-width:320px),
+only screen and (max-device-width:320px)
+{
+    .class-lay_1 ,
+    .class_banner{
+        height: 277px;
+    }
+    .classbanner-text{
+        width:276px;
+        height:113px;
+        margin-left:-138px;
+        top:63px;
+    }
+    .classbanner-tex1{
+        width:276px;
+        height:46px;
+    }
+    .classbanner-tex2{
+        width:196px;
+        height:9px;
+        top:54px;
+        left:40px;
+    }
+    .classbanner-tex3{
+        width:164px;
+        height:34px;
+        left:50px;
+    }
+    .class-lay_2{
+        width:100%;
+        height:740px;
+        padding:50px 0 0px;
+    }
+    .classlay_Title{
+        padding:26px 0 0 0;
+        margin:0 0 20px 0;
+    }
+    .classlay_Title span{
+        width:200px;
+        margin:0 0 0 -115px;
+    }
+    .classlay_Titlecon{
+        width:200px;
+        height:29px;
+        background-size:200px 29px;
+    }
+    .classlay2_cons{
+        display:block;
+        padding:0 50px;
+        font-size:12px;
+        line-height:28px;
+        color:#666;
+        text-align:center;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 440px;
+        display:block;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .inner-content01{color:#5bdcb9;}
+    .inner-content02{color:#f56767;}
+    .inner-content03{color:#68d2f9;}
+    .greencon{
+        width:124px;
+        height:135px;
+        display:block;
+        background:url(../images/digitalimg1.png) no-repeat center top;
+        background-size:124px 135px;
+        margin:0 auto;
+    }
+    .redcon{
+        width:124px;
+        height:135px;
+        display:block;
+        background:url(../images/digitalimg2.png) no-repeat center top;
+        background-size:124px 135px;
+        margin:0 auto;
+    }
+    .bluecon{
+        width:124px;
+        height:135px;
+        display:block;
+        background:url(../images/digitalimg3.png) no-repeat center top;
+        background-size:124px 135px;
+        margin:0 auto;
+    }
+    .swiper-slide div h4{
+        font-size:16px;
+        line-height:28px;
+        text-align:center;
+        padding:24px 0 0 0;
+    }
+    .swiper-slide div i{
+        font-family:"Arial";
+        font-size:10px;
+        text-transform: uppercase;
+    }
+    .swiper-slide div.inner-content01 i{
+        color: rgba(91,220,185,0.5);
+        filter: alpha(opacity=5);
+    }
+    .swiper-slide div.inner-content02 i{
+        color: rgba(245,103,103,0.4);
+        filter: alpha(opacity=4);
+    }
+    .swiper-slide div.inner-content03 i{
+        color: rgba(104,210,249,0.4);
+        filter: alpha(opacity=4);
+    }
+    .swiper-slide div .btmline{
+        display:block;
+        width:80px;
+        margin:20px auto 15px;
+    }
+    .swiper-slide div.inner-content01 .btmline{
+        border-top:1px dashed rgba(91,220,185,0.4);
+        filter: alpha(opacity=4);
+    }
+    .swiper-slide div.inner-content02 .btmline{
+        border-top:1px dashed rgba(245,103,103,0.4);
+        filter: alpha(opacity=4);
+    }
+    .swiper-slide div.inner-content03 .btmline{
+        border-top:1px dashed rgba(104,210,249,0.4);
+        filter: alpha(opacity=4);
+    }
+    .swiper-slide div p{
+        font-size:14px;
+        line-height:24px;
+        padding:0 20px;
+    }
+    .case_con{
+        height:340px;
+    }
+    .case_infor{
+        width:100%;
+        height:278px;
+        padding:20px 1px 0;
+    }
+    .c_inforTitle{
+        height:48px;
+        margin:0 0 20px 0;
+    }
+    .c_inforTitle img{
+        width: 117px;
+        height:38px;
+    }
+    .c_inforL{
+        width:296px;
+        height:108px;
+        background:url(../images/cass_pic001.png) no-repeat;
+        background-size:296px 108px;
+        margin:0 auto 20px;
+        float:none;
+    }
+    .c_inforR{
+        width:295px;
+        height:88px;
+        background:url(../images/cass_pic002.png) no-repeat;
+        background-size:295px 88px;
+        margin:0 auto;
+        float:none;
+    }
+    .customer_pro{
+        width:100%;
+    }
+    .customer_infor{
+        padding:0 20px;
+    }
+    .cus_Title img{
+        width:110px;
+        height:110px;
+    }
+    .customer_infor h3{
+        font-size:12px;
+        line-height:24px;
+    }
+    .customer_infor p{
+        font-size:12px;
+        line-height:24px;
+    }
+    .cus_conment{
+        font-size:12px;
+        line-height:24px;
+        padding:20px 15px 25px;
+    }
+    .start_up a,
+    .redstart_up a{
+        width:24px;
+        height:24px;
+        margin-left:-12px;
+        bottom:-12px;
+    }
+    .blueupbg,
+    .bluedownbg,
+    .redupbg,
+    .reddownbg{
+        background-size:24px 24px;
+    }
+    #carousel,
+    .class_conment,
+    .class_conment li{
+        width:261px;
+        height:170px;
+        margin:0 auto;
+        position:relative;
+        text-align:center;
+    }
+    .classimg1{
+        width:170px;
+        height:145px;
+        top:12px;
+        right:20px;
+    }
+    .courseware{
+        width:102px;
+        height:126px;
+        top:22px;
+        left:20px;
+        padding:0;
+    }
+    .courseware img{
+        width:102px;
+        height:126px;
+        display:block;
+    }
+    #carousel .prev,
+    #carousel .next {
+        width: 32px;
+        height: 32px;
+        top: 70px;
+        z-index:100;
+    }
+    #carousel .prev {
+        left: -20px;
+    }
+    #carousel .next {
+        right: -20px;
+    }
+    #carousel .prev,
+    #carousel .prev:hover,
+    #carousel .next,
+    #carousel .next:hover {
+        background-size:32px 32px;
+    }
+
+    .classlay2_con,
+    .playform_sly,
+    .c_inforLcon,
+    .c_inforRcon,
+    .courseware h3,
+    .courseware h4,
+    .courseware h4 i,
+    .courseware p{ display:none;}
+
+
+    .cartoon_animate
+    {
+        height: 208px;
+    }
+}

@@ -1,0 +1,824 @@
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="oldie ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="oldie ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+	================================================== -->
+    <meta charset="utf-8">
+    <title>UI设计</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="title" content="">
+    <meta name="author" content="">
+    <meta name="Copyright" content="">
+    <!-- <meta name="description" content=""> -->
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+	================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
+    <!-- IOS6全屏 Chrome高版本全屏
+	================================================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 让360双核浏览器用webkit内核渲染页面
+	================================================== -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas
+	================================================== -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSS
+	================================================== -->
+    <script src="js/oldiejump.js"></script>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/baidumap.css" rel="stylesheet" type="text/css">
+    <!-- 百度地图CSS -->
+    <link href="css/magicwall.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/style_1280.css" rel="stylesheet" type="text/css">
+    <link href="css/style_1024.css" rel="stylesheet" type="text/css">
+    <link href="css/style_768.css" rel="stylesheet" type="text/css">
+    <link href="css/style_640.css" rel="stylesheet" type="text/css">
+    <link href="css/style_320.css" rel="stylesheet" type="text/css">
+    <link href="css/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style_retina.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Android 主屏图标
+	================================================== -->
+    <link rel="icon" sizes="196x196" href="images/apple-touch-icon-152x152.jpg">
+    <!-- IOS 主屏图标
+	================================================== -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-76x76.jpg">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/apple-touch-icon-76x76.jpg">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.jpg">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.jpg">
+
+
+    <!-- <link rel="apple-touch-startup-image" href="/startup-748x1024.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" >
+	<link rel="apple-touch-startup-image" href="/startup-768x1004.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" > -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?96324684db2d35909bd761fd96707aeb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="container">
+<!-- Everything started here -->
+<header class="ai-header">
+<div class="ai-nav-wrap">
+    <div class="ai-nav">
+        <div class="ai-logo"></div>
+        <div class="ai-imlink">
+            <a target="_blank" href="http://weibo.com/adinnet" class="imweibo"></a><a href="#" class="imweixin"></a>
+        </div>
+        <div class="sidebtn"></div>
+        <div class="ai-nav-list">
+            <div class="ai-nav-redLine">
+                <!-- 这个预留了一个滚动条接口 -->
+            </div>
+            <a href="index.html#" class="ai-nav-listitem cur" toelem="index_top">首页</a>
+            <a href="index.html#index_serve" class="ai-nav-listitem" toelem="index_serve">服务</a>
+            <a href="index.html#index_case" class="ai-nav-listitem" toelem="index_case">案例</a>
+            <a href="index.html#index_flow" class="ai-nav-listitem" toelem="index_flow">流程</a>
+            <a href="index.html#index_about" class="ai-nav-listitem" toelem="index_about">关于</a>
+            <a href="index.html#index_blog" class="ai-nav-listitem" toelem="index_blog">博客</a>
+            <a href="index.html#index_contact" class="ai-nav-listitem" toelem="index_contact">联系</a>
+        </div>
+    </div>
+</div>
+<div class="ai-banner-wrap ai-eachcont" id="index_top" nav_index="0">
+    <div class="ai-banner-frame clearfix">
+        <!--首屏Banner   not-active / active
+    <div class="banner_list ai-banner-0">
+        <div class="ai-banner-font mid_wrap na-hide">
+
+        </div>
+    </div>-->
+        <div class="banner_list ai-banner-1">
+            <img lowsrc="images/biggest-banner-bg-low.jpg" src="images/biggest-banner-bg.jpg" alt="" class="ai-banner-img">
+            <div class="ai-banner-font mid_wrap na-hide">
+                <div class="mid_block banner-performance-hide">
+                    <h2 class="banner-font-big">让我们来谈谈创意</h2>
+                    <h3 class="banner-font-small">LET us TALK ABOUT originality</h3>
+                    <div class="banner-bs1">
+                        <div class="txa_c font-icons cauliflower">&#xE617;</div>
+                        <div class="txa_c dot">·</div>
+                        <div class="txa_c dot">·</div>
+                        <div class="txa_c dot">·</div>
+                        <div class="txa_c mouse font-icons">&#xE616;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--图表Banner-->
+        <div class="banner_list ai-banner-5">
+            <!--<img src="images/biggest-banner-bg-2.gif" alt="" class="ai-banner-img">-->
+            <div class="ai-banner-font mid_wrap na-hide">
+                <div class="mid_block">
+                    <div class="txa_l">
+                        <h3 class="ab5_t1">艾艺为您定制可视化的</h3>
+                        <h2 class="ab5_t2">图表图形 ◆ 数据展示</h2>
+                        <h4 class="ab5_t3">解决方案<em><span>电力能源</span><span>保险银行</span><span>医疗服务</span><span>交通物流</span></em></h4>
+                    </div>
+                    <div class="ab5_chart_wrap">
+
+
+
+
+                        <div class="ab5_chart_1">
+                            <div class="patch_1">
+                                <div class="snap"></div>
+                            </div>
+                            <div class="patch_2">
+                                <div class="snap"></div>
+                            </div>
+                            <div class="patch_font"><span>80%</span></div>
+                        </div>
+
+                        <div class="ab5_chart_2 clearfix">
+                            <div class="chart_2_eachcol col_1 col_step_1"><span></span><em><i>45%</i></em></div>
+                            <div class="chart_2_eachcol col_2 col_step_2"><span></span><em><i>65%</i></em></div>
+                            <div class="chart_2_eachcol col_3 col_step_3"><span></span><em><i>25%</i></em></div>
+                            <div class="chart_2_eachcol col_1 col_step_4"><span></span><em><i>60%</i></em></div>
+                            <div class="chart_2_eachcol col_2 col_step_5"><span></span><em><i>40%</i></em></div>
+                        </div>
+
+                        <div class="ab5_chart_3">
+                            <div class="inwrap_1 hardware-acceleration">
+                                <div class="inwrap_2">
+                                    <div class="inchart_1">
+                                        <div class="inchart_2">
+                                            <div class="point_1"></div>
+                                            <div class="point_2"></div>
+                                            <div class="point_3"></div>
+                                            <div class="point_4"></div>
+                                            <div class="point_5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--微信Banner-->
+        <div class="banner_list ai-banner-2">
+            <img src="images/biggest-banner-bg-2.gif" alt="" class="ai-banner-img">
+            <div class="ai-banner-font mid_wrap ab2_wx_wrap na-hide">
+                <div class="mid_block">
+                    <div class="ab2_wx2">
+                        <img src="images/biggest-banner-bg-2-item-2.png" alt="" class="ab2_wx2img">
+                        <div class="ab2_wx2_in">
+                            <img src="images/biggest-banner-bg-2-item-2-1.png" alt="" class="ad2_wx_img1">
+                            <img src="images/biggest-banner-bg-2-item-2-2.png" alt="" class="ad2_wx_img2">
+                            <img src="images/biggest-banner-bg-2-item-2-3.png" alt="" class="ad2_wx_img3">
+                            <img src="images/biggest-banner-bg-2-item-2-4.png" alt="" class="ad2_wx_img4">
+                            <img src="images/biggest-banner-bg-2-item-2-5-min.png" alt="" class="ad2_wx_img5">
+                        </div>
+                    </div>
+                    <img src="images/biggest-banner-bg-2-item-1.png" alt="" class="ab2_wx">
+                </div>
+            </div>
+        </div>
+        <!--移动端Banner-->
+        <div class="banner_list ai-banner-3">
+            <img src="images/biggest-banner-bg-3.jpg" alt="" class="ai-banner-img">
+            <div class="ai-banner-font mid_wrap na-hide">
+                <div class="mid_block">
+                    <img src="images/biggest-banner-bg-3-item-1.png" alt="" class="ab3_mb_img_1">
+                </div>
+            </div>
+            <div class="ab3_mb_img_2_wrap na-hide">
+                <img src="images/biggest-banner-bg-3-item-3.png" alt="" class="ab3_mb_img_2">
+                <p>
+                    <img src="images/biggest-banner-bg-3-item-4.png" alt="" class="ab3_mb_img_3">
+                </p>
+            </div>
+            <div class="ab3_mb_t1 na-hide">Solutions</div>
+            <div class="ab3_mb_t2 na-hide"><span>我们为不同行业</span><i>提供整套</i></div>
+            <div class="ab3_mb_t3 na-hide"><i>提供整套</i><font>移动端技术</font>解决方案</div>
+            <div class="ab3_mb_t4 na-hide">We offer a complete range of different industries</div>
+        </div>
+        <!--3D Banner-->
+        <div class="banner_list ai-banner-4">
+            <img src="images/biggest-banner-bg-4.jpg" alt="" class="ai-banner-img">
+            <div class="ai-banner-font mid_wrap na-hide">
+                <div class="mid_block">
+                    <img src="images/biggest-banner-bg-4-item-3.png" alt="" class="ab4_3d_img_2"><br>
+                    <img src="images/biggest-banner-bg-4-item-1.png" alt="" class="ab4_3d_img_1">
+
+                    <img src="images/biggest-banner-bg-4-item-4.png" alt="" class="ab4_3d_img_4">
+                    <img src="images/biggest-banner-bg-4-item-5.png" alt="" class="ab4_3d_img_5">
+                    <img src="images/biggest-banner-bg-4-item-6.png" alt="" class="ab4_3d_img_6">
+                </div>
+                <div class="mid_block minsizemb">
+                    <div class="ms-ft1">3D虚拟空间</div>
+                    <div class="ms-ft2">互联网技术革新者</div>
+                    <div class="ms-ft3">在线互动的方式体验商品</div>
+                </div>
+            </div>
+        </div>
+        <div class="banner_list ai-banner-6" style='background: #35cbd9;'>
+            <div class="ai-banner-font na-hide">
+                <div class="cartoon_animate">
+                    <div class="balloon">
+                        <div class="balloon-text-wrap">
+                            <div class="texts">
+                                <div class="txin"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boat">
+                        <div class="text-1-wrap">
+                            <div class="text-1">
+                                <div class="txin"></div>
+                            </div>
+                        </div>
+                        <div class="text-2-wrap">
+                            <div class="text-2">
+                                <div class="txin"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="fish_wrap">
+                        <div class="fish_cartoon_h">
+                            <div class="fish_cartoon_r"></div>
+                        </div>
+                    </div>
+
+                    <div class="texts-less-640">
+                        <div class="less640-text lt-1"></div>
+                        <div class="less640-text lt-2"></div>
+                        <div class="less640-text lt-3"></div>
+                    </div>
+
+                    <div class="tests-less-320">
+                        <img src="images/320-dgt-title-01.png" alt="" class="tl320-1">
+                        <img src="images/320-dgt-title-02.png" alt="" class="tl320-2">
+                        <img src="images/320-dgt-title-03.png" alt="" class="tl320-3">
+                        <img src="images/320-dgt-title-04.png" alt="" class="tl320-4">
+                    </div>
+
+                    <div class="wave">
+                        <div class="wave-in"></div>
+                        <div class="bottle-1"></div>
+                        <div class="wave-min"></div>
+                        <div class="bottle-2"></div>
+                        <div class="wave-out"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ai banner controller -->
+    <ul class="ai-banner-pages fix_3px_spc"></ul>
+    <div class="ai-banner-prev font-icons"><span></span></div>
+    <div class="ai-banner-next font-icons"><span></span></div>
+</div>
+
+</header>
+<!-- ***********************************
+简介
+*********************************** -->
+<div class="ai-eachcont con-wite" id="index_serve" nav_index="1">
+    <div class="ecpadding_1 txa_c">
+        <h2 class="title-big">我们做什么？</h2>
+        <h3 class="title-small">与客户一起沟通，从使用者的角度发现问题，<br class="br-1">
+            找到最佳解决方案。<br class="br-2">
+            我们多年的项目经验，<br class="br-3">
+            能够创出最完美的创意，<br class="br-4">
+            找到最有效的解决方法，提供最佳的设计方案。</h3>
+    </div>
+    <div class="con-third-1 clearfix pad_b_42">
+        <div class="minsizeToggle txa_c">
+            <div class="circle-icon circle-icon-1 ci-1"></div>
+            <div class="circle-icon circle-icon-1 ci-2 cur"></div>
+            <div class="circle-icon circle-icon-1 ci-3"></div>
+        </div>
+        <div class="third-big-wrap clearfix">
+            <div class="third-w">
+                <div class="txa_c iconwrap">
+                    <div class="circle-icon circle-icon-1 ci-1"></div>
+                </div>
+                <div class="txa_c">
+                    <div class="trdcon">
+                        <h2 class="title-medium trd-title">用户体验设计</h2>
+                        <div class="txa_l trd-detal">
+                            <div class="wrap-group">
+                                <p>需求理解与分析</p>
+                                <p>功能流程梳理</p>
+                                <p>场景交互设计</p>
+                            </div>
+                            <div class="wrap-group ">
+                                <p>原型设计</p>
+                                <p>创意策划</p>
+                                <p>体验反馈</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="third-w cur">
+                <div class="txa_c iconwrap">
+                    <div class="circle-icon circle-icon-1 ci-2"></div>
+                </div>
+                <div class="txa_c">
+                    <div class="trdcon">
+                        <h2 class="title-medium trd-title">视觉与动画设计</h2>
+                        <div class="txa_l trd-detal">
+                            <div class="wrap-group">
+                                <p>图形创意 卡通动漫</p>
+                                <p>软件产品UI设计</p>
+                                <p>移动应用界面设计</p>
+                            </div>
+                            <div class="wrap-group">
+                                <p><strong><a href="digital_class.html">动漫课件开发</a></strong></p>
+                                <p>3D/AR界面策划</p>
+                                <p><strong><a href="chart.html">大屏数据展示</a></strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="third-w">
+                <div class="txa_c iconwrap">
+                    <div class="circle-icon circle-icon-1 ci-3"></div>
+                </div>
+                <div class="txa_c">
+                    <div class="trdcon">
+                        <h2 class="title-medium trd-title">研发和技术服务</h2>
+                        <div class="txa_l trd-detal">
+                            <div class="wrap-group">
+                                <p>前端技术开发</p>
+                                <p><strong><a href="mobile.html">iOS/Android客户端开发</a></strong></p>
+                                <p><strong><a href="weixin.html">HTML5动态效果定制</a></strong></p>
+                            </div>
+                            <div class="wrap-group">
+                                <p>企业应用及微信开发</p>
+                                <p>Flash/WPF开发</p>
+                                <p>商城门户网站建设</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ai-eachcont con-black case-grid-wrap" id="index_case" nav_index="2">
+    <div class="con_rank_title">
+        <h2>C</h2>
+        <h4>CASE</h4>
+        <h3>案例</h3>
+    </div>
+    <div class="case-filter-wrap">
+        <div class="case-filter-inner">
+
+            <div class="cf-items isAppwrap" onclick="appcase(1)">
+                <span class="cf-icon cfi-app"></span>
+                <span class="cf-text">APP开发</span>
+            </div>
+
+            <div class="cf-items " onclick="showcase(2,0)">
+                <span class="cf-icon cfi-h5"></span>
+                <span class="cf-text">H5开发</span>
+            </div>
+
+            <div class="cf-items " onclick="showcase(6,0)">
+                <span class="cf-icon cfi-ui"></span>
+                <span class="cf-text">UI设计</span>
+            </div>
+
+            <div class="cf-items " onclick="showcase(3,0)">
+                <span class="cf-icon cfi-chart"></span>
+                <span class="cf-text">大数据</span>
+            </div>
+
+            <div class="cf-items " onclick="showcase(4,0)">
+                <span class="cf-icon cfi-cartoon"></span>
+                <span class="cf-text">动漫动画</span>
+            </div>
+
+            <div class="cf-items " onclick="showcase(5,0)">
+                <span class="cf-icon cfi-webside"></span>
+                <span class="cf-text">网站</span>
+            </div>
+
+
+        </div>
+    </div>
+    <ul class="case-nav-wrap txa_c fix_3px_spc">
+        <li class="case-nav-items" onclick='showcaseall(0,0,this)'>全部</li>
+        <li class="case-nav-items" onclick='showcase(0,37,this)'>金融保险</li>
+        <li class="case-nav-items" onclick='showcase(0,39,this)'>医疗卫生</li>
+        <li class="case-nav-items" onclick='showcase(0,40,this)'>能源电力</li>
+        <li class="case-nav-items" onclick='showcase(0,43,this)'>物流交通</li>
+        <li class="case-nav-items" onclick='showcase(0,44,this)'>软件产品</li>
+        <li class="case-nav-items" onclick='showcase(0,45,this)'>文化时尚</li>
+        <li class="case-nav-items" onclick='showcase(0,47,this)'>动漫动画</li>
+        <li class="case-nav-items" onclick='showcase(0,49,this)'>其他</li>
+    </ul>
+
+    <!--APP案例-->
+    <div class="case-gallery-wrap app-gallery-wrap" id="APPGRW" style="display: none">
+        <!-- Swiper -->
+        <div class="swiper-container" id="APPSWIPER">
+            <div class="swiper-wrapper" id="appcase_grid">
+
+
+            </div>
+        </div>
+
+        <!-- Add Pagination -->
+        <div class="swiper-pagination" id="APPITEMPAGES"></div>
+    </div>
+    <!-- 加载案例 -->
+    <div class="magicwall case-gallery-wrap" id="MGW">
+        <ul class="magicwall-grid" id="case_grid">
+            <div class="magicwall case-gallery-wrap" id="MGW">
+                <ul class="magicwall-grid" id="case_grid"><li data-thumb="images/24d731e0-f6c0-4a1f-b5e4-a0af3510016e.png" data-index="31" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 287px; top: 0px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/6/15/1830.html"><div class="hover-content-inner"><h2>德比软件</h2><p>德比软件（上海）有限公司，是专业从事旅游产品网络营销系统设计和旅游产品分销的技术服务公司。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/24d731e0-f6c0-4a1f-b5e4-a0af3510016e.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/218648e6-fb67-49c1-abd0-6d53235e8274.png" data-index="137" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 574px; top: 0px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2015/3/31/1768.html"><div class="hover-content-inner"><h2>一成汽车</h2><p>此款软件是针对汽车保养维修行业量身定制的，通过本系统可以实时的对车辆进行检测维护，直观的发现车辆问题所在，达到事半功倍的效果。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/218648e6-fb67-49c1-abd0-6d53235e8274.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/45105d6a-b33e-44db-a7f1-901e1a9caba7.png" data-index="36" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 861px; top: 0px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/energy/2015/3/31/1767.html"><div class="hover-content-inner"><h2>千一化工</h2><p>本款软件即通过高科技精密仪器对空气及微生物进行检测，可对微生物含量进行连续实时监控和趋势分析，这对于改善整空气和生活环境有着极大的意义。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/45105d6a-b33e-44db-a7f1-901e1a9caba7.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/dd479a49-6dc4-4b76-b559-ba2f0773e919.png" data-index="53" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 1148px; top: 0px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/3/31/1766.html"><div class="hover-content-inner"><h2>Lenovo Quality 监控系统</h2><p>此款软件是针对联想SQE部门对于产品质量监控需求所开发的系统，负责人可以通过该系统对当天或者产品的历史数据进行分析比对从而下达是否批量生产等</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/dd479a49-6dc4-4b76-b559-ba2f0773e919.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/54bd8d0f-a5ec-4f3c-98d4-e4e8e7900e8e.png" data-index="10" class="magicwall-grid-item" style="-webkit-perspective: 600px; display: block; width: 287px; height: 254px; left: 0px; top: 508px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/3/31/1765.html"><div class="hover-content-inner"><h2>享联</h2><p>为Lenovo Quality团队建立基于互联网的供应商管理工具和信息共享平台。能同时运用移动终端和PC终端实时监控各主要部件质量状况。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/54bd8d0f-a5ec-4f3c-98d4-e4e8e7900e8e.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/ce31e55d-1a81-4d38-91c6-3e690c2e731c.png" data-index="109" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 0px; top: 254px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/energy/2015/3/31/1764.html"><div class="hover-content-inner"><h2>濠信节能</h2><p>濠信节能科技（上海)有限公司是一家致力于节能环保，能源可持续发展的高科技企业，业务覆盖全球，着眼于亚洲，尤其是中国市场的开拓。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/ce31e55d-1a81-4d38-91c6-3e690c2e731c.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/ae0e73ec-72f5-467c-aad0-1312844c0e21.png" data-index="6" class="magicwall-grid-item" style="-webkit-perspective: 600px; display: block; width: 287px; height: 254px; left: 287px; top: 254px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1763.html"><div class="hover-content-inner"><h2>华夏银行</h2><p>华夏银行，为内部员工提供定制的工作平台，实现了内部系统整合和统一。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/ae0e73ec-72f5-467c-aad0-1312844c0e21.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/9d53a8db-f6b1-46c8-9417-c357015dc53b.png" data-index="12" class="magicwall-grid-item" style="-webkit-perspective: 600px; display: block; width: 287px; height: 254px; left: 574px; top: 508px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2015/3/31/1762.html"><div class="hover-content-inner"><h2>全峰快递</h2><p>全峰 一家主要经营国际、国内快递及相关业务的服务型企业。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/9d53a8db-f6b1-46c8-9417-c357015dc53b.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/e58f7f14-fecc-4a39-a317-f9142ca1ccf8.png" data-index="3" class="magicwall-grid-item" style="-webkit-perspective: 600px; display: block; width: 287px; height: 254px; left: 861px; top: 0px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1761.html"><div class="hover-content-inner"><h2>拍拍贷</h2><p>拍拍贷是国内首家P2P纯信用无担保网络借贷平台。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/e58f7f14-fecc-4a39-a317-f9142ca1ccf8.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/cf7f56ae-dff1-406e-a453-c525ebcf08ad.png" data-index="128" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 1148px; top: 254px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1760.html"><div class="hover-content-inner"><h2>宜家财富</h2><p>宜家宝金融产品APP，以央企、地方国企及上市公司发行的债券为投资标的，其法律界线清晰、资金去向透明、现金流稳定，安全性第一，为中产阶级客户量</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/cf7f56ae-dff1-406e-a453-c525ebcf08ad.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/0be50b59-113b-4b16-8ac2-7bf5a00c9a80.png" data-index="67" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 0px; top: 508px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/energy/2015/3/31/1759.html"><div class="hover-content-inner"><h2>海润光伏</h2><p>海润光伏，中国最大的晶硅太阳能电池生产企业之一。海润光伏采用了垂直一体化的生产和服务模式。海润光伏的客户和供应商遍布全球，并与客户建立了良好</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/0be50b59-113b-4b16-8ac2-7bf5a00c9a80.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/7b850323-cd51-4919-bc45-f6be6ccf88ba.png" data-index="11" class="magicwall-grid-item" style="-webkit-perspective: 600px; display: block; width: 287px; height: 254px; left: 287px; top: 508px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1758.html"><div class="hover-content-inner"><h2>微搜</h2><p>微搜是提供有偿、激励问答的方式促进用户对信息交流的渴望，提供金融微信群的搜索，寻找适合自己的金融圈，投资或研究不再孤单，提供会务、资讯信息的</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/7b850323-cd51-4919-bc45-f6be6ccf88ba.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/2f15c353-18f3-4195-9b94-88d3c2dfc386.png" data-index="105" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 574px; top: 508px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2015/3/31/1757.html"><div class="hover-content-inner"><h2>吾会聊</h2><p>这是首款以【提高人际交往能力】为目的的语音问答平台，你可以向情商高的人请教如何正确地为人处事怎样有效地与人沟通，你也可以在秀能言巧辩的口才同</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/2f15c353-18f3-4195-9b94-88d3c2dfc386.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/c96c22cd-d864-4191-bfb5-683f9d0a9c21.png" data-index="8" class="magicwall-grid-item" style="-webkit-perspective: 600px; display: block; width: 287px; height: 254px; left: 861px; top: 254px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2015/3/31/1756.html"><div class="hover-content-inner"><h2>包子</h2><p>国内首款线下红包APP——包子，由中国领先的支付增值业务平台供应方卡说信息技术有限公司倾力打造，为广大用户提供海量线下优惠红包的抢领和转赠，</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/c96c22cd-d864-4191-bfb5-683f9d0a9c21.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/83816c66-3df2-49d5-9cf7-86d0da448a14.png" data-index="85" class="" style="-webkit-perspective: 600px; display: none; width: 287px; height: 254px; left: 1148px; top: 508px; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/other/2015/3/31/1754.html"><div class="hover-content-inner"><h2>青客</h2><p>青客隶属于青客时尚生活服务股份有限公司，2012年成立于上海，从事白领公寓租赁和提供物业管理。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/83816c66-3df2-49d5-9cf7-86d0da448a14.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/09cf8808-960a-44c2-83ab-3a95343c7650.png" data-index="15" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2015/3/31/1753.html"><div class="hover-content-inner"><h2>爱居兔（EICHITOO）</h2><p>爱居兔（EICHITOO）服装品牌融合潮流设计与有型质感，为时尚青年打造精致摩登的都市风尚。</p></div></a></div></li><li data-thumb="images/72cca7bb-0caa-4972-8404-6d0a3812efc1.png" data-index="16" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/3/31/1752.html"><div class="hover-content-inner"><h2>VCamMINI</h2><p>VCamMINI能够对正在监测的地下管线进行实时监控，用户可以通过SSID和密码登录到主界面并设置视频和系统的参数。</p></div></a></div></li><li data-thumb="images/7fd8d5f0-e304-45e4-9844-72ea1518bd05.png" data-index="17" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/3/31/1751.html"><div class="hover-content-inner"><h2>SK-3Q06G氢焰色谱仪</h2><p>SK-3Q06G氢焰色谱仪用于石油钻井勘探领域中天然气的实时测量，可以分析状态、控制过程、FID运行和色谱数据处理过程、定性定量过程等诸多信</p></div></a></div></li><li data-thumb="images/9aa97344-008c-4c87-a2fc-00248399b566.png" data-index="18" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/3/31/1750.html"><div class="hover-content-inner"><h2>MyVscan检测设备仪器管理软件</h2><p>MyVscan 是一款专业的监控地下管线的检测设备仪器管理软件，用户可以通过对8个模块的管理和设置，来使用vcan设备进行合理有效监测。</p></div></a></div></li><li data-thumb="images/465948fe-548c-44b2-b902-ff67094a3b79.png" data-index="19" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1749.html"><div class="hover-content-inner"><h2>用益信托</h2><p>用益信托是一个金融投资类的app，为用户提供财经资讯，投资新闻以及优质的理财产品。</p></div></a></div></li><li data-thumb="images/86ffd6b4-c051-46fc-a64a-770bada3ac00.png" data-index="20" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2015/3/31/1748.html"><div class="hover-content-inner"><h2>花样女人</h2><p>江苏恒泽堂集团总部设在中国无锡，是一家以健康和文化两大产业经营为主的企业集团。花样女人是为会员提供多方位的生活，资讯服务，帮会员了解女性保健</p></div></a></div></li><li data-thumb="images/337256a3-ed61-4e7c-967d-bf7f2196989e.png" data-index="21" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1747.html"><div class="hover-content-inner"><h2>长城现金宝</h2><p>长城基金现金宝是他们的重点产品，收益远超活期，免费免税流动性佳，方便实惠。针对高端人士专属产品，追求比普通货币基金更高更稳定的收益率。</p></div></a></div></li><li data-thumb="images/8409138c-1d7b-407a-8fe0-95b891fa817a.png" data-index="22" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2015/3/31/1746.html"><div class="hover-content-inner"><h2>享联</h2><p>为Lenovo Quality团队建立基于互联网的供应商管理工具和信息共享平台。能同时运用移动终端和PC终端实时监控各主要部件质量状况。</p></div></a></div></li><li data-thumb="images/dca84654-2149-44c4-ad21-6f2275caa5e2.png" data-index="23" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2015/3/31/1745.html"><div class="hover-content-inner"><h2>SMG电话采访</h2><p>smg移动采访是SMG内部使用的一款移动办公软件。记者接到采访项目去现场采访，利用库里的素材（如图片、音频、视频等）编辑好新闻稿件，快速的提</p></div></a></div></li><li data-thumb="images/f3af568a-77e4-45d3-a5f2-827aaad8330c.png" data-index="24" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/other/2015/3/31/1744.html"><div class="hover-content-inner"><h2>台衡电子秤触屏</h2><p>台衡是电子衡器专业制造厂，1967年创立于台北市，初期以生产机械式衡器产品为主，由于产品品质精良，深受用户信赖，行销全台，有口皆碑。我们</p></div></a></div></li><li data-thumb="images/681842e4-0e80-4263-af1e-bf559bc200f5.png" data-index="25" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2015/3/31/1743.html"><div class="hover-content-inner"><h2>员工宝</h2><p>员工宝通过建立自己的健康好友和朋友圈子，搭配相关计步器，营养美食等周边服务，提升员工的企业生活水平，让企业团队生活更丰富多彩。</p></div></a></div></li><li data-thumb="images/22b50075-aa52-4ec0-b2a7-2746de1e4d01.png" data-index="26" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2015/3/31/1742.html"><div class="hover-content-inner"><h2>宠遇</h2><p>宠遇是一款宠物交友app.它包含附近交友，分类宠物俱乐部，宠友圈等交友功能。还能通过高级搜索精准的寻找你心仪的宠物朋友甚至是主人哦，快带着你</p></div></a></div></li><li data-thumb="images/df376207-aa1c-4ad1-9bae-8a5d7db81970.png" data-index="27" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/other/2014/8/1/1495.html"><div class="hover-content-inner"><h2>精锐·学习帮</h2><p>精锐教育是由哈佛北大精英创立，专注于培养18岁以下孩子的学习力，现已成为中国高端的连锁教育集团。艾艺为精锐提供强大技术服务，开发了移动客户端</p></div></a></div></li><li data-thumb="images/5fa40424-cf2d-4fbe-91cc-24390e51b18f.png" data-index="28" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2014/8/1/1494.html"><div class="hover-content-inner"><h2>迈盟</h2><p>平安中国迈盟个人健康助理APP，主要分六个板块，今日步数，营养彩虹，健康朋友圈，保险服务，健行天下，产品购买。迈盟主要是引导个人健康意识，打</p></div></a></div></li><li data-thumb="images/862e0658-c52b-4517-a1ba-b59de372a819.png" data-index="29" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2014/7/31/1491.html"><div class="hover-content-inner"><h2>上证报资讯</h2><p>艾艺与上海证券报资讯合作共同推出的这款产品，上证报资讯，是以财经证券资讯为核心，资本市场行情数据为支撑面向投资者以及专业人群提供个性化订阅服</p></div></a></div></li><li data-thumb="images/62604731-7da5-42cb-9812-f4b78b957a34.png" data-index="30" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2014/1/27/1326.html"><div class="hover-content-inner"><h2>电子烟操控系统</h2><p>卓尔悦的evic一直专注于电子烟的海外市场，并研发具有自己专利的产品，为了能够让产品有更好的用户体验，evic团队希望产品成内到外都能为发烧</p></div></a></div></li><li data-thumb="images/d5f64ae0-d7ed-4cf8-9c9f-e344e30f1c52.png" data-index="1" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 287px; top: 0px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2014/7/31/1492.html"><div class="hover-content-inner"><h2>摩擦</h2><p>互爱（北京）科技有限公司，最近推出了一款社交软件“摩擦”。“摩擦”摒弃了以往社交软件所存在的诟病，实现真人视频认证来保证用户信息的真实性，在</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/d5f64ae0-d7ed-4cf8-9c9f-e344e30f1c52.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/dab5e213-0cdf-4303-b436-1ebdc86957fa.png" data-index="32" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2013/8/17/1177.html"><div class="hover-content-inner"><h2>汇添富基金</h2><p>汇添富基金是一家高起点、国际化、充满活力的基金公司,旗下管理基金产品涵盖股票基金、指数基金、混合基金、保本基金、债券基金、货币市场基金及QD</p></div></a></div></li><li data-thumb="images/fd27d49a-f69c-44c3-98a6-2b4909de5cb3.png" data-index="33" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/other/2013/6/16/1045.html"><div class="hover-content-inner"><h2>南京电台体育广播</h2><p>南京体育广播于2002年1月1日开播，播出频率为FM104.3，是中国第一家专业体育广播媒体，也是江苏地区唯一的专业体育广播媒体。艾艺与南京</p></div></a></div></li><li data-thumb="images/8705527f-2d43-428a-ab7e-4f021c474e86.png" data-index="34" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2014/7/31/1493.html"><div class="hover-content-inner"><h2>NWI</h2><p>罗森博格一直是工地测量产品里的巨头，以严谨的姿态引领着行业的发展。这是一款智能操作工地测量的APP，艾艺在此款APP的界面设计选择了以灰黑色</p></div></a></div></li><li data-thumb="images/1932f191-144a-4ceb-aaec-a91aa2669504.png" data-index="35" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2014/1/27/1324.html"><div class="hover-content-inner"><h2>大亚科技</h2><p>随着智能家居市场推广普及的进一步落实，培育起消费者的使用习惯，智能家居市场的消费潜力必然是巨大的，大亚科技作为国内最大的ADSL终端设备提供</p></div></a></div></li><li data-thumb="images/91d5449b-8de6-4f52-987f-598d9f8b1ef9.png" data-index="88" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 861px; top: 508px;" class=""><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/16/1038.html"><div class="hover-content-inner"><h2>上海地铁</h2><p>让你在上海出行更方便快捷，周边地铁站点随意查询，让你省时省心省力，全上海的所有地铁线路快捷显示一目了然换乘和票价随意查询，无需联网环境换乘查</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/91d5449b-8de6-4f52-987f-598d9f8b1ef9.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/b0a93b5a-c45d-41e2-ad84-703784e2ec4b.png" data-index="37" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/other/2013/6/15/1029.html"><div class="hover-content-inner"><h2>迅时</h2><p>迅时是从事新一代音视频通讯产品创新设计和制造的高科技企业，为广大企业和家庭提供基于无线、光纤和网络技术的终端通讯的解决方案的公司。艾艺以全新</p></div></a></div></li><li data-thumb="images/267e6063-525b-4faf-bc3c-ae2346d049aa.png" data-index="38" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2013/6/15/1020.html"><div class="hover-content-inner"><h2>3m图书管理系统</h2><p>3m是美国多元化跨国500强企业，素以产品种类繁多，锐意创新而著称于世。在本次项目合作中我们为3m提供了一整套从创意策划是、视觉设计、技术开</p></div></a></div></li><li data-thumb="images/33d8acc2-5904-456c-becf-bd47fc164059.png" data-index="39" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/other/2013/6/15/1016.html"><div class="hover-content-inner"><h2>源和</h2><p>智能家居是在物联网的影响之下物联化体现，艾艺一直致力于在智能家居方面提供全面并专业的解决方案。通过家触摸屏、无线遥控器、电话、互联网或者语音</p></div></a></div></li><li data-thumb="images/1bd05076-e6fc-44a0-8ef2-b6b9b3d5d416.png" data-index="40" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/energy/2013/6/15/1014.html"><div class="hover-content-inner"><h2>国家电网</h2><p>能效测评是指对建筑能源消耗量及其用能系统效率等性能指标进行计算、检测，并给出其所处水平的活动。电网公司非常注重能效的相关数据。以往的能效测评</p></div></a></div></li><li data-thumb="images/6d5ea036-912a-4354-bada-38ee2fa2bde6.png" data-index="41" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/medicine/2013/6/15/1011.html"><div class="hover-content-inner"><h2>社区卫生服务信息系统</h2><p>社区卫生服务信息系统是以居民健康档案信息系统为核心，以基于电子病历的社区医生工作站系统为枢纽，以全科诊疗、收费管理、药房（品）管理等为主要的</p></div></a></div></li><li data-thumb="images/1e8340d9-252c-4344-ad8f-1f8cb83a381f.png" data-index="42" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2013/6/15/1008.html"><div class="hover-content-inner"><h2>中国金融期货交易所</h2><p>中国金融期货交易所(China Financial Futures Exchange,缩写CFFE) ，是经国务院同意，中国证监会批准， 由</p></div></a></div></li><li data-thumb="images/c66b7421-5fa2-4c18-a894-479c92f71ae7.png" data-index="43" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/15/1031.html"><div class="hover-content-inner"><h2>荣威车载导航</h2><p>荣威是上海汽车一款真正意义上的全新战略车型，是上汽自主品牌进入容量最大、增速最快的A级细分市场的战略部署，艾艺为荣威提供了的全新车载系统界面</p></div></a></div></li><li data-thumb="images/446870f3-c282-4447-9314-811317bee0a5.png" data-index="44" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2013/6/15/1025.html"><div class="hover-content-inner"><h2>日上免税行</h2><p>人事管理，voip，日程管理，通讯服务，员工星级评定投票功能，奖品兑换，业务分析，通讯录。分为触摸屏版和网站版两种展示方式；实现了信息的展示</p></div></a></div></li><li data-thumb="images/7cb76fc0-7a44-45a6-84f9-cac6009d51a2.png" data-index="45" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2013/6/15/1021.html"><div class="hover-content-inner"><h2>AMT</h2><p>AMT是中国本土领先的“管理+IT”综合服务机构，提供管理咨询、信息化服务、IT技术、服务外包四大领域的专业服务。AMT提供从战略梳理、机制</p></div></a></div></li><li data-thumb="images/534ea5ad-d07c-49ea-8d04-aa856a3d86a3.png" data-index="46" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/15/1018.html"><div class="hover-content-inner"><h2>飞力达</h2><p>飞利达物流拥有外经贸部的国际货运代理牌照、国家民航总局的航空货运代理资格，是交通部认可的集装箱运输专业企业。已成为多元化、现代化、区域化的综</p></div></a></div></li><li data-thumb="images/e1b2c80f-2cf7-4820-802e-4a43fb962ee3.png" data-index="47" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/medicine/2013/6/15/1012.html"><div class="hover-content-inner"><h2>医联</h2><p>上海申康医联是市政府设立的国有非营利性的事业法人,是市级公立医疗机构国有资产投资、管理、运营的责任主体和政府办医的责任主体。作为与申康医院深</p></div></a></div></li><li data-thumb="images/c970df0f-c868-4f07-872d-3b9fc416bafb.png" data-index="48" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2013/6/15/1022.html"><div class="hover-content-inner"><h2>讯时</h2><p>讯时是从事新一代音视频通讯产品创新设计和制造的高科技企业，为广大企业和家庭提供基于无线、光纤和网络技术的终端通讯的解决方案的公司。艾艺以全新</p></div></a></div></li><li data-thumb="images/6873246b-ad13-477d-8a0c-6a4dc474bd7e.png" data-index="49" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/15/1019.html"><div class="hover-content-inner"><h2>宁波机场</h2><p>宁波国际机场位于浙东鄞西平原，是国内重要的干线机场。旅客吞吐量及货邮吞吐量均位居大陆民用机场前列。艾艺充分的考虑空运行业内按照安全优先、服务</p></div></a></div></li><li data-thumb="images/22be7e20-0a14-4aa1-9f48-3a6d023de8d2.png" data-index="50" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/medicine/2013/6/15/1013.html"><div class="hover-content-inner"><h2>泛思医疗系统</h2><p>面向医疗卫生市场的区域性'医疗卫生服务平台'广泛应用于医疗卫生的区域性数据中心、数据共享交换、医院系统整合、紧急救助中心、疾病控制中心等业务</p></div></a></div></li><li data-thumb="images/c7380650-ba32-440f-8cf4-4c6395d85ce7.png" data-index="51" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/finance/2013/6/15/1010.html"><div class="hover-content-inner"><h2>浦发银行</h2><p>浦东发展银行为国内知名已上市的全国性股份制商业银行，为全球银行业百强之列，艾艺协同浦发银行通过对使用人群的行为分析调研，充分考虑银行业的服务</p></div></a></div></li><li data-thumb="images/afdca941-eee7-4b8f-945f-a464cd8496c3.png" data-index="52" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/16/1039.html"><div class="hover-content-inner"><h2>春风动力</h2><p>春风”已成为中国动力制造商中独树一帜的全球性品牌，它所代表的崇尚自由、彰显个性、追求快乐的品牌内涵得到了广大消费者的认同，艾艺与春风动力共同</p></div></a></div></li><li data-thumb="images/37b47d9f-d389-4141-8c03-fc1ae5e75450.JPG" data-index="4" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 1148px; top: 0px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2013/6/15/1026.html"><div class="hover-content-inner"><h2>Lascana内衣商城</h2><p>Lascana是来自德国的多渠道内衣和沙滩装零售商，是奥托集团全球运营的一部分。2001年，Lascana作为高级内衣品牌被奥托集团引进。随</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/37b47d9f-d389-4141-8c03-fc1ae5e75450.JPG); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/212fdcaf-ad19-454c-a21c-23b8d7963df8.png" data-index="54" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/energy/2013/6/15/1015.html"><div class="hover-content-inner"><h2>腾天</h2><p>腾天以建筑业信息化为主营方向，业务涵盖住宅小区、商务楼宇、科技园区、商场酒店等建筑智能化系统集成以及房屋租售管理、物业管理等房地产软件的开发</p></div></a></div></li><li data-thumb="images/d217539a-703a-47a6-9e59-1c6070622271.png" data-index="55" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/medicine/2013/6/16/1043.html"><div class="hover-content-inner"><h2>杭州博日</h2><p>杭州博日科技是中国领先生命科学仪器、试剂公司之一，艾艺与杭州博日共同打造医疗领域全新的视觉体验，通过研究使用者的心理，情绪状态，通过情感设计</p></div></a></div></li><li data-thumb="images/6417f28d-6f73-44f5-a173-4b2505c31ae0.png" data-index="56" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/energy/2013/6/16/1040.html"><div class="hover-content-inner"><h2>郑州正力</h2><p>郑州正力聚合物科技有限公司是拥有领先技术的聚丙烯酰胺生产商，艾艺和正力共同合作通过3D虚拟现实的动画演示生动直观的展示物质的提取的过程。在这</p></div></a></div></li><li data-thumb="images/a6726c5c-22ae-4f4f-b86d-7c2c9804bc1e.png" data-index="57" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/soft/2013/6/15/1023.html"><div class="hover-content-inner"><h2>康普</h2><p>美国康普公司在设计、生产通讯网络所需解决方案产品方面具有世界领先地位。康普公司制造用于有线电视和其他视频的高品质、高性能的同轴电缆, 已成为</p></div></a></div></li><li data-thumb="images/38555ffe-b0f4-414a-af1a-7c5b78e1ebe2.png" data-index="58" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/15/1030.html"><div class="hover-content-inner"><h2>上海汇众</h2><p>上海汇众作为在商用车与轿车底盘系统两大领域驰聘征战的企业，努力实现“商用车与轿车底盘系统同步法发展”的企业发展战略，艾艺为上海汇众提供全套的</p></div></a></div></li><li data-thumb="images/7c66bb79-7c51-400f-a291-c7845544213a.png" data-index="59" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2013/6/15/1027.html"><div class="hover-content-inner"><h2>sangluo丝织品商城</h2><p>桑罗是为现代白领女性打造一种浪漫、优雅、温馨的家居生活。SANGLUO是对美好精致生活的追求态度、是现代女性的独立精神与追逐梦想的内在特质。</p></div></a></div></li><li data-thumb="images/d461d361-5bb2-4ee7-ae64-1627204ed13d.png" data-index="60" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/transport/2013/6/15/1034.html"><div class="hover-content-inner"><h2>有配网</h2><p></p></div></a></div></li><li data-thumb="images/def5684e-63e9-4ef2-a9c7-eb7724b5377e.png" data-index="61" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/medicine/2013/6/17/1046.html"><div class="hover-content-inner"><h2>鄂尔多斯卫生</h2><p>鄂尔多斯市区域卫生以图表和地图撒点来体现人口、医疗机构等分布现状和规划的对比，实现合理的医疗卫生服务体系的规划目标，规划内容为加强医疗机构建</p></div></a></div></li><li data-thumb="images/f08284b5-1e2c-459e-99f0-f887dfb729d8.png" data-index="62" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2013/6/15/1028.html"><div class="hover-content-inner"><h2>全家</h2><p>近年来，各大便利店企业加强对网站的建设，在欧美、乃至太平洋地区刮起了网络旋风。随着便利店市场开拓业务工作的不断深入，信息化服务手段的不断提升</p></div></a></div></li><li data-thumb="images/4753354d-3a33-442d-938e-1a9cf9aafd82.png" data-index="63" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/automobile/2013/6/21/1057.html"><div class="hover-content-inner"><h2>智能TV游戏界面</h2><p>渐华科技发展有限公司，凭借自身的优势和实力，综合产品及方案的研发、生产、推广销售于一体，始终立足于多媒体电子娱乐领域，成为中国技术领先的电子</p></div></a></div></li><li data-thumb="images/dfc37ac4-0179-4481-ba69-ace205a8f07b.png" data-index="64" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/medicine/2013/6/17/1047.html"><div class="hover-content-inner"><h2>数字卫生</h2><p>为了配合鄂尔多斯区域卫生信息平台的汇报宣传，艾艺根据其汇报内容，考虑汇报对象，使用Flash实现方式对其汇报材料进行充分包装，从文字到图标，</p></div></a></div></li><li data-thumb="images/ac8c1d10-88b6-481f-874d-07bb4b2090bf.png" data-index="65" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/automobile/2014/1/29/1328.html"><div class="hover-content-inner"><h2>德清三宝</h2><p>浙江卫视委托艾艺策划设计一整套关于宣传德清县文化、生活、和旅游动画，为了更好的讲述德清的特色，团队成员进住德清感受德清的文化和生活方式，并且</p></div></a></div></li><li data-thumb="images/c5ce6a30-1d18-4ad1-9c08-13b88a68350a.png" data-index="66" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/automobile/2014/1/29/1327.html"><div class="hover-content-inner"><h2>税务公益动漫</h2><p>艾艺与税务局共同打造公益宣传片，借助大热的愤怒小鸟的游戏做背景，生动有趣的宣传了一些非法的活动，希望人们在轻松的氛围中了解一些税局知识，做到</p></div></a></div></li><li data-thumb="images/c10991bf-d076-41ae-bdf6-9ad5551ab6a4.png" data-index="129" class="" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 0px; top: 508px;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/culture/2014/1/27/1325.html"><div class="hover-content-inner"><h2>波司登</h2><p>波司登集团是以羽绒服为主的多品牌综合服装经营集团.面对日益竞争的服装市场，波司登积极应对推出自己的服装平台，力求通过“时尚、新意”的</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/c10991bf-d076-41ae-bdf6-9ad5551ab6a4.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/fa3403af-96f1-4b85-9df4-a5053ac46c2c.jpg" data-index="68" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2010/11/1/1002.html"><div class="hover-content-inner"><h2>追寻点击愉悦感—提升网站平板</h2><p>追寻点击愉悦感—提升网站平板追寻，点击愉悦感—提升网站平板追寻点击愉悦感—提升网站平板追寻点击愉悦感—提，升网站平板。</p></div></a></div></li><li data-thumb="images/2efda161-7cc4-4ced-8cbe-e3291b74d4b7.jpg" data-index="69" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2010/11/10/1001.html"><div class="hover-content-inner"><h2>社区卫生系统</h2><p>社区卫生系统</p></div></a></div></li><li data-thumb="images/2edd8508-65c7-4038-b18f-3fc53e1165ad.jpg" data-index="70" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;" class="magicwall-loading"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2010/11/10/1000.html"><div class="hover-content-inner"><h2>全家官网</h2><p>全家官网</p></div></a></div></li><li data-thumb="images/1a8f04e7-9339-4015-9d9b-9c8a450297ff.jpg" data-index="71" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2010/11/10/999.html"><div class="hover-content-inner"><h2>test</h2><p>test</p></div></a></div></li><li data-thumb="images/137ec942-2323-456b-81fe-b32402cd9dd5.jpg" data-index="72" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/2/21/997.html"><div class="hover-content-inner"><h2>快钱</h2><p>快钱国内领先的独立第三方支付企业，旨在为各类企业及个人提供安全、便捷和保密的综合电子支付服务。作为国内领先的信息化金融服务提供商，快钱致力于</p></div></a></div></li><li data-thumb="images/c7380650-ba32-440f-8cf4-4c6395d85ce7.png" data-index="73" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/2/21/996.html"><div class="hover-content-inner"><h2>浦发银行</h2><p>浦东发展银行为国内知名已上市的全国性股份制商业银行，为全球银行业百强之列，艾艺协同浦发银行通过对使用人群的行为分析调研，充分考虑银行业的服务</p></div></a></div></li><li data-thumb="images/6d5ea036-912a-4354-bada-38ee2fa2bde6.png" data-index="74" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/2/21/995.html"><div class="hover-content-inner"><h2>社区卫生服务信息系统</h2><p>社区卫生服务信息系统是以居民健康档案信息系统为核心，以基于电子病历的社区医生工作站系统为枢纽，以全科诊疗、收费管理、药房（品）管理等为主要的</p></div></a></div></li><li data-thumb="images/e1b2c80f-2cf7-4820-802e-4a43fb962ee3.png" data-index="75" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/2/21/994.html"><div class="hover-content-inner"><h2>医联</h2><p>上海申康医联是市政府设立的国有非营利性的事业法人,是市级公立医疗机构国有资产投资、管理、运营的责任主体和政府办医的责任主体。作为与申康医院深</p></div></a></div></li><li data-thumb="images/22be7e20-0a14-4aa1-9f48-3a6d023de8d2.png" data-index="76" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/2/21/993.html"><div class="hover-content-inner"><h2>泛思医疗系统</h2><p>面向医疗卫生市场的区域性'医疗卫生服务平台'广泛应用于医疗卫生的区域性数据中心、数据共享交换、医院系统整合、紧急救助中心、疾病控制中心等业务</p></div></a></div></li><li data-thumb="images/212fdcaf-ad19-454c-a21c-23b8d7963df8.png" data-index="77" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/3/3/992.html"><div class="hover-content-inner"><h2>腾天</h2><p>腾天以建筑业信息化为主营方向，业务涵盖住宅小区、商务楼宇、科技园区、商场酒店等建筑智能化系统集成以及房屋租售管理、物业管理等房地产软件的开发</p></div></a></div></li><li data-thumb="images/534ea5ad-d07c-49ea-8d04-aa856a3d86a3.png" data-index="78" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/3/25/991.html"><div class="hover-content-inner"><h2>飞力达</h2><p>飞利达物流拥有外经贸部的国际货运代理牌照、国家民航总局的航空货运代理资格，是交通部认可的集装箱运输专业企业。已成为多元化、现代化、区域化的综</p></div></a></div></li><li data-thumb="images/6873246b-ad13-477d-8a0c-6a4dc474bd7e.png" data-index="79" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/3/25/990.html"><div class="hover-content-inner"><h2>宁波机场</h2><p>宁波国际机场位于浙东鄞西平原，是国内重要的干线机场。旅客吞吐量及货邮吞吐量均位居大陆民用机场前列。艾艺充分的考虑空运行业内按照安全优先、服务</p></div></a></div></li><li data-thumb="images/267e6063-525b-4faf-bc3c-ae2346d049aa.png" data-index="95" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 0px; top: 0px;" class=""><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/3/25/989.html"><div class="hover-content-inner"><h2>3m图书管理系统</h2><p>3m是美国多元化跨国500强企业，素以产品种类繁多，锐意创新而著称于世。在本次项目合作中我们为3m提供了一整套从创意策划是、视觉设计、技术开</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/267e6063-525b-4faf-bc3c-ae2346d049aa.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/7cb76fc0-7a44-45a6-84f9-cac6009d51a2.png" data-index="81" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/8/988.html"><div class="hover-content-inner"><h2>AMT</h2><p>AMT是中国本土领先的“管理+IT”综合服务机构，提供管理咨询、信息化服务、IT技术、服务外包四大领域的专业服务。AMT提供从战略梳理、机制</p></div></a></div></li><li data-thumb="images/c970df0f-c868-4f07-872d-3b9fc416bafb.png" data-index="82" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/8/987.html"><div class="hover-content-inner"><h2>讯时</h2><p>讯时是从事新一代音视频通讯产品创新设计和制造的高科技企业，为广大企业和家庭提供基于无线、光纤和网络技术的终端通讯的解决方案的公司。艾艺以全新</p></div></a></div></li><li data-thumb="images/a6726c5c-22ae-4f4f-b86d-7c2c9804bc1e.png" data-index="83" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/8/986.html"><div class="hover-content-inner"><h2>康普</h2><p>美国康普公司在设计、生产通讯网络所需解决方案产品方面具有世界领先地位。康普公司制造用于有线电视和其他视频的高品质、高性能的同轴电缆, 已成为</p></div></a></div></li><li data-thumb="images/2805c414-ab2c-481c-be0b-16869e4afd0b.JPG" data-index="84" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/8/985.html"><div class="hover-content-inner"><h2>玫琳凯</h2><p>玫琳凯是全球最大的护肤品和彩妆品直销企业之一，是一家业务遍布五大洲30多个国家和地区、在全球拥有5000名员工和180余万名美容顾问的大型化</p></div></a></div></li><li data-thumb="images/446870f3-c282-4447-9314-811317bee0a5.png" data-index="14" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 1148px; top: 508px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/15/984.html"><div class="hover-content-inner"><h2>日上免税行</h2><p>人事管理，voip，日程管理，通讯服务，员工星级评定投票功能，奖品兑换，业务分析，通讯录。分为触摸屏版和网站版两种展示方式；实现了信息的展示</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/446870f3-c282-4447-9314-811317bee0a5.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/37b47d9f-d389-4141-8c03-fc1ae5e75450.JPG" data-index="86" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/15/983.html"><div class="hover-content-inner"><h2>Lascana内衣商城</h2><p>Lascana是来自德国的多渠道内衣和沙滩装零售商，是奥托集团全球运营的一部分。2001年，Lascana作为高级内衣品牌被奥托集团引进。随</p></div></a></div></li><li data-thumb="images/7c66bb79-7c51-400f-a291-c7845544213a.png" data-index="87" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/15/982.html"><div class="hover-content-inner"><h2>sangluo丝织品商城</h2><p>桑罗是为现代白领女性打造一种浪漫、优雅、温馨的家居生活。SANGLUO是对美好精致生活的追求态度、是现代女性的独立精神与追逐梦想的内在特质。</p></div></a></div></li><li data-thumb="images/f08284b5-1e2c-459e-99f0-f887dfb729d8.png" data-index="13" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 861px; top: 508px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/4/16/981.html"><div class="hover-content-inner"><h2>全家</h2><p>近年来，各大便利店企业加强对网站的建设，在欧美、乃至太平洋地区刮起了网络旋风。随着便利店市场开拓业务工作的不断深入，信息化服务手段的不断提升</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/f08284b5-1e2c-459e-99f0-f887dfb729d8.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/c66b7421-5fa2-4c18-a894-479c92f71ae7.png" data-index="89" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/18/980.html"><div class="hover-content-inner"><h2>荣威车载导航</h2><p>荣威是上海汽车一款真正意义上的全新战略车型，是上汽自主品牌进入容量最大、增速最快的A级细分市场的战略部署，艾艺为荣威提供了的全新车载系统界面</p></div></a></div></li><li data-thumb="" data-index="90" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/18/979.html"><div class="hover-content-inner"><h2>名爵车载导航</h2><p></p></div></a></div></li><li data-thumb="" data-index="91" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2011/4/18/978.html"><div class="hover-content-inner"><h2>先锋车载导航</h2><p></p></div></a></div></li><li data-thumb="images/d461d361-5bb2-4ee7-ae64-1627204ed13d.png" data-index="92" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/20/977.html"><div class="hover-content-inner"><h2>有配网</h2><p></p></div></a></div></li><li data-thumb="images/91d5449b-8de6-4f52-987f-598d9f8b1ef9.png" data-index="93" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/4/20/976.html"><div class="hover-content-inner"><h2>上海地铁</h2><p>让你在上海出行更方便快捷，周边地铁站点随意查询，让你省时省心省力，全上海的所有地铁线路快捷显示一目了然换乘和票价随意查询，无需联网环境换乘查</p></div></a></div></li><li data-thumb="images/afdca941-eee7-4b8f-945f-a464cd8496c3.png" data-index="94" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/20/975.html"><div class="hover-content-inner"><h2>春风动力</h2><p>春风”已成为中国动力制造商中独树一帜的全球性品牌，它所代表的崇尚自由、彰显个性、追求快乐的品牌内涵得到了广大消费者的认同，艾艺与春风动力共同</p></div></a></div></li><li data-thumb="images/6417f28d-6f73-44f5-a173-4b2505c31ae0.png" data-index="0" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 0px; top: 0px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/20/974.html"><div class="hover-content-inner"><h2>郑州正力</h2><p>郑州正力聚合物科技有限公司是拥有领先技术的聚丙烯酰胺生产商，艾艺和正力共同合作通过3D虚拟现实的动画演示生动直观的展示物质的提取的过程。在这</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/6417f28d-6f73-44f5-a173-4b2505c31ae0.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="" data-index="96" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/20/973.html"><div class="hover-content-inner"><h2>test</h2><p>test</p></div></a></div></li><li data-thumb="images/161f58ad-eb63-4d0b-928a-16ee3864710f.png" data-index="97" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/21/972.html"><div class="hover-content-inner"><h2>非豹</h2><p>非豹网采供联盟是亚非恒业有限公司（以下简称亚非恒业）联合中国房地产企业、建筑企业及其他相关企业自愿组成的联盟团体，为广大房地产企业、建筑企业</p></div></a></div></li><li data-thumb="images/d217539a-703a-47a6-9e59-1c6070622271.png" data-index="98" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2011/4/21/971.html"><div class="hover-content-inner"><h2>杭州博日</h2><p>杭州博日科技是中国领先生命科学仪器、试剂公司之一，艾艺与杭州博日共同打造医疗领域全新的视觉体验，通过研究使用者的心理，情绪状态，通过情感设计</p></div></a></div></li><li data-thumb="images/f8284705-3b31-42cc-8fc8-836699d1c666.jpg" data-index="99" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/22/970.html"><div class="hover-content-inner"><h2>壹游</h2><p>壹游是专业电子商务旅游服务交易网站，面向中国市场提供以“先旅游后付费”、“个性化定制服务”为核心模式的旅游电子商务交易服务。艾艺参与了制定个</p></div></a></div></li><li data-thumb="images/fd27d49a-f69c-44c3-98a6-2b4909de5cb3.png" data-index="100" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/22/969.html"><div class="hover-content-inner"><h2>南京电台体育广播</h2><p>南京体育广播于2002年1月1日开播，播出频率为FM104.3，是中国第一家专业体育广播媒体，也是江苏地区唯一的专业体育广播媒体。艾艺与南京</p></div></a></div></li><li data-thumb="images/def5684e-63e9-4ef2-a9c7-eb7724b5377e.png" data-index="101" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/22/968.html"><div class="hover-content-inner"><h2>鄂尔多斯卫生</h2><p>鄂尔多斯市区域卫生以图表和地图撒点来体现人口、医疗机构等分布现状和规划的对比，实现合理的医疗卫生服务体系的规划目标，规划内容为加强医疗机构建</p></div></a></div></li><li data-thumb="images/dfc37ac4-0179-4481-ba69-ace205a8f07b.png" data-index="102" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/25/967.html"><div class="hover-content-inner"><h2>数字卫生</h2><p>为了配合鄂尔多斯区域卫生信息平台的汇报宣传，艾艺根据其汇报内容，考虑汇报对象，使用Flash实现方式对其汇报材料进行充分包装，从文字到图标，</p></div></a></div></li><li data-thumb="images/1932f191-144a-4ceb-aaec-a91aa2669504.png" data-index="103" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/25/966.html"><div class="hover-content-inner"><h2>大亚科技</h2><p>随着智能家居市场推广普及的进一步落实，培育起消费者的使用习惯，智能家居市场的消费潜力必然是巨大的，大亚科技作为国内最大的ADSL终端设备提供</p></div></a></div></li><li data-thumb="images/c10991bf-d076-41ae-bdf6-9ad5551ab6a4.png" data-index="104" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/25/965.html"><div class="hover-content-inner"><h2>波司登</h2><p>波司登集团是以羽绒服为主的多品牌综合服装经营集团.面对日益竞争的服装市场，波司登积极应对推出自己的服装平台，力求通过“时尚、新意”的</p></div></a></div></li><li data-thumb="images/62604731-7da5-42cb-9812-f4b78b957a34.png" data-index="123" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 574px; top: 508px;" class=""><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/26/964.html"><div class="hover-content-inner"><h2>电子烟操控系统</h2><p>卓尔悦的evic一直专注于电子烟的海外市场，并研发具有自己专利的产品，为了能够让产品有更好的用户体验，evic团队希望产品成内到外都能为发烧</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/62604731-7da5-42cb-9812-f4b78b957a34.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/c5ce6a30-1d18-4ad1-9c08-13b88a68350a.png" data-index="106" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/26/963.html"><div class="hover-content-inner"><h2>税务公益动漫</h2><p>艾艺与税务局共同打造公益宣传片，借助大热的愤怒小鸟的游戏做背景，生动有趣的宣传了一些非法的活动，希望人们在轻松的氛围中了解一些税局知识，做到</p></div></a></div></li><li data-thumb="images/862e0658-c52b-4517-a1ba-b59de372a819.png" data-index="107" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/26/962.html"><div class="hover-content-inner"><h2>上证报资讯</h2><p>艾艺与上海证券报资讯合作共同推出的这款产品，上证报资讯，是以财经证券资讯为核心，资本市场行情数据为支撑面向投资者以及专业人群提供个性化订阅服</p></div></a></div></li><li data-thumb="images/8705527f-2d43-428a-ab7e-4f021c474e86.png" data-index="108" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/27/961.html"><div class="hover-content-inner"><h2>NWI</h2><p>罗森博格一直是工地测量产品里的巨头，以严谨的姿态引领着行业的发展。这是一款智能操作工地测量的APP，艾艺在此款APP的界面设计选择了以灰黑色</p></div></a></div></li><li data-thumb="images/5fa40424-cf2d-4fbe-91cc-24390e51b18f.png" data-index="132" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 0px; top: 254px;" class=""><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/27/960.html"><div class="hover-content-inner"><h2>迈盟</h2><p>平安中国迈盟个人健康助理APP，主要分六个板块，今日步数，营养彩虹，健康朋友圈，保险服务，健行天下，产品购买。迈盟主要是引导个人健康意识，打</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/5fa40424-cf2d-4fbe-91cc-24390e51b18f.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/df376207-aa1c-4ad1-9bae-8a5d7db81970.png" data-index="110" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/28/959.html"><div class="hover-content-inner"><h2>精锐·学习帮</h2><p>精锐教育是由哈佛北大精英创立，专注于培养18岁以下孩子的学习力，现已成为中国高端的连锁教育集团。艾艺为精锐提供强大技术服务，开发了移动客户端</p></div></a></div></li><li data-thumb="images/5ea37d5f-67d6-4bd4-ad93-93249eac92d5.png" data-index="111" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/4/28/958.html"><div class="hover-content-inner"><h2>SMG</h2><p>上海东方传媒集团有限公司，是一家以传媒产业为核心业务，集广播电视节目，报刊发行，网络媒体以及娱乐相关产业为一体的媒体集团。2013年，韩正书</p></div></a></div></li><li data-thumb="images/9e53baae-b212-4f8f-bd3c-5539329fa3d1.jpg" data-index="112" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/4/28/957.html"><div class="hover-content-inner"><h2>HaFaLa汉字动漫app</h2><p>HaFaLa汉字动漫是一款针对外国人学汉字的app. App通过有趣的动漫让汉字更易于理解和记忆，并配套完整的学习流程，如拼音录音，笔画手写</p></div></a></div></li><li data-thumb="images/f34b0ac0-4d06-4a7d-afa0-ce2ffe1e004f.jpg" data-index="113" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2011/4/29/956.html"><div class="hover-content-inner"><h2>HaFaLa汉字动漫app</h2><p>HaFaLa汉字动漫是一款针对外国人学汉字的app. App通过有趣的动漫让汉字更易于理解和记忆，并配套完整的学习流程，如拼音录音，笔画手写</p></div></a></div></li><li data-thumb="images/efe0c718-8560-4142-8b4a-a80ff5d50f69.png" data-index="114" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2011/4/29/955.html"><div class="hover-content-inner"><h2>HaFaLa汉字动漫app</h2><p>HaFaLa汉字动漫是一款针对外国人学汉字的app. App通过有趣的动漫让汉字更易于理解和记忆，并配套完整的学习流程，如拼音录音，笔画手写</p></div></a></div></li><li data-thumb="images/22b50075-aa52-4ec0-b2a7-2746de1e4d01.png" data-index="115" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/4/29/954.html"><div class="hover-content-inner"><h2>宠遇</h2><p>宠遇是一款宠物交友app.它包含附近交友，分类宠物俱乐部，宠友圈等交友功能。还能通过高级搜索精准的寻找你心仪的宠物朋友甚至是主人哦，快带着你</p></div></a></div></li><li data-thumb="images/681842e4-0e80-4263-af1e-bf559bc200f5.png" data-index="116" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/5/3/953.html"><div class="hover-content-inner"><h2>员工宝</h2><p>员工宝通过建立自己的健康好友和朋友圈子，搭配相关计步器，营养美食等周边服务，提升员工的企业生活水平，让企业团队生活更丰富多彩。</p></div></a></div></li><li data-thumb="images/dca84654-2149-44c4-ad21-6f2275caa5e2.png" data-index="117" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/3/952.html"><div class="hover-content-inner"><h2>SMG电话采访</h2><p>smg移动采访是SMG内部使用的一款移动办公软件。记者接到采访项目去现场采访，利用库里的素材（如图片、音频、视频等）编辑好新闻稿件，快速的提</p></div></a></div></li><li data-thumb="images/8409138c-1d7b-407a-8fe0-95b891fa817a.png" data-index="118" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/3/951.html"><div class="hover-content-inner"><h2>享联</h2><p>为Lenovo Quality团队建立基于互联网的供应商管理工具和信息共享平台。能同时运用移动终端和PC终端实时监控各主要部件质量状况。</p></div></a></div></li><li data-thumb="images/337256a3-ed61-4e7c-967d-bf7f2196989e.png" data-index="119" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2011/5/4/950.html"><div class="hover-content-inner"><h2>长城现金宝</h2><p>长城基金现金宝是他们的重点产品，收益远超活期，免费免税流动性佳，方便实惠。针对高端人士专属产品，追求比普通货币基金更高更稳定的收益率。</p></div></a></div></li><li data-thumb="images/86ffd6b4-c051-46fc-a64a-770bada3ac00.png" data-index="120" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/5/4/949.html"><div class="hover-content-inner"><h2>花样女人</h2><p>江苏恒泽堂集团总部设在中国无锡，是一家以健康和文化两大产业经营为主的企业集团。花样女人是为会员提供多方位的生活，资讯服务，帮会员了解女性保健</p></div></a></div></li><li data-thumb="images/465948fe-548c-44b2-b902-ff67094a3b79.png" data-index="121" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/4/948.html"><div class="hover-content-inner"><h2>用益信托</h2><p>用益信托是一个金融投资类的app，为用户提供财经资讯，投资新闻以及优质的理财产品。</p></div></a></div></li><li data-thumb="images/9aa97344-008c-4c87-a2fc-00248399b566.png" data-index="122" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/5/5/947.html"><div class="hover-content-inner"><h2>MyVscan检测设备仪器管理软件</h2><p>MyVscan 是一款专业的监控地下管线的检测设备仪器管理软件，用户可以通过对8个模块的管理和设置，来使用vcan设备进行合理有效监测。</p></div></a></div></li><li data-thumb="images/7fd8d5f0-e304-45e4-9844-72ea1518bd05.png" data-index="2" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 574px; top: 0px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/5/946.html"><div class="hover-content-inner"><h2>SK-3Q06G氢焰色谱仪</h2><p>SK-3Q06G氢焰色谱仪用于石油钻井勘探领域中天然气的实时测量，可以分析状态、控制过程、FID运行和色谱数据处理过程、定性定量过程等诸多信</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/7fd8d5f0-e304-45e4-9844-72ea1518bd05.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/09cf8808-960a-44c2-83ab-3a95343c7650.png" data-index="124" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/6/945.html"><div class="hover-content-inner"><h2>爱居兔（EICHITOO）</h2><p>爱居兔（EICHITOO）服装品牌融合潮流设计与有型质感，为时尚青年打造精致摩登的都市风尚。</p></div></a></div></li><li data-thumb="images/83816c66-3df2-49d5-9cf7-86d0da448a14.png" data-index="125" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/5/6/944.html"><div class="hover-content-inner"><h2>青客</h2><p>青客隶属于青客时尚生活服务股份有限公司，2012年成立于上海，从事白领公寓租赁和提供物业管理。</p></div></a></div></li><li data-thumb="images/5daf9a94-a5b7-473e-bc54-24c85803b8d2.png" data-index="126" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/5/6/943.html"><div class="hover-content-inner"><h2>德比软件</h2><p>德比软件（上海）有限公司，是专业从事旅游产品网络营销系统设计和旅游产品分销的技术服务公司。</p></div></a></div></li><li data-thumb="images/c96c22cd-d864-4191-bfb5-683f9d0a9c21.png" data-index="127" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/9/942.html"><div class="hover-content-inner"><h2>包子</h2><p>国内首款线下红包APP——包子，由中国领先的支付增值业务平台供应方卡说信息技术有限公司倾力打造，为广大用户提供海量线下优惠红包的抢领和转赠，</p></div></a></div></li><li data-thumb="images/2f15c353-18f3-4195-9b94-88d3c2dfc386.png" data-index="9" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 1148px; top: 254px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/5/9/941.html"><div class="hover-content-inner"><h2>吾会聊</h2><p>这是首款以【提高人际交往能力】为目的的语音问答平台，你可以向情商高的人请教如何正确地为人处事怎样有效地与人沟通，你也可以在秀能言巧辩的口才同</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/2f15c353-18f3-4195-9b94-88d3c2dfc386.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/7b850323-cd51-4919-bc45-f6be6ccf88ba.png" data-index="80" class="" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 0px; top: 0px;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/5/9/940.html"><div class="hover-content-inner"><h2>微搜</h2><p>微搜是提供有偿、激励问答的方式促进用户对信息交流的渴望，提供金融微信群的搜索，寻找适合自己的金融圈，投资或研究不再孤单，提供会务、资讯信息的</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/7b850323-cd51-4919-bc45-f6be6ccf88ba.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/0be50b59-113b-4b16-8ac2-7bf5a00c9a80.png" data-index="130" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/5/10/939.html"><div class="hover-content-inner"><h2>海润光伏</h2><p>海润光伏，中国最大的晶硅太阳能电池生产企业之一。海润光伏采用了垂直一体化的生产和服务模式。海润光伏的客户和供应商遍布全球，并与客户建立了良好</p></div></a></div></li><li data-thumb="images/cf7f56ae-dff1-406e-a453-c525ebcf08ad.png" data-index="131" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/5/10/938.html"><div class="hover-content-inner"><h2>宜家财富</h2><p>宜家宝金融产品APP，以央企、地方国企及上市公司发行的债券为投资标的，其法律界线清晰、资金去向透明、现金流稳定，安全性第一，为中产阶级客户量</p></div></a></div></li><li data-thumb="images/e58f7f14-fecc-4a39-a317-f9142ca1ccf8.png" data-index="5" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 0px; top: 254px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/10/937.html"><div class="hover-content-inner"><h2>拍拍贷</h2><p>拍拍贷是国内首家P2P纯信用无担保网络借贷平台。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/e58f7f14-fecc-4a39-a317-f9142ca1ccf8.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/9d53a8db-f6b1-46c8-9417-c357015dc53b.png" data-index="133" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/11/936.html"><div class="hover-content-inner"><h2>全峰快递</h2><p>全峰 一家主要经营国际、国内快递及相关业务的服务型企业。</p></div></a></div></li><li data-thumb="images/ce31e55d-1a81-4d38-91c6-3e690c2e731c.png" data-index="134" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/5/11/935.html"><div class="hover-content-inner"><h2>濠信节能</h2><p>濠信节能科技（上海)有限公司是一家致力于节能环保，能源可持续发展的高科技企业，业务覆盖全球，着眼于亚洲，尤其是中国市场的开拓。</p></div></a></div></li><li data-thumb="images/54bd8d0f-a5ec-4f3c-98d4-e4e8e7900e8e.png" data-index="135" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/visualdesign/2011/5/11/934.html"><div class="hover-content-inner"><h2>享联</h2><p>为Lenovo Quality团队建立基于互联网的供应商管理工具和信息共享平台。能同时运用移动终端和PC终端实时监控各主要部件质量状况。</p></div></a></div></li><li data-thumb="images/dd479a49-6dc4-4b76-b559-ba2f0773e919.png" data-index="136" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/topic/2011/5/12/933.html"><div class="hover-content-inner"><h2>Lenovo Quality 监控系统</h2><p>此款软件是针对联想SQE部门对于产品质量监控需求所开发的系统，负责人可以通过该系统对当天或者产品的历史数据进行分析比对从而下达是否批量生产等</p></div></a></div></li><li data-thumb="images/218648e6-fb67-49c1-abd0-6d53235e8274.png" data-index="7" style="-webkit-perspective: 600px; display: block; z-index: 0; overflow: visible; width: 287px; height: 254px; left: 574px; top: 254px;" class="magicwall-grid-item"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/interactiondesign/2011/5/12/932.html"><div class="hover-content-inner"><h2>一成汽车</h2><p>此款软件是针对汽车保养维修行业量身定制的，通过本系统可以实时的对车辆进行检测维护，直观的发现车辆问题所在，达到事半功倍的效果。</p></div></a><div class="magicwall-thumb" style="opacity: 1; display: block; background-image: url(./images/218648e6-fb67-49c1-abd0-6d53235e8274.png); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div></div></li><li data-thumb="images/24d731e0-f6c0-4a1f-b5e4-a0af3510016e.png" data-index="138" style="-webkit-perspective: 600px; display: none; z-index: 0; overflow: visible;"><div class="magicwall-wrap" style="-webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1); -webkit-transform-origin: 50% 50% 0px; opacity: 1;"><a class="hover-content" href="/case/designview/2011/5/13/931.html"><div class="hover-content-inner"><h2>德比软件</h2><p>德比软件（上海）有限公司，是专业从事旅游产品网络营销系统设计和旅游产品分销的技术服务公司。</p></div></a></div></li></ul>
+            </div>
+        </ul>
+    </div>
+    <div class="clear">&nbsp;</div>
+</div>
+<!-- ***********************************
+服务
+*********************************** -->
+<div class="ai-eachcont con-wite" id="index_flow" nav_index="3">
+    <div class="con_rank_title">
+        <h2>F</h2>
+        <h4>FLOW</h4>
+        <h3>优秀的项目是这样出来的</h3>
+        <h5>优化产品流程，增强产品的易用性，提高使用者的工作效率，科学地组织生产。</h5>
+    </div>
+    <div class="flow-case-con six_row_sprit pad_tb_42">
+        <div class="sprows">
+            <div class="txa_c spricon">
+                <div class="circle-icon circle-icon-2 ci-4"></div>
+            </div>
+            <div class="txa_c sprdetal">
+                <div class="trdcon">
+                    <h2 class="title-medium trd-title">需求沟通</h2>
+                    <div class="trd-detal">
+                        <p>倾听客户需求，了解用户使用环境和操作流程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sprows">
+            <div class="txa_c spricon">
+                <div class="circle-icon circle-icon-2 ci-1"></div>
+            </div>
+            <div class="txa_c sprdetal">
+                <div class="trdcon">
+                    <h2 class="title-medium trd-title">交互设计</h2>
+                    <div class="trd-detal">
+                        <p>头脑风景交互情景模拟，原型设计</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sprows">
+            <div class="txa_c spricon">
+                <div class="circle-icon circle-icon-2 ci-5"></div>
+            </div>
+            <div class="txa_c sprdetal">
+                <div class="trdcon">
+                    <h2 class="title-medium trd-title">视觉创意</h2>
+                    <div class="trd-detal">
+                        <p>色彩及平面元素设定，结构和布局规范确认</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear case-sprit-line">&nbsp;</div>
+        <div class="sprows">
+            <div class="txa_c spricon">
+                <div class="circle-icon circle-icon-2 ci-6"></div>
+            </div>
+            <div class="txa_c sprdetal">
+                <div class="trdcon">
+                    <h2 class="title-medium trd-title">前端制作</h2>
+                    <div class="trd-detal">
+                        <p>CSS3、JS、HTML5实现页面的动态展示</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sprows">
+            <div class="txa_c spricon">
+                <div class="circle-icon circle-icon-2 ci-7"></div>
+            </div>
+            <div class="txa_c sprdetal">
+                <div class="trdcon">
+                    <h2 class="title-medium trd-title">技术开发</h2>
+                    <div class="trd-detal">
+                        <p>移动应用数据对接与开发</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sprows">
+            <div class="txa_c spricon">
+                <div class="circle-icon circle-icon-2 ci-8"></div>
+            </div>
+            <div class="txa_c sprdetal">
+                <div class="trdcon">
+                    <h2 class="title-medium trd-title">测试反馈</h2>
+                    <div class="trd-detal">
+                        <p>修改调整，规范完善</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ai-eachcont flow-setps-wrap">
+    <div class="flow-setps-frame">
+        <img step="1" class="steps step-1 cur" src="images/step-1.gif" next-direction="left" alt="">
+        <img step="2" class="steps step-2" src="images/step-2.gif" next-direction="up" alt="">
+        <img step="3" class="steps step-3" src="images/step-3.gif" next-direction="right" alt="">
+        <img step="4" class="steps step-4" src="images/step-4.gif" next-direction="down" alt="">
+        <img step="5" class="steps step-5" src="images/step-5.gif" next-direction="left" alt="">
+        <img step="6" class="steps step-6" src="images/step-6.gif" next-direction="left" alt="">
+        <img step="7" class="steps step-7" src="images/step-7.gif" next-direction="none" alt="">
+    </div>
+</div>
+<!-- ***********************************
+关于
+*********************************** -->
+<div class="ai-eachcont count-wrap" id="index_about" nav_index="4">
+    <img src="images/count-background.jpg" class="count-background">
+    <div class="count-content txa_c mid_wrap">
+        <div class="mid_block">
+            <div class="my-comp-text">全心 视觉 体验 <a href="/about/us.html" class="my-comp-text-link">了解艾艺 <span>&gt;</span></a></div>
+            <div class="my-comp-text-sub">CREATIVE VISUAL ENJOYMENT</div>
+
+            <div class="count-item">
+                <div class="count-number" id="count_1" style="width: 180px">9</div>
+                <div class="count-fonts">9年对“设计创新”的坚持</div>
+            </div>
+            <div class="count-item">
+                <div class="count-number" id="count_2" style="width: 220px">100</div>
+                <div class="count-mc"></div>
+                <div class="count-fonts">100多名有想法有激情的队友</div>
+            </div>
+            <div class="count-item">
+                <div class="count-number" id="count_3" style="width: 180px">3</div>
+                <div class="count-fonts">3大业务的整合</div>
+            </div>
+            <div class="count-item">
+                <div class="count-number" id="count_4" style="width: 220px">100</div>
+                <div class="count-mc"></div>
+                <div class="count-fonts">100多家知名的品牌客户</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="con-wite">
+    <div class="ecpadding_1">
+        <div class="carousel-partners">
+            <!-- 合作伙伴 -->
+            <div class="cp-frame">
+                <ul class="sides fix_3px_spc" id="partnerfill">
+                    <!-- 合作伙伴填充区域 -->
+                </ul>
+            </div>
+            <ul class="cp-pages fix_3px_spc">
+                <!-- 分页按钮 -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ***********************************
+博客
+*********************************** -->
+<div class="ai-eachcont con-gry index-blog" id="index_blog" nav_index="5">
+    <div class="con_rank_title">
+        <h2>B</h2>
+        <h4>BLOG</h4>
+        <h3>博客</h3>
+        <h5>了解市场新观点，内部案例剖析，增强服务意识与专业水平。</h5>
+    </div>
+
+    <div class="cont-blog-wrap">
+        <div class="blog-viewport">
+            <div class="blog-frame fix_3px_spc">
+                <a class="each-blog-view" href="#">
+                    <div class="blog-picview"><div class="picterborder">
+                        <img class="bpie8" src="images/f31c75e6-843b-45be-ad24-f86786a6dce7.jpg" alt="forIE8"></div>
+                    </div><h2 class="blog-title">APP常见的6种图片浏览模式</h2>
+                    道长这里说四种是指比较常见的，因为有些图片浏览模式，是在这四种的基础上加上手势来实现另一种读图方式，这..</p>
+                </a><a class="each-blog-view" href="#">
+                <div class="blog-picview"><div class="picterborder">
+                    <img class="bpie8" src="images/80098686-77d7-4cd9-b414-64a4c99f6064.jpg" alt="forIE8"></div></div>
+                <h2 class="blog-title">产品思维， UX设计下一个趋势？</h2>
+                <p class="blog-explain">当想起用户体验，我们经常会想到一款简洁、美观、易用产品的一系列功能，它让我们的生活更简单。针对用户遇到的..</p></a>
+                <a class="each-blog-view" href="#"> <div class="blog-picview">
+                    <div class="picterborder"><img class="bpie8" src="images/11a60412-5762-4d6f-baa4-ba5b63395e93.jpg" alt="forIE8"></div>
+                </div><h2 class="blog-title">HTML5崛起—是励志剧，还是宫斗剧</h2>
+                    <p class="blog-explain">在Flash被疑即将淡出历史舞台的同时，HTML5最近却在业内火得一塌糊涂。雷锋网作者钟铄是起源天泽的游戏制作人..</p></a>
+                <a class="each-blog-view" href="#"> <div class="blog-picview"><div class="picterborder">
+                    <img class="bpie8" src="images/220e0dbb-6ede-4e26-93bb-fd353ab15e69.jpg" alt="forIE8"></div></div>
+                    <h2 class="blog-title">iOS当中4种UI元素的可用性问题及..</h2>
+                    <p class="blog-explain">这周又是一篇来自Nielsen Norman Group的文章。供参考吧。</p></a>
+                <a class="each-blog-view" href="#"> <div class="blog-picview">
+                    <img class="bpie8" src="images/fd567cf9-6880-4446-82ed-b2446df24823.jpg" alt="forIE8"></div>
+            </div><h2 class="blog-title">聊出一个未来</h2>
+            <p class="blog-explain">在过去的很长一段时间里，每当我坐在电脑前，父母的问候语总是“在聊天吗”，
+                一定程度上可见网络聊天之深入人心。..</p></a>
+            </div>
+        </div>
+        <div class="blog-page-btnwrap">
+            <span class="blog-page-toggle pageprv"></span><span class="blog-page-toggle pagenex"></span>
+        </div>
+    </div>
+</div>
+<!-- ***********************************
+联系
+*********************************** -->
+<div class="ai-eachcont con-black" id="index_contact" nav_index="6">
+    <div class="con_rank_title">
+        <h3 class="white">联系我们</h3>
+        <h5>在一切开始之前，先说说您的需求吧</h5>
+    </div>
+
+    <div class="call-us">
+        <a href="tel:400-021-8655"><i>全国统一咨询服务热线</i> <i>400-021-8655</i></a>
+    </div>
+
+    <div class="feedback-and-contact fix_3px_spc">
+        <div class="feedback-index">
+            <form>
+                <div class="fb-rows">
+                    <input id="txtname" class="fb-ipt" placeholder="您的姓名：" type="text">
+                </div>
+                <div class="fb-rows">
+                    <input id="txttel" class="fb-ipt" placeholder="您的联系电话：" type="text">
+                </div>
+                <div class="fb-rows">
+                    <input id="txtemail" class="fb-ipt" placeholder="您的邮箱：" type="text">
+                </div>
+                <div class="fb-rows">
+                    <textarea id="txtContent" class="fb-txa" name="" placeholder="详情商务描述：" cols="30" rows="10"></textarea>
+                </div>
+                <div class="fb-rows">
+                    <input class="fb-btn" type="button" onclick="check()" value="提 交">
+                </div>
+            </form>
+        </div>
+        <div class="contact-index">
+            <div class="ctc-rows ct-icons ct-addr">地址：上海陆家嘴<span class="minsize-hide">金融贸易区</span>浦东大道288号富橙投资大厦7楼</div>
+            <div class="ctc-rows ct-icons ct-phone">联系电话：021-50185175 / 50185176</div>
+            <div class="ctc-rows ct-icons ct-fax">传真：021-50183313</div>
+            <div class="ctc-rows ct-icons ct-mail">商务合作：sales@adinnet.cn</div>
+            <div class="ctc-rows ct-icons ct-job">人才招聘：hr@adinnet.cn</div>
+            <div class="ctc-rows ct-icons ct-subway">地铁：4号线浦东大道4号出口左转300米<span class="minsize-hide">\2号线东昌路2号出口900米</span></div>
+            <div class="ctc-rows ct-icons ct-taxi">驾车：<span class="minsize-hide">浦西到达--延安东路隧道 / </span>浦东到达--东方路(浦东南路)</div>
+        </div>
+    </div>
+
+    <div class="mapContent_wrap ai-eachcont">
+        <div id="mapContent"></div>
+        <div class="mapmask"></div>
+    </div>
+</div>
+
+
+<footer class="ai-footer">
+    <div class="mid_wrap friend-links">
+        <div class="mid_block">
+            <a href="index.html" target="_blank" class="flks">UI设计</a>
+            <a href="http://WWW.BJTCWL.COM" target="_blank" class="flks">天成网络</a>
+            <a href="http://wz.68design.net/list2.html?c=002&t=&p=2" target="_blank" class="flks">设计名站</a>
+            <a href="mobile.html" target="_blank" class="flks">手持端开发</a>
+            <a href="http://www.tt-d.com" target="_blank" class="flks">深圳商标设计</a>
+            <a href="http://www.uimaker.com/" target="_blank" class="flks">UI制造者</a>
+            <a href="http://www.uisheji.com" target="_blank" class="flks">UI设计网</a>
+            <a href="http://www.pssheji.com/" target="_blank" class="flks">设计教程</a>
+            <a href="http://www.boxui.com/" target="_blank" class="flks">盒子UI</a>
+            <a href="http://www.chinaui.com/" target="_blank" class="flks">优艾网</a>
+            <a href="http://68hanchen.com/" target="_blank" class="flks">杭州网站建设</a>
+        </div>
+    </div>
+
+    <div class="mid_wrap copyright">
+        <div class="mid_block">
+            <h2><i>专业的人机交互策划、</i><i>高端UI设计、</i><i>移动应用开发公司</i></h2>
+            <h3>沪ICP备05026071号<i> © 2006-2014 ADinNET.cn All rights reserved.</i></h3>
+        </div>
+    </div>
+</footer>
+
+<!--<div style="display:none">
+    <script src="http://s9.cnzz.com/stat.php?id=3831197&web_id=3831197" language="JavaScript"></script>
+</div>-->
+<!--<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2436135-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>-->
+</div>
+
+<ul class="right-side-flyelem">
+    <li class="rsf-items side-icon si-top"></li>
+    <a href="#" target="_blank">
+        <li class="rsf-items side-icon si-qq"></li>
+    </a>
+    <a href="#" target="_blank">
+        <li class="rsf-items side-icon si-ppt"></li>
+    </a>
+
+    <a href="#" target="_blank">
+        <li class="rsf-items side-icon si-pry"></li>
+    </a>
+    <li class="rsf-items side-icon si-phone"></li>
+</ul>
+<!--<div class="left-side-flyelem minsize">-->
+<div class="left-side-flyelem" setactive="true">
+    <div class="minsbar"><span class="msbtn">-</span>在线咨询</div>
+    <ul class="qq_chart_wrap">
+        <a href="#" target="_blank">
+            <li class="qq_chart_el"></li>
+        </a>
+        <a href="#" target="_blank" class="qq_chart_text">QQ在线沟通</a>
+    </ul>
+    <ul class="call_list_wrap">
+        <li class="cl_txt">全国统一</li>
+        <li class="cl_txt">咨询服务电话</li>
+        <li class="cl_tel">400-021-8655</li>
+    </ul>
+</div>
+<div class="left-side-flyelem-min showed"></div>
+<div class="wx-2-dimensional-bar-code">
+    <div class="wx-pop-title">
+        <span>微信扫一扫</span>
+    </div>
+    <div class="show-wx2dc"></div>
+
+    <div class="wx2dc_tip">
+        <em>或者在 <span>添加朋友</span> - <span>查找公众号</span> 搜索 <span>艾艺信息</span></em>
+    </div>
+    <div class="wx-cls-btn"></div>
+</div>
+<!--<script src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+<!-- Javascript
+================================================== -->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollfire.min.js"></script>
+<script type="text/javascript" src="js/jay.plugin.smoothscroll.js"></script>
+<script type="text/javascript" src="js/sly.min.js"></script>
+<!--
+<script type="text/javascript" src="js/jay.js?Key=As9EyOY-gjNMA3gcfHm6RlV3n1ckndj54dRdPpFyUzbO1LIp2INeDmo_5BYKP9-W"></script>
+-->
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+
+<!--<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2436135-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>-->
+</html>
+

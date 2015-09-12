@@ -1,0 +1,249 @@
+@charset "utf-8";
+
+@import "style_1024.css";
+
+@media only screen and (max-width:1024px),
+only screen and (max-device-width:1024px)
+{
+    .class-lay_1 ,
+    .class_banner{
+        height: 432px;
+    }
+    .classbanner-text{
+        top:91px;
+        width:458px;
+        height:141px;
+        margin-left:-229px;
+    }
+    .classbanner-tex1{
+        width:458px;
+        height:75px;
+    }
+    .classbanner-tex2{
+        width:245px;
+        height:11px;
+        top:83px;
+        left:107px;
+    }
+    .classbanner-tex3{
+        width:206px;
+        height:40px;
+        left:126px;
+    }
+    .class-lay_2{
+        width:928px;
+        height:594px;
+        padding:53px 0 0 0;
+    }
+    .classlay_Title{
+        padding:26px 0 0 0;
+        margin:0 0 35px 0;
+    }
+    .classlay_Title span{
+        width:267px;
+        margin:0 0 0 -148px;
+    }
+    .classlay_Titlecon{
+        width:267px;
+        height:38px;
+        background-size:267px 38px;
+    }
+    .classlay2_con{
+        font-size:12px;
+        line-height:20px;
+    }
+    .playform_sly{
+        width:854px;
+        height:415px;
+        margin:22px auto 0;
+    }
+    .playform_sly ul li {
+        width: 264px;
+        height: 415px;
+    }
+    .playform_sly ul li.mlr45{ margin:0 28px;}
+    .carousel-item{
+        width:165px;
+        height:314px;
+        margin: 120px auto 0px;
+    }
+    .itemgreen,
+    .itemred,
+    .itemblue{
+        background-size:121px 132px;
+        padding:150px 0 0;
+    }
+    .carousel-content{
+        width:264px;
+        height:415px;
+        margin:-207px 0 0 -132px;
+    }
+    .greenbg,
+    .redbg,
+    .bluebg{
+        width:240px;
+        height:369px;
+        padding:46px 12px 0;
+    }
+    .greencontent,
+    .redcontent,
+    .bluecontent{
+        width:121px;
+        height:132px;
+        padding: 0px 0px 10px;
+        background-size:121px 132px;
+    }
+    .carousel-content .borderline{
+        margin:15px auto 10px;
+    }
+    .carousel-content p{
+        line-height:18px;
+    }
+    .case_infor{
+        width:924px;
+        height:277px;
+        padding:54px 1px 0;
+    }
+    .c_inforTitle{
+        height:40px;
+        margin:0 0 40px 0;
+    }
+    .c_inforTitle img{
+        width: 117px;
+        height:38px;
+    }
+    .c_inforL{
+        width:462px;
+        height:138px;
+        background-size:462px 138px;
+    }
+    .c_inforLcon{
+        width:170px;
+        padding:70px 0 10px;
+    }
+    .c_inforLcon h3{
+        font-size:16px;
+        line-height:30px;
+    }
+    .c_inforLcon p{
+        line-height:14px;
+        padding:0 0 0 7px;
+    }
+    .c_inforR{
+        width:461px;
+        height:138px;
+        background-size:461px 138px;
+    }
+    .c_inforRcon{
+        width:226px;
+        padding:68px 0 0;
+        margin:0 34px 0 0;
+    }
+    .c_inforRcon span i{
+        font-size:16px;
+        line-height:18px;
+    }
+    .c_inforRcon span b{
+        font-family:"Arial";
+        font-size:38px;
+    }
+    .customer_pro{
+        width:1024px;
+    }
+    .cus_Title img{
+        width:99px;
+        height:99px;
+    }
+    .customer_infor h3{
+        font-size:12px;
+        line-height:24px;
+    }
+    .customer_infor p{
+        font-size:12px;
+        line-height:24px;
+    }
+    .cus_conment{
+        font-size:12px;
+        line-height:24px;
+        padding:20px 0 25px;
+    }
+    .start_up a,
+    .redstart_up a{
+        width:24px;
+        height:24px;
+        margin-left:-12px;
+        bottom:-12px;
+    }
+    .blueupbg,
+    .bluedownbg,
+    .redupbg,
+    .reddownbg{
+        background-size:24px 24px;
+    }
+    #carousel,
+    .class_conment,
+    .class_conment li{
+        width:653px;
+        height:325px;
+        margin:0 auto;
+        position:relative;
+        text-align:center;
+    }
+    .classimg1{
+        width:425px;
+        height:263px;
+        top:32px;
+        right:33px;
+    }
+    .courseware{
+        width:217px;
+        height:188px;
+        padding:15px 15px 0 22px;
+        position:absolute;
+        top:64px;
+        left:40px;
+    }
+    .courseware h3{
+        font-size:48px;
+        line-height: 50px;
+        padding:0 0 15px 0;
+    }
+    .courseware h4{
+        font-size:16px;
+        line-height:20px;
+        padding: 0px 0px 10px;
+    }
+    .courseware i{
+        display:inline-block;
+        font-size:12px;
+        line-height:20px;
+        color:#fffefe;
+        background:url(../images/class_title6bg.png) no-repeat left bottom;
+        padding:0 0 8px 0;
+    }
+    .courseware p{
+        font-size:8px;
+        line-height:10px;
+        padding:10px 0 0;
+    }
+    #carousel .prev,
+    #carousel .next {
+        width: 48px;
+        height: 48px;
+        top: 130px;
+    }
+    #carousel .prev {
+        left: -100px;
+    }
+    #carousel .next {
+        right: -100px;
+    }
+    #carousel .prev,
+    #carousel .prev:hover,
+    #carousel .next,
+    #carousel .next:hover {
+        background-size:48px 48px;
+    }
+    .courseware img{ display:none;}
+
+}

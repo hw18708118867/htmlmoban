@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="oldie ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="oldie ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>UI设计_软件界面设计_APP应用开发_交互设计_上海艾艺-3D虚拟展示</title>
+    <meta name="keywords" content="UI设计, 软件界面设计,html5开发,移动端UI设计,IOS开发,Android（安卓）开发,用户体验,交互设计,多媒体互动展示,数据展示,数据监控平台,3D虚拟展示" />
+    <meta name="description" content="上海艾艺（ADinnet）成立于2006年，高端的移动应用和开发公司，专注于UI设计和APP应用与研究，将视觉和功能整合，提供美观、易用、实用的互联网产品。" />
+    <meta name="title" content="上海艾艺信息技术有限公司" />
+    <meta name="author" content="艾艺信息on2014-06" />
+    <meta name="Copyright" content="上海艾艺信息技术有限公司，2014" />
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核
+	================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- IOS6全屏 Chrome高版本全屏
+	================================================== -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 让360双核浏览器用webkit内核渲染页面
+	================================================== -->
+    <meta name="renderer" content="webkit">
+    <!-- Mobile Specific Metas
+	================================================== -->
+    <!-- !!!注意 minimal-ui 是IOS7.1的新属性，最小化浏览器UI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <!-- CSS
+	================================================== -->
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/magicwall.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.gridster.css" rel="stylesheet" type="text/css">
+    <link href="css/case.css" rel="stylesheet" type="text/css">
+    <link href="css/case_1280.css" rel="stylesheet" type="text/css">
+    <link href="css/case_1024.css" rel="stylesheet" type="text/css">
+    <link href="css/case_640.css" rel="stylesheet" type="text/css">
+    <link href="css/case_320.css" rel="stylesheet" type="text/css">
+    <link href="css/style_retina.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <![endif]-->
+
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Android 主屏图标
+	================================================== -->
+    <link rel="icon" sizes="196x196" href="images/apple-touch-icon-152x152.png">
+    <!-- IOS 主屏图标
+	================================================== -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+
+
+    <!-- <link rel="apple-touch-startup-image" href="/startup-748x1024.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" >
+	<link rel="apple-touch-startup-image" href="/startup-768x1004.jpg" 
+	media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" > -->
+    <!-- Javascript
+	================================================== -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jay.plugin.minsidebar.js"></script>
+    <!---->
+    <script type="text/javascript" src="js/sly.min.js"></script>
+    <script src="js/jquery.carouFredSel.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/ai-js.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <!-- Everything started here -->
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?96324684db2d35909bd761fd96707aeb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <header class="ai-header">
+        <div class="ai-nav-wrap">
+            <div class="ai-nav">
+                <div class="ai-logo"></div>
+                <div class="ai-imlink">
+                    <a target="_blank" href="http://weibo.com/adinnet" class="imweibo"></a><a href="#" class="imweixin"></a>
+                </div>
+                <div class="sidebtn"></div>
+                <div class="ai-nav-list">
+                    <a href="index.html" class="ai-nav-listitem  ">首页</a>
+                    <a href="index.html#index_serve" class="ai-nav-listitem cur">服务</a>
+                    <a href="index.html#index_case" class="ai-nav-listitem ">案例</a>
+                    <a href="index.html#index_flow" class="ai-nav-listitem" toelem="index_flow">流程</a>
+                    <a href="index.html#index_about" class="ai-nav-listitem ">艾艺</a>
+                    <a href="index.html#index_blog" class="ai-nav-listitem ">博客</a>
+                    <a href="index.html#index_contact" class="ai-nav-listitem ">联系</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="ai-banner-wrap ai-pagebanner-3D">
+        <div class="virtualbanner-ani">
+            <div class="virtualbanner-pic">
+                <span class="virtualbanner-pic0"></span>
+                <span class="virtualbanner-pic1"></span>
+                <span class="virtualbanner-pic2"></span>
+                <span class="virtualbanner-pic3"></span>
+                <span class="virtualbanner-pic4"></span>
+                <span class="virtualbanner-pic5"></span>
+                <span class="virtualbanner-pic6"></span>
+            </div>
+            <div class="virtualbanner-text">
+                <span class="virtualbanner-tex1"></span>
+                <span class="virtualbanner-tex2">虚拟展示技术</span>
+                <span class="virtualbanner-tex3">Virtual display technology</span>
+                <span class="virtualbanner-tex4">解决方案</span>
+                <span class="virtualbanner-tex5">3D虚拟展示技术利用先进的图形图像技术、人机交互技术与互联网技术</span>
+            </div>
+        </div>
+    </div>
+    <div class="ai-pagetips"></div>
+
+    <!-- ***********************************
+    3D虚拟展示
+*********************************** -->
+    <div class="ai-eachcont con-wite">
+        <div class="ai-virtual-solution">
+            <span class="ai-virtual-solutiontil"></span>
+            <p>
+                <span class="col-079b95 dis-ib pad-b-5">“艾艺3D虚拟展示技术”是我们<strong>自主研发的一款针对各类在线商城、展馆、体验中心</strong>等行业，</span><br />
+                将商品、陈列品在互联网上进行展示、宣传与教育的三维互动体验解决方案。它将传统展馆与互联网和三维虚拟技术相结合，<br />
+                <em class="dis-b-640">打破了时间与空间的限制。</em>目的是让更广泛的用户在网络平台上真实感受展馆及展品的详细介绍，<br />
+                用在线互动的方式体验在互联网上全方位展示!
+            </p>
+            <p class="pad-t-60 ai-virtual-solutionico">
+                网上虚拟展馆不只是现实世界中实体展馆的简单复制，而是实体展馆社会价值的补充和扩展，<br />
+                是实体展馆在互联网上的一扇窗口，相比实体的展馆，3D虚拟展馆没有规模的限制，<br />
+                不需要真实的产品和场地，没有浏览人员的限制。没有到过实体展馆的人可以借助虚拟展馆了解展品信息，<br />
+                增加去实体展馆的兴趣，同时实体展馆所无法实现的一些展品互动可以借助虚拟展馆得到有益的补充。
+            </p>
+        </div>
+        <div class="ai-virtual-video">
+            <span class="ai-virtual-videotil"></span>
+            <div class="ai-virtual-videocon">
+                <video width="100%" height="480" align="center" controls="controls">
+                    <source src="images/movie.mp4" type="video/mp4"></video>
+            </div>
+        </div>
+        <div class="ai-virtual-feature">
+            <span class="ai-virtual-featuretil"></span>
+            <div class="ai-virtual-featurecon">
+                <span class="ai-virtual-featurepic"></span>
+                <span class="ai-virtual-featuretext f-tar pos1"><em class="ai-virtual-featureline posr"></em>先进的压缩技术，支持大场景交互，高压缩比，多线程分布式下载</span>
+                <span class="ai-virtual-featuretext f-tar pos2"><em class="ai-virtual-featureline posr"></em>支持动态缓存技术，可实现不等待，线程自动更新缓存</span>
+                <span class="ai-virtual-featuretext f-tar pos3"><em class="ai-virtual-featureline posr"></em>支持数据库，预留接口，支持所有常用的数据库格式</span>
+                <span class="ai-virtual-featuretext f-tal pos4"><em class="ai-virtual-featureline posl"></em>与3dsMAX无缝链接，支持95%的格式文件导入，支持三维物理引擎，动画效果逼真；</span>
+                <span class="ai-virtual-featuretext f-tal pos5"><em class="ai-virtual-featureline posl"></em>可嵌入音频、FLASH、视频、图片、网页完美结合多媒体展示手段，整合多种优势，使三维交互更加精彩</span>
+                <span class="ai-virtual-featuretext f-tal pos6"><em class="ai-virtual-featureline posl"></em>支持多人在线互动多人在线模块，可在互联网上实现多人同时在线交流</span>
+            </div>
+        </div>
+
+        <div class="ai-virtual-case">
+            <div class="ai-virtual-casecon">
+                <span class="ai-virtual-casetil"></span>
+                <div class="ai-virtual-frame">
+                    <ul class="clearfix" style="height: 100%">
+                        <li class="ai-virtual-caselist vircase1 not-active">
+                            <div class="ai-virtual-caselistpicwrap"><span class="ai-virtual-caselistpic"></span></div>
+                            <div class="ai-virtual-caselisttex">
+                                <h3>残联虚拟展馆</h3>
+                                <p>
+                                    <span class="serial">1</span>在线搭建一个辅具产品的在线演示平台，残疾人不用出户，<br />
+                                    在家可以了解到辅具产品的外观，功能及使用方法，不同角度的全方位了<br />
+                                    解辅具的材质特性。
+                                </p>
+                                <p><span class="serial">2</span>残疾人实体展馆建设和维护成本都很高，而且不利于残疾人快速了解不同的产品，虚拟场馆通过3d的效果在互联网上展示，可以无限扩展产品的数量，及时推荐新产品，同时，通过图文并茂的形式表现残疾人相关政策，采用视频方式展现产品的使用方法。</p>
+                                <p><span class="serial">3</span>虚拟展馆是一个辅具产品的网上体验馆，同时也是一个政策法规宣传的展示平台，它的建设和完善将残疾人的资源公开，有利于产品的开发和进步，帮助残疾人快速了解辅具产品，提升残疾人朋友的生活质量。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="ai-virtual-caseslidebtn"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="chartTop_7 columnT">
+    </div>
+    <div class="posFix">
+        <div class="page_shift">
+            <ul>
+                <li><a href="chart.html" class="shiftOne">大数据<i>数据可视化</i></a></li>
+                <li><a href="mobile.html" class="shiftTwo">移动APP<i>H5、Android、IOS</i></a></li>
+                <li class="cur"><a href="3d.html" class="shiftThree">3D互联网<i>虚拟展示</i></a></li>
+                <li><a href="digital_class.html" class="shiftFour">互动课件<i>情景动画课程开发</i></a></li>
+                <li><a href="us.html" class="shiftFive">创意<i>团队介绍</i></a></li>
+                <li class="Gohome"><a href="/">返回首页<i>HOME</i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--marc 新增 15-05-14-->
+    <div class="posFix_phone">
+        <div class="posFix_phone_pop hide">
+            <a href="index.html" class="pop_01">首页</a>
+            <a href="chart.html" class="pop_02 plc"><i class="font-case icon-pop02"></i>大数据</a>
+            <a href="mobile.html" class="pop_03 plc"><i class="font-case icon-pop03"></i>移动APP</a>
+            <a href="3d.html" class="pop_04 plc"><i class="font-case icon-pop04"></i>3D互联网</a>
+            <a href="digital_class.html" class="pop_05 plc"><i class="font-case icon-pop05"></i>互动课件</a>
+            <a href="us.html" class="pop_06 plc"><i class="font-case icon-pop06"></i>创意</a>
+        </div>
+
+        <div class="pfp_btn">
+            <div class="pfp_btn_cont">
+                <i class="font-case icon-popbtn"></i>
+            </div>
+        </div>
+    </div>
+    <!--end posFix_phone-->
+    <!--end marc 15-05-14-->
+
+
+    <footer class="ai-footer">
+        <div class="mid_wrap friend-links">
+            <div class="mid_block">
+                <a href="index.html" target="_blank" class="flks">UI设计</a>
+                <a href="http://WWW.BJTCWL.COM" target="_blank" class="flks">天成网络</a>
+                <a href="http://wz.68design.net/list2.html?c=002&t=&p=2" target="_blank" class="flks">设计名站</a>
+                <a href="mobile.html" target="_blank" class="flks">手持端开发</a>
+                <a href="http://www.tt-d.com" target="_blank" class="flks">深圳商标设计</a>
+                <a href="http://www.uimaker.com/" target="_blank" class="flks">UI制造者</a>
+                <a href="http://www.uisheji.com" target="_blank" class="flks">UI设计网</a>
+                <a href="http://www.pssheji.com/" target="_blank" class="flks">设计教程</a>
+                <a href="http://www.boxui.com/" target="_blank" class="flks">盒子UI</a>
+                <a href="http://www.chinaui.com/" target="_blank" class="flks">优艾网</a>
+                <a href="http://68hanchen.com/" target="_blank" class="flks">杭州网站建设</a>
+            </div>
+        </div>
+
+        <div class="mid_wrap copyright">
+            <div class="mid_block">
+                <h2><i>专业的人机交互策划、</i><i>高端UI设计、</i><i>移动应用开发公司</i></h2>
+                <h3>沪ICP备05026071号<i> © 2006-2014 ADinNET.cn All rights reserved.</i></h3>
+            </div>
+        </div>
+    </footer>
+
+    <div style="display:none"> <script src="http://s9.cnzz.com/stat.php?id=3831197&web_id=3831197" language="JavaScript"></script></div>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-2436135-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</div>
+<script>
+    //DOM ready
+    $(function () {
+        /*------marc 新增 15-05-14------*/
+        //phone pop 弹窗
+        $(".pfp_btn").click(function () {
+            $(".posFix_phone_pop").toggleClass("hide");
+        })
+        /*------end marc 15-05-14------*/
+    });
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2015 年 09 月 11 日 17:58
+-- 生成日期: 2015 年 09 月 12 日 17:34
 -- 服务器版本: 5.5.36
 -- PHP 版本: 5.3.28
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `mb_admin` (
 
 INSERT INTO `mb_admin` (`userid`, `username`, `password`, `roleid`, `encrypt`, `lastloginip`, `lastlogintime`, `email`, `realname`, `card`, `lang`) VALUES
 (1, 'admin', '52433b33c7ff3a8dc647a10939a91628', 1, 'SwFNZd', '127.0.0.1', 1435650303, 'wewe@qq.com', '', '', ''),
-(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1441955855, 'sdsd@qq.com', 'qg', '', '');
+(2, 'admin2', 'c6d86ca2f261c7a44449071933673554', 1, '7KzavP', '127.0.0.1', 1442025010, 'sdsd@qq.com', 'qg', '', '');
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `mb_attachment` (
   `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`aid`),
   KEY `authcode` (`authcode`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=118 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=132 ;
 
 --
 -- 转存表中的数据 `mb_attachment`
@@ -273,7 +273,21 @@ INSERT INTO `mb_attachment` (`aid`, `module`, `catid`, `filename`, `filepath`, `
 (114, 'content', 11, '20122122476140639.png', '2015/0911/20150911034213934.png', 79103, 'png', 1, 0, 0, 2, 1441957333, '127.0.0.1', 1, '51c4e3d9aadec513224f68169c6c1b79', 1),
 (115, 'content', 11, '20150911041331498.png', '2015/0911/20150911041331468.png', 193219, 'png', 1, 0, 0, 2, 1441959211, '127.0.0.1', 1, 'c08ee0c0d7a651a4c6fe8239df938f67', 1),
 (116, 'content', 11, 'Vuurr Leadership Team.png', '2015/0911/20150911041332389.png', 522473, 'png', 1, 0, 0, 2, 1441959212, '127.0.0.1', 1, '4d3bb6d9b15697fd07f934ddaad702ac', 1),
-(117, 'content', 11, '20122127875780697.jpg', '2015/0911/20150911041339584.jpg', 17081, 'jpg', 1, 0, 0, 2, 1441959219, '127.0.0.1', 1, '99f313a44b86b3e4919274c8d7da47c1', 1);
+(117, 'content', 11, '20122127875780697.jpg', '2015/0911/20150911041339584.jpg', 17081, 'jpg', 1, 0, 0, 2, 1441959219, '127.0.0.1', 1, '99f313a44b86b3e4919274c8d7da47c1', 1),
+(118, 'content', 6, 'anyi.png', '2015/0912/20150912042958722.png', 33875, 'png', 1, 0, 0, 2, 1442046598, '127.0.0.1', 1, '12e5d3007ef0028418f1f9ccbfaacb1f', 1),
+(119, 'content', 6, 'UI设计.png', '2015/0912/20150912043248754.png', 725229, 'png', 1, 0, 0, 2, 1442046768, '127.0.0.1', 1, '0e430caa99d5646cf310a031794e3d0b', 1),
+(120, 'content', 6, 'aiyi.rar', '2015/0912/20150912043635287.rar', 7082737, 'rar', 0, 0, 0, 2, 1442046995, '127.0.0.1', 1, '882470a44a792aa926391f2f3323a557', 1),
+(121, 'content', 6, 'adi.png', '2015/0912/20150912045159234.png', 516763, 'png', 1, 0, 0, 2, 1442047919, '127.0.0.1', 1, '8ed45603bfdd5c9c0869da97b0e100a2', 1),
+(122, 'content', 6, 'FLUX THE WORLD.png', '2015/0912/20150912045231740.png', 418114, 'png', 1, 0, 0, 2, 1442047951, '127.0.0.1', 1, 'd4b7dfb851e2b4dfdcf5430490c6ed5c', 1),
+(123, 'content', 6, 'FLUX THE WORLD1.png', '2015/0912/20150912045232584.png', 302714, 'png', 1, 0, 0, 2, 1442047952, '127.0.0.1', 1, 'e411b6ba4465a0caf77534cf3b447f2b', 1),
+(124, 'content', 6, 'FLUX THE WORLD2.png', '2015/0912/20150912045232512.png', 594303, 'png', 1, 0, 0, 2, 1442047952, '127.0.0.1', 1, 'df67f7a59556be5da222244d54b799d3', 1),
+(125, 'content', 6, 'adidas.rar', '2015/0912/20150912045252575.rar', 8281452, 'rar', 0, 0, 0, 2, 1442047972, '127.0.0.1', 1, 'cdbfaeb53b1ee42abf1ff05fc5cd8b79', 1),
+(126, 'content', 6, 'anyu.rar', '2015/0912/20150912050206856.rar', 1694760, 'rar', 0, 0, 0, 2, 1442048526, '127.0.0.1', 1, 'f3d58e9a308d3009dc7593d5f84e8a55', 1),
+(127, 'content', 6, '安御文化传媒.png', '2015/0912/20150912050247246.png', 1040380, 'png', 1, 0, 0, 2, 1442048567, '127.0.0.1', 1, '96e07d1f81d113a880059ef9e5e116da', 1),
+(128, 'content', 6, '安御文化传媒1.png', '2015/0912/20150912050248750.png', 1419134, 'png', 1, 0, 0, 2, 1442048568, '127.0.0.1', 1, 'b06f2616e78cd9dd6144dba41b46dd3a', 1),
+(129, 'content', 6, '安御文化传媒2.png', '2015/0912/20150912050250491.png', 1007165, 'png', 1, 0, 0, 2, 1442048570, '127.0.0.1', 1, '7037f86cb86476933e00051c68351b28', 1),
+(130, 'content', 6, '安御文化传媒4.png', '2015/0912/20150912050251549.png', 1119774, 'png', 1, 0, 0, 2, 1442048571, '127.0.0.1', 1, '449069f9a3edd78b0c296fc085b31258', 1),
+(131, 'content', 6, 'anyu.png', '2015/0912/20150912050313751.png', 208317, 'png', 1, 0, 0, 2, 1442048593, '127.0.0.1', 1, 'bc865ad29118dffe5df88cee82e7631a', 1);
 
 -- --------------------------------------------------------
 
@@ -403,7 +417,21 @@ INSERT INTO `mb_attachment_index` (`keyid`, `aid`) VALUES
 ('c-11-8', '114'),
 ('c-11-9', '115'),
 ('c-11-9', '116'),
-('c-11-9', '117');
+('c-11-9', '117'),
+('c-6-52', '118'),
+('c-6-52', '119'),
+('c-6-52', '120'),
+('c-6-53', '121'),
+('c-6-53', '122'),
+('c-6-53', '123'),
+('c-6-53', '124'),
+('c-6-53', '125'),
+('c-6-54', '126'),
+('c-6-54', '127'),
+('c-6-54', '128'),
+('c-6-54', '129'),
+('c-6-54', '130'),
+('c-6-54', '131');
 
 -- --------------------------------------------------------
 
@@ -520,7 +548,7 @@ INSERT INTO `mb_cache` (`filename`, `path`, `data`) VALUES
 ('category_items_3.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
 ('category_items_11.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
 ('type_.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
-('category_items_12.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  6 => ''18'',\n  8 => ''2'',\n  9 => ''3'',\n);\n?>'),
+('category_items_12.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  6 => ''21'',\n  8 => ''2'',\n  9 => ''3'',\n);\n?>'),
 ('type_content.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n);\n?>'),
 ('vote.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''default_style'' => ''default'',\n    ''vote_tp_template'' => ''vote_tp'',\n    ''allowguest'' => ''1'',\n    ''enabled'' => ''1'',\n    ''interval'' => ''1'',\n    ''credit'' => ''1'',\n  ),\n);\n?>'),
 ('link.cache.php', 'caches_commons/caches_data/', '<?php\nreturn array (\n  1 => \n  array (\n    ''is_post'' => ''1'',\n    ''enablecheckcode'' => ''0'',\n  ),\n);\n?>'),
@@ -574,7 +602,7 @@ INSERT INTO `mb_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `pare
 (3, 1, 'content', 1, 0, 1, '0,1', 0, '3', '联系方式', '', '', '', 'about/', 'contactus', '/html/about/contactus/', 0, 0, 'array (\n  ''ishtml'' => ''1'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => ''联系方式'',\n  ''meta_keywords'' => ''联系方式'',\n  ''meta_description'' => ''联系方式'',\n  ''category_ruleid'' => ''1'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 2, 1, 0, 'lianxifangshi', ''),
 (4, 1, 'content', 1, 0, 1, '0,1', 0, '4', '版权声明', '', '', '', 'about/', 'copyright', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=4', 0, 0, 'array (\n  ''ishtml'' => ''0'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => ''版权声明'',\n  ''meta_keywords'' => ''版权声明'',\n  ''meta_description'' => ''版权声明'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 3, 1, 0, 'banquanshengming', ''),
 (5, 1, 'content', 1, 0, 1, '0,1', 0, '5', '招聘信息', '', '', '', 'about/', 'hr', '/html/about/hr/', 0, 0, 'array (\n  ''ishtml'' => ''1'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''category_ruleid'' => ''1'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 4, 1, 0, 'zhaopinxinxi', ''),
-(6, 1, 'content', 0, 12, 0, '0', 0, '6', '网页模板', '', '', '', '', 'wangyemoban', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6', 18, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list'',\n  ''show_template'' => ''show'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 6, 1, 0, 'wangyemoban', ',54,'),
+(6, 1, 'content', 0, 12, 0, '0', 0, '6', '网页模板', '', '', '', '', 'wangyemoban', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=6', 21, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list'',\n  ''show_template'' => ''show'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 6, 1, 0, 'wangyemoban', ',54,'),
 (8, 1, 'content', 0, 12, 0, '0', 0, '8', '后台模板', '', '', '', '', 'houtaimoban', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=8', 2, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list'',\n  ''show_template'' => ''show'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 8, 1, 0, 'houtaimoban', ''),
 (9, 1, 'content', 0, 12, 0, '0', 0, '9', '手机网页模板', '', '', '', '', 'shoujimoban', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=9', 3, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category'',\n  ''list_template'' => ''list'',\n  ''show_template'' => ''show'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 9, 1, 0, 'shoujiwangyemoban', ''),
 (17, 1, 'content', 0, 14, 16, '0,16', 1, '17,18,19,20,21,22,23,24,25,26,27,28,29', 'jquery特效', '', '', '', 'texiao/', 'jquery', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=lists&catid=17', 0, 0, 'array (\n  ''workflowid'' => '''',\n  ''ishtml'' => ''0'',\n  ''content_ishtml'' => ''0'',\n  ''create_to_html_root'' => ''0'',\n  ''template_list'' => ''default'',\n  ''category_template'' => ''category_code'',\n  ''list_template'' => ''list_js'',\n  ''show_template'' => ''show_code'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''presentpoint'' => ''1'',\n  ''defaultchargepoint'' => ''0'',\n  ''paytype'' => ''0'',\n  ''repeatchargedays'' => ''1'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => ''16'',\n)', 17, 1, 0, 'jquerytexiao', ''),
@@ -760,7 +788,9 @@ INSERT INTO `mb_comment` (`commentid`, `siteid`, `title`, `url`, `total`, `squar
 ('content_6-51-1', 1, '高端产品模板', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=51', 2, 2, 0, 0, 1, 1, 1440582715),
 ('content_29-7-1', 1, 'HTML5+css3t音量调节按钮', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=29&id=7', 7, 7, 0, 0, 1, 1, 1441667989),
 ('content_27-9-1', 1, '大屏图片轮播特效', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=27&id=9', 2, 2, 0, 0, 1, 1, 1441701563),
-('content_36-14-1', 1, '支持节假日高亮显示的时间日期日历表', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=36&id=14', 2, 2, 0, 0, 1, 1, 1441857521);
+('content_36-14-1', 1, '支持节假日高亮显示的时间日期日历表', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=36&id=14', 2, 2, 0, 0, 1, 1, 1441857521),
+('content_40-12-1', 1, 'jQuery图文上下按钮焦点切换', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=40&id=12', 2, 2, 0, 0, 1, 1, 1442045164),
+('content_6-53-1', 1, '阿迪达斯产品模板', 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=53', 2, 2, 0, 0, 1, 1, 1442048214);
 
 -- --------------------------------------------------------
 
@@ -802,7 +832,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment_data_1` (
   KEY `direction` (`direction`),
   KEY `siteid` (`siteid`),
   KEY `support` (`support`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- 转存表中的数据 `mb_comment_data_1`
@@ -832,7 +862,11 @@ INSERT INTO `mb_comment_data_1` (`id`, `commentid`, `siteid`, `userid`, `usernam
 (21, 'content_27-9-1', 1, 0, '默认站点网友', 1441701555, '127.0.0.1', 1, 'drgdsfgdsfg', 1, 0, 0),
 (22, 'content_27-9-1', 1, 0, '默认站点网友', 1441701563, '127.0.0.1', 1, 'dsgdsgdsdfffffff', 1, 0, 0),
 (23, 'content_36-14-1', 1, 0, '默认站点网友', 1441857495, '127.0.0.1', 1, '100个赞！很实用！', 1, 0, 0),
-(24, 'content_36-14-1', 1, 0, '默认站点网友', 1441857521, '127.0.0.1', 1, '终于找到一款实漂亮的日期插件了！', 1, 0, 0);
+(24, 'content_36-14-1', 1, 0, '默认站点网友', 1441857521, '127.0.0.1', 1, '终于找到一款实漂亮的日期插件了！', 1, 0, 0),
+(25, 'content_40-12-1', 1, 0, '默认站点网友', 1442045154, '127.0.0.1', 1, '感觉很炫，不错！', 1, 0, 0),
+(26, 'content_40-12-1', 1, 0, '默认站点网友', 1442045164, '127.0.0.1', 1, '很实用的感觉！', 1, 0, 0),
+(27, 'content_6-53-1', 1, 0, '默认站点网友', 1442048198, '127.0.0.1', 1, '好炫酷！很好看', 1, 0, 0),
+(28, 'content_6-53-1', 1, 0, '默认站点网友', 1442048214, '127.0.0.1', 1, '风格很不错！', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -875,7 +909,7 @@ CREATE TABLE IF NOT EXISTS `mb_comment_table` (
 --
 
 INSERT INTO `mb_comment_table` (`tableid`, `total`, `creat_at`) VALUES
-(1, 24, 0);
+(1, 28, 0);
 
 -- --------------------------------------------------------
 
@@ -1200,7 +1234,7 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 ('c-14-5', 27, 2, 1, 1, 2, 2, 1440639852),
 ('c-14-6', 27, 1, 0, 1, 1, 1, 1440559020),
 ('c-14-7', 29, 20, 3, 12, 12, 12, 1441668030),
-('c-14-8', 27, 21, 1, 2, 4, 4, 1441791997),
+('c-14-8', 27, 32, 1, 11, 15, 15, 1442043054),
 ('c-12-49', 6, 18, 8, 1, 1, 1, 1441857817),
 ('c-1-1', 44, 3, 0, 3, 3, 3, 1437142487),
 ('c-1-2', 44, 3, 0, 1, 1, 1, 1439975717),
@@ -1226,7 +1260,7 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 ('c-1-22', 46, 1, 0, 1, 1, 1, 1440214156),
 ('c-1-23', 46, 0, 0, 0, 0, 0, 1437212519),
 ('c-12-50', 6, 19, 0, 4, 6, 19, 1440750375),
-('c-12-51', 6, 36, 1, 5, 6, 6, 1441878059),
+('c-12-51', 6, 37, 1, 1, 7, 7, 1442029418),
 ('c-1-24', 45, 0, 0, 0, 0, 0, 1441617633),
 ('c-1-25', 47, 0, 0, 0, 0, 0, 1441617785),
 ('c-1-26', 47, 0, 0, 0, 0, 0, 1441618052),
@@ -1251,16 +1285,19 @@ INSERT INTO `mb_hits` (`hitsid`, `catid`, `views`, `yesterdayviews`, `dayviews`,
 ('c-13-3', 11, 0, 0, 0, 0, 0, 1441666028),
 ('c-13-4', 11, 0, 0, 0, 0, 0, 1441666538),
 ('c-13-5', 11, 0, 0, 0, 0, 0, 1441666919),
-('c-14-9', 27, 35, 18, 1, 35, 35, 1441857301),
+('c-14-9', 27, 36, 18, 1, 36, 36, 1442043435),
 ('c-14-10', 35, 15, 0, 15, 15, 15, 1441855659),
-('c-14-11', 35, 15, 0, 15, 15, 15, 1441855798),
-('c-14-12', 40, 1, 0, 1, 1, 1, 1441856114),
+('c-14-11', 35, 16, 0, 1, 16, 16, 1442043537),
+('c-14-12', 40, 3, 0, 2, 3, 3, 1442045166),
 ('c-14-13', 40, 1, 0, 1, 1, 1, 1441856789),
-('c-14-14', 36, 27, 26, 1, 27, 27, 1441954765),
+('c-14-14', 36, 29, 1, 2, 29, 29, 1442042867),
 ('c-13-6', 11, 0, 0, 0, 0, 0, 1441955946),
 ('c-13-7', 11, 0, 0, 0, 0, 0, 1441956218),
 ('c-13-8', 11, 0, 0, 0, 0, 0, 1441957354),
-('c-13-9', 11, 0, 0, 0, 0, 0, 1441959255);
+('c-13-9', 11, 0, 0, 0, 0, 0, 1441959255),
+('c-12-52', 6, 3, 0, 3, 3, 3, 1442047660),
+('c-12-53', 6, 4, 0, 4, 4, 4, 1442048254),
+('c-12-54', 6, 1, 0, 1, 1, 1, 1442048621);
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1340,7 @@ CREATE TABLE IF NOT EXISTS `mb_keyword` (
   `searchnums` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `keyword` (`keyword`,`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=165 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=168 ;
 
 --
 -- 转存表中的数据 `mb_keyword`
@@ -1317,8 +1354,8 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (5, 1, '阿打算打', 'adasuanda', 1, 0),
 (6, 1, '阿达的', 'adade', 7, 0),
 (7, 1, '啊盛大的', 'ashengdade', 1, 0),
-(8, 1, '网站', 'wangzhan', 14, 0),
-(9, 1, '模板', 'moban', 35, 0),
+(8, 1, '网站', 'wangzhan', 15, 0),
+(9, 1, '模板', 'moban', 38, 0),
 (10, 1, '蓝色', 'lanse', 7, 0),
 (11, 1, '企业', 'qiye', 7, 0),
 (12, 1, '响应式', 'xiangyingshi', 1, 0),
@@ -1332,7 +1369,7 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (20, 1, '企业集团', 'qiyejituan', 1, 0),
 (21, 1, '韩国', 'hanguo', 2, 0),
 (22, 1, '特效', 'texiao', 8, 0),
-(23, 1, '大气', 'daqi', 5, 0),
+(23, 1, '大气', 'daqi', 6, 0),
 (24, 1, '简洁', 'jianjie', 1, 0),
 (25, 1, '大方', 'dafang', 1, 0),
 (26, 1, '扁平化', 'bianpinghua', 3, 0),
@@ -1412,7 +1449,7 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (100, 1, '系统', 'xitong', 3, 0),
 (101, 1, '概念', 'gainian', 2, 0),
 (102, 1, '高端', 'gaoduan', 3, 0),
-(103, 1, '产品', 'chanpin', 3, 0),
+(103, 1, '产品', 'chanpin', 4, 0),
 (104, 1, '内存', 'neicun', 1, 0),
 (105, 1, '方法', 'fangfa', 3, 0),
 (106, 1, '功能', 'gongneng', 3, 0),
@@ -1473,7 +1510,10 @@ INSERT INTO `mb_keyword` (`id`, `siteid`, `keyword`, `pinyin`, `videonum`, `sear
 (161, 1, 'for', 'for', 1, 0),
 (162, 1, 'a', 'a', 1, 0),
 (163, 1, 'Frame', 'frame', 1, 0),
-(164, 1, 'VUURR', 'vuurr', 1, 0);
+(164, 1, 'VUURR', 'vuurr', 1, 0),
+(165, 1, '红色', 'hongse', 1, 0),
+(166, 1, '阿迪达斯', 'adidasi', 1, 0),
+(167, 1, '文化传播', 'wenhuachuanbo', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1488,7 +1528,7 @@ CREATE TABLE IF NOT EXISTS `mb_keyword_data` (
   `contentid` char(30) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tagid` (`tagid`,`siteid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=274 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=283 ;
 
 --
 -- 转存表中的数据 `mb_keyword_data`
@@ -1767,7 +1807,16 @@ INSERT INTO `mb_keyword_data` (`id`, `tagid`, `siteid`, `contentid`) VALUES
 (270, 161, 1, '8-13'),
 (271, 162, 1, '8-13'),
 (272, 163, 1, '8-13'),
-(273, 164, 1, '9-13');
+(273, 164, 1, '9-13'),
+(274, 23, 1, '52-12'),
+(275, 165, 1, '52-12'),
+(276, 9, 1, '52-12'),
+(277, 166, 1, '53-12'),
+(278, 9, 1, '53-12'),
+(279, 103, 1, '53-12'),
+(280, 167, 1, '54-12'),
+(281, 9, 1, '54-12'),
+(282, 8, 1, '54-12');
 
 -- --------------------------------------------------------
 
@@ -5138,7 +5187,7 @@ CREATE TABLE IF NOT EXISTS `mb_log` (
   PRIMARY KEY (`logid`),
   KEY `module` (`module`,`file`,`action`),
   KEY `username` (`username`,`action`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=970 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=979 ;
 
 --
 -- 转存表中的数据 `mb_log`
@@ -6115,7 +6164,16 @@ INSERT INTO `mb_log` (`logid`, `field`, `value`, `module`, `file`, `action`, `qu
 (966, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-11 15:40:45'),
 (967, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-11 15:42:34'),
 (968, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-11 16:12:52'),
-(969, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-11 16:14:15');
+(969, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-11 16:14:15'),
+(970, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-09-12 10:29:59'),
+(971, '', 0, 'admin', '', 'index', '?m=admin&c=index&a=login', '', 0, 'admin2', '127.0.0.1', '2015-09-12 10:30:10'),
+(972, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 16:08:42'),
+(973, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 16:29:33'),
+(974, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 16:36:57'),
+(975, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 16:50:47'),
+(976, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 16:53:36'),
+(977, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 17:00:40'),
+(978, '', 0, 'content', '', 'content', '?m=content&c=content&a=add', '', 2, 'admin2', '127.0.0.1', '2015-09-12 17:03:23');
 
 -- --------------------------------------------------------
 
@@ -6735,7 +6793,7 @@ CREATE TABLE IF NOT EXISTS `mb_moban` (
   KEY `status` (`status`,`listorder`,`id`),
   KEY `listorder` (`catid`,`status`,`listorder`,`id`),
   KEY `catid` (`catid`,`status`,`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=52 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
 
 --
 -- 转存表中的数据 `mb_moban`
@@ -6764,7 +6822,10 @@ INSERT INTO `mb_moban` (`id`, `catid`, `typeid`, `title`, `style`, `thumb`, `key
 (48, 9, 0, '超强科技手机模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0712/20150712091022554.jpg', '模板 手机 科技', '超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=9&id=48', 0, 99, 1, 0, 'admin2', 1436706570, 1436706639),
 (49, 6, 0, '超酷企业模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0716/20150716102432719.jpg', '超酷 模板 企业', '超酷 模板 企业超酷 模板 企业超酷 模板 企业', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=49', 0, 99, 1, 0, 'admin2', 1437056357, 1437086243),
 (50, 6, 0, '超帅概念企业模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0721/20150721043702344.jpg', '概念 模板', '超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=50', 0, 99, 1, 0, 'admin2', 1437467745, 1437467862),
-(51, 6, 0, '高端产品模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0822/20150822012105553.png', '高端 模板 产品', '高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=51', 0, 99, 1, 0, 'admin2', 1440220712, 1441857803);
+(51, 6, 0, '高端产品模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0822/20150822012105553.png', '高端 模板 产品', '高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=51', 0, 99, 1, 0, 'admin2', 1440220712, 1441857803),
+(52, 6, 0, '红色大气企业模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0912/20150912042958722.png', '大气 红色 模板', '创意就是一切，红色大气', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=52', 0, 99, 1, 0, 'admin2', 1442046573, 1442047017),
+(53, 6, 0, '阿迪达斯产品模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0912/20150912045159234.png', '阿迪达斯 模板 产品', '阿迪达斯产品模板，高大上', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=53', 0, 99, 1, 0, 'admin2', 1442047847, 1442048016),
+(54, 6, 0, '文化传播网站模板', '', 'http://www.htmlmoban.net/uploadfile/2015/0912/20150912050313751.png', '文化传播 模板 网站', 'html5css3    文化传播模板', 0, 'http://www.htmlmoban.net/index.php?m=content&c=index&a=show&catid=6&id=54', 0, 99, 1, 0, 'admin2', 1442048440, 1442048603);
 
 -- --------------------------------------------------------
 
@@ -6818,7 +6879,10 @@ INSERT INTO `mb_moban_data` (`id`, `content`, `readpoint`, `groupids_view`, `pag
 (48, '超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板超强科技手机模板', 5, '', 0, 10000, '', 0, 1, '', ',,', ',科技模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0712/20150712091022554.jpg'',\n    ''alt'' => ''1'',\n  ),\n)', 'array (\n)', ''),
 (49, '超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业超酷 模板 企业', 20, '', 0, 10000, '', 0, 1, '', ',灰色,黑色,', ',企业模板,商务模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0716/20150716102024971.png'',\n    ''alt'' => ''联系我们'',\n  ),\n  1 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0716/20150716102025973.png'',\n    ''alt'' => ''公司简介'',\n  ),\n  2 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0716/20150716102323354.png'',\n    ''alt'' => ''首页'',\n  ),\n)', 'array (\n)', 'demo/vartro_30'),
 (50, '超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板超帅概念模板', 0, '', 0, 10000, '', 0, 1, '', ',灰色,彩色,', ',商务模板,科技模板,摄影模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0721/20150721043702344.jpg'',\n    ''alt'' => ''333'',\n  ),\n)', 'array (\n)', ''),
-(51, '高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板', 0, '', 0, 10000, '', 0, 1, '', ',黄色,彩色,', ',企业模板,相册模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0822/20150822012105553.png'',\n    ''alt'' => ''Office 365家庭版'',\n  ),\n)', 'array (\n  0 => \n  array (\n    ''fileurl'' => ''http://www.htmlmoban.net/uploadfile/2015/0822/20150822012135941.rar'',\n    ''filename'' => ''ms'',\n  ),\n)', '/demo/moban/ms');
+(51, '高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板高端产品模板', 0, '', 0, 10000, '', 0, 1, '', ',黄色,彩色,', ',企业模板,相册模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0822/20150822012105553.png'',\n    ''alt'' => ''Office 365家庭版'',\n  ),\n)', 'array (\n  0 => \n  array (\n    ''fileurl'' => ''http://www.htmlmoban.net/uploadfile/2015/0822/20150822012135941.rar'',\n    ''filename'' => ''ms'',\n  ),\n)', '/demo/moban/ms'),
+(52, '红色大气模板，企业模板', 0, '', 0, 10000, '', 0, 1, '', ',红色,黑色,', ',企业模板,商务模板,HTML5模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912043248754.png'',\n    ''alt'' => ''UI设计'',\n  ),\n)', 'array (\n  0 => \n  array (\n    ''fileurl'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912043635287.rar'',\n    ''filename'' => ''aiyi'',\n  ),\n)', '/demo/moban/anyi'),
+(53, '阿迪达斯产品模板，高大上', 0, '', 0, 10000, '', 0, 1, '', ',黑色,彩色,', ',企业模板,HTML5模板,CSS3模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912045231740.png'',\n    ''alt'' => ''FLUX THE WORLD'',\n  ),\n  1 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912045232584.png'',\n    ''alt'' => ''FLUX THE WORLD1'',\n  ),\n  2 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912045232512.png'',\n    ''alt'' => ''FLUX THE WORLD2'',\n  ),\n)', 'array (\n  0 => \n  array (\n    ''fileurl'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912045252575.rar'',\n    ''filename'' => ''adidas'',\n  ),\n)', '/demo/moban/adidas'),
+(54, 'html5css3 &nbsp; &nbsp;文化传播模板', 0, '', 0, 10000, '', 0, 1, '', ',橙色,灰色,彩色,', ',企业模板,HTML5模板,CSS3模板,', 'array (\n  0 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912050247246.png'',\n    ''alt'' => ''安御文化传媒'',\n  ),\n  1 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912050248750.png'',\n    ''alt'' => ''安御文化传媒1'',\n  ),\n  2 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912050250491.png'',\n    ''alt'' => ''安御文化传媒2'',\n  ),\n  3 => \n  array (\n    ''url'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912050251549.png'',\n    ''alt'' => ''安御文化传媒4'',\n  ),\n)', 'array (\n  0 => \n  array (\n    ''fileurl'' => ''http://www.htmlmoban.net/uploadfile/2015/0912/20150912050206856.rar'',\n    ''filename'' => ''anyu'',\n  ),\n)', '/demo/moban/anyu');
 
 -- --------------------------------------------------------
 
@@ -7765,7 +7829,7 @@ CREATE TABLE IF NOT EXISTS `mb_search` (
   KEY `typeid` (`typeid`,`id`),
   KEY `siteid` (`siteid`),
   FULLTEXT KEY `data` (`data`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=123 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=126 ;
 
 --
 -- 转存表中的数据 `mb_search`
@@ -7865,7 +7929,10 @@ INSERT INTO `mb_search` (`searchid`, `typeid`, `id`, `adddate`, `data`, `siteid`
 (119, 55, 6, 1441955865, 'Ana Hickmann Ana Hickmann 时尚 性感 简约', 1),
 (120, 55, 7, 1441956107, 'Agence Web Agence Web 简约 企业 时尚 清新 风格', 1),
 (121, 55, 8, 1441957245, 'Fit for a Frame Fit for a Frame 国外 个人主页 超酷', 1),
-(122, 55, 9, 1441959172, 'VUURR VUURR 网站 服饰', 1);
+(122, 55, 9, 1441959172, 'VUURR VUURR 网站 服饰', 1),
+(123, 53, 52, 1442046573, '红色大气企业模板 大气 红色 模板 红色 模板 大气 企业 一切 创意 就是', 1),
+(124, 53, 53, 1442047847, '阿迪达斯产品模板 阿迪达斯 模板 产品 模板 产品', 1),
+(125, 53, 54, 1442048440, '文化传播网站模板 文化传播 模板 网站 文化传播 模板 网站', 1);
 
 -- --------------------------------------------------------
 
@@ -7909,7 +7976,8 @@ CREATE TABLE IF NOT EXISTS `mb_session` (
 --
 
 INSERT INTO `mb_session` (`sessionid`, `userid`, `ip`, `lastvisit`, `roleid`, `groupid`, `m`, `c`, `a`, `data`) VALUES
-('3eiqfd625md8cb2pbqn0ch72t3', 2, '127.0.0.1', 1441965463, 1, 0, 'admin', 'cache_all', 'init', 'code|s:4:"netd";userid|s:1:"2";roleid|s:1:"1";pc_hash|s:6:"0FKLX7";lock_screen|i:0;');
+('bh9q3sqgfvaqbatsm4relp5s70', 2, '127.0.0.1', 1442050361, 1, 0, 'admin', 'index', 'public_session_life', 'code|s:5:"3cfpn";userid|s:1:"2";roleid|s:1:"1";pc_hash|s:6:"Oh0dQI";lock_screen|i:0;'),
+('t7c4vbtf94j2up8q1tvmbu6c31', 0, '127.0.0.1', 1442048593, 0, 0, 'attachment', 'attachments', 'swfupload', '');
 
 -- --------------------------------------------------------
 

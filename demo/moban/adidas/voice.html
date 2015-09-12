@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://www.adidasevents.com/originals/comingsoon1.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=1, user-scalable=no">
+    <title>FLUX THE WORLD</title>
+    <link rel="stylesheet" href="css/pc.min.css">
+    <link rel="stylesheet" href="css/animate-animo.min.css">
+    <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/animo.js"></script>
+
+    <style type="text/css">
+        img{border: 0}
+    </style>
+    <script type="text/javascript">
+        (function() {
+            window._CiQ10635 = window._CiQ10635 || [];
+            window._CiQ10635.push(['_cookieUseRootDomain', true]);
+            var c = document.createElement('script');
+            c.type = 'text/javascript';
+            c.async = true;
+            c.charset = 'utf-8';
+            c.src = '//collect.cn.miaozhen.com/ca/10635';
+            var h = document.getElementsByTagName('script')[0];
+            h.parentNode.insertBefore(c, h);
+        })();
+    </script>
+    <noscript>
+        <link href="//collect.cn.miaozhen.com/refer/collect?i=10635&v=13922245942&pu=http%3A//%28NoScriptPageviews%29&pt=NoScriptPageviews&ru=http%3A//%28NoScriptClients%29&csh=1000&csw=1000&css=10" rel="stylesheet" type="text/css" />
+    </noscript>
+    <script>
+        function trackEvent(name) {
+            //秒针
+            window._CiQ10635 = window._CiQ10635 || [];
+            window._CiQ10635.push(['_trackEvent', {
+                type: 1,
+                labels: [
+                    {'按钮名称': name}
+                ],
+                values: [
+                    {'数量': 1}
+                ]
+            }]);
+            window.CClickiV3 && window.CClickiV3[10635] && window.CClickiV3[10635]._flushObserver(function () {
+            });
+        }
+    </script>
+</head>
+
+<body style="zoom: 1;">
+<div class="logo">
+    <a href="index.php"> <img src="imgs/logo.png"></a>
+</div>
+
+<div class="list">
+    <ul style="width: 21200px; margin-left: 0px;">
+
+        <li><img src="imgs/01n73nislxs21.jpg" class="w">
+
+            <div class="btn_play"><img src="imgs/btn_play.png"></div>
+        </li>
+        <li><img src="imgs/01n73lfucx7t1.jpg" class="w">
+
+            <div class="btn_play"><img src="imgs/btn_play.png"></div>
+        </li>
+        <li><img src="imgs/01n73k0tq7kw1.jpg" class="w">
+
+            <div class="btn_play"><img src="imgs/btn_play.png"></div>
+        </li>
+    </ul>
+
+
+</div>
+<img src="imgs/left_arrow.png" class="left_arrow">
+<img src="imgs/right_arrow.png" class="right_arrow">
+<div class="page_qr">
+    <img src="imgs/page_qr.png">
+</div>
+<audio id="user_sound"></audio>
+<script type="text/javascript">
+    $(function(){
+        var c = $(".list ul");
+        var curPage = 0,totalPage = 1;
+        var userSound = document.getElementById('user_sound');
+        $.get("#",function(json){
+            c.width(json.data.length * 212);
+            totalPage = Math.ceil(json.data.length / 3);
+            for(var i in json.data) {
+                var d = json.data[i];
+                var li = $("<li>" +
+                        "<img src='imgs/" + d.img + "' class='w'> " +
+                        "</li>").appendTo(c);
+
+                $("<div class='btn_play'><img src='imgs/btn_play.png'></div>")
+                        .data('music', d.music)
+                        .click(function(){
+                            userSound.src = "../mobile/res/music/mix/" + $(this).data('music') + '.mp3';
+                            userSound.play();
+
+                            trackEvent('play music');
+                        })
+                        .appendTo(li);
+            }
+        },'json');
+
+        $(".left_arrow").click(function(){
+            curPage--;
+            if(curPage < 0) curPage = 0;
+            c.animate({'margin-left':(-curPage * (214*3)) + 'px'},500);
+        });
+        $(".right_arrow").click(function(){
+            curPage++;
+            if(curPage >= totalPage) curPage = totalPage - 1;
+            c.animate({'margin-left':(-curPage * (214*3)) + 'px'},500);
+        });
+    });
+</script>
+
+<div class="menu">
+    <img src="imgs/menu.png">
+    <a href="f.html" class="nav_l nav_l0" onclick="trackEvent('click to start')"><img src="imgs/nav_f_l.png"></a>
+    <a href="index.html" class="nav_l nav_l1" onclick="trackEvent('click to start')"><img src="imgs/nav_l_l.png"></a>
+    <!--<img src="imgs/nav_u_l.png" class="nav_l nav_l2">-->
+    <a href="comingsoon1.html" class="nav_l nav_l3" onclick="trackEvent('click to start')"><img src="imgs/nav_x_l.png"></a>
+</div>
+<div class="share">
+    <img src="imgs/sina.png" class="btn_sina">
+    <img src="imgs/wechat.png" class="btn_wx">
+</div>
+<img src="imgs/qr.png" class="qrcode">
+
+
+<script>
+    (function(){
+        var colors = ["#2F358F","#1DAEEB","#3EB14F","#E9212D","#E11587","#FEEF35","#18A299","#62308C"];
+        var mixBgAniContainer = $("<div class='mix_bg_ani_container'>").prependTo("body");
+        for(var i=0; i < 100; i++){
+            var color = colors[Math.floor(Math.random()*colors.length)];
+
+            $("<div class='mix_bg_ani_el'>")
+                    .css({
+                        position:"absolute",
+                        top:((20+Math.random()*5) * i)+'px',
+                        left:(-(Math.random()*30)-300)+'px',
+                        width:'300px',
+                        height:(Math.random() * 20)+'px',
+                        background:"-webkit-gradient(linear,left center, right center, from(#000), to("+color+"))"
+                    })
+                    .appendTo(mixBgAniContainer)
+                    .animo({animation:'mix_bg_ani',duration:(Math.random()*7 + 3),iterate:'infinite',delay:(Math.random()*3)});
+        }
+        $(".shoe").animo2('bounceInLeft');
+
+        //分享微博
+        $(".btn_sina").click(function () {
+            var src = location.href;
+            src = src.substring(0, src.lastIndexOf("/") + 1);
+            window.open('http://service.t.sina.com.cn/share/share.php?url='
+                    + encodeURIComponent(document.location.href) + '&appkey=&title='
+                    + encodeURIComponent('别说你见过所有的ZX FLUX，快来体验FLUX的世界！@adidasOriginals')
+                    + '&pic=' + encodeURIComponent(src + '/imgs/share.png')
+                    + '&ralateUid=&searchPic=false', '_blank', 'scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=yes');
+
+            trackEvent('Share the whole site');
+        });
+        $(".btn_wx").mouseover(function(){
+            $(".qrcode").show();
+        }).mouseout(function(){
+            $(".qrcode").hide();
+        });
+    })();
+</script>
+</body>
+
+</html>
