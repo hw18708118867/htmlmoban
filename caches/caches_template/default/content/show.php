@@ -60,7 +60,7 @@ $("a.fancybox").fancybox();
                                 元
                             </p>
                             <p class="p2">
-                                <a href="javascript:;" title="立即抢购" target="_blank">
+                                <a href="<?php echo $recommend_moban['url'];?>" title="立即抢购" target="_blank">
                                     立即抢购
                                 </a>
                             </p>
@@ -257,7 +257,8 @@ $("a.fancybox").fancybox();
 
 
 							<p class="pns mbm bugbot" style=" height:48px; line-height:48px;">
-							<a  target="_blank" class="orangebot" href="<?php echo APP_PATH;?>index.php?m=content&c=readpoint&allow_visitor=<?php echo $allow_visitor;?>" rel="nofollow">立即购买</a>
+							<!-- <a  target="_blank" class="orangebot" href="<?php echo APP_PATH;?>index.php?m=content&c=readpoint&allow_visitor=<?php echo $allow_visitor;?>" rel="nofollow">立即购买</a> -->
+                            <a class="orangebot" href="#" rel="nofollow">立即购买</a>
 							 &nbsp; 
 										<!--<a href="javascript:;" onclick="window.open('/demo.php?url=<?php echo $demo_url;?>')" class="greenbot" rel="nofollow">演示网站</a>-->
                                         <?php if($readpoint >0 ) { ?>
@@ -295,11 +296,12 @@ $("a.fancybox").fancybox();
 					 <li><a class="fancybox" href="<?php echo $r['url'];?>" title="我的网站"><span></span><em><?php echo $r['alt'];?></em><u><img src="<?php echo $r['url'];?>"  alt="<?php echo $r['alt'];?>" /></u></a></li>
 					 <?php $n++;}unset($n); ?>
 					 <li class="xg_demo">
-                         <?php if($readpoint >0 ) { ?>
+                        <a target="_blank" title="点击网站演示" href="<?php echo cost_demo_url($catid,$id);?>">
+                         <!-- <?php if($readpoint >0 ) { ?>
                          <a target="_blank" title="点击网站演示" href="<?php echo cost_demo_url($catid,$id);?>">
                          <?php } else { ?>
                          <a target="_blank" title="点击网站演示" href="<?php echo $demo_url;?>">
-                         <?php } ?>
+                         <?php } ?> -->
                              <img alt="点击网站演示" src="<?php echo IMG_PATH;?>demo.gif" data-pinit="registered">
                          </a>
                      </li>
@@ -322,7 +324,18 @@ $("a.fancybox").fancybox();
 	        	      <?php echo $r;?> 
 			         
 		        	<?php $n++;}unset($n); ?>-->
-                       <a class="down_link" href="<?php echo $fileUrl;?>" title="下载高端产品模板模板" target="_blank">进入模板下载地址</a>
+                       <a class="down_link" href="javascript:ad()" title="下载高端产品模板模板" target="_blank">进入模板下载地址</a>
+                       <script type="text/javascript">
+                           var isFirst = false;
+                           function ad(){
+                               if(!isFirst){
+                                   isFirst = true;
+                                   window.open('http://www.htmlmoban.net/index.php?m=content&c=index&a=ad');
+                               }else{
+                                   window.open('<?php echo $fileUrl;?>');
+                               }
+                           }
+                       </script>
 					
 
 					<span>售价：<em><?php echo $readpoint;?></em>积分 <a href="#" target="_blank">如何获得积分？</a>

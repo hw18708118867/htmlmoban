@@ -60,7 +60,7 @@ $("a.fancybox").fancybox();
                                 元
                             </p>
                             <p class="p2">
-                                <a href="javascript:;" title="立即抢购" target="_blank">
+                                <a href="{$recommend_moban['url']}" title="立即抢购" target="_blank">
                                     立即抢购
                                 </a>
                             </p>
@@ -257,7 +257,8 @@ $("a.fancybox").fancybox();
 
 
 							<p class="pns mbm bugbot" style=" height:48px; line-height:48px;">
-							<a  target="_blank" class="orangebot" href="{APP_PATH}index.php?m=content&c=readpoint&allow_visitor={$allow_visitor}" rel="nofollow">立即购买</a>
+							<!-- <a  target="_blank" class="orangebot" href="{APP_PATH}index.php?m=content&c=readpoint&allow_visitor={$allow_visitor}" rel="nofollow">立即购买</a> -->
+                            <a class="orangebot" href="#" rel="nofollow">立即购买</a>
 							 &nbsp; 
 										<!--<a href="javascript:;" onclick="window.open('/demo.php?url={$demo_url}')" class="greenbot" rel="nofollow">演示网站</a>-->
                                         {if $readpoint >0 }
@@ -295,11 +296,12 @@ $("a.fancybox").fancybox();
 					 <li><a class="fancybox" href="{$r[url]}" title="我的网站"><span></span><em>{$r[alt]}</em><u><img src="{$r[url]}"  alt="{$r[alt]}" /></u></a></li>
 					 {/loop}
 					 <li class="xg_demo">
-                         {if $readpoint >0 }
+                        <a target="_blank" title="点击网站演示" href="{cost_demo_url($catid,$id)}">
+                         <!-- {if $readpoint >0 }
                          <a target="_blank" title="点击网站演示" href="{cost_demo_url($catid,$id)}">
                          {else}
                          <a target="_blank" title="点击网站演示" href="{$demo_url}">
-                         {/if}
+                         {/if} -->
                              <img alt="点击网站演示" src="{IMG_PATH}demo.gif" data-pinit="registered">
                          </a>
                      </li>

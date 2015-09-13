@@ -142,7 +142,7 @@
             <dl>
                 <dt class="jx"><span>广告代码</span>
                 <div></div>
-                <a href="/index.php?m=content&c=index&a=lists&catid=17">全部››</a></dt>
+                <a href="/index.php?m=content&c=index&a=lists&catid=17" >全部››</a></dt>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=464a4d526ca6b0be30e16a9e35f4477c&action=category&catid=17&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'17','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
 
                 <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
@@ -156,7 +156,7 @@
             <dl>
                 <dt class="tx"><span>特效代码</span>
                 <div></div>
-                <a href="/index.php?m=content&c=index&a=lists&catid=30">全部››</a></dt>
+                <a href="/index.php?m=content&c=index&a=lists&catid=30" >全部››</a></dt>
                 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f0ed520873c7a7abeff2e6c2087cd281&action=category&catid=30&num=25&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'30','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'25',));}?>
                 <?php $n=1;if(is_array($data)) foreach($data AS $cat) { ?>
                 <dd><a href="<?php echo $cat['url'];?>"><?php echo $cat['catname'];?></a></dd>

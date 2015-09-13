@@ -29,7 +29,7 @@
                     <a href="<?php echo $url;?>">
                         购买模板
                     </a>
-                    <a target="_blank" href="">
+                    <a target="_blank" href="<?php echo qq_url();?>">
                         联系客服
                     </a>
                 </div>
