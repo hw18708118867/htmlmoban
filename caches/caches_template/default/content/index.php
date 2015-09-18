@@ -39,9 +39,9 @@
     </dl>
     <dl class="navM2">
         <dd>
-            <!--<h2><a href="#">图片设计素材</a></h2>
+            <h2><a href="#">开发中...敬请期待！</a></h2>
 
-            <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
+            <!--<p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
                                                                                           href="">菜单导航</a><a
                     target="_blank" href="">图片特效</a><a target="_blank" href="">表单按钮</a><a target="_blank"
                                                                                           href="">广告特效</a><a
@@ -134,6 +134,7 @@
     </dl>
     <dl class="navM5">
         <dd>
+            <h2><a href="#">开发中...敬请期待！</a></h2>
             <!--<h2><a href="#">插件模块、工具</a></h2>
 
             <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
@@ -279,7 +280,7 @@
 
                                         <p>热门素材</p></li>
                                     <li><a rel="nofollow"
-                                           href="#"
+                                           href="<?php echo qq_url();?>"
                                            class="cutAndSliceMe" target="_blank"></a>
 
                                         <p>客服中心</p></li>
@@ -369,12 +370,12 @@
                     <li class="likes">
                                 <span class="wpfp-span">
                                     <a class="wpfp-link wizylike_icon"
-                                       href="home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=99666"
-                                       id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" title="0 人推荐"
-                                       rel="nofollow">0</a></span></li>
+                                       href="#"
+                                       id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" title="888 人推荐"
+                                       rel="nofollow">888</a></span></li>
                     <li class="comments">
-                        <a onclick="showWindow('reply', 'forum.php?mod=post&amp;action=reply&amp;fid=2&amp;tid=99666')"
-                           href="javascript:;" title="">8</a></li>
+                        <a href="javascript:;" title=""><?php echo get_comment($r[catid],$r[id]);?></a>
+                    </li>
                     <li class="views">
                         <?php echo get_hits(12,$r[id]);?>
                     </li>
@@ -656,7 +657,7 @@
     <dl>
         <dt>找了那么久，是否找到合适的主题了？</dt>
         <dd>不妨把你的想法跟我们说说看呢？
-            <a target="_blank" class="showbox" href="http://wpa.qq.com/msgrd?v=3&uin=2402973438&site=qq&menu=yes">
+            <a target="_blank" class="showbox" href="<?php echo qq_url();?>">
                 联系我们
             </a>
         </dd>
