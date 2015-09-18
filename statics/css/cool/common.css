@@ -1185,3 +1185,32 @@ li {
   text-align: center;
   width: 153px;
 }
+
+
+.page_navi {
+    width:100%;
+    height:36px;
+    line-height:36px;
+    text-align:center;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+.page_navi a {
+    margin:2px;
+    text-decoration:none;
+    height:28px;
+    line-height:28px;
+    color:#333;
+    padding:0 10px;
+    display:inline-block;
+    border:1px #ccc solid;
+    border-radius:3px 3px 3px 3px;
+    background:url(../../images/pagenav.jpg) left bottom repeat-x #fff;
+}
+.page_navi a:hover,.page_navi a.current {
+    color:#fff;
+    text-decoration:none;
+    border:1px #0098d8 solid;
+    background-color:#34b0e0;
+    background-image:none;
+}

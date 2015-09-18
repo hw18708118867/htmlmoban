@@ -59,7 +59,7 @@
         </div>
         <div class="list-pngjs clearfix">
             <dl>
-                {pc:content action="lists" catid="$catid" num="18" order="id DESC" page="$page"}
+                {pc:content action="lists" catid="$catid" num="14" order="id DESC" page="$page"}
                 {loop $data $v}
                 <dd>
                     <a href="{$v[url]}" target="_blank">
@@ -68,15 +68,20 @@
                     <span>{get_catname($v[catid])}</span>
                 </dd>
                 {/loop}
+                <div class="inline_box fix tj m_Grid1">
+                    <div class="page_navi">
+                        {$pages}
+                    </div>
+                </div>
                 {/pc}
             </dl>
         </div>
 
-        <!--
-        <div class="dede_pages">
+
+    <!--    <div class="page_navi">
              {$page}
-        </div>
-        -->
+        </div>-->
+
 
 
     </div>

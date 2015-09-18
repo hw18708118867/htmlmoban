@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>懒人原生jQuery背景动画效果</title>
+<style>
+*{ margin:0; padding:0; list-style:none;}
+img{ border:0;}
+body{ background:#fff;}
+
+#lanrenzhijia{ width:150px; height:auto; margin:200px auto; background:#F2F2F2; padding:20px;}
+#lanrenzhijia ul li{ height:42px; line-height:42px; padding-left:50px; text-align:left; margin:5px; position:relative; overflow:hidden;}
+#lanrenzhijia ul li span{ width:42px; height:84px; display:block; position:absolute; left:0; top:0;}
+#lanrenzhijia ul li a{ text-decoration:underline; color:#656565; font-size:12px;}
+#lanrenzhijia ul li:hover a{ text-decoration:none; color:#BC0000;}
+</style>
+</head>
+<body>
+<!-- 代码部分begin -->
+<div id="lanrenzhijia">
+	<ul>
+    	<li><span><img src="http://demo.lanrenzhijia.com/2014/pic1223/images/lanren01.png" /></span><a href="#">联系我们</a></li>
+        <li><span><img src="http://demo.lanrenzhijia.com/2014/pic1223/images/lanren02.png" /></span><a href="#">智能地址</a></li>
+        <li><span><img src="http://demo.lanrenzhijia.com/2014/pic1223/images/lanren03.png" /></span><a href="#">懒人广场</a></li>
+    </ul>
+</div>
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script>
+$(function(){
+	$('#lanrenzhijia li').hover(function(){
+		$('span',this).stop().animate({'top':'-42px'});
+	},function(){
+		$('span',this).stop().animate({'top':'0px'});
+	});
+});
+</script>
+<!-- 代码部分end -->
+</body>
+</html>

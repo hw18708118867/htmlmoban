@@ -97,9 +97,9 @@
 
 
                 <!--------feedarea------------>
-                {pc:content action="lists" catid="$catid" num="10" moreinfo="1" order="id DESC" page="$page"}
-                {loop $data $vo}
+                {pc:content action="lists" catid="$catid" num="12" moreinfo="1" order="id DESC" page="$page"}
                 <div class="masonry">
+                {loop $data $vo}
                     <div id="blog_2113" class="box masonry-brick">
                         <div class="content" id="feedText_2113">
                             <div class="imgBox">
@@ -121,6 +121,11 @@
                         </div>
                     </div>
                     {/loop}
+                    <div class="inline_box fix tj m_Grid1">
+                        <div class="page_navi">
+                            {$pages}
+                        </div>
+                    </div>
                     {/pc}
 
 

@@ -9227,3 +9227,15 @@
 <?php exit;?>09-12 22:33:49 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | caches\caches_model\caches_data\content_output.class.php | 42
 <?php exit;?>09-12 22:33:49 | 8192 | preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead | caches\caches_model\caches_data\content_output.class.php | 71
 <?php exit;?>09-12 22:33:50 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>09-14 11:52:55 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-14 11:57:01 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-14 12:12:30 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 11:45:25 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 11:48:30 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 11:53:22 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 11:56:21 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 16:22:56 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 16:26:28 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 17:25:13 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-15 17:31:34 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>09-18 16:29:51 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
