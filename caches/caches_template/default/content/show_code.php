@@ -45,8 +45,6 @@
                 <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
             </dl>
         </div>
-
-
     </div>
     <!--
     <div class="AD_300">
@@ -177,6 +175,7 @@
 
             <div class="spi fix">
                 <h4 class="wx mbm bbda"><?php echo $title;?></h4>
+                <p style="text-indent: 2em;"><?php echo $content;?></p>
             </div>
 
         </div>
@@ -197,21 +196,27 @@
 
 
 <div class="m_Box16">
-    <div class="nr_show">
-
+    <div class="nr_show nr_down">
         <p class="pns mbm bugbot" style=" height:48px; line-height:48px;">
-            <?php $n=1;if(is_array($down_url)) foreach($down_url AS $r) { ?>
-            <?php echo $r;?>
-
-            <?php $n++;}unset($n); ?>
             <a target="_blank" class="orangebot"
                href="<?php echo $demo_url;?>" rel="nofollow">代码演示</a>
             &nbsp;
-            <!--<a href="javascript:;" onclick="window.open('/demo.php?url=<?php echo $demo_url;?>')" class="greenbot" rel="nofollow">代码下载</a>-->
+            <a href="javascript:;" onclick="ad()" class="greenbot" rel="nofollow">代码下载</a>
         </p>
     </div>
     <div class="clear">
     </div>
+    <script type="text/javascript">
+        var isFirst = false;
+        function ad(){
+            if(!isFirst){
+                isFirst = true;
+                window.open('http://www.htmlmoban.net/index.php?m=content&c=index&a=ad');
+            }else{
+                window.open('<?php echo $fileUrl;?>');
+            }
+        }
+    </script>
 </div>
 <div class="m_T11">
 </div>
@@ -245,7 +250,7 @@
 <?php } ?>
 
 <?php $data = comment_list($page, $catid, $id)?>
-<div class="m_Box19">
+<div class="m_Box19" style="width: 728px;">
     <div class="comment-amount">
         <a href="javascript:;" class="comment_num" title="">
             共有<?php echo $data['total'];?>条评论

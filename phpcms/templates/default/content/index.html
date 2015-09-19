@@ -134,32 +134,38 @@
     </dl>
     <dl class="navM5">
         <dd>
-            <h2><a href="#">开发中...敬请期待！</a></h2>
-            <!--<h2><a href="#">插件模块、工具</a></h2>
+            <h2><a href="#">插件模块、工具</a></h2>
 
-            <p><a target="_blank" href="">DIV+CSS</a><a target="_blank" href="">焦点图</a><a target="_blank"
-                                                                                          href="">菜单导航</a><a
-                    target="_blank" href="">图片特效</a><a target="_blank" href="">表单按钮</a><a target="_blank"
-                                                                                          href="">广告特效</a><a
-                    class="more" href="/JS/">查看更多...</a></p>
+            <p>
+                <a href="{tool_url('htmlTojs')}" target="_blank">HTML/JS互转工具</a>
+                <a href="{tool_url('Aa')}" target="_blank">字母大小写转换工具</a>
+                <a href="{tool_url('css')}" target="_blank">CSS代码格式化工具</a>
+                <a href="{tool_url('format_html')}" target="_blank">JS/HTML格式化工具</a>
+                <a href="{tool_url('fantizi')}" target="_blank">繁体字转换器</a>
+                <a href="{tool_url('huoxinwen')}" target="_blank">火星文转换器</a>
+                <a class="more" href="index.php?m=content&c=index&a=lists&catid=15">查看更多...</a></p>
 
             <div class="cl"></div>
             <h6><a href="javascript:;">热门搜索</a></h6>
 
-            <p><a target="_blank" href="">jQuery</a><a target="_blank" href="">Flash</a><a target="_blank"
-                                                                                           href="">焦点图</a><a
-                    target="_blank" href="">JS代码</a><a target="_blank" href="">特效</a><a target="_blank" href="">flash+xml</a><a
-                    target="_blank" href="">切换</a><a target="_blank" href="">图片切换</a><a target="_blank" href="">幻灯</a><a
-                    target="_blank" href="">JS广告代码</a><a target="_blank" href="">JS特效代码</a><a target="_blank" href="">站长图库</a><a
-                    class="more" href="#">查看更多...</a></p>
+            <p>
+                <a href="{tool_url('compression')}" target="_blank">JS/CSS代码压缩</a>
+                <a href="{tool_url('unicode')}" target="_blank">Unicode编码转换</a>
+                <a href="{tool_url('base64')}" target="_blank">BASE64加解密</a>
+                <a href="{tool_url('escape')}" target="_blank">ESCAPE加解密</a>
+                <a href="{tool_url('md5')}" target="_blank">MD5加密</a>
+                <a href="{tool_url('open')}" target="_blank">OPEN参数生成器</a>
+                <a class="more" href="index.php?m=content&c=index&a=lists&catid=15">查看更多...</a>
+            </p>
 
             <div class="cl"></div>
             <h5>上面没找到，别漏了这些哦。</h5>
+            {php $data = get_tx_list(30,2,1);}
             <ul>
-                <li><a target="_blank" href="">jQuery环形图标菜单旋转</a></li>
-                <li><a target="_blank" href="">房屋租赁后台管理模板</a></li>
-                <li><a target="_blank" href="">深绿色扁平排版HTML模板</a></li>
-            </ul>-->
+                {loop $data $v}
+                <li><a target="_blank" href="{$v[url]}">{$v[title]}</a></li>
+                {/loop}
+            </ul>
         </dd>
         <dt>插件模块、工具</dt>
     </dl>

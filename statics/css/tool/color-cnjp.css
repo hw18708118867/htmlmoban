@@ -1,0 +1,18 @@
+/* 懒人图库 搜集整理 www.lanrentuku.com */
+.clearfix { *zoom: 1;	}
+.clearfix:before,.clearfix:after {display: table; line-height: 0; content: "";	}
+.clearfix:after { clear: both;}
+.content a img{border:0 none}
+.content .link:link{color:#dc3a2d; text-decoration:none}
+.content .link:visited{color:#669; text-decoration:none}
+.content .link:hover{text-decoration:underline; color:#dc3a2d;}
+.content .link:active{text-decoration:underline; color:#a42219;}
+.content ul{width:20%; float:left}
+.content ul,li,body{margin:0; padding:0;}
+.content ul li{display: block; padding:5px 10px; margin:0 2px 2px 0; border-bottom-right-radius:8px; cursor: pointer;}
+.content #tester{ padding:5px 10px; margin: 18px 0 0 60px; display:none; position:absolute; font-size:12px;}
+.content ul li a span{display: block; font-size:14px; cursor: pointer;}
+.content .container{max-width:1000px; _width:1000px; margin:0 auto;}
+.content .white a{color:#FFF}
+.content .change{ margin:20px auto;text-align:center;display:block;}
+.content .change a{font-size:14px ;color:#dc3a2d!important; }
