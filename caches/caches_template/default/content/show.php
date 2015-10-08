@@ -407,7 +407,7 @@ $("a.fancybox").fancybox();
                     发表评论：
                 </div>-->
                 <?php $data = comment_list($page, $catid, $id)?>
-                <div class="m_Box19">
+                <div class="m_Box19" style="width: 728px;">
                     <div class="comment-amount">
                         <a href="javascript:;" class="comment_num" title="">
                             共有<?php echo $data['total'];?>条评论
@@ -441,7 +441,6 @@ $("a.fancybox").fancybox();
                                 </div>
                             </li>
                             <?php $n++;}unset($n); ?>
-                            <li class="comment even thread-even depth-1" id="comment_add"></li>
                         </ul>
                         <div id="pages" class="text-c"><?php echo $data['commentPages'];?></div>
                         <div id="respond">
@@ -511,17 +510,18 @@ $("a.fancybox").fancybox();
                 dataType: 'json',
                 success: function(data){
                     if(data.status == 200){
-                    $('#comment_add').html(
-                     '<div id="comment-1744" class="comment-body"><div class="author">'+
-                            "<img alt='' src='<?php echo IMG_PATH;?>tx.jpg' class='avatar avatar-38 photo' height='38' width='38' />"+
-                            '</div>'+
-                    '<div class="comment-meta"><div style="float:left;width:100%;">'+
-                            '<span class="name">'+
-                                "<a href='javascript:;' rel='external nofollow' class='url' target='_blank'>"+data.posTdata.username+'</a>'+
-                            '</span>'+
-                            '<span class="time">'+data.posTdata.postTime+'</span></div>'+
-                    '<div class="text"><p>'+data.posTdata.content+'</p></div>'+
-                    '</div></div>');
+                     $('.commentlist').append(
+                             '<div id="comment-1744" class="comment-body"><div class="author">'+
+                                     "<img alt='' src='<?php echo IMG_PATH;?>tx.jpg' class='avatar avatar-38 photo' height='38' width='38' />"+
+                                     '</div>'+
+                                     '<div class="comment-meta"><div style="float:left;width:100%;">'+
+                                     '<span class="name">'+
+                                     "<a href='javascript:;' rel='external nofollow' class='url' target='_blank'>"+data.posTdata.username+'</a>'+
+                                     '</span>'+
+                                     '<span class="time">'+data.posTdata.postTime+'</span></div>'+
+                                     '<div class="text"><p>'+data.posTdata.content+'</p></div>'+
+                                     '</div></div>'
+                     );
                     $('#content').val('');
                     }
                     alert(data.msg);

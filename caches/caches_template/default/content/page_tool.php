@@ -1,16 +1,11 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><!doctype html>
 <html lang="zh-cn">
 <head>
-    <title>  dpcool店铺酷  电商设计灵感酷，电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏 </title>
-    <meta charset="utf-8" />
-    <meta name="description" content="电商设计灵感酷 " />
-    <meta name="keywords" content="电商设计，电商交流，电商设计师，店铺设计，淘宝店装修，店铺欣赏电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏、" />
-     
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><?php if(isset($SEO['title']) && !empty($SEO['title'])) { ?><?php echo $SEO['title'];?><?php } ?><?php echo $SEO['site_title'];?></title>
+    <meta name="keywords" content="<?php echo $SEO['keyword'];?>">
+    <meta name="description" content="<?php echo $SEO['description'];?>">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo CSS_PATH;?>cool/common.css" class="cssfx"/>
-  
-	 
-   
-	 
 
 <script type="text/javascript" src="<?php echo JS_PATH;?>jquery.min.js"></script>
 <link href="<?php echo CSS_PATH;?>tool/tools_index.css" rel="stylesheet" />
@@ -39,11 +34,7 @@
        
           </ul>
        </div>
-
-			 
-		 
-			
-			<div id="tool">	
+			<div id="tool">
 							<a href="javascript:;">登录</a> | <a href="javascript:;">注册</a>
 			 </div>
 			
@@ -53,13 +44,78 @@
 
 	<!----body-------------->
 	<div id="navbar" class="cl">
-    <a href="tools.php" class="first">前端神器</a>
+    <a href="index.php?m=content&c=index&a=lists&catid=15" class="first">前端神器</a>
     </div>
 <div id="updateTips">您的浏览器版本太低，可能会导致部分工具无法正常使用，建议您 <a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank">升级IE浏览器</a> 或使用 <a href="http://www.google.cn/intl/zh-CN/chrome/browser/" target="_blank">Chrome</a>、<a href="http://firefox.com.cn/download/" target="_blank">FireFox</a>、<a href="http://www.opera.com/" target="_blank">Opera</a> 浏览。</div>
         <div id="content" class="cl">
             <dl class="toollist cl">
-                <dt>代码处理 &amp; 调试工具</dt>
-                 
+                <dt>文字处理 & 色彩</dt>
+                <dd>
+                    <a href="<?php echo tool_url('Aa');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="字母大小写转换" src="<?php echo IMG_PATH;?>tools/icon/Aa.png"/>
+                        <span>字母大小写转换</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('fantizi');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="繁体字转化工具" src="<?php echo IMG_PATH;?>tools/icon/fantizi.png"/>
+                        <span>繁体字转化工具</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('huoxinwen');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="火星文转化工具" src="<?php echo IMG_PATH;?>tools/icon/huoxingwen.png"/>
+                        <span>火星文转化工具</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('fontcount');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="在线字数统计工具" src="<?php echo IMG_PATH;?>tools/icon/fontcount.png"/>
+                        <span>在线字数统计工具</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('pinyin');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="汉字转拼音工具" src="<?php echo IMG_PATH;?>tools/icon/pinyin.png"/>
+                        <span>汉字转拼音工具</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('color');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="Color大全" src="<?php echo IMG_PATH;?>tools/icon/color.png"/>
+                        <span>Color大全</span>
+                    </a>
+                </dd>
+            </dl>
+            <dl class="toollist cl">
+                <dt>代码转换 & 格式化工具</dt>
+                <dd>
+                    <a href="<?php echo tool_url('htmlTojs');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="Html/Js互转" src="<?php echo IMG_PATH;?>tools/icon/htmljs.png"/>
+                        <span>Html/Js互转</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('css');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="css格式化工具" src="<?php echo IMG_PATH;?>tools/icon/css.png"/>
+                        <span>css格式化工具</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="<?php echo tool_url('format_html');?>" hidefocus="true">
+                        <i></i>
+                        <img alt="Js/Html格式化工具" src="<?php echo IMG_PATH;?>tools/icon/format_html.png"/>
+                        <span>Js/Html格式化工具</span>
+                    </a>
+                </dd>
                 <dd>
                     <a href="<?php echo tool_url('js');?>" hidefocus="true">
                         <i></i>
@@ -67,9 +123,9 @@
                         <span>JS/CSS代码压缩</span>
                     </a>
                 </dd>
-                 
- 
- 
+            </dl>
+            <dl class="toollist cl">
+                <dt>加密解密工具</dt>
                 <dd>
                     <a href="<?php echo tool_url('unicode');?>" hidefocus="true">
                         <i></i>
@@ -98,6 +154,10 @@
                         <span>MD5加密</span>
                     </a>
                 </dd>
+            </dl>
+            <dl class="toollist cl">
+                <dt>代码处理 &amp; 调试工具</dt>
+
                 <dd>
                     <a href="<?php echo tool_url('open');?>" hidefocus="true">
                         <i></i>
@@ -105,7 +165,6 @@
                         <span>OPEN参数生成器</span>
                     </a>
                 </dd>
-                 
                 <dd>
                     <a href="<?php echo tool_url('runcode');?>" hidefocus="true">
                         <i></i>
@@ -113,8 +172,9 @@
                         <span>在线运行</span>
                     </a>
                 </dd>
+
             </dl>
-            <dl class="toollist cl">
+            <!--<dl class="toollist cl">
                 <dt>常用手册</dt>
                 <dd>
                     <a href="<?php echo tool_url('base64');?>" hidefocus="true">
@@ -158,7 +218,7 @@
                         <span>屏幕尺寸参考手册</span>
                     </a>
                 </dd>
-             </dl>
+             </dl>-->
         </div>
 		<!------body-------->
  

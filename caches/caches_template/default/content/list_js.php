@@ -30,15 +30,15 @@
         <div class="nav-left">
             <dl>
                 <dt>常用工具<a href="#" target="_blank">&#8250;&#8250;</a></dt>
-                <dd><a href="#" target="_blank">HTML/JS互转工具</a></dd>
-                <dd><a href="#" target="_blank">字母大小写转换工具</a></dd>
-                <dd><a href="#" target="_blank">CSS代码格式化工具</a></dd>
-                <dd><a href="#" target="_blank">JS/HTML格式化工具</a></dd>
-                <dd><a href="#" target="_blank">繁体字转换器</a></dd>
-                <dd><a href="#" target="_blank">火星文转换器</a></dd>
-                <dd><a href="#" target="_blank">Color Cop取色软件</a></dd>
-                <dd><a href="#" target="_blank">CSS样式图片下载助手</a></dd>
-                <dd><a href="#" target="_blank">汉字转拼音工具</a></dd>
+                <dd><a href="<?php echo tool_url('htmlTojs');?>" target="_blank">HTML/JS互转工具</a></dd>
+                <dd><a href="<?php echo tool_url('Aa');?>" target="_blank">字母大小写转换工具</a></dd>
+                <dd><a href="<?php echo tool_url('css');?>" target="_blank">CSS代码格式化工具</a></dd>
+                <dd><a href="<?php echo tool_url('format_html');?>" target="_blank">JS/HTML格式化工具</a></dd>
+                <dd><a href="<?php echo tool_url('fantizi');?>" target="_blank">繁体字转换器</a></dd>
+                <dd><a href="<?php echo tool_url('huoxinwen');?>" target="_blank">火星文转换器</a></dd>
+                <dd><a href="<?php echo tool_url('color');?>" target="_blank">Color大全</a></dd>
+                <dd><a href="<?php echo tool_url('fontcount');?>" target="_blank">在线字数统计工具</a></dd>
+                <dd><a href="<?php echo tool_url('pinyin');?>" target="_blank">汉字转拼音工具</a></dd>
             </dl>
         </div>
 
@@ -59,7 +59,7 @@
         </div>
         <div class="list-pngjs clearfix">
             <dl>
-                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e95a7d3aa4116814e3ccbc0a4d0b85a8&action=lists&catid=%24catid&num=18&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 18;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
+                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=b7ba264a5fdd03f30b5553423ab13091&action=lists&catid=%24catid&num=14&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 14;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
                 <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
                 <dd>
                     <a href="<?php echo $v['url'];?>" target="_blank">
@@ -68,15 +68,20 @@
                     <span><?php echo get_catname($v[catid]);?></span>
                 </dd>
                 <?php $n++;}unset($n); ?>
+                <div class="inline_box fix tj m_Grid1">
+                    <div class="page_navi">
+                        <?php echo $pages;?>
+                    </div>
+                </div>
                 <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
             </dl>
         </div>
 
-        <!--
-        <div class="dede_pages">
+
+    <!--    <div class="page_navi">
              <?php echo $page;?>
-        </div>
-        -->
+        </div>-->
+
 
 
     </div>

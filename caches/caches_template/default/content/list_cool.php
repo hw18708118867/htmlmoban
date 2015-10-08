@@ -1,11 +1,10 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><!doctype html>
 <html lang="zh-cn">
 <head>
-    <title> 酷站欣赏 </title>
-    <meta charset="utf-8"/>
-    <meta name="description" content="电商设计灵感酷 "/>
-    <meta name="keywords" content="电商设计，电商交流，电商设计师，店铺设计，淘宝店装修，店铺欣赏电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏、"/>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><?php if(isset($SEO['title']) && !empty($SEO['title'])) { ?><?php echo $SEO['title'];?><?php } ?><?php echo $SEO['site_title'];?></title>
+    <meta name="keywords" content="<?php echo $SEO['keyword'];?>">
+    <meta name="description" content="<?php echo $SEO['description'];?>">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo CSS_PATH;?>cool/common.css" class="cssfx"/>
 
     <link rel="stylesheet" type="text/css" media="screen" href="" id="darkCss"/>
@@ -97,9 +96,9 @@
 
 
                 <!--------feedarea------------>
-                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=8b4cb33be597462fe6155be4cd415a26&action=lists&catid=%24catid&num=10&moreinfo=1&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 10;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'moreinfo'=>'1','order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'moreinfo'=>'1','order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
-                <?php $n=1;if(is_array($data)) foreach($data AS $vo) { ?>
+                <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=89f15d811f4dd14f00d42be1e7e0f269&action=lists&catid=%24catid&num=12&moreinfo=1&order=id+DESC&page=%24page\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$pagesize = 12;$page = intval($page) ? intval($page) : 1;if($page<=0){$page=1;}$offset = ($page - 1) * $pagesize;$content_total = $content_tag->count(array('catid'=>$catid,'moreinfo'=>'1','order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));$pages = pages($content_total, $page, $pagesize, $urlrule);$data = $content_tag->lists(array('catid'=>$catid,'moreinfo'=>'1','order'=>'id DESC','limit'=>$offset.",".$pagesize,'action'=>'lists',));}?>
                 <div class="masonry">
+                <?php $n=1;if(is_array($data)) foreach($data AS $vo) { ?>
                     <div id="blog_2113" class="box masonry-brick">
                         <div class="content" id="feedText_2113">
                             <div class="imgBox">
@@ -121,6 +120,11 @@
                         </div>
                     </div>
                     <?php $n++;}unset($n); ?>
+                    <div class="inline_box fix tj m_Grid1">
+                        <div class="page_navi">
+                            <?php echo $pages;?>
+                        </div>
+                    </div>
                     <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 
 

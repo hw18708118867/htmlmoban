@@ -1,24 +1,25 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><!doctype html>
 <html lang="zh-cn">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><?php if(isset($SEO['title']) && !empty($SEO['title'])) { ?><?php echo $SEO['title'];?><?php } ?><?php echo $SEO['site_title'];?></title>
-    <meta name="keywords" content="<?php echo $SEO['keyword'];?>">
-    <meta name="description" content="<?php echo $SEO['description'];?>">
+    <title>  dpcool店铺酷  电商设计灵感酷，电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏 </title>
+    <meta charset="utf-8" />
+    <meta name="description" content="电商设计灵感酷 " />
+    <meta name="keywords" content="电商设计，电商交流，电商设计师，店铺设计，淘宝店装修，店铺欣赏电商设计联盟，电商设计欣赏，网店装修欣赏，淘宝装修设计欣赏、" />
+     
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo CSS_PATH;?>cool/common.css" class="cssfx"/>
   
 	 
    
 	 
  
-<link href="<?php echo CSS_PATH;?>tool/style_13_tools_runcode.css" rel="stylesheet" />
+<link href="<?php echo CSS_PATH;?>tool/style_13_tools_unicode.css" rel="stylesheet" />
  
 
 
   <script type="text/javascript" src="<?php echo JS_PATH;?>jquery.min.js"></script>
-  <script type="text/javascript" src="<?php echo JS_PATH;?>tool/base.js"></script>
+ 
 <script type="text/javascript" src="<?php echo JS_PATH;?>tool/common.js"></script>
-<script type="text/javascript" src="<?php echo JS_PATH;?>tool/runcode.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH;?>tool/escape.js"></script>
  
  	 
 </head>
@@ -57,21 +58,23 @@
 
 	<!----body-------------->
 	<div id="navbar" class="cl">
-    <a href="index.php?m=content&c=index&a=lists&catid=15" class="first">前端神器</a>
+    <a href="tools.php" class="first">前端神器</a>
 	<a >JavaScript/CSS代码压缩<i></i></a>
     </div>
 <div id="updateTips">您的浏览器版本太低，可能会导致部分工具无法正常使用，建议您 <a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank">升级IE浏览器</a> 或使用 <a href="http://www.google.cn/intl/zh-CN/chrome/browser/" target="_blank">Chrome</a>、<a href="http://firefox.com.cn/download/" target="_blank">FireFox</a>、<a href="http://www.opera.com/" target="_blank">Opera</a> 浏览。</div>
         
- <ul id="tabs">
-            <li class="active">runcode</li>
+         <ul id="tabs">
+            <li class="active">ESCAPE</li>
         </ul>
         <div class="content">
             <div id="code" class="textbox">
-                <div><textarea id="codeinp">将HTML代码粘在此处，点击运行即可。</textarea></div>
+                <div><textarea id="codeinp">将代码粘贴在此进行即可加解密！</textarea></div>
             </div>
             <div class="btnbar cl">
             	<a id="btclear" class="btns" href="javascript:void(0);" hidefocus="true">清空</a>
-                <a id="btrun" class="btns hilite" href="javascript:void(0);" hidefocus="true">运行</a>
+                <a id="btencode" class="btns kl" href="javascript:void(0);" hidefocus="true">加密</a>
+                <a id="btdecode" class="btns kr" href="javascript:void(0);" hidefocus="true">解密</a>
+                <a id="btcopy" class="btns hilite" href="javascript:void(0);" hidefocus="true">复制</a>
             </div>
         </div>
 		<!------body-------->
